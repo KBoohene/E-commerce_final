@@ -1,0 +1,30 @@
+.top-bar{
+	background-color: #fff;
+}
+
+#top-navi{
+	background-color: #fff;
+	color:#C1272D;
+	font-family:Montserrat;
+}
+
+#top-navi a{
+	color:#C1272D;
+	font-family:Montserrat;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url(Montserrat-Light.otf);
+}
+
+#footer{
+	background-color:#282828;
+	font-family:Montserrat;
+	color:#E6E6E6;
+}
+
+#footer a{
+	color:#fff;
+	
+}
