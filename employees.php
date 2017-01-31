@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>Employees</title>
     <link rel="stylesheet" href="Css/foundation.min.css">
     <link rel="stylesheet" href="Css/style.css">
 
@@ -34,8 +34,21 @@
 
       <div id="divContent">
           <form action="" method="GET">
-              <input type="text" name="txtSearch">
-              <input type="submit" value="search" >
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="row collapse">
+                  <div class="small-10 columns">
+                    <input class="search-bar" id="search" type="text" name="txtSearch">
+                  </div>
+                  <div class="small-2 columns">
+                    <button type="submit" class="button">Search</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
           </form>
       </div>
 
@@ -62,13 +75,18 @@ else{
 	$row = $person->getPerson(2,"");
 }
 
-	echo"<table border=1>
-				<tr>
-					<td>Enumber</td>
-					<td>Ename</td>
-					<td>Zip Code</td>
-					<td>Hire date</td>
-				</tr>";
+	echo"
+        <div class='row'>
+          <div class='large-10 columns'>
+          <table>
+            <thead>
+		      <tr>
+				<td>Enumber</td>
+				<td>Ename</td>
+				<td>Zip Code</td>
+				<td>Hire date</td>
+		      </tr>
+            </thead>";
 
 	while($row=$person->fetch())
   {
@@ -80,7 +98,9 @@ else{
 					 <td>{$row['hdate']}</td>
 			    </tr>";
   }
- echo"</table>";
+ echo"</table>
+      </div>
+      </div>";
 
 ?>
         <div class="footer">
