@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(Fonts/Montserrat-Light.otf);
+}
+
+@font-face {
+    font-family: Gilroy;
+    src: url(Fonts/Gilroy-Light.otf);
+}
+
+@font-face {
+    font-family: Coves;
+    src: url(Fonts/Coves-Bold.otf);
+}
+
+
+
+.top-bar{
+	background-color: #fff;
+}
+
+#top-navi{
+	background-color: #fff;
+	color:#C1272D;
+	font-family:Coves;
+}
+
+#top-navi a{
+	color:#C1272D;
+	font-family:Coves;
+}
+
+#footer{
+	background-color:#282828;
+	font-family:Montserrat;
+	color:#E6E6E6;
+}
+
+#footer a{
+	color:#fff;
+
+}
