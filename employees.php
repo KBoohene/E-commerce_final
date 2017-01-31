@@ -108,7 +108,6 @@ else{
         </div>
       </div>
 
-
       <script src="JS/jquery.js"></script>
       <script src="JS/foundation.js"></script>
       <script>
