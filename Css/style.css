@@ -30,12 +30,14 @@
 	font-family:Gilroy;
 }
 
-#footer{
+.footer{
 	background-color:#282828;
 	font-family:Gilroy;
 	color:#E6E6E6;
+    margin: 0;
+    padding: 4rem;
 }
 
-#footer a{
+.footer a{
 	color:#fff;
 }
