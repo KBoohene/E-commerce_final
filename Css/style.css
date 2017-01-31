@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: Coves;
-    src: url(Fonts/Coves-Bold.otf);
+    src: url(Fonts/Coves-Light.otf);
 }
 
 
@@ -22,21 +22,20 @@
 #top-navi{
 	background-color: #fff;
 	color:#C1272D;
-	font-family:Coves;
+	font-family:Gilroy;
 }
 
 #top-navi a{
 	color:#C1272D;
-	font-family:Coves;
+	font-family:Gilroy;
 }
 
 #footer{
 	background-color:#282828;
-	font-family:Montserrat;
+	font-family:Gilroy;
 	color:#E6E6E6;
 }
 
 #footer a{
 	color:#fff;
-
 }
