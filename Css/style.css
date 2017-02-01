@@ -35,10 +35,10 @@
 	font-family:Gilroy;
 	color:#E6E6E6;
     padding:4em;
-    bottom:0;
-    position:fixed;
-    margin:0;
-    width:100%;
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .footer a{
