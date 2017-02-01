@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 08:19 PM
+-- Generation Time: Feb 01, 2017 at 10:57 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -19,6 +19,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `coredb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `catno` int(11) NOT NULL,
+  `catname` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -70,12 +81,27 @@ INSERT INTO `employees` (`eno`, `ename`, `zip`, `hdate`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `ino` bigint(5) NOT NULL,
+  `iname` varchar(30) NOT NULL,
+  `qoh` int(11) NOT NULL,
+  `price` decimal(6,2) NOT NULL,
+  `olevel` int(11) NOT NULL,
+  `catno` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `odetails`
 --
 
 CREATE TABLE `odetails` (
   `ono` bigint(5) NOT NULL,
-  `pno` bigint(5) NOT NULL,
+  `ino` bigint(5) NOT NULL,
   `qty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -88,23 +114,8 @@ CREATE TABLE `odetails` (
 CREATE TABLE `orders` (
   `ono` bigint(5) NOT NULL,
   `cno` bigint(5) NOT NULL,
-  `eno` bigint(4) NOT NULL,
   `received` date NOT NULL,
   `shipped` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `parts`
---
-
-CREATE TABLE `parts` (
-  `pno` bigint(5) NOT NULL,
-  `pname` varchar(30) NOT NULL,
-  `qoh` int(11) NOT NULL,
-  `price` decimal(6,2) NOT NULL,
-  `olevel` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -138,6 +149,12 @@ INSERT INTO `zipcodes` (`zip`, `city`) VALUES
 --
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`catno`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -152,23 +169,25 @@ ALTER TABLE `employees`
   ADD KEY `zip` (`zip`);
 
 --
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`ino`),
+  ADD KEY `catno` (`catno`);
+
+--
 -- Indexes for table `odetails`
 --
 ALTER TABLE `odetails`
-  ADD PRIMARY KEY (`ono`,`pno`),
-  ADD KEY `pno` (`pno`);
+  ADD PRIMARY KEY (`ono`,`ino`),
+  ADD KEY `pno` (`ino`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`ono`);
-
---
--- Indexes for table `parts`
---
-ALTER TABLE `parts`
-  ADD PRIMARY KEY (`pno`);
+  ADD PRIMARY KEY (`ono`),
+  ADD KEY `cno` (`cno`);
 
 --
 -- Indexes for table `zipcodes`
@@ -181,6 +200,11 @@ ALTER TABLE `zipcodes`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -191,15 +215,15 @@ ALTER TABLE `customers`
 ALTER TABLE `employees`
   MODIFY `eno` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `ino` bigint(5) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `parts`
---
-ALTER TABLE `parts`
-  MODIFY `pno` bigint(5) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -217,11 +241,23 @@ ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`);
 
 --
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`catno`) REFERENCES `categories` (`catno`);
+
+--
 -- Constraints for table `odetails`
 --
 ALTER TABLE `odetails`
   ADD CONSTRAINT `odetails_ibfk_1` FOREIGN KEY (`ono`) REFERENCES `orders` (`ono`),
-  ADD CONSTRAINT `odetails_ibfk_2` FOREIGN KEY (`pno`) REFERENCES `parts` (`pno`);
+  ADD CONSTRAINT `odetails_ibfk_2` FOREIGN KEY (`ino`) REFERENCES `items` (`ino`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`cno`) REFERENCES `customers` (`cno`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
