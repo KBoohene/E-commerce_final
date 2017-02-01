@@ -4,7 +4,10 @@
 	Added basic interface to existent code - 1/31/2017
 	Formatted code with proper indenting  - 2/1/2017
 -->
-
+<!--
+  @author Kwabena Boohene
+  @desc - This page displays employee data based on search input in a table format.
+-->
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

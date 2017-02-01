@@ -3,8 +3,13 @@
 	Created Class - 1/25/2017
 	Added filter number to separate employees from customer -1/26/2017
 	Added basic user interface - 2/1/2017
-	Formatted code with proper indenting -2/1/2017
+	Formatted code with proper indenting and comments -2/1/2017
 -->
+<!--
+  @author Kwabena Boohene
+  @desc - This page displays customer data based on search input in a table format.
+-->
+
 	<head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
