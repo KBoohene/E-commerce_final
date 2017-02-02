@@ -1,5 +1,6 @@
 <html>
 <!--CHANGELOG
+    @author Youssouf Da-Silva
 	Created Class - 1/25/2017
 	Added filter number to separate employees from customer -1/26/2017
 	Added basic user interface - 2/1/2017
@@ -9,30 +10,35 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>View Order Details</title>
-      <link rel="stylesheet" href="Css/foundation.min.css">
-      <link rel="stylesheet" href="Css/style.css">
+      <link rel="stylesheet" href="../Css/foundation.min.css">
+      <link rel="stylesheet" href="../Css/style.css">
 
   </head>
 
 
   <body>
     <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
-            <li class="menu-text">Site Title</li>
-            <li>
-              <a href="#">One</a>
-              <ul class="menu vertical">
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-          </ul>
-        </div>
-      </div>
+  <div class="top-bar-left">
+   <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
+    <li class="menu-text">Site Title</li>
+     <li>
+      <a href="#">Lab1</a>
+       <ul class="menu vertical">
+        <li><a href="customers.php">Customers</a></li>
+        <li><a href="employees.php">Employees</a></li>
+        <li><a href="orders-creation.php">Orders</a></li>
+       </ul>
+      </li>
+      <li>
+        <a href="../dashboard.php">Items</a>
+          <ul class="menu vertical">
+          <li><a href="addItem.php">Add Item</a></li>
+          <li><a href="itemsSearch.php">Search Item</a></li>
+        </ul>
+        </li>
+   </ul>
+  </div>
+ </div>
 
 			<h1>Current Order</h1>
 	    <p>Go to <a href="orders-creation.php">order creation</a></p>
@@ -48,14 +54,15 @@
 				</thead>
 
 	    <?php
-	      $mysqli = new mysqli('localhost','youssouf','','coredb');
+          include_once("../Model/setting.php");
+	      $mysqli = new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
 	      if($mysqli->connect_errno){
 	        echo "Error connecting";
 	        exit();
 	      }
 
-	      $res = $mysqli->query("SELECT ono, cno, eno from orders where ono = ".$_REQUEST['oid']);
+	      $res = $mysqli->query("SELECT ono, cno from orders where ono = ".$_REQUEST['oid']);
 
 	      if($res == false){
 	        exit();
@@ -93,26 +100,27 @@
 	  <button type='button' name='addPart'>Add</button> -->
 
 	    <p>
-	    Click <a href="orders-items.php?oid=<?php echo $_REQUEST['oid']; ?>">here</a> to add more parts to this order
+	    Click <a href="orders-items.php?oid=<?php echo $_REQUEST['oid']; ?>">here</a> to add more items to this order
 	    </p>
 
 
         <hr>
 
-				<h1>List of Parts added</h1>
+				<h1>List of Items added</h1>
 
 				<div class='row'>
 					<div class='large-10 columns'>
 				<table>
 					<thead>
 						<tr>
-							<th>Part Name</th>
+							<th>Item Name</th>
 							<th>Quantity</th>
 						</tr>
 					</thead>
 
 					<?php
-						$mysqli = new mysqli('localhost','youssouf','','coredb');
+                      include_once ("../Model/setting.php");
+						$mysqli = new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
 						if($mysqli->connect_errno){
 							echo "Error connecting";
@@ -130,7 +138,7 @@
 
 							while($row){
 								//echo ("<script>alert('SELECT cname from customers where cno ={$row['cno']}');</script>");
-								$resP = $mysqli->query("SELECT pname from parts where pno =".$row['pno']);
+								$resP = $mysqli->query("SELECT iname from items where ino =".$row['ino']);
 
 
 								if($resP == false){
@@ -143,7 +151,7 @@
 								echo "<tr>";
 								// echo "<option value=' {$row['eno']}'>{$row['ename']}</option>";
 
-								echo "<td>{$rowP['pname']}</td>";
+								echo "<td>{$rowP['iname']}</td>";
 								echo "<td>{$row['qty']}</td>";
 								echo "</tr>";
 								// ?cmd=1&cid='+cid+'&eid=+eid;
@@ -155,7 +163,7 @@
 				</div>
 			</div>
 
-    <div class="footer">
+    <div class="footer1">
       <div class="row">
         <div class="large-4 columns">
           <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
@@ -180,8 +188,8 @@
       </div>
     </div>
 
-    <script src="JS/jquery.js"></script>
-    <script src="JS/foundation.js"></script>
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/foundation.js"></script>
     <script>
         $(document).foundation();
 
@@ -192,7 +200,7 @@
             alert('Please make all required selections!');
           } else {
             // window.location.href="index.php?uid=1";
-            window.location.href="task3-orders-ajax.php?cmd=1&cid="+cid;
+            window.location.href="../Conttask3-orders-ajax.php?cmd=1&cid="+cid;
 
           }
         }

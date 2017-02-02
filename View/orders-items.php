@@ -1,5 +1,6 @@
 <html>
 <!--CHANGELOG
+    @author Youssouf Da-Silva
 	Created Class - 1/25/2017
 	Added filter number to separate employees from customer -1/26/2017
 	Added basic user interface - 2/1/2017
@@ -9,30 +10,35 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Add Items to Order</title>
-      <link rel="stylesheet" href="Css/foundation.min.css">
-      <link rel="stylesheet" href="Css/style.css">
+      <link rel="stylesheet" href="../Css/foundation.min.css">
+      <link rel="stylesheet" href="../Css/style.css">
 
   </head>
 
 
   <body>
     <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-        <div class="top-bar-left">
-          <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
-            <li class="menu-text">Site Title</li>
-            <li>
-              <a href="#">One</a>
-              <ul class="menu vertical">
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Two</a></li>
-            <li><a href="#">Three</a></li>
-          </ul>
-        </div>
-      </div>
+  <div class="top-bar-left">
+   <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
+    <li class="menu-text">Site Title</li>
+     <li>
+      <a href="#">Lab1</a>
+       <ul class="menu vertical">
+        <li><a href="customers.php">Customers</a></li>
+        <li><a href="employees.php">Employees</a></li>
+        <li><a href="orders-creation.php">Orders</a></li>
+       </ul>
+      </li>
+      <li>
+        <a href="../dashboard.php">Items</a>
+          <ul class="menu vertical">
+          <li><a href="addItem.php">Add Item</a></li>
+          <li><a href="itemsSearch.php">Search Item</a></li>
+        </ul>
+        </li>
+   </ul>
+  </div>
+ </div>
 
 			<h1>Current Order</h1>
 	    <p>Go to <a href="orders-creation.php">order creation</a></p>
@@ -49,14 +55,15 @@
 				</thead>
 
 	    <?php
-	      $mysqli = new mysqli('localhost','youssouf','','coredb');
+	      include_once("../Model/setting.php");
+          $mysqli = new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
 	      if($mysqli->connect_errno){
 	        echo "Error connecting";
 	        exit();
 	      }
 
-	      $res = $mysqli->query("SELECT ono, cno, eno from orders where ono = ".$_REQUEST['oid']);
+	      $res = $mysqli->query("SELECT ono, cno from orders where ono = ".$_REQUEST['oid']);
 
 	      if($res == false){
 	        exit();
@@ -74,7 +81,6 @@
 	            //fetch
 	            $rowC = $resC->fetch_assoc();
 	          }
-
 
 	          echo "<tr>";
 	          // echo "<option value=' {$row['eno']}'>{$row['ename']}</option>";
@@ -99,8 +105,8 @@
 			<div class="large-12 columns">
 				<div class="row collapse">
 					<div class="small-10 columns">
-						<!-- <input class="search-bar" id="pname" type="text" name="txtSearch"> -->
-						<input  type="text" name="pname">
+						<!-- <input class="search-bar" id="iname" type="text" name="txtSearch"> -->
+						<input  type="text" name="iname">
 					</div>
 					<div class="small-2 columns">
 						<!-- <button type="submit" name="submit" value="Search" class="button">Search</button> -->
@@ -110,7 +116,7 @@
 			</div>
 			<?php
 			if(isset($_POST['submit'])){
-				echo '<p>Showing results for "'.$_POST['pname'].'"</p>';
+				echo '<p>Showing results for "'.$_POST['iname'].'"</p>';
 				echo '<a href="orders-items.php?oid='.$_REQUEST['oid'].'"><button type="button" class="button">Show All</button></a><br>';
 			}
 			 ?>
@@ -126,8 +132,8 @@
 	<div class='large-10 columns'>
 	<table border=1>
 		<tr>
-			<th>Part #</th>
-			<th>Part Name</th>
+			<th>Item #</th>
+			<th>Item Name</th>
 			<th>Price</th>
 			<th>Quantity</th>
 			<th>Action</th>
@@ -136,23 +142,25 @@
 	//code below from http://www.webreference.com/programming/php/search/2.html
 	if(isset($_POST['submit'])){
 		if(isset($_GET['go'])){
-			// if(preg_match("/^[  a-zA-Z]+/", $_POST['pname'])){
-				$pname=$_POST['pname'];
+			// if(preg_match("/^[  a-zA-Z]+/", $_POST['iname'])){
+				$iname=$_POST['iname'];
 
 				//connect  to the database
-				$mysqli = new mysqli('localhost','youssouf','','coredb');
+                include_once("../Model/setting.php");
+				$mysqli = new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+
 				if($mysqli->connect_errno){
 					echo "Error connecting";
 					exit();
 				}
 
 				//-query the database table and query against the mysql query function
-				$res = $mysqli->query("SELECT * FROM parts WHERE pname LIKE '%" . $pname .  "%'");
+				$res = $mysqli->query("SELECT * FROM items WHERE iname LIKE '%" . $iname .  "%'");
 
 				$row = $res->fetch_assoc();
 				while($row){
-								$PartNo = $row['pno'];
-								$PartName=$row['pname'];
+								$PartNo = $row['ino'];
+								$PartName=$row['iname'];
 								$Price=$row['price'];
 								$Qty=$row['qoh'];
 
@@ -181,19 +189,21 @@
 		// show all data
 
 		//connect  to the database
-		$mysqli = new mysqli('localhost','youssouf','','coredb');
+        include_once("../Model/setting.php");
+        $mysqli = new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+
 		if($mysqli->connect_errno){
 			echo "Error connecting";
 			exit();
 		}
 
 		//-query the database table and query against the mysql query function
-		$res = $mysqli->query("SELECT * FROM parts");
+		$res = $mysqli->query("SELECT * FROM items");
 
 		$row = $res->fetch_assoc();
 		while($row){
-						$PartNo = $row['pno'];
-						$PartName=$row['pname'];
+						$PartNo = $row['ino'];
+						$PartName=$row['iname'];
 						$Price=$row['price'];
 						$Qty=$row['qoh'];
 
@@ -223,7 +233,7 @@
 ?>
 
 
-    <div class="footer">
+    <div class="footer1">
       <div class="row">
         <div class="large-4 columns">
           <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
@@ -248,24 +258,24 @@
       </div>
     </div>
 
-    <script src="JS/jquery.js"></script>
-    <script src="JS/foundation.js"></script>
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/foundation.js"></script>
     <script>
         $(document).foundation();
 
-				function addPart(pno, ono, olevel, qoh){
-		      var id = "qtyId" + pno;
+				function addPart(ino, ono, olevel, qoh){
+		      var id = "qtyId" + ino;
 
 		      var qty = document.getElementById(id).value.trim();
 
 		      if (qty == ''){
 		        alert('You\'ve got to select how many products you wanna order bro!');
 		      } else {
-		        var totalOrders = olevel + qty;
-		        if (totalOrders > qoh){
+
+		        if (qty > qoh){
 		          alert('Please You\'ve ordered too much products');
 		        } else {
-		          window.location.href="task3-orders-ajax.php?cmd=2&ono="+ono+"&pno="+pno+"&qty="+qty;
+		          window.location.href="../Controller/task3-orders-ajax.php?cmd=2&ono="+ono+"&ino="+ino+"&qty="+qty;
 		        }
 		      }
 		    }

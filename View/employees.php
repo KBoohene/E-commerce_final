@@ -12,29 +12,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employees</title>
-    <link rel="stylesheet" href="Css/foundation.min.css">
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="../Css/foundation.min.css">
+    <link rel="stylesheet" href="../Css/style.css">
 
   </head>
 
   <body>
    <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-      <div class="top-bar-left">
-        <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
-          <li class="menu-text">Site Title</li>
-          <li>
-            <a href="#">One</a>
-            <ul class="menu vertical">
-              <li><a href="#">One</a></li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
+  <div class="top-bar-left">
+   <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
+    <li class="menu-text">Site Title</li>
+     <li>
+      <a href="#">Lab1</a>
+       <ul class="menu vertical">
+        <li><a href="customers.php">Customers</a></li>
+        <li><a href="employees.php">Employees</a></li>
+        <li><a href="orders-creation.php">Orders</a></li>
+       </ul>
+      </li>
+      <li>
+        <a href="../dashboard.php">Items</a>
+          <ul class="menu vertical">
+          <li><a href="addItem.php">Add Item</a></li>
+          <li><a href="itemsSearch.php">Search Item</a></li>
         </ul>
-      </div>
-    </div>
+        </li>
+   </ul>
+  </div>
+ </div>
 
     <div id="divContent">
       <form action="" method="GET">
@@ -56,7 +61,7 @@
 
 <?php
 
-include_once("persons.php");
+include_once("../Model/persons.php");
 
 $person = new persons();
 
@@ -128,8 +133,8 @@ echo"
       </div>
     </div>
 
-    <script src="JS/jquery.js"></script>
-    <script src="JS/foundation.js"></script>
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/foundation.js"></script>
     <script>
         $(document).foundation();
     </script>
