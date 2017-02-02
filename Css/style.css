@@ -30,15 +30,18 @@
 	font-family:Gilroy;
 }
 
+/*  CHANGE LOG
+    Changed position from absolute to relative - 02/02/17
+ */
 .footer{
 	background-color:#282828;
 	font-family:Gilroy;
 	color:#E6E6E6;
-    padding:4em;
-    position:absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  padding:4em;
+  position:relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .footer a{
