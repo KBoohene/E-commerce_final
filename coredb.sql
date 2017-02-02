@@ -3,13 +3,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2017 at 10:57 PM
+-- Generation Time: Feb 02, 2017 at 12:50 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
+USE coredb;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,6 +30,18 @@ CREATE TABLE `categories` (
   `catno` int(11) NOT NULL,
   `catname` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`catno`, `catname`) VALUES
+(1, 'Shorts'),
+(2, 'T-Shirts'),
+(3, 'Sneakers'),
+(4, 'Sweat Pants'),
+(5, 'Tennis Rackets'),
+(6, 'Gloves');
 
 -- --------------------------------------------------------
 
@@ -92,6 +104,22 @@ CREATE TABLE `items` (
   `olevel` int(11) NOT NULL,
   `catno` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`ino`, `iname`, `qoh`, `price`, `olevel`, `catno`) VALUES
+(1, 'Nike Flanel pants', 50, '50.00', 10, 1),
+(2, 'Spalding Long Racket', 50, '25.00', 10, 5),
+(3, 'Addidas NMD', 20, '230.00', 5, 3),
+(4, 'Nike Air Jordans', 30, '200.00', 5, 3),
+(5, 'Spalding 360 Gloves', 40, '25.00', 10, 6),
+(6, 'Gildan Plain White Tees', 30, '40.00', 10, 2),
+(7, 'Addidas slim fit Joggers', 50, '20.00', 10, 4),
+(8, 'Spalding grey sweats', 40, '15.00', 12, 4),
+(9, 'Nike Roshes Blue', 60, '20.00', 10, 3),
+(10, 'Adidas Barricade', 40, '250.00', 10, 5);
 
 -- --------------------------------------------------------
 
@@ -203,7 +231,7 @@ ALTER TABLE `zipcodes`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `customers`
 --
@@ -218,7 +246,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `ino` bigint(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `ino` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `orders`
 --
