@@ -19,6 +19,7 @@ eccomerce.html is the basic template used
 
 Installation:
 Run the index.php file in the installation folder to install the database
+Please take note that the username = root, password="", host="localhost"
 
 Searching for an employee:
 Run the employees.php file in a browser.
