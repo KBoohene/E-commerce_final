@@ -15,12 +15,12 @@ Installation:
 Run the index.php file in the installation folder to install the database
 
 Searching for an employee:
-Run the employee.php file in a browser.
+Run the employees.php file in a browser.
 Type any name you would want to search for in the text box,
 and you would be given output in a table format.
 
 Searching for a customer:
-Run the employee.php file in a browser.
+Run the customers.php file in a browser.
 Type any name you would want to search for in the text box,
 and you would be given output in a table format.
 
