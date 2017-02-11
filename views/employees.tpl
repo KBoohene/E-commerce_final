@@ -56,23 +56,31 @@
 
 <?php
 
-include_once("persons.php");
+{if isset($smarty.request.txtSearch)}
+  {if ($smarty.request.txtSearch)!=""}
+    {assign var="txt" value=$smarty.request.txtSearch}
+    {$employee->searchEmployee($txt)}
+  {elseif ($smarty.request.txtSearch)==""}
+    {$employee->getEmployee("")}
+  {/if}
+{else}
+  {$employee->getEmployee("")}
+{/if}
 
-$person = new persons();
-
+{*
 if(isset($_REQUEST['txtSearch']))
 {
   if($_REQUEST['txtSearch']!=""){
     $name=$_REQUEST['txtSearch'];
-    $row = $person->searchPerson(2,$name);
+
   }
   else if($_REQUEST['txtSearch']=="")
   {
-    $row=$person->searchPerson(2);
+
   }
 }
 else{
-  $row = $person->getPerson(2,"");
+  $row = $person->getEmployee("");
 }
 
 echo"
@@ -100,7 +108,7 @@ echo"
             }
      echo"</table>
         </div>
-      </div>";
+      </div>";*}
 
 ?>
     <div class="footer">
