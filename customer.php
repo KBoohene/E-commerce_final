@@ -1,29 +1,18 @@
 <?php
-/*@author Kwabena Boohene
- *@desc - This class contains functions that allow the modification of user information
- *
-*/
-//CHANGELOG
-//Created Class, and functions associated - 1/25/2017
-//Edited searchPerson method to include filter and added getPerson function - 1/26/2017
-//Added the required comments to the functions - 2/1/2017
-//Modified person class to only run employee function
-//Added function to run fetch data
-
 require_once('smarty-3.1.30/libs/Smarty.class.php');
 include_once("adb.php");
-class employee extends adb{
+class customer extends adb{
   /**
     * @author Kwabena Boohene
     * Constructor for employee class
   **/
-  function employee(){
+  function customer(){
   }
   /**
     * @author Kwabena Boohene
     * Adds an employee
   **/
-  function addEmployee(){
+  function addcustomer(){
 
   }
   /**
@@ -33,14 +22,14 @@ class employee extends adb{
     * @param string $text - text to search for
     * @return boolean - true or false
   **/
-  function searchEmployee($text=false){
+  function searchCustomer($text=false){
     if(($text!=false)){
       $filter= " where ENAME like '%$text%' or ENO like '%$text%' or ZIP like '%$text%'";
     }
     else{
       $filter="";
     }
-    return $this->getEmployee($filter);
+    return $this->getCustomer($filter);
   }
   /**
     * @author Kwabena Boohene
@@ -50,18 +39,18 @@ class employee extends adb{
     * @param string $filter -filters the kind of user info to retrieve
     * @return boolean - true or false
   **/
-  function getEmployee($filter){
-    $strQuery="Select * from employees";
+  function getCustomer($filter){
+    $strQuery="Select * from customers";
     $strQuery = $strQuery.$filter;
     return $this->query($strQuery);
 
   }
 
-  function fetch_EData($dataInput=false){
+  function fetch_CData($dataInput=false){
       $arrayData = array();
 
     if($dataInput!=false){
-    $result=$this->searchEmployee($dataInput);
+    $result=$this->searchCustomer($dataInput);
     $count=0;
     $length =$result->field_count;
 
@@ -73,7 +62,7 @@ class employee extends adb{
     }
     else{
 
-      $result=$this->searchEmployee();
+      $result=$this->searchCustomer();
       $count=0;
       $length =$result->field_count;
 
@@ -89,12 +78,12 @@ class employee extends adb{
 
 }
 
-$employee = new employee();
+$customer = new customer();
 $smarty= new Smarty();
 $smarty->template_dir='views';
 $smarty->compile_dir='tmp';
-$smarty->assign('employee',$employee);
+$smarty->assign('customer',$customer);
 
-$smarty->display('employees.tpl');
+$smarty->display('customers.tpl');
 
 ?>

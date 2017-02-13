@@ -53,64 +53,53 @@
       </form>
     </div>
 
+  {if isset($smarty.request.txtSearch)}
+    {if ($smarty.request.txtSearch)!=""}
+      {assign var="txt" value=$smarty.request.txtSearch}
+      {assign var="data" value=$employee->fetch_EData($txt)}
 
-<?php
+    {elseif ($smarty.request.txtSearch)==""}
+      {assign var="data" value=$employee->fetch_EData()}
 
-{if isset($smarty.request.txtSearch)}
-  {if ($smarty.request.txtSearch)!=""}
-    {assign var="txt" value=$smarty.request.txtSearch}
-    {$employee->searchEmployee($txt)}
-  {elseif ($smarty.request.txtSearch)==""}
-    {$employee->getEmployee("")}
+    {/if}
+  {else}
+    {assign var="data" value=$employee->fetch_EData()}
   {/if}
-{else}
-  {$employee->getEmployee("")}
-{/if}
 
-{*
-if(isset($_REQUEST['txtSearch']))
-{
-  if($_REQUEST['txtSearch']!=""){
-    $name=$_REQUEST['txtSearch'];
+{*Creates a table if data is contained*}
+<div class='row'>
+  <div class='large-10 columns'>
+    <table>
+      <thead>
+        <tr>
+          <td>Enumber</td>
+          <td>Ename</td>
+          <td>Zip Code</td>
+          <td>Hire date</td>
+        </tr>
+      </thead>
 
-  }
-  else if($_REQUEST['txtSearch']=="")
-  {
+        {foreach from=$data item=value}
+          <tr>
+            {if $value.eno}
+              <td>{$value.eno}</td>
+            {/if}
+            {if $value.ename}
+              <td>{$value.ename}</td>
+            {/if}
+            {if $value.zip}
+              <td>{$value.zip}</td>
+            {/if}
+            {if $value.hdate}
+              <td>{$value.hdate}</td>
+            {/if}
+          </tr>
+        {/foreach}
 
-  }
-}
-else{
-  $row = $person->getEmployee("");
-}
+    </table>
+  </div>
+</div>
 
-echo"
-      <div class='row'>
-        <div class='large-10 columns'>
-          <table>
-            <thead>
-		      <tr>
-				<td>Enumber</td>
-				<td>Ename</td>
-				<td>Zip Code</td>
-				<td>Hire date</td>
-		      </tr>
-            </thead>";
-
-	         while($row=$person->fetch())
-            {
-              echo"
-                    <tr>
-                      <td>{$row['eno']}</td>
-                      <td>{$row['ename']}</td>
-                      <td>{$row['zip']}</td>
-                      <td>{$row['hdate']}</td>
-                    </tr>";
-            }
-     echo"</table>
-        </div>
-      </div>";*}
-
-?>
     <div class="footer">
       <div class="row">
         <div class="large-4 columns">

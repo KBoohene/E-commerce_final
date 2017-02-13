@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-02-13 23:34:30
+  from "C:\xampp\htdocs\E-commerce_final\views\customers.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58a234760c4a47_10633588',
+  'has_nocache_code' => false,
+  'file_dependency' =>
+  array (
+    'ba89a0b9820c418dbe39b31700830834a36a9ad2' =>
+    array (
+      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customers.tpl',
+      1 => 1487025266,
+      2 => 'file',
+    ),
+  ),
+  'includes' =>
+  array (
+  ),
+),false)) {
+function content_58a234760c4a47_10633588 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <html>
 <!--CHANGELOG
 	Created Class - 1/25/2017
@@ -56,20 +80,24 @@
       </div>
 
 
-    {if isset($smarty.request.txtSearch)}
-      {if ($smarty.request.txtSearch)!=""}
-        {assign var="txt" value=$smarty.request.txtSearch}
-        {assign var="data" value=$customer->fetch_CData($txt)}
+    <?php if (isset($_REQUEST['txtSearch'])) {?>
+      <?php if (($_REQUEST['txtSearch']) != '') {?>
+        <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['txtSearch']);
+?>
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData($_smarty_tpl->tpl_vars['txt']->value));
+?>
 
-      {elseif ($smarty.request.txtSearch)==""}
-        {assign var="data" value=$customer->fetch_CData()}
+      <?php } elseif (($_REQUEST['txtSearch']) == '') {?>
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData());
+?>
 
-      {/if}
-    {else}
-      {assign var="data" value=$customer->fetch_CData()}
-    {/if}
+      <?php }?>
+    <?php } else { ?>
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData());
+?>
+    <?php }?>
 
-    {*Creates a table if data is contained*}
+
     <div class='row'>
       <div class='large-10 columns'>
         <table>
@@ -83,25 +111,39 @@
             </tr>
           </thead>
 
-            {foreach from=$data item=value}
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+?>
               <tr>
-                {if $value.cno}
-                  <td>{$value.cno}</td>
-                {/if}
-                {if $value.cname}
-                  <td>{$value.cname}</td>
-                {/if}
-                {if $value.street}
-                  <td>{$value.street}</td>
-                {/if}
-                {if $value.zip}
-                  <td>{$value.zip}</td>
-                {/if}
-                {if $value.phone}
-                  <td>{$value.phone}</td>
-                {/if}
+                <?php if ($_smarty_tpl->tpl_vars['value']->value['cno']) {?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
+</td>
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['value']->value['cname']) {?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cname'];?>
+</td>
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['value']->value['street']) {?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['value']->value['street'];?>
+</td>
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['value']->value['zip']) {?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['value']->value['zip'];?>
+</td>
+                <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['value']->value['phone']) {?>
+                  <td><?php echo $_smarty_tpl->tpl_vars['value']->value['phone'];?>
+</td>
+                <?php }?>
               </tr>
-            {/foreach}
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
 
         </table>
       </div>
@@ -134,11 +176,19 @@
       </div>
     </div>
 
-    <script src="JS/jquery.js"></script>
-    <script src="JS/foundation.js"></script>
-    <script>
+    <?php echo '<script'; ?>
+ src="JS/jquery.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="JS/foundation.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+>
         $(document).foundation();
-    </script>
+    <?php echo '</script'; ?>
+>
 
   </body>
 </html>
+<?php }
+}
