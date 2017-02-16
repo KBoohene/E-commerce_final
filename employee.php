@@ -63,7 +63,7 @@ class employee extends adb{
     if($dataInput!=false){
     $result=$this->searchEmployee($dataInput);
     $count=0;
-    $length =$result->field_count;
+    $length =$result->num_rows;
 
       while($count<$length){
         $arrayData[$count]=$result->fetch_assoc();
@@ -75,7 +75,7 @@ class employee extends adb{
 
       $result=$this->searchEmployee();
       $count=0;
-      $length =$result->field_count;
+      $length =$result->num_rows;
 
       while($count<$length){
         $arrayData[$count]=$result->fetch_assoc();
