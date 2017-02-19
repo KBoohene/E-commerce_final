@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-13 23:34:30
+/* Smarty version 3.1.30, created on 2017-02-17 12:52:06
   from "C:\xampp\htdocs\E-commerce_final\views\customers.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58a234760c4a47_10633588',
+  'unifunc' => 'content_58a6e3e66ce863_50361658',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'ba89a0b9820c418dbe39b31700830834a36a9ad2' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customers.tpl',
-      1 => 1487025266,
+      1 => 1487324983,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58a234760c4a47_10633588 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58a6e3e66ce863_50361658 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -39,7 +39,7 @@ function content_58a234760c4a47_10633588 (Smarty_Internal_Template $_smarty_tpl)
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Customers</title>
       <link rel="stylesheet" href="Css/foundation.min.css">
-      <link rel="stylesheet" href="Css/style.css">
+      <link rel="stylesheet" href="Css/Style.css">
 
   </head>
 

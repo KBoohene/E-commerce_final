@@ -13,8 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employees</title>
     <link rel="stylesheet" href="Css/foundation.min.css">
-    <link rel="stylesheet" href="Css/style.css">
-
+    <link rel="stylesheet" href="Css/Style.css">
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
   </head>
 
   <body>
@@ -99,7 +100,37 @@
     </table>
   </div>
 </div>
+<div class='row'>
+      <div class='large-6 columns'>
+        <div class="ct-chart ct-perfect-fourth"></div>
+          {assign var="countData" value=$employee->countEmployees()}
+          <script>
+            new Chartist.Bar('.ct-chart', {
+                labels: ['Employee','Customer'],
+                series: [{$countData.Num_Employees},{$countData.1.Num_Customers}]
+              }, {
+                distributeSeries: true
+              });
+          </script>
+        </div>
 
+        <div class="large-6 columns">
+         <div class="ct-chart1 ct-perfect-fourth"></div>
+          <script>
+            var data = {
+                series: [{$countData.Num_Employees},{$countData.1.Num_Customers}]
+              };
+
+            var sum = function(a, b) { return a + b };
+
+            new Chartist.Pie('.ct-chart1', data, {
+              labelInterpolationFnc: function(value) {
+                return Math.round(value / data.series.reduce(sum) * 100) + '%';
+              }
+            });
+          </script>
+        </div>
+    </div>
     <div class="footer">
       <div class="row">
         <div class="large-4 columns">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-13 23:20:53
+/* Smarty version 3.1.30, created on 2017-02-17 13:12:53
   from "C:\xampp\htdocs\E-commerce_final\views\employees.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58a231453f3c32_35715540',
+  'unifunc' => 'content_58a6e8c5a373b6_23504639',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '76da1403cca136163246174a5b080100ec42eb60' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\employees.tpl',
-      1 => 1487024446,
+      1 => 1487333566,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58a231453f3c32_35715540 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58a6e8c5a373b6_23504639 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -37,8 +37,11 @@ function content_58a231453f3c32_35715540 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employees</title>
     <link rel="stylesheet" href="Css/foundation.min.css">
-    <link rel="stylesheet" href="Css/style.css">
-
+    <link rel="stylesheet" href="Css/Style.css">
+     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <?php echo '<script'; ?>
+ src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"><?php echo '</script'; ?>
+>
   </head>
 
   <body>
@@ -77,75 +80,109 @@ function content_58a231453f3c32_35715540 (Smarty_Internal_Template $_smarty_tpl)
       </form>
     </div>
 
-
-
-
   <?php if (isset($_REQUEST['txtSearch'])) {?>
     <?php if (($_REQUEST['txtSearch']) != '') {?>
       <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['txtSearch']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchData($_smarty_tpl->tpl_vars['txt']->value));
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData($_smarty_tpl->tpl_vars['txt']->value));
 ?>
 
     <?php } elseif (($_REQUEST['txtSearch']) == '') {?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchData());
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData());
 ?>
 
     <?php }?>
   <?php } else { ?>
-    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchData());
+    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData());
 ?>
   <?php }?>
 
 
-  <div class='row'>
-    <div class='large-10 columns'>
-      <table>
-        <thead>
-          <tr>
-            <td>Enumber</td>
-            <td>Ename</td>
-            <td>Zip Code</td>
-            <td>Hire date</td>
-          </tr>
-        </thead>
+<div class='row'>
+  <div class='large-10 columns'>
+    <table>
+      <thead>
+        <tr>
+          <td>Enumber</td>
+          <td>Ename</td>
+          <td>Zip Code</td>
+          <td>Hire date</td>
+        </tr>
+      </thead>
 
-          <?php
+        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-            <tr>
-              <?php if ($_smarty_tpl->tpl_vars['value']->value['eno']) {?>
-                <td><?php echo $_smarty_tpl->tpl_vars['value']->value['eno'];?>
+          <tr>
+            <?php if ($_smarty_tpl->tpl_vars['value']->value['eno']) {?>
+              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['eno'];?>
 </td>
-              <?php }?>
-              <?php if ($_smarty_tpl->tpl_vars['value']->value['ename']) {?>
-                <td><?php echo $_smarty_tpl->tpl_vars['value']->value['ename'];?>
+            <?php }?>
+            <?php if ($_smarty_tpl->tpl_vars['value']->value['ename']) {?>
+              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['ename'];?>
 </td>
-              <?php }?>
-              <?php if ($_smarty_tpl->tpl_vars['value']->value['zip']) {?>
-                <td><?php echo $_smarty_tpl->tpl_vars['value']->value['zip'];?>
+            <?php }?>
+            <?php if ($_smarty_tpl->tpl_vars['value']->value['zip']) {?>
+              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['zip'];?>
 </td>
-              <?php }?>
-              <?php if ($_smarty_tpl->tpl_vars['value']->value['hdate']) {?>
-                <td><?php echo $_smarty_tpl->tpl_vars['value']->value['hdate'];?>
+            <?php }?>
+            <?php if ($_smarty_tpl->tpl_vars['value']->value['hdate']) {?>
+              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['hdate'];?>
 </td>
-              <?php }?>
-            </tr>
-          <?php
+            <?php }?>
+          </tr>
+        <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 
-      </table>
-    </div>
+    </table>
   </div>
+</div>
+<div class='row'>
+      <div class='large-6 columns'>
+        <div class="ct-chart ct-perfect-fourth"></div>
+          <?php $_smarty_tpl->_assignInScope('countData', $_smarty_tpl->tpl_vars['employee']->value->countEmployees());
+?>
+          <?php echo '<script'; ?>
+>
+            new Chartist.Bar('.ct-chart', {
+                labels: ['Employee','Customer'],
+                series: [<?php echo $_smarty_tpl->tpl_vars['countData']->value['Num_Employees'];?>
+,<?php echo $_smarty_tpl->tpl_vars['countData']->value[1]['Num_Customers'];?>
+]
+              }, {
+                distributeSeries: true
+              });
+          <?php echo '</script'; ?>
+>
+        </div>
 
+        <div class="large-6 columns">
+         <div class="ct-chart1 ct-perfect-fourth"></div>
+          <?php echo '<script'; ?>
+>
+            var data = {
+                series: [<?php echo $_smarty_tpl->tpl_vars['countData']->value['Num_Employees'];?>
+,<?php echo $_smarty_tpl->tpl_vars['countData']->value[1]['Num_Customers'];?>
+]
+              };
 
+            var sum = function(a, b) { return a + b };
 
+            new Chartist.Pie('.ct-chart1', data, {
+              labelInterpolationFnc: function(value) {
+                return Math.round(value / data.series.reduce(sum) * 100) + '%';
+              }
+            });
+          <?php echo '</script'; ?>
+>
+        </div>
+    </div>
     <div class="footer">
       <div class="row">
         <div class="large-4 columns">

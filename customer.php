@@ -76,14 +76,23 @@ class customer extends adb{
     return $arrayData;
   }
 
-}
+  function countCustomers(){
 
+    $strQuery="Select count(cno) as Num_Customers from customers ";
+    $array=$this->query($strQuery);
+    $count = $array->fetch_assoc();
+
+    return $count;
+  }
+
+}
+/*
 $customer = new customer();
 $smarty= new Smarty();
 $smarty->template_dir='views';
 $smarty->compile_dir='tmp';
 $smarty->assign('customer',$customer);
 
-$smarty->display('customers.tpl');
+$smarty->display('customers.tpl');*/
 
 ?>

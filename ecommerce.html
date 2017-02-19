@@ -5,60 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Foundation | Welcome</title>
     <link rel="stylesheet" href="Css/foundation.min.css">
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/Style.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
   </head>
-  
 
   <body>
-    <div class="wrapper">
-
-      <div class="header">
-        <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-          <div class="top-bar-left">
-            <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
-              <li class="menu-text">Site Title</li>
-              <li>
-                <a href="#">One</a>
-                <ul class="menu vertical">
-                  <li><a href="#">One</a></li>
-                  <li><a href="#">Two</a></li>
-                  <li><a href="#">Three</a></li>
-                </ul>
-              </li>
+    <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" id="top-navi" data-dropdown-menu>
+          <li class="menu-text">Site Title</li>
+          <li>
+            <a href="#">One</a>
+            <ul class="menu vertical">
+              <li><a href="#">One</a></li>
               <li><a href="#">Two</a></li>
               <li><a href="#">Three</a></li>
             </ul>
-          </div>
+          </li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='large-6 columns'>
+        <div class="ct-chart ct-perfect-fourth"></div>
+          <script>
+            new Chartist.Bar('.ct-chart', {
+                labels: ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
+                series: [20, 60, 120, 200, 180, 20, 10]
+              }, {
+                distributeSeries: true
+              });
+          </script>
         </div>
-      </div>
 
-      <div class="content">
+        <div class="large-6 columns">
+         <div class="ct-chart1 ct-perfect-fourth"></div>
+          <script>
+            var data = {
+              series: [5, 3, 4]
+            };
 
+            var sum = function(a, b) { return a + b };
 
-      </div>
+            new Chartist.Pie('.ct-chart1', data, {
+              labelInterpolationFnc: function(value) {
+                return Math.round(value / data.series.reduce(sum) * 100) + '%';
+              }
+            });
+          </script>
+        </div>
+    </div>
 
-      <div class="footer">
-        <div class="row">
-          <div class="large-4 columns">
-            <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
-            <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit.</p>
-          </div>
-          <div class="large-3 large-offset-2 columns">
-            <ul class="menu vertical">
-              <li><a href="#">One</a></li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
-              <li><a href="#">Four</a></li>
-            </ul>
-          </div>
-          <div class="large-3 columns">
-            <ul class="menu vertical">
-              <li><a href="#">One</a></li>
-              <li><a href="#">Two</a></li>
-              <li><a href="#">Three</a></li>
-              <li><a href="#">Four</a></li>
-            </ul>
-          </div>
+    <div class="footer">
+      <div class="row">
+        <div class="large-4 columns">
+          <h5>Vivamus Hendrerit Arcu Sed Erat Molestie</h5>
+          <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit.</p>
+        </div>
+        <div class="large-3 large-offset-2 columns">
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+          </ul>
+        </div>
+        <div class="large-3 columns">
+          <ul class="menu vertical">
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+          </ul>
         </div>
       </div>
     </div>
