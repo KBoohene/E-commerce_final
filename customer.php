@@ -1,5 +1,6 @@
 <?php
 require_once('smarty-3.1.30/libs/Smarty.class.php');
+require_once('csv.class.php');
 include_once("adb.php");
 class customer extends adb{
   /**
@@ -85,14 +86,32 @@ class customer extends adb{
     return $count;
   }
 
+  function csvExportCData(){
+    $csv = new CSV(array('Customer Information'));
+
+    $customerData =$this->fetch_CData();
+    $length =sizeof($customerData);
+    $count = 0;
+
+    $csv->addRow(array('Cnumber', 'Cname', 'Street', 'Zip Code','Phone Number'));
+    while($count<$length){
+      $csv->addRow(array($customerData[$count]['cno'], $customerData[$count]['cname'],
+                            $customerData[$count]['street'], $customerData[$count]['zip'],
+                           $customerData[$count]['phone']));
+      $count++;
+    }
+
+    $filename = 'customer_data';
+    $csv->export($filename);
+  }
 }
-/*
+
 $customer = new customer();
 $smarty= new Smarty();
 $smarty->template_dir='views';
 $smarty->compile_dir='tmp';
 $smarty->assign('customer',$customer);
 
-$smarty->display('customers.tpl');*/
+$smarty->display('customers.tpl');
 
 ?>

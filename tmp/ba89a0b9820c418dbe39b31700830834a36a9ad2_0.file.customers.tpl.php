@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-17 12:52:06
+/* Smarty version 3.1.30, created on 2017-02-22 13:48:07
   from "C:\xampp\htdocs\E-commerce_final\views\customers.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58a6e3e66ce863_50361658',
+  'unifunc' => 'content_58ad8887f0e0a8_38013214',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'ba89a0b9820c418dbe39b31700830834a36a9ad2' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customers.tpl',
-      1 => 1487324983,
+      1 => 1487767681,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58a6e3e66ce863_50361658 (Smarty_Internal_Template $_smarty_tpl) {
-?>
+function content_58ad8887f0e0a8_38013214 (Smarty_Internal_Template $_smarty_tpl) {
+if (isset($_REQUEST['export'])) {?>
+  <?php echo $_smarty_tpl->tpl_vars['customer']->value->csvExportCData();?>
+
+<?php }?>
 <html>
 <!--CHANGELOG
 	Created Class - 1/25/2017
@@ -62,6 +65,7 @@ function content_58a6e3e66ce863_50361658 (Smarty_Internal_Template $_smarty_tpl)
           </ul>
         </div>
       </div>
+
        <div id="divContent">
           <form action="" method="GET">
             <div class="row">
@@ -78,7 +82,6 @@ function content_58a6e3e66ce863_50361658 (Smarty_Internal_Template $_smarty_tpl)
             </div>
           </form>
       </div>
-
 
     <?php if (isset($_REQUEST['txtSearch'])) {?>
       <?php if (($_REQUEST['txtSearch']) != '') {?>
@@ -149,7 +152,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
       </div>
     </div>
 
-
+ <a href="customer.php?export=" class="button">Export Data</a>
 
     <div class="footer">
       <div class="row">

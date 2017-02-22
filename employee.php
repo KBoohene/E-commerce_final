@@ -12,7 +12,6 @@
 
 require_once('smarty-3.1.30/libs/Smarty.class.php');
 include_once("adb.php");
-include_once("customer.php");
 class employee extends adb{
 
   /**
@@ -90,13 +89,10 @@ class employee extends adb{
   }
 
   function countEmployees(){
-    $customer = new customer();
-    $customerCount = $customer->countCustomers();
-
     $strQuery="Select count(eno) as Num_Employees from employees ";
     $array=$this->query($strQuery);
     $count = $array->fetch_assoc();
-    $count[1]=$customerCount;
+
     return $count;
   }
 

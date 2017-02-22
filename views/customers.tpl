@@ -1,3 +1,6 @@
+{if isset($smarty.request.export)}
+  {$customer->csvExportCData()}
+{/if}
 <html>
 <!--CHANGELOG
 	Created Class - 1/25/2017
@@ -38,6 +41,7 @@
           </ul>
         </div>
       </div>
+
        <div id="divContent">
           <form action="" method="GET">
             <div class="row">
@@ -54,7 +58,6 @@
             </div>
           </form>
       </div>
-
 
     {if isset($smarty.request.txtSearch)}
       {if ($smarty.request.txtSearch)!=""}
@@ -107,7 +110,7 @@
       </div>
     </div>
 
-
+ <a href="customer.php?export=" class="button">Export Data</a>
 
     <div class="footer">
       <div class="row">
