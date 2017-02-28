@@ -1,3 +1,11 @@
+/***************************************************************************************
+*    Title: Basic class for serializing PHP arrays in a csv format
+*    Author: Tristan Waddington
+*    Date:Jun 3, 2011
+*    Code version: 1
+*    Availability: https://gist.github.com/twaddington/1006027
+***************************************************************************************/
+
 <?php
 	class CSV {
 		protected $data;
