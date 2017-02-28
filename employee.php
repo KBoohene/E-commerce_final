@@ -10,7 +10,7 @@
 //Modified person class to only run employee function
 //Added function to run fetch data
 
-require_once('smarty-3.1.30/libs/Smarty.class.php');
+
 include_once("adb.php");
 class employee extends adb{
 
@@ -69,12 +69,5 @@ class employee extends adb{
 
 }
 
-$employee = new employee();
-$smarty= new Smarty();
-$smarty->template_dir='views';
-$smarty->compile_dir='tmp';
-$smarty->assign('employee',$employee);
-
-$smarty->display('employees.tpl');
 
 ?>

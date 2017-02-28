@@ -1,5 +1,5 @@
 <?php
-require_once('smarty-3.1.30/libs/Smarty.class.php');
+
 require_once('csv.class.php');
 include_once("adb.php");
 class customer extends adb{
@@ -54,6 +54,48 @@ class customer extends adb{
     return $count;
   }
 
+  function numItemsPerDay($date,$month,$year){
+    if($day==1){
+      //YYYY-MM-DD
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    DATE(`created_at`) =".$year.$month.$day;
+    }
+    else
+    {
+      $strQuery="";
+    }
+  return $this->query($strQuery);
+  }
+
+
+  function numItemsPerWeek($date,$month,$year){
+     if($day==1){
+      //YYYY-MM-DD
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    WEEKOFYEAR(`created_at`) = WEEKOFYEAR('$year.$month.$day')";
+    }
+    else
+    {
+      $strQuery="";
+    }
+    return $this->query($strQuery);
+  }
+
+
+  function numItemsPerMonth($date,$month,$year){
+     if($day==1){
+      //YYYY-MM-DD
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    MONTH(`created_at`) = MONTH('$year.$month.$day')";
+    }
+    else
+    {
+      $strQuery="";
+    }
+     return $this->query($strQuery);
+  }
+
+
   function numVisits($filter=""){
     if($filter=="Customer"){
       $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
@@ -93,11 +135,5 @@ class customer extends adb{
   }
 }
 
-$customer = new customer();
-$smarty= new Smarty();
-$smarty->template_dir='views';
-$smarty->compile_dir='tmp';
-$smarty->assign('customer',$customer);
-$smarty->display('customers.tpl');
 
 ?>
