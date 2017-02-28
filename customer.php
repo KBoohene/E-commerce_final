@@ -53,6 +53,7 @@ class customer extends adb{
     $count = $array->fetch_assoc();
     return $count;
   }
+
   function numVisits($filter=""){
     if($filter=="Customer"){
       $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
