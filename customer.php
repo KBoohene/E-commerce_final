@@ -40,41 +40,10 @@ class customer extends adb{
     * @param string $filter -filters the kind of user info to retrieve
     * @return boolean - true or false
   **/
-  function getCustomer($filter){
+  function getCustomer($filter=""){
     $strQuery="Select * from customers";
     $strQuery = $strQuery.$filter;
     return $this->query($strQuery);
-
-  }
-
-  function fetch_CData($dataInput=false){
-      $arrayData = array();
-
-    if($dataInput!=false){
-    $result=$this->searchCustomer($dataInput);
-    $count=0;
-    $length =$result->num_rows;
-
-      while($count<$length){
-        $arrayData[$count]=$result->fetch_assoc();
-        $count++;
-      }
-
-    }
-    else{
-
-      $result=$this->searchCustomer();
-      $count=0;
-      $length =$result->num_rows;
-
-      while($count<$length){
-        $arrayData[$count]=$result->fetch_assoc();
-        $count++;
-      }
-
-    }
-
-    return $arrayData;
   }
 
   function countCustomers(){
@@ -82,14 +51,31 @@ class customer extends adb{
     $strQuery="Select count(cno) as Num_Customers from customers ";
     $array=$this->query($strQuery);
     $count = $array->fetch_assoc();
-
     return $count;
   }
+  function numVisits($filter=""){
+    if($filter=="Customer"){
+      $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
+    DATE(`LogInTime`) = CURDATE() AND account_type='1'";
+    }
+    else if ($filter=="Employee"){
+      $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
+    DATE(`LogInTime`) = CURDATE() AND account_type='2'";
+    }
+    else{
+       $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
+    DATE(`LogInTime`) = CURDATE() AND account_type='3'";
+    }
+
+    return $this->query($strQuery);
+  }
+
 
   function csvExportCData(){
     $csv = new CSV(array('Customer Information'));
 
-    $customerData =$this->fetch_CData();
+    $customerData =$this->searchCustomer();
+    $customerData= $this->fetchDB($customerData);
     $length =sizeof($customerData);
     $count = 0;
 
@@ -111,7 +97,6 @@ $smarty= new Smarty();
 $smarty->template_dir='views';
 $smarty->compile_dir='tmp';
 $smarty->assign('customer',$customer);
-
 $smarty->display('customers.tpl');
 
 ?>

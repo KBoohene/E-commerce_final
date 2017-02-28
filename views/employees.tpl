@@ -57,14 +57,17 @@
   {if isset($smarty.request.txtSearch)}
     {if ($smarty.request.txtSearch)!=""}
       {assign var="txt" value=$smarty.request.txtSearch}
-      {assign var="data" value=$employee->fetch_EData($txt)}
+      {assign var="result" value=$employee->searchEmployee($txt)}
+      {assign var="data" value=$employee->fetchDB($result)}
 
     {elseif ($smarty.request.txtSearch)==""}
-      {assign var="data" value=$employee->fetch_EData()}
+      {assign var="result" value=$employee->searchEmployee()}
+      {assign var="data" value=$employee->fetchDB($result)}
 
     {/if}
   {else}
-    {assign var="data" value=$employee->fetch_EData()}
+    {assign var="result" value=$employee->getEmployee()}
+    {assign var="data" value=$employee->fetchDB($result)}
   {/if}
 
 {*Creates a table if data is contained*}

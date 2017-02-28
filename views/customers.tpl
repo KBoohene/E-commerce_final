@@ -62,14 +62,17 @@
     {if isset($smarty.request.txtSearch)}
       {if ($smarty.request.txtSearch)!=""}
         {assign var="txt" value=$smarty.request.txtSearch}
-        {assign var="data" value=$customer->fetch_CData($txt)}
+        {assign var="result" value=$customer->searchCustomer($txt)}
+        {assign var="data" value=$customer->fetchDB($result)}
 
       {elseif ($smarty.request.txtSearch)==""}
-        {assign var="data" value=$customer->fetch_CData()}
+        {assign var="result" value=$customer->searchCustomer()}
+        {assign var="data" value=$customer->fetchDB($result)}
 
       {/if}
     {else}
-      {assign var="data" value=$customer->fetch_CData()}
+      {assign var="result" value=$customer->getCustomer()}
+      {assign var="data" value=$customer->fetchDB($result)}
     {/if}
 
     {*Creates a table if data is contained*}

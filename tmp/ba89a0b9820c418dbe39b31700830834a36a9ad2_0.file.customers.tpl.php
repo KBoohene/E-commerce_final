@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-22 13:48:07
+/* Smarty version 3.1.30, created on 2017-02-28 14:56:18
   from "C:\xampp\htdocs\E-commerce_final\views\customers.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ad8887f0e0a8_38013214',
+  'unifunc' => 'content_58b58182ab5099_75814977',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'ba89a0b9820c418dbe39b31700830834a36a9ad2' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customers.tpl',
-      1 => 1487767681,
+      1 => 1488290171,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ad8887f0e0a8_38013214 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58b58182ab5099_75814977 (Smarty_Internal_Template $_smarty_tpl) {
 if (isset($_REQUEST['export'])) {?>
   <?php echo $_smarty_tpl->tpl_vars['customer']->value->csvExportCData();?>
 
@@ -87,16 +87,22 @@ if (isset($_REQUEST['export'])) {?>
       <?php if (($_REQUEST['txtSearch']) != '') {?>
         <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['txtSearch']);
 ?>
-        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData($_smarty_tpl->tpl_vars['txt']->value));
+        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['customer']->value->searchCustomer($_smarty_tpl->tpl_vars['txt']->value));
+?>
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
       <?php } elseif (($_REQUEST['txtSearch']) == '') {?>
-        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData());
+        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['customer']->value->searchCustomer());
+?>
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
       <?php }?>
     <?php } else { ?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetch_CData());
+      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['customer']->value->getCustomer());
+?>
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
     <?php }?>
 

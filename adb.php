@@ -50,6 +50,25 @@ class adb{
     return $this->result;
 	}
 
+    /**
+    * @author Kwabena Boohene
+    * Returns values from database given a db object
+    * @param int $dbObject - database object
+    * @return array
+  **/
+
+  function fetchDB($dbObject){
+    $arrayData = array();
+    $length = $dbObject->num_rows;
+
+    $count=0;
+    while($count<$length){
+       $arrayData[$count]=$dbObject->fetch_assoc();
+        $count++;
+      }
+    return $arrayData;
+  }
+
 }
 
 ?>

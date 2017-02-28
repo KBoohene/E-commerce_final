@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-17 13:12:53
+/* Smarty version 3.1.30, created on 2017-02-28 15:24:44
   from "C:\xampp\htdocs\E-commerce_final\views\employees.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58a6e8c5a373b6_23504639',
+  'unifunc' => 'content_58b5882cb0b5f7_20814931',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '76da1403cca136163246174a5b080100ec42eb60' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\employees.tpl',
-      1 => 1487333566,
+      1 => 1488291810,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58a6e8c5a373b6_23504639 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58b5882cb0b5f7_20814931 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -84,16 +84,22 @@ function content_58a6e8c5a373b6_23504639 (Smarty_Internal_Template $_smarty_tpl)
     <?php if (($_REQUEST['txtSearch']) != '') {?>
       <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['txtSearch']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData($_smarty_tpl->tpl_vars['txt']->value));
+      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->searchEmployee($_smarty_tpl->tpl_vars['txt']->value));
+?>
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
     <?php } elseif (($_REQUEST['txtSearch']) == '') {?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData());
+      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->searchEmployee());
+?>
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
     <?php }?>
   <?php } else { ?>
-    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetch_EData());
+    <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->getEmployee());
+?>
+    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
   <?php }?>
 

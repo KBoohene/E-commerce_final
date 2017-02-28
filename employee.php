@@ -51,42 +51,13 @@ class employee extends adb{
     * @param string $filter -filters the kind of user info to retrieve
     * @return boolean - true or false
   **/
-  function getEmployee($filter){
+  function getEmployee($filter=""){
     $strQuery="Select * from employees";
     $strQuery = $strQuery.$filter;
     return $this->query($strQuery);
 
   }
 
-  function fetch_EData($dataInput=false){
-      $arrayData = array();
-
-    if($dataInput!=false){
-    $result=$this->searchEmployee($dataInput);
-    $count=0;
-    $length =$result->num_rows;
-
-      while($count<$length){
-        $arrayData[$count]=$result->fetch_assoc();
-        $count++;
-      }
-
-    }
-    else{
-
-      $result=$this->searchEmployee();
-      $count=0;
-      $length =$result->num_rows;
-
-      while($count<$length){
-        $arrayData[$count]=$result->fetch_assoc();
-        $count++;
-      }
-
-    }
-
-    return $arrayData;
-  }
 
   function countEmployees(){
     $strQuery="Select count(eno) as Num_Employees from employees ";
