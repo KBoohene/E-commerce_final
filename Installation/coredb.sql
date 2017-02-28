@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2017 at 02:06 PM
+-- Generation Time: Feb 28, 2017 at 06:47 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -66,11 +66,25 @@ INSERT INTO `categories` (`catno`, `catname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `checkout_log`
+--
+
+CREATE TABLE `checkout_log` (
+  `ID` int(11) NOT NULL,
+  `order_no` bigint(5) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `num_items` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
 CREATE TABLE `customers` (
-  `cno` bigint(5) NOT NULL,
+  `cno` int(11) NOT NULL,
   `cname` varchar(30) NOT NULL,
   `street` varchar(30) NOT NULL,
   `zip` bigint(5) NOT NULL,
@@ -80,6 +94,12 @@ CREATE TABLE `customers` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `created_at`) VALUES
+(10, 'Kwabena', 'hnoome', 52522017, '0265057796', 'kwabena.boohene', 'jumper', '2017-02-28 13:58:08');
 
 -- --------------------------------------------------------
 
@@ -88,7 +108,7 @@ CREATE TABLE `customers` (
 --
 
 CREATE TABLE `employees` (
-  `eno` bigint(4) NOT NULL,
+  `eno` int(11) NOT NULL,
   `ename` varchar(30) NOT NULL,
   `zip` bigint(5) NOT NULL,
   `hdate` date NOT NULL,
@@ -97,7 +117,6 @@ CREATE TABLE `employees` (
   `account_type` int(11) NOT NULL,
   `Username` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 -- --------------------------------------------------------
 
@@ -158,7 +177,6 @@ CREATE TABLE `odetails` (
   `qty` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 -- --------------------------------------------------------
 
 --
@@ -167,7 +185,7 @@ CREATE TABLE `odetails` (
 
 CREATE TABLE `orders` (
   `ono` bigint(5) NOT NULL,
-  `cno` bigint(5) NOT NULL,
+  `cno` int(11) NOT NULL,
   `received` date NOT NULL,
   `shipped` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -216,6 +234,14 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`catno`);
 
 --
+-- Indexes for table `checkout_log`
+--
+ALTER TABLE `checkout_log`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `order_no` (`order_no`),
+  ADD UNIQUE KEY `person_id` (`person_id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -227,6 +253,7 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`eno`),
+  ADD UNIQUE KEY `account_type` (`account_type`),
   ADD KEY `zip` (`zip`);
 
 --
@@ -240,7 +267,9 @@ ALTER TABLE `items`
 -- Indexes for table `login_log`
 --
 ALTER TABLE `login_log`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `PersonID` (`PersonID`),
+  ADD UNIQUE KEY `account_type` (`account_type`);
 
 --
 -- Indexes for table `odetails`
@@ -272,15 +301,20 @@ ALTER TABLE `zipcodes`
 ALTER TABLE `categories`
   MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT for table `checkout_log`
+--
+ALTER TABLE `checkout_log`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `cno` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `eno` bigint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `items`
 --
@@ -301,6 +335,14 @@ ALTER TABLE `orders`
 --
 
 --
+-- Constraints for table `checkout_log`
+--
+ALTER TABLE `checkout_log`
+  ADD CONSTRAINT `checkout_log_ibfk_1` FOREIGN KEY (`order_no`) REFERENCES `orders` (`ono`),
+  ADD CONSTRAINT `checkout_log_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `customers` (`cno`),
+  ADD CONSTRAINT `checkout_log_ibfk_3` FOREIGN KEY (`person_id`) REFERENCES `employees` (`eno`);
+
+--
 -- Constraints for table `customers`
 --
 ALTER TABLE `customers`
@@ -310,13 +352,16 @@ ALTER TABLE `customers`
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`);
+  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`),
+  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`account_type`) REFERENCES `account_type` (`ID`);
 
 --
--- Constraints for table `items`
+-- Constraints for table `login_log`
 --
-ALTER TABLE `items`
-  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`catno`) REFERENCES `categories` (`catno`);
+ALTER TABLE `login_log`
+  ADD CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `customers` (`cno`),
+  ADD CONSTRAINT `login_log_ibfk_2` FOREIGN KEY (`PersonID`) REFERENCES `employees` (`eno`),
+  ADD CONSTRAINT `login_log_ibfk_3` FOREIGN KEY (`account_type`) REFERENCES `account_type` (`ID`);
 
 --
 -- Constraints for table `odetails`
@@ -329,7 +374,7 @@ ALTER TABLE `odetails`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`cno`) REFERENCES `customers` (`cno`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`cno`) REFERENCES `customers` (`cno`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
