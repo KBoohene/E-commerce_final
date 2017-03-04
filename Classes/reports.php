@@ -1,10 +1,10 @@
 <?php
 require_once('csv.class.php');
-include_once("adb.php");
+include_once('../adb.php');
 class reports extends adb{
   /**
     * @author Kwabena Boohene
-    * Constructor for employee class
+    * Constructor for reports class
   **/
   function reports(){
   }
@@ -14,7 +14,7 @@ class reports extends adb{
 
     $strQuery="Select count(cno) as Num_Customers from customers ";
     $array=$this->query($strQuery);
-    $count = $array->fetch_assoc();
+    $count = $this->fetchDB($array);
     return $count;
   }
 
@@ -66,36 +66,39 @@ class reports extends adb{
     DATE(`LogInTime`) = CURDATE() AND account_type='1'";
     }
     else if ($filter=="Employee"){
-      $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
+      $strQuery="Select count(PersonID) as Num_Employee_Visits from login_log WHERE
     DATE(`LogInTime`) = CURDATE() AND account_type='2'";
     }
     else{
-       $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
-    DATE(`LogInTime`) = CURDATE() AND account_type='3'";
+       /*$strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
+    DATE(`LogInTime`) = CURDATE() AND account_type='3'";*/
     }
 
     return $this->query($strQuery);
   }
 
 
-  function csvExportCData(){
-    $csv = new CSV(array('Customer Information'));
+  function csvExportData($filter=""){
+    if($filter==1){
+      $csv = new CSV(array('Customer Information'));
 
-    $customerData =$this->searchCustomer();
-    $customerData= $this->fetchDB($customerData);
-    $length =sizeof($customerData);
-    $count = 0;
+      $customerData =$this->searchCustomer();
+      $customerData= $this->fetchDB($customerData);
+      $length =sizeof($customerData);
+      $count = 0;
 
-    $csv->addRow(array('Cnumber', 'Cname', 'Street', 'Zip Code','Phone Number'));
-    while($count<$length){
-      $csv->addRow(array($customerData[$count]['cno'], $customerData[$count]['cname'],
-                            $customerData[$count]['street'], $customerData[$count]['zip'],
+      $csv->addRow(array('Cnumber', 'Cname', 'Street', 'Zip Code','Phone Number'));
+      while($count<$length){
+        $csv->addRow(array($customerData[$count]['cno'], $customerData[$count]['cname'],
+                           $customerData[$count]['street'], $customerData[$count]['zip'],
                            $customerData[$count]['phone']));
-      $count++;
+        $count++;
+      }
+
+      $filename = 'customer_data';
+      $csv->export($filename);
     }
 
-    $filename = 'customer_data';
-    $csv->export($filename);
   }
 }
 
