@@ -1,37 +1,42 @@
 <?php
 
 include_once('../adb.php');
-class order{
+class order extends adb{
   function order(){
 
   }
 
-  function addToCart($itemId){
-
+  function addToCart($itemId,$orderNo,$quantity){
+    $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
+    return $this->query($strQuery);
   }
 
   function removeFromCart($itemId){
-
+    $strQuery="DELETE FROM odetails WHERE ino='$itemId'";
+    return $this->query($strQuery);
   }
 
   function getCustomerOrders($customerId){
-
+    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId'";
+    return $this->query($strQuery);
   }
 
   function getOrderDetails($orderId){
-
+    $strQuery="SELECT ono, ino, qty FROM odetails WHERE ono='$orderId'";
+    return $this->query($strQuery);
   }
 
-  function emptyCart(){
-
+  function emptyCart($orderId){
+    $strQuery="DELETE FROM odetails WHERE ono='$orderId'";
   }
 
   function checkout(){
 
   }
 
-  function getDates($orderId){
-
+  function getDates($orderId,$customerId){
+    $strQuery="SELECT shipped, received, created_at FROM orders where ono='$orderId' AND cno='$customerId'";
+    return $this->query($strQuery);
   }
 
   function getNumOrdersPerWeek(){
@@ -39,7 +44,8 @@ class order{
   }
 
   function updateDates($orderId, $shippingDate, $deliveryDate){
-
+    $strQuery="UPDATE orders SET shipped='$shippingDate', received='$deliverDate' WHERE ono ='$orderId'";
+    return $this->query($strQuery);
   }
 }
 
