@@ -82,7 +82,8 @@ class reports extends adb{
     if($filter==1){
       $csv = new CSV(array('Customer Information'));
 
-      $customerData =$this->searchCustomer();
+      $strQuery ="SELECT * from customer";
+      $customerData =$this->query($strQuery);
       $customerData= $this->fetchDB($customerData);
       $length =sizeof($customerData);
       $count = 0;
