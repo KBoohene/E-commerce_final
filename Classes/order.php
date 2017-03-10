@@ -28,6 +28,7 @@ class order extends adb{
 
   function emptyCart($orderId){
     $strQuery="DELETE FROM odetails WHERE ono='$orderId'";
+    return $this->query($strQuery);
   }
 
   function checkout(){
