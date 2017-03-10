@@ -18,43 +18,46 @@ class reports extends adb{
     return $count;
   }
 
-  function numItemsPerDay($date,$month,$year){
-    if($day==1){
+  function numItemsGivenDay($date,$month,$year){
+    if(!$date==1){
       //YYYY-MM-DD
       $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
     DATE(`created_at`) =".$year.$month.$day;
     }
     else
     {
-      $strQuery="";
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+        DATE(`created_at`) =CURDATE()";
     }
   return $this->query($strQuery);
   }
 
 
-  function numItemsPerWeek($date,$month,$year){
-     if($day==1){
+  function numItemsGivenWeek($date,$month,$year){
+     if($date==1){
       //YYYY-MM-DD
       $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
     WEEKOFYEAR(`created_at`) = WEEKOFYEAR('$year.$month.$day')";
     }
     else
     {
-      $strQuery="";
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    WEEKOFYEAR(`created_at`) = WEEKOFYEAR(CURDATE())";
     }
     return $this->query($strQuery);
   }
 
 
-  function numItemsPerMonth($date,$month,$year){
-     if($day==1){
+  function numItemsGivenMonth($date,$month,$year){
+     if($date==1){
       //YYYY-MM-DD
       $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
     MONTH(`created_at`) = MONTH('$year.$month.$day')";
     }
     else
     {
-      $strQuery="";
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    MONTH(`created_at`) = MONTH(CURDATE())";
     }
      return $this->query($strQuery);
   }
@@ -69,11 +72,21 @@ class reports extends adb{
       $strQuery="Select count(PersonID) as Num_Employee_Visits from login_log WHERE
     DATE(`LogInTime`) = CURDATE() AND account_type='2'";
     }
-    else{
-       /*$strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
-    DATE(`LogInTime`) = CURDATE() AND account_type='3'";*/
-    }
+    return $this->query($strQuery);
+  }
 
+  //Still Sorting out function
+  function countVisitors(){
+    if($date==1){
+      //YYYY-MM-DD
+      $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    MONTH(`created_at`) = MONTH('$year.$month.$day')";
+    }
+    else
+    {
+      /*$strQuery="SELECT count(num_items) AS Orders_Per_Day FROM checkout_log WHERE
+    MONTH(`created_at`) = MONTH(CURDATE())";*/
+    }
     return $this->query($strQuery);
   }
 
