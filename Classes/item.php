@@ -32,12 +32,12 @@ class item extends adb{
     return $this->query($strQuery);
   }
 
-  function editItem(id){
+  function editItem($id){
     $strQuery = "";
     return $this->query($strQuery);
   }
 
-  function deleteItem(id){
+  function deleteItem($id){
     $strQuery = "";
     return $this->query($strQuery);
   }

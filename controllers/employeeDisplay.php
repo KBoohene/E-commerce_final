@@ -14,8 +14,8 @@ $report = new report();
 
 //Created smarty objects
 $smarty= new Smarty();
-$smarty->template_dir='views';
-$smarty->compile_dir='tmp';
+$smarty->template_dir='../views';
+$smarty->compile_dir='../tmp';
 
 //Assigned smarty objects
 $smarty->assign('customer',$customer);

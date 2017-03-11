@@ -2,7 +2,7 @@
 require_once('../smarty-3.1.30/libs/Smarty.class.php');
 include("../Classes/customer.php");
 include("../Classes/order.php");
-include("../Classes/items.php");
+include("../Classes/item.php");
 
 //Created objects of the class
 $customer = new customer();
@@ -11,8 +11,8 @@ $item = new item();
 
 //Created smarty object
 $smarty= new Smarty();
-$smarty->template_dir='views';
-$smarty->compile_dir='tmp';
+$smarty->template_dir='../views';
+$smarty->compile_dir='../tmp';
 
 //Assigned smarty objects
 $smarty->assign('customer',$customer);
