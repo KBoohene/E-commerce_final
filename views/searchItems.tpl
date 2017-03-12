@@ -15,25 +15,25 @@
 <body>
  <div>
   <form action="index.php?cAction=1" method="POST">
-   <input class="search-bar" id="search" type="text" name="SEARCHNAME">
+   <input class="search-bar" id="search" type="text" name="searchName">
   </div>
   <div>
    <button type="submit" class="button">Search</button>
   </div>
  </form>
  
- {if isset($smarty.request.SEARCHNAME)}
- {if ($smarty.request.SEARCHNAME)!=""}
- {assign var="txt" value=$smarty.request.SEARCHNAME}
- {assign var="result" value=$item->searchItems($txt)}
- {assign var="data" value=$item->fetchDB($result)}
- {elseif ($smarty.request.SEARCHNAME)==""}
- {assign var="result" value=$item->getItems()}
- {assign var="data" value=$item->fetchDB($result)}
+ {if isset($smarty.request.searchName)}
+    {if ($smarty.request.searchName)!=""}
+      {assign var="txt" value=$smarty.request.searchName}
+      {assign var="result" value=$item->searchItems($txt)}
+      {assign var="data" value=$item->fetchDB($result)}
+    {elseif ($smarty.request.searchName)==""}
+      {assign var="result" value=$item->getItems()}
+      {assign var="data" value=$item->fetchDB($result)}
  {/if}
  {else}
- {assign var="result" value=$item->getItems()}
- {assign var="data" value=$item->fetchDB($result)}
+    {assign var="result" value=$item->getItems()}
+    {assign var="data" value=$item->fetchDB($result)}
  {/if}	  
 	 	  
  <div>
@@ -51,19 +51,19 @@
  {foreach from=$data item=value}
   <tr>
    {if $value.ino}
-   <td>{$value.ino}</td>
+      <td>{$value.ino}</td>
    {/if}
    {if $value.iname}
-   <td>{$value.iname}</td>
+      <td>{$value.iname}</td>
    {/if}
    {if $value.qoh}
-   <td>{$value.qoh}</td>
+      <td>{$value.qoh}</td>
    {/if}
    {if $value.price}
-   <td>{$value.price}</td>
+      <td>{$value.price}</td>
    {/if}
    {if $value.olevel}
-   <td>{$value.olevel}</td>
+      <td>{$value.olevel}</td>
    {/if}
    </tr>
    {/foreach}
