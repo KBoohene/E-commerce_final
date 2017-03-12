@@ -1,6 +1,6 @@
 <html>
   <head></head>
   <body>
-    <p>Test</p>
+    <p>Landing Page Works</p>
   </body>
 </html>
