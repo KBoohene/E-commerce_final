@@ -12,7 +12,7 @@ class item extends adb{
   }
 
   function searchItems($iname){
-    $strQuery = "SELECT * FROM items WHERE iname LIKE '$iname'";
+    $strQuery = "SELECT * FROM items WHERE iname LIKE '%$iname%'";
     return $this->query($strQuery);
   }
 
@@ -40,6 +40,12 @@ class item extends adb{
   function deleteItem($id){
     $strQuery = "";
     return $this->query($strQuery);
+  }
+  
+  function getItems()
+  {
+   $strQuery = "SELECT * FROM items";
+   return $this->query($strQuery); 
   }
 }
 
