@@ -1,8 +1,8 @@
 <?php
-require_once('../smarty-3.1.30/libs/Smarty.class.php');
-include("../Classes/customer.php");
-include("../Classes/order.php");
-include("../Classes/item.php");
+require_once('/smarty-3.1.30/libs/Smarty.class.php');
+include("Classes/customer.php");
+include("Classes/order.php");
+include("Classes/item.php");
 
 //Created objects of the class
 $customer = new customer();
@@ -11,8 +11,8 @@ $item = new item();
 
 //Created smarty object
 $smarty= new Smarty();
-$smarty->template_dir='../views';
-$smarty->compile_dir='../tmp';
+$smarty->template_dir='views';
+$smarty->compile_dir='tmp';
 
 //Assigned smarty objects
 $smarty->assign('customer',$customer);
@@ -24,28 +24,28 @@ if(isset($_REQUEST['cAction'])){
 
   switch($value){
     case 1:
-      $smarty->display('landingPage.tpl');
-      break;
-    case 2:
       $smarty->display('searchItems.tpl');
       break;
-    case 3:
+    case 2:
       $smarty->display('productDetails.tpl');
       break;
-    case 4:
+    case 3:
       $smarty->display('customerSignUp.tpl');
       break;
-    case 5:
+    case 4:
       $smarty->display('customerLogin.tpl');
       break;
-    case 6:
+    case 5:
       $smarty->display('customerOrder.tpl');
       break;
-    case 7:
+    case 6:
       $smarty->display('checkout.tpl');
       break;
     default:
-      echo "Page not available";
+      $smarty->display('landingPage.tpl');
   }
+}
+else{
+  $smarty->display('landingPage.tpl');
 }
 ?>
