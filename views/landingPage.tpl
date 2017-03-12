@@ -3,6 +3,7 @@
     <title>Home Page</title>
   </head>
   <body>
+
     <a href="index.php?cAction=4">Login</a>
     <a href="index.php?cAction=3">Sign Up</a>
 

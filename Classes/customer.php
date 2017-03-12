@@ -46,6 +46,11 @@ class customer extends adb{
     return $this->query($strQuery);
   }
 
+  function getZips(){
+    $strQuery = "SELECT * FROM `zipcodes`";
+    return $this->query($strQuery);
+  }
+
 }
 
 ?>
