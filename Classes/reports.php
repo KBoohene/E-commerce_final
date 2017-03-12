@@ -6,7 +6,7 @@
 **/
 
 require_once('csv.class.php');
-include_once('../adb.php');
+include_once('adb.php');
 class reports extends adb{
   /**
     * @param: none

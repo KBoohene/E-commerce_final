@@ -1,6 +1,6 @@
 <?php
 
-include_once('../adb.php');
+include_once('adb.php');
 class item extends adb{
   function item(){
 
