@@ -1,5 +1,5 @@
 <?php
-require_once('/smarty-3.1.30/libs/Smarty.class.php');
+require_once('smarty-3.1.30/libs/Smarty.class.php');
 include("Classes/customer.php");
 include("Classes/order.php");
 include("Classes/item.php");
