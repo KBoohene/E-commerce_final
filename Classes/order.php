@@ -5,7 +5,7 @@
  * of orders and shipping
  * @date
 **/
-include_once('../adb.php');
+include_once('adb.php');
 class order extends adb{
   function order(){
 
