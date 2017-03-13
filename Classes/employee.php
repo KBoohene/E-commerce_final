@@ -17,24 +17,26 @@ class employee extends adb
 	
 	function loginEmployee($username,$password)
 	{
-	 $strQuery="select * from employees where Username = $username & Password = $password";	
+	 $strQuery="select * from employees where Username ='$username' && Password ='$password'";
+      return $this->query($strQuery);
 	}
 	
     function fireEmployee($eid)
     {
-	 $strQuery="delete * from employees where eno = $eid"; 
-	 return $this->($strQuery)
+	 $strQuery="delete * from employees where eno ='$eid'";
+	 return $this->query($strQuery);
     } 
 
     function getNumberOfEmployees()
     {
 	 $strQuery="select COUNT(*) AS NumberOfEmployees from employees";
-     return $this->($strQuery)	 
+     return $this->query($strQuery);
     }
 	
     function getEmployeeType($eid)
     {
-	 $strQuery="select account_type from employees where eno = $eid";
+	 $strQuery="select account_type from employees where eno ='$eid'";
+      return $this->query($strQuery);
     }
 	
     function getEmployees()
@@ -51,7 +53,7 @@ class employee extends adb
    
     function getEmployeeData($eid)
 	{
-	 $strQuery="select * from employees where eno = $eid";
+	 $strQuery="select * from employees where eno ='$eid'";
 	 return $this->query($strQuery);
 	}
 	 
@@ -62,9 +64,9 @@ class employee extends adb
 				 zip='$zip',
 				 hdate='$hdate',
 				 Password='$password',
-				 account_type=$account_type',
-				 Username='$username'
-				 where eno=$eid ";
+				 account_type='$account_type',
+				 Username='$username',
+				 where eno='$eid'";
 	 return $this->query($strQuery);
     }
 	
@@ -74,10 +76,10 @@ class employee extends adb
 	            eno='$eid',
 				ename='$name',
 				zip='$zip',
-				hdate='$hdate'
+				hdate='$hdate',
 				Password='$password',
-				account_type=$account_type',
-				Username='$username'";,
+				account_type='$account_type',
+				Username='$username'";
      $result=$this->query($strQuery);
 	 return $result;
 	}

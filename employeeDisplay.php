@@ -1,21 +1,20 @@
 <?php
-
-require_once('../smarty-3.1.30/libs/Smarty.class.php');
-include("../Classes/customer.php");
-include("../Classes/employee.php");
-include("../Classes/order.php");
-include("../Classes/reports.php");
+require_once('smarty-3.1.30/libs/Smarty.class.php');
+include("Classes/customer.php");
+include("Classes/employee.php");
+include("Classes/order.php");
+include("Classes/reports.php");
 
 //Created objects of the various classes
 $customer = new customer();
 $employee = new employee();
 $order = new order();
-$report = new report();
+$report = new reports();
 
 //Created smarty objects
 $smarty= new Smarty();
-$smarty->template_dir='../views';
-$smarty->compile_dir='../tmp';
+$smarty->template_dir='views';
+$smarty->compile_dir='tmp';
 
 //Assigned smarty objects
 $smarty->assign('customer',$customer);
