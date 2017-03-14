@@ -70,10 +70,9 @@ class employee extends adb
 	 return $this->query($strQuery);
     }
 	
-	function addEmployee($eid,$name,$zip,$hdate,$password,$account_type,$username)
+	function addEmployee($name,$zip,$hdate,$password,$account_type,$username)
 	{
 	 $strQuery="insert into employees set 
-	            eno='$eid',
 				ename='$name',
 				zip='$zip',
 				hdate='$hdate',
@@ -83,5 +82,11 @@ class employee extends adb
      $result=$this->query($strQuery);
 	 return $result;
 	}
+	
+	function getZips()
+	{
+    $strQuery = "select * from `zipcodes`";
+    return $this->query($strQuery);
+    }
  }
 	?>
