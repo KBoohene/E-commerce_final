@@ -91,6 +91,7 @@ CREATE TABLE `customers` (
   `phone` char(12) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(50) NOT NULL,
+  `status` VARCHAR(15) NOT NULL DEFAULT 'enabled',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
