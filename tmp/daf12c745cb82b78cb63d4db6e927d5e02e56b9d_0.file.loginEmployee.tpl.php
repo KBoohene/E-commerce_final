@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 11:02:04
+/* Smarty version 3.1.30, created on 2017-03-14 12:37:18
   from "C:\xampp\htdocs\E-commerce_final\views\loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7bf9c2e4046_17473861',
+  'unifunc' => 'content_58c7d5ee867fe4_75779792',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'daf12c745cb82b78cb63d4db6e927d5e02e56b9d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\loginEmployee.tpl',
-      1 => 1489485718,
+      1 => 1489491422,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c7bf9c2e4046_17473861 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58c7d5ee867fe4_75779792 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +83,23 @@ function content_58c7bf9c2e4046_17473861 (Smarty_Internal_Template $_smarty_tpl)
                         <input class="form-control" type="text" placeholder="Search">
                     </form>
                 </div>
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                   <li class="nav-item ">
+                       <a class="nav-link" href="#" data-toggle="modal" data-target="#cart-modal-ex"><span class="badge red">4</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-sm-down">Cart</span></a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                   </li>
+                   <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                           <a class="dropdown-item" href="#">Login</a>
+                           <a class="dropdown-item" href="#">Profile</a>
+                           <a class="dropdown-item" href="#">Logout</a>
+                       </div>
+                   </li>
+               </ul>
+
             </div>
         </nav>
 	    <!--/.Navbar-->
@@ -172,7 +189,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     </main>
 
-    <!--Footer-->
+     <!--Footer-->
     <footer class="page-footer center-on-small-only">
 
         <!--Footer Links-->
@@ -234,24 +251,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
         <!--/.Footer Links-->
 
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4>Material Design for Bootstrap</h4>
-            <ul>
-                <li>
-                    <h5>Get our UI KIT for free</h5></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-info">Sign up!</a></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-primary">Learn more</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+                © 2015 Copyright: <a href="http://index.php?cAction=9"> CoreStore.com </a>
 
             </div>
         </div>
