@@ -12,7 +12,7 @@ class customer extends adb{
   }
 
   function loginCustomer($username, $password){
-    $strQuery = "SELECT Password FROM customers WHERE Username LIKE '$username'";
+    $strQuery = "SELECT * FROM customers WHERE Username LIKE '$username'";
     return $this->query($strQuery);
   }
 
