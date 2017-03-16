@@ -77,6 +77,14 @@ class order extends adb{
 
   }
 
+  function checkOrder(){
+
+  }
+
+  function createOrder(){
+
+  }
+
   /**
     * This function updates shipping information of an order
     * @param {$orderId} ID number of the order

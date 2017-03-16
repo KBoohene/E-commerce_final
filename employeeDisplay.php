@@ -65,6 +65,9 @@ if(isset($_REQUEST['eAction'])){
     case 12:
       $smarty->display('addItem.tpl');
       break;
+    case 13:
+      $smarty->display('searchItemsV2.tpl');
+      break;
     default:
       echo "Page not available";
   }
