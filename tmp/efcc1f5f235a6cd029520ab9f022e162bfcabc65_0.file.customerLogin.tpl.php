@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 11:47:26
+/* Smarty version 3.1.30, created on 2017-03-16 19:47:02
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ca7b4e2c3733_98655650',
+  'unifunc' => 'content_58caebb60b34a2_00945281',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efcc1f5f235a6cd029520ab9f022e162bfcabc65' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl',
-      1 => 1489664840,
+      1 => 1489693556,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ca7b4e2c3733_98655650 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58caebb60b34a2_00945281 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +73,7 @@ function content_58ca7b4e2c3733_98655650 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                               <a class="dropdown-item" href="index.php?cAction=4">Login</a>
-                              <a class="dropdown-item" href="#">Profile</a>
+                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               <a class="dropdown-item" href="#">Logout</a>
                           </div>
                       </li>
@@ -82,9 +82,7 @@ function content_58ca7b4e2c3733_98655650 (Smarty_Internal_Template $_smarty_tpl)
           </div>
         </nav>
       <!--/.Navbar-->
-
     </header>
-
     <main>
 
         <!--Main layout-->

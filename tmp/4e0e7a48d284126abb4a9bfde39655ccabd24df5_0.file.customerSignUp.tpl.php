@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 13:09:58
+/* Smarty version 3.1.30, created on 2017-03-16 18:07:46
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ca8ea6d62291_75574887',
+  'unifunc' => 'content_58cad4726f9e74_27937944',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e0e7a48d284126abb4a9bfde39655ccabd24df5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl',
-      1 => 1489669795,
+      1 => 1489669867,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ca8ea6d62291_75574887 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cad4726f9e74_27937944 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +73,7 @@ function content_58ca8ea6d62291_75574887 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                               <a class="dropdown-item" href="index.php?cAction=4">Login</a>
-                              <a class="dropdown-item" href="#">Profile</a>
+                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               <a class="dropdown-item" href="#">Logout</a>
                           </div>
                       </li>

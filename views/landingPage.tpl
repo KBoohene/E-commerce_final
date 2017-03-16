@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>Home</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -33,7 +33,7 @@
                   <strong>Core Store</strong>
                 </a>
                 <div id="navbarNav1">
-                    <form class="form-inline waves-effect waves-light">
+                    <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
                         <input class="form-control" type="text" placeholder="Search">
                     </form>
                 </div>
@@ -66,50 +66,6 @@
         <!--Main layout-->
         <div class="container">
             <div class="row">
-
-                <!--Sidebar-->
-                <div class="col-lg-4">
-
-                    <div class="widget-wrapper">
-                        <h4>Categories:</h4>
-                        <br>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item active">Woman</a>
-                            <a href="#" class="list-group-item">Man</a>
-                            <a href="#" class="list-group-item">Shoes</a>
-                            <a href="#" class="list-group-item">T-shirt</a>
-                            <a href="#" class="list-group-item">Jewellery</a>
-                        </div>
-                    </div>
-
-                    <div class="widget-wrapper">
-                        <h4>Subscription form:</h4>
-                        <br>
-                        <div class="card">
-                            <div class="card-block">
-                                <p><strong>Subscribe to our newsletter</strong></p>
-                                <p>Once a week we will send you a summary of the most useful news</p>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <input type="text" id="form1" class="form-control">
-                                    <label for="form1">Your name</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form2">Your email</label>
-                                </div>
-                                <button class="btn btn-default">Submit</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.Sidebar-->
-
-                <!--Main column-->
-                <div class="col-lg-8">
 
                     <!--First row-->
                     <div class="row">
@@ -178,99 +134,54 @@
                     <br>
                     <hr class="extra-margins">
 
+                    <div>
+
+                    {assign var="itemsResult" value=$item->getRecentItems()}
+                    {assign var="itemsData" value=$item->fetchDB($itemsResult)}
+                    {foreach from=$itemsData item=item}
+                    {if $item@iteration % 4 == 0}
                     <!--Second row-->
                     <div class="row">
-                        <!--First columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>10$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
+                    {/if}
+                    <!--Columnn-->
+                    <div class="col-lg-3">
+                        <!--Card-->
+                        <div class="card">
+                            <!--Card image-->
+                            <div class="view overlay hm-white-slight">
+                                <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
+                                <a href="#">
+                                    <div class="mask"></div>
+                                </a>
                             </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--First columnn-->
+                            <!--/.Card image-->
 
-                        <!--Second columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
+                            <!--Card content-->
+                            <div class="card-block">
+                                <!--Title-->
+                                <h4 class="card-title" id="my-home-cards">{$item.iname}</h4>
+                                <!--Text-->
+                                <strong><p class="card-text">$ {$item.price}</p></strong>
 
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(38).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>30$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
+                                <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
+                                <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
+                            <br>
+                                <a href="#"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
-                            <!--/.Card-->
+                            <!--/.Card content-->
                         </div>
-                        <!--Second columnn-->
-
-                        <!--Third columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(1).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>20$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--Third columnn-->
+                        <!--/.Card-->
                     </div>
-                    <!--/.Second row-->
+                    <!--/.Columnn-->
+                    {if $item@iteration % 4 == 0}
+                        </div>
+                        <!--/.Second row-->
+                    {/if}
+                    {/foreach}
 
-                </div>
-                <!--/.Main column-->
+
+                    </div>
 
             </div>
         </div>
