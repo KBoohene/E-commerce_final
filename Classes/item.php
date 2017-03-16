@@ -2,12 +2,12 @@
   @author Youssouf da Silva, David Okyere & Kwabena Boohene
   @desc item class containing related functions
 -->
-  
+
 <?php
 
 include_once('adb.php');
 class item extends adb{
-	
+
 /**
 * @desc Constructor
 **/
@@ -19,7 +19,7 @@ class item extends adb{
  * @desc Gets items that have been recently accessed
  **/
   function getRecentItems(){
-    $strQuery = "SELECT * FROM items LIMIT 8";
+    $strQuery = "SELECT * FROM items ORDER BY ino DESC LIMIT 8";
     return $this->query($strQuery);
   }
 
@@ -53,7 +53,7 @@ class item extends adb{
 
 /**
 * @desc Adds item details
- * @param string $name 
+ * @param string $name
  * @param number $quantity on hand
  * @param string $price
  * @param number $reorder level
@@ -67,11 +67,11 @@ class item extends adb{
 /**
 * @desc Allows for editing employee details
 * @param int $id
-* @param string $name 
- * @param string $zip 
+* @param string $name
+ * @param string $zip
  * @param date $hiredate
  * @param string $password
- * @param string $account_type 
+ * @param string $account_type
  * @param string $username
  **/
   function editItem($itemId, $iname, $qoh, $price, $olvl, $catno){
