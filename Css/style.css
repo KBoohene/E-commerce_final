@@ -37,6 +37,17 @@
   height: 90%;
 }
 
+#core-logo-navbar{
+  /*margin-top: -20px;*/
+  width:  2%;
+  height: 2%;
+}
+
+#my-registration-select{
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
 /* ************************************************************************* */
 
 

@@ -7,7 +7,7 @@ class customer extends adb{
   }
 
   function addCustomer($cname, $street, $zip, $phone, $username, $password){
-    $strQuery = "INSERT INTO customers (cno, cname, street, zip, phone, Username, Password, created_at) VALUES (NULL, '$cname', '$street', '$zip', '$phone', '$username', '$password', CURRENT_TIMESTAMP);";
+    $strQuery = "INSERT INTO customers (cno, cname, street, zip, phone, Username, Password, status, created_at) VALUES (NULL, '$cname', '$street', '$zip', '$phone', '$username', '$password', 'enabled', CURRENT_TIMESTAMP);";
     return $this->query($strQuery);
   }
 

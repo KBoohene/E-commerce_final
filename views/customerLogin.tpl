@@ -28,58 +28,36 @@
 
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
-            <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <strong>Core Store</strong>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown btn-group">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item">Action</a>
-                                <a class="dropdown-item">Another action</a>
-                                <a class="dropdown-item">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <form class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-                </div>
-
-                <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                   <li class="nav-item ">
-                       <a class="nav-link" href="#" data-toggle="modal" data-target="#cart-modal-ex"><span class="badge red">4</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-sm-down">Cart</span></a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                   </li>
-                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                           <a class="dropdown-item" href="#">Login</a>
-                           <a class="dropdown-item" href="#">Profile</a>
-                           <a class="dropdown-item" href="#">Logout</a>
-                       </div>
-                   </li>
-               </ul>
-
-            </div>
+          <div class="container">
+              <a class="navbar-brand" href="index.php">
+                <strong>Core Store</strong>
+              </a>
+              <div id="navbarNav1">
+                  <form class="form-inline waves-effect waves-light">
+                      <input class="form-control" type="text" placeholder="Search">
+                  </form>
+              </div>
+              <div>
+                  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                              <a class="dropdown-item" href="index.php?cAction=4">Login</a>
+                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
+                              <a class="dropdown-item" href="#">Logout</a>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
         </nav>
-	    <!--/.Navbar-->
+      <!--/.Navbar-->
 
     </header>
 
@@ -87,8 +65,6 @@
 
         <!--Main layout-->
         <div class="container">
-
-
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-5">
@@ -99,7 +75,6 @@
                         <center><h4><p><strong>Welcome to Core Store</strong></p></h4></center>
                         <div class="card">
                             <div class="card-block">
-
                                 <p>Login</p>
                                 <form action="index.php?cAction=4" method="post">
                                     <div class="md-form">
@@ -113,7 +88,7 @@
                                         <label for="form2">Password</label>
                                     </div>
                                     <input type="text" name="submitted" hidden>
-                                    <button class="btn btn-default amber darken-2">Login</button>
+                                    <button class="btn amber darken-2">Login</button>
                                 </form>
 
                                 {if isset($smarty.post.submitted)}
