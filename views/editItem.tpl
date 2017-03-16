@@ -18,7 +18,7 @@
   {"Please enter all information"}
  {else}
   {assign var="result" value=$item->editItem($itemId, $iname, $qoh, $price, $olvl, $catno)}
-  {"<script>window.location ='index.php?cAction=1'</script>"}
+  {"<script>window.location ='employeeDisplay.php?eAction=13'</script>"}
  {/if}
  {/if}
 
@@ -30,9 +30,10 @@
  {/if}
 
  {/if}
+ <!-- {$data|print_r} -->
 
 	<form action="employeeDisplay.php?eAction=11" method="POST">
-    <input type="text" name="ino" value={$data.0.ino} hidden>
+    <input type="text" name="ino" value="{$data.0.ino}" hidden>
    <div>Item Name <input type="text" name="iname" value="{$data.0.iname}"><br></div>
    {assign var="categoryId" value=$item->getCategory()}
    {assign var="categoryVar" value=$item->fetchDB($categoryId)}
@@ -50,9 +51,9 @@
 	{/foreach}
 	</select>
    <br></div>
-   <div> Quantity On Hand <input type="text" name="qoh" value={$data.0.qoh}><br></div>
-   <div> Price <input type="text" name="price" value={$data.0.price}><br></div>
-   <div> order level <input type="number" name="olevel" value={$data.0.olevel}><br></div>
+   <div> Quantity On Hand <input type="text" name="qoh" value="{$data.0.qoh}"><br></div>
+   <div> Price <input type="text" name="price" value="{$data.0.price}"><br></div>
+   <div> order level <input type="number" name="olevel" value="{$data.0.olevel}"><br></div>
    <input type="submit" value="Edit">
   </form>
 

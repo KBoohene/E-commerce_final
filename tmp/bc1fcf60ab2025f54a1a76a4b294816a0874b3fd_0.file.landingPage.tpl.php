@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 13:12:02
+/* Smarty version 3.1.30, created on 2017-03-16 20:08:43
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ca8f22137c78_51991573',
+  'unifunc' => 'content_58caf0cbe34753_44802687',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1489669906,
+      1 => 1489694547,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ca8f22137c78_51991573 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@ function content_58ca8f22137c78_51991573 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Material Design Bootstrap</title>
+    <title>Home</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -57,7 +57,7 @@ function content_58ca8f22137c78_51991573 (Smarty_Internal_Template $_smarty_tpl)
                   <strong>Core Store</strong>
                 </a>
                 <div id="navbarNav1">
-                    <form class="form-inline waves-effect waves-light">
+                    <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
                         <input class="form-control" type="text" placeholder="Search">
                     </form>
                 </div>
@@ -90,50 +90,6 @@ function content_58ca8f22137c78_51991573 (Smarty_Internal_Template $_smarty_tpl)
         <!--Main layout-->
         <div class="container">
             <div class="row">
-
-                <!--Sidebar-->
-                <div class="col-lg-4">
-
-                    <div class="widget-wrapper">
-                        <h4>Categories:</h4>
-                        <br>
-                        <div class="list-group">
-                            <a href="#" class="list-group-item active">Woman</a>
-                            <a href="#" class="list-group-item">Man</a>
-                            <a href="#" class="list-group-item">Shoes</a>
-                            <a href="#" class="list-group-item">T-shirt</a>
-                            <a href="#" class="list-group-item">Jewellery</a>
-                        </div>
-                    </div>
-
-                    <div class="widget-wrapper">
-                        <h4>Subscription form:</h4>
-                        <br>
-                        <div class="card">
-                            <div class="card-block">
-                                <p><strong>Subscribe to our newsletter</strong></p>
-                                <p>Once a week we will send you a summary of the most useful news</p>
-                                <div class="md-form">
-                                    <i class="fa fa-user prefix"></i>
-                                    <input type="text" id="form1" class="form-control">
-                                    <label for="form1">Your name</label>
-                                </div>
-                                <div class="md-form">
-                                    <i class="fa fa-envelope prefix"></i>
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form2">Your email</label>
-                                </div>
-                                <button class="btn btn-default">Submit</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!--/.Sidebar-->
-
-                <!--Main column-->
-                <div class="col-lg-8">
 
                     <!--First row-->
                     <div class="row">
@@ -202,99 +158,71 @@ function content_58ca8f22137c78_51991573 (Smarty_Internal_Template $_smarty_tpl)
                     <br>
                     <hr class="extra-margins">
 
+                    <div>
+
+                    <?php $_smarty_tpl->_assignInScope('itemsResult', $_smarty_tpl->tpl_vars['item']->value->getRecentItems());
+?>
+                    <?php $_smarty_tpl->_assignInScope('itemsData', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['itemsResult']->value));
+?>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['itemsData']->value, 'item');
+$_smarty_tpl->tpl_vars['item']->iteration = 0;
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->iteration++;
+$__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
+?>
+                    <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
                     <!--Second row-->
                     <div class="row">
-                        <!--First columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>10$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
+                    <?php }?>
+                    <!--Columnn-->
+                    <div class="col-lg-3">
+                        <!--Card-->
+                        <div class="card">
+                            <!--Card image-->
+                            <div class="view overlay hm-white-slight">
+                                <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
+                                <a href="#">
+                                    <div class="mask"></div>
+                                </a>
                             </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--First columnn-->
+                            <!--/.Card image-->
 
-                        <!--Second columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
+                            <!--Card content-->
+                            <div class="card-block">
+                                <!--Title-->
+                                <h4 class="card-title" id="my-home-cards"><?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
+</h4>
+                                <!--Text-->
+                                <strong><p class="card-text">$ <?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+</p></strong>
 
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(38).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>30$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
+                                <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
+                                <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
+                            <br>
+                                <a href="#"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
-                            <!--/.Card-->
+                            <!--/.Card content-->
                         </div>
-                        <!--Second columnn-->
-
-                        <!--Third columnn-->
-                        <div class="col-lg-4">
-                            <!--Card-->
-                            <div class="card">
-
-                                <!--Card image-->
-                                <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(1).jpg" class="img-fluid" alt="">
-                                    <a href="#">
-                                        <div class="mask"></div>
-                                    </a>
-                                </div>
-                                <!--/.Card image-->
-
-                                <!--Card content-->
-                                <div class="card-block">
-                                    <!--Title-->
-                                    <h4 class="card-title">Product title</h4>
-                                    <!--Text-->
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-                                    <a href="#" class="btn btn-default">Buy now for <strong>20$</strong></a>
-                                </div>
-                                <!--/.Card content-->
-
-                            </div>
-                            <!--/.Card-->
-                        </div>
-                        <!--Third columnn-->
+                        <!--/.Card-->
                     </div>
-                    <!--/.Second row-->
+                    <!--/.Columnn-->
+                    <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
+                        </div>
+                        <!--/.Second row-->
+                    <?php }?>
+                    <?php
+$_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved;
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
 
-                </div>
-                <!--/.Main column-->
+
+
+                    </div>
 
             </div>
         </div>
