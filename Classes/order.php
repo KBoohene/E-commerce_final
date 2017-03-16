@@ -77,12 +77,14 @@ class order extends adb{
 
   }
 
-  function checkOrder(){
-
+  function checkOrder($customerId){
+    $strQuery="SELECT * FROM order WHERE cno = '$customerId'& checked_out='No'";
+    return $this->query($strQuery);
   }
 
-  function createOrder(){
-
+  function createOrder($customerId){
+    $strQuery="INSERT INTO order(cno, checked_out) VALUES ('$customerId','No')";
+    return $this->query($strQuery);
   }
 
   /**
