@@ -51,6 +51,12 @@ class customer extends adb{
     return $this->query($strQuery);
   }
 
+  function getCustomers()
+  {
+    $strQuery = "SELECT * FROM customers";
+    return $this->query($strQuery);
+  }
+
 }
 
 ?>
