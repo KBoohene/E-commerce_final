@@ -28,7 +28,7 @@ class item extends adb{
   }
 
   function addItem($iname, $qoh, $price, $olvl, $catno){
-    $strQuery = "INSERT INTO items (ino, iname, qoh, price, olevel, catno) VALUES (NULL, '$iname', '$qoh', '$price', '$olvl', '$catno')";
+    $strQuery = "INSERT INTO items (iname, qoh, price, olevel, catno) VALUES ('$iname', '$qoh', '$price', '$olvl', '$catno')";
     return $this->query($strQuery);
   }
 
