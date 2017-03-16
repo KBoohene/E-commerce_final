@@ -28,12 +28,12 @@ class item extends adb{
   }
 
   function addItem($iname, $qoh, $price, $olvl, $catno){
-    $strQuery = "INSERT INTO items (ino, iname, qoh, price, olevel, catno) VALUES (NULL, '$iname', '$qoh', '$price', '$olvl', '$catno')";
+    $strQuery = "INSERT INTO items (iname, qoh, price, olevel, catno) VALUES ('$iname', '$qoh', '$price', '$olvl', '$catno')";
     return $this->query($strQuery);
   }
 
-  function editItem($id){
-    $strQuery = "";
+  function editItem($itemId, $iname, $qoh, $price, $olvl, $catno){
+    $strQuery = "UPDATE items SET iname='$iname', qoh='$qoh', price='$price', olevel='$olvl', catno='$catno' where ino='$itemId'";
     return $this->query($strQuery);
   }
 
@@ -46,6 +46,11 @@ class item extends adb{
   {
    $strQuery = "SELECT * FROM items";
    return $this->query($strQuery);
+  }
+
+  function getCategory(){
+    $strQuery="SELECT * FROM categories";
+    return $this->query($strQuery);
   }
 }
 

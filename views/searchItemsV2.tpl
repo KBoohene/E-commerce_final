@@ -10,9 +10,9 @@
 -->
 
 <head>
-<title>Search Items</title>
+  <title>Search Item to Edit</title>
 </head>
- 
+
 <body>
  <div>
   <form action="index.php?cAction=1" method="POST">
@@ -22,7 +22,7 @@
    <button type="submit" class="button">Search</button>
   </div>
  </form>
- 
+
  {if isset($smarty.request.searchName)}
     {if ($smarty.request.searchName)!=""}
       {assign var="txt" value=$smarty.request.searchName}
@@ -35,8 +35,8 @@
  {else}
     {assign var="result" value=$item->getItems()}
     {assign var="data" value=$item->fetchDB($result)}
- {/if}	  
-	 	  
+ {/if}
+
  <div>
   <table>
     <thead>
@@ -48,7 +48,7 @@
        <td>Reorder Level</td>
       </tr>
   </thead>
-	
+
  {foreach from=$data item=value}
   <tr>
    {if $value.ino}
@@ -66,6 +66,7 @@
    {if $value.olevel}
       <td>{$value.olevel}</td>
    {/if}
+      <td><a href="employeeDisplay.php?eAction=11&searchItem={$value.ino}">Edit Item</a>
    </tr>
    {/foreach}
   </table>

@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
 
 INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `status`, `created_at`) VALUES
 (10, 'Kwabena', 'hnoome', 52522017, '0265057796', 'kwabena.boohene', 'jumper', 'enabled', '2017-02-28 13:58:08'),
-(11, 'Kofi Boamah', 'House Number 7', 52362019, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-14 10:56:43');
+(11, 'Kofi Boamah', 'House Number 7', 52362019, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-14 10:56:43'),
 (12, 'Joel da Silva', '12345', 52362019, '1234567890', 'joel', 'joel', 'enabled', '2017-03-16 12:47:39');
 
 

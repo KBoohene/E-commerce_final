@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 11:31:43
+/* Smarty version 3.1.30, created on 2017-03-16 20:06:10
   from "C:\xampp\htdocs\E-commerce_final\views\searchCustomer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ca698f601e55_60096735',
+  'unifunc' => 'content_58cae22239a316_64913975',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b72499ef68a3c1801be91f176200a81bfff10213' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchCustomer.tpl',
-      1 => 1489660295,
+      1 => 1489691144,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ca698f601e55_60096735 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cae22239a316_64913975 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <head>
 <title>Search Customer</title>
@@ -115,6 +115,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
       <td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
 </td>
    <?php }?>
+      <td><a href="employeeDisplay.php?eAction=8&searchName=<?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
+">Edit Customer</a>
    </tr>
    <?php
 }

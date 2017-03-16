@@ -4,12 +4,14 @@ include("Classes/customer.php");
 include("Classes/employee.php");
 include("Classes/order.php");
 include("Classes/reports.php");
+include("Classes/item.php");
 
 //Created objects of the various classes
 $customer = new customer();
 $employee = new employee();
 $order = new order();
 $report = new reports();
+$item = new item();
 
 //Created smarty objects
 $smarty= new Smarty();
@@ -21,6 +23,7 @@ $smarty->assign('customer',$customer);
 $smarty->assign('employee',$employee);
 $smarty->assign('order',$order);
 $smarty->assign('report',$report);
+$smarty->assign('item',$item);
 
 if(isset($_REQUEST['eAction'])){
   $value=$_REQUEST['eAction'];
@@ -58,6 +61,12 @@ if(isset($_REQUEST['eAction'])){
       break;
     case 11:
       $smarty->display('editItem.tpl');
+      break;
+    case 12:
+      $smarty->display('addItem.tpl');
+      break;
+    case 13:
+      $smarty->display('searchItemsV2.tpl');
       break;
     default:
       echo "Page not available";

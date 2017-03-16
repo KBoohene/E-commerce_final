@@ -45,6 +45,7 @@
   {"Please enter all information"}
  {else}
   {assign var="result" value=$employee->addEmployee($ename,$zip,$hdate,$pword,$acctype,$usrname)}
+  {"<script>window.location = 'employeeDisplay.php?eAction=3'</script>"}
  {/if}
  {/if}
 

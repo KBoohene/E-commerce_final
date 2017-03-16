@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 10:57:42
+/* Smarty version 3.1.30, created on 2017-03-16 17:11:58
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7be96ee6cc6_60207352',
+  'unifunc' => 'content_58cab94e20da81_09797080',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1489485429,
+      1 => 1489676276,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c7be96ee6cc6_60207352 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cab94e20da81_09797080 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,40 +43,6 @@ function content_58c7be96ee6cc6_60207352 (Smarty_Internal_Template $_smarty_tpl)
     <link href="css/mdb.min.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- Template styles -->
-    <style rel="stylesheet">
-        /* TEMPLATE STYLES */
-
-        main {
-            padding-top: 3rem;
-            padding-bottom: 2rem;
-        }
-
-        .widget-wrapper {
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e0e0e0;
-            margin-bottom: 2rem;
-        }
-
-        .extra-margins {
-            margin-top: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .divider-new {
-            margin-top: 0;
-        }
-
-          .navbar {
-            background-color: #414a5c;
-        }
-
-        footer.page-footer {
-            background-color: #414a5c;
-            margin-top: 2rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -84,42 +50,38 @@ function content_58c7be96ee6cc6_60207352 (Smarty_Internal_Template $_smarty_tpl)
 
     <header>
 
-        <!--Navbar-->
-        <nav class="navbar navbar-toggleable-md navbar-dark">
+      <!--Navbar-->
+          <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <strong>Navbar</strong>
+                <a class="navbar-brand" href="index.php">
+                  <strong>Core Store</strong>
                 </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown btn-group">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item">Action</a>
-                                <a class="dropdown-item">Another action</a>
-                                <a class="dropdown-item">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
+                <div id="navbarNav1">
                     <form class="form-inline waves-effect waves-light">
                         <input class="form-control" type="text" placeholder="Search">
                     </form>
                 </div>
+                <div>
+                    <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <a class="dropdown-item" href="index.php?cAction=4">Login</a>
+                                <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </nav>
-	    <!--/.Navbar-->
+          </nav>
+        <!--/.Navbar-->
 
     </header>
 
