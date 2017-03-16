@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit item</title>
+	<title>Add Item</title>
 </head>
 <body>
 {if isset($smarty.post.submit)}
