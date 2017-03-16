@@ -18,7 +18,7 @@
   {"Please enter all information"}
  {else}
   {assign var="result" value=$item->editItem($itemId, $iname, $qoh, $price, $olvl, $catno)}
-
+  {"<script>window.location = 'employeeDisplay.php?eAction=1'</script>"}
  {/if}
  {/if}
 

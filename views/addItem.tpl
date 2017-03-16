@@ -17,7 +17,7 @@
   {"Please enter all information"}
  {else}
   {assign var="result" value=$item->addItem($iname, $qoh, $price, $olvl, $catno)}
-
+  {"<script>window.location = 'index.php?cAction=1'</script>"}
  {/if}
  {/if}
 

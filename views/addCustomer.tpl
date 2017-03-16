@@ -50,7 +50,8 @@
       {"Please enter all information"}
     {else}
       {assign var="result" value=$customer->addCustomer($name, $street, $zip, $phone, $username, $password)}
-			{"Success"}
+		{"Success"}
+        {"<script>window.location = 'employeeDisplay.php?eAction=6'</script>"}
     {/if}
   {/if}
 
