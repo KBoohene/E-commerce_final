@@ -31,7 +31,10 @@
 		<label>Password</label>
 		<input type="password" name="password">
 			<br>
-			<br>
+			<br> 
+		<label>Status</label>
+		<input type="text" name="status">
+			<br>	
 		<input type="text" name="submitted" hidden>
 		<input type="submit" value="Submit">
 	</form>
@@ -43,13 +46,13 @@
 		{assign var="phone" value=$smarty.post.phone}
 		{assign var="username" value=$smarty.post.username}
 		{assign var="password" value=$smarty.post.password}
-
+        {assign var="status" value=$smarty.post.status}
 		{if ($zip)=="-1"}
 			{"Please select a zip"}
 		{elseif ($name)=="" or ($street)=="" or ($phone)=="" or ($username)=="" or ($password)==""}
       {"Please enter all information"}
     {else}
-      {assign var="result" value=$customer->addCustomer($name, $street, $zip, $phone, $username, $password)}
+      {assign var="result" value=$customer->addCustomer($name, $street, $zip, $phone, $username, $password, $status)}
 		{"Success"}
         {"<script>window.location = 'employeeDisplay.php?eAction=6'</script>"}
     {/if}
