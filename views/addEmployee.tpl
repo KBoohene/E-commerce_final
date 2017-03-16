@@ -12,8 +12,8 @@
  <head>
  <title> Add Employee </title>
  </head>
- 
- <body>	
+
+ <body>
   <form action="employeeDisplay.php?eAction=5" method="POST">
    <div> Employee Name <input type="text" name="ename"/><br></div>
    <div> Zip <select name="zip">
@@ -24,10 +24,10 @@
 	<option value="{$zip.zip}">{$zip.city}</option>
 	{/foreach}
 	</select>
-   <br></div>	
+   <br></div>
    <div> Hire Date <input type="date" name="hdate"/><br></div>
    <div> Password <input type="text" name="pword"/><br></div>
-   <div> Account Type <input type="number" name="acctype"/><br></div>
+   <div> Account Type <input type="number" name="acctype" min="2" max="3"/><br></div>
    <div> Username <input type="text" name="usrname"/><br></div>
    <input type="submit" value="Add">
   </form>

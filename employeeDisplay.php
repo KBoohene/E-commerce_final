@@ -69,8 +69,10 @@ if(isset($_REQUEST['eAction'])){
       $smarty->display('searchItemsV2.tpl');
       break;
     default:
-      echo "Page not available";
+      $smarty->display('loginEmployee.tpl');
   }
+} else {
+  $smarty->display('loginEmployee.tpl');
 }
 
 ?>
