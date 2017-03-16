@@ -58,9 +58,7 @@
           </div>
         </nav>
       <!--/.Navbar-->
-
     </header>
-
     <main>
 
         <!--Main layout-->

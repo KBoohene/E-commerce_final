@@ -33,7 +33,7 @@
  {/if}
 
   <form action="employeeDisplay.php?eAction=4" method="POST">
-    <input type="text" name="eno" value={$data.0.eno} hidden>
+    <input type="text" name="eno" value="{$data.0.eno}" hidden>
     <div> Employee Name <input type="text" name="ename" value='{$data.0.ename}'><br></div>
     <div> Zip <select name="zip">
 	<option value="-1">Select Zip</option>

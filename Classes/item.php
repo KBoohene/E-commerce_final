@@ -19,7 +19,7 @@ class item extends adb{
  * @desc Gets items that have been recently accessed
  **/
   function getRecentItems(){
-    $strQuery = "SELECT * FROM items LIMIT 10";
+    $strQuery = "SELECT * FROM items LIMIT 8";
     return $this->query($strQuery);
   }
 
@@ -47,7 +47,7 @@ class item extends adb{
 * @param int $id
 **/
   function getItemDetails($itemId){
-    $strQuery = "SELECT * FROM items WHERE ino = '$itemId''";
+    $strQuery = "SELECT * FROM items WHERE ino = '$itemId'";
     return $this->query($strQuery);
   }
 
@@ -83,11 +83,11 @@ class item extends adb{
     $strQuery = "";
     return $this->query($strQuery);
   }
-  
+
   function getItems()
   {
    $strQuery = "SELECT * FROM items";
-   return $this->query($strQuery); 
+   return $this->query($strQuery);
   }
 
   function getCategory(){
