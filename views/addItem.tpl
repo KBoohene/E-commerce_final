@@ -33,9 +33,9 @@
 	{/foreach}
 	</select>
    <br></div>
-   <div> Quantity On Hand <input type="number" name="qoh" ><br></div>
+   <div> Quantity On Hand <input type="number" min="0" name="qoh" ><br></div>
    <div> Price <input type="text" name="price" ><br></div>
-   <div> order level <input type="number" name="olevel"><br></div>
+   <div> order level <input type="number" min="0" name="olevel"><br></div>
    <input type="submit" name="submit" value="Add">
   </form>
 
