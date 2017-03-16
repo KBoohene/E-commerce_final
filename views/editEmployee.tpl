@@ -26,20 +26,15 @@
 {if isset($smarty.request.searchName)}
     {if ($smarty.request.searchName)!=""}
       {assign var="txt" value=$smarty.request.searchName}
-      {assign var="result" value=$employee->searchEmployees($txt)}
-      {assign var="data" value=$employee->fetchDB($result)}
-    {elseif ($smarty.request.searchName)==""}
-      {assign var="result" value=$employee->getEmployees()}
+      {assign var="result" value=$employee->getEmployeeData($txt)}
       {assign var="data" value=$employee->fetchDB($result)}
  {/if}
- {else}
-    {assign var="result" value=$employee->getEmployees()}
-    {assign var="data" value=$employee->fetchDB($result)}
+
  {/if}
 
   <form action="employeeDisplay.php?eAction=4" method="POST">
     <input type="text" name="eno" value={$data.0.eno} hidden>
-    <div> Employee Name <input type="text" name="ename" value={$data.0.ename}><br></div>
+    <div> Employee Name <input type="text" name="ename" value='{$data.0.ename}'><br></div>
     <div> Zip <select name="zip">
 	<option value="-1">Select Zip</option>
 	 {assign var="zipResult" value=$employee->getZips()}

@@ -27,7 +27,7 @@ class customer extends adb{
   }
 
   function getCustomerData($customerId){
-    $strQuery = "SELECT * FROM customers WHERE cno = $customerId";
+    $strQuery = "SELECT * FROM customers WHERE cno = '$customerId'";
     return $this->query($strQuery);
   }
 

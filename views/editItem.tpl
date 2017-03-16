@@ -18,23 +18,17 @@
   {"Please enter all information"}
  {else}
   {assign var="result" value=$item->editItem($itemId, $iname, $qoh, $price, $olvl, $catno)}
-  {"<script>window.location = 'employeeDisplay.php?eAction=1'</script>"}
+  {"<script>window.location ='index.php?cAction=1'</script>"}
  {/if}
  {/if}
 
  {if isset($smarty.request.searchItem)}
-
     {if ($smarty.request.searchItem)!=""}
       {assign var="txt" value=$smarty.request.searchItem}
-      {assign var="result" value=$item->searchItems($txt)}
-      {assign var="data" value=$item->fetchDB($result)}
-    {elseif ($smarty.request.searchName)==""}
-      {assign var="result" value=$item->getItems()}
+      {assign var="result" value=$item->getItemDetails($txt)}
       {assign var="data" value=$item->fetchDB($result)}
  {/if}
- {else}
-    {assign var="result" value=$item->getItems()}
-    {assign var="data" value=$item->fetchDB($result)}
+
  {/if}
 
 	<form action="employeeDisplay.php?eAction=11" method="POST">

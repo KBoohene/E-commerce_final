@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 12:27:18
+/* Smarty version 3.1.30, created on 2017-03-16 20:14:58
   from "C:\xampp\htdocs\E-commerce_final\views\addEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7d3969fdfd5_27266251',
+  'unifunc' => 'content_58cae432111264_43817514',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'f97c859c7cf7fe61084ccf62811e2f7995a9432a' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\addEmployee.tpl',
-      1 => 1489490459,
+      1 => 1489687567,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c7d3969fdfd5_27266251 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cae432111264_43817514 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -91,9 +91,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
  <?php } else { ?>
   <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->addEmployee($_smarty_tpl->tpl_vars['ename']->value,$_smarty_tpl->tpl_vars['zip']->value,$_smarty_tpl->tpl_vars['hdate']->value,$_smarty_tpl->tpl_vars['pword']->value,$_smarty_tpl->tpl_vars['acctype']->value,$_smarty_tpl->tpl_vars['usrname']->value));
 ?>
+  <?php echo "<script>window.location = 'employeeDisplay.php?eAction=3'</script>";?>
+
  <?php }?>
  <?php }?>
 
 </body>
-</html><?php }
+</html>
+<?php }
 }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-12 21:34:12
+/* Smarty version 3.1.30, created on 2017-03-16 19:40:43
   from "C:\xampp\htdocs\E-commerce_final\views\searchItems.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c5b0c49e55c0_30168895',
+  'unifunc' => 'content_58cadc2be70a41_42021533',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '55b25caa577edab11d69dbd0a737dda40e7d6618' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchItems.tpl',
-      1 => 1489350025,
+      1 => 1489689640,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c5b0c49e55c0_30168895 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cadc2be70a41_42021533 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 
@@ -105,6 +105,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
       <td><?php echo $_smarty_tpl->tpl_vars['value']->value['olevel'];?>
 </td>
    <?php }?>
+      <td><a href="employeeDisplay.php?eAction=11&searchItem=<?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
+">Edit Item</a>
    </tr>
    <?php
 }

@@ -65,6 +65,7 @@
    {if $value.olevel}
       <td>{$value.olevel}</td>
    {/if}
+      <td><a href="employeeDisplay.php?eAction=11&searchItem={$value.ino}">Edit Item</a>
    </tr>
    {/foreach}
   </table>

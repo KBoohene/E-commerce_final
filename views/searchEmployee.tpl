@@ -78,6 +78,7 @@
    {if $value.Username}
       <td>{$value.Username}</td>
    {/if}
+   <td><a href="employeeDisplay.php?eAction=4&searchName={$value.eno}">Edit Employee</a>
    </tr>
    {/foreach}
   </table>

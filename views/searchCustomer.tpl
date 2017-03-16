@@ -71,6 +71,7 @@
    {if $value.created_at}
       <td>{$value.created_at}</td>
    {/if}
+      <td><a href="employeeDisplay.php?eAction=8&searchName={$value.cno}">Edit Customer</a>
    </tr>
    {/foreach}
   </table>
