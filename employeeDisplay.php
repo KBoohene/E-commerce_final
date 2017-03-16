@@ -56,6 +56,9 @@ if(isset($_REQUEST['eAction'])){
     case 10:
       $smarty->display('shipping.tpl');
       break;
+    case 11:
+      $smarty->display('editItem.tpl');
+      break;
     default:
       echo "Page not available";
   }

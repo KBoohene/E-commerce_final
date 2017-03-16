@@ -1,3 +1,8 @@
+<!--
+  @author Youssouf da Silva
+  @desc - This page contains functions related to the customer
+  -->
+
 <?php
 
 include_once('adb.php');
@@ -48,6 +53,12 @@ class customer extends adb{
 
   function getZips(){
     $strQuery = "SELECT * FROM `zipcodes`";
+    return $this->query($strQuery);
+  }
+
+  function getCustomers()
+  {
+    $strQuery = "SELECT * FROM customers";
     return $this->query($strQuery);
   }
 

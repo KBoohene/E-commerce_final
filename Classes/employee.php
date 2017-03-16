@@ -59,26 +59,23 @@ class employee extends adb
 	 
     function editEmployee($eid,$name,$zip,$hdate,$password,$account_type,$username)
     {
-	 $strQuery= "update employees set
+	 $strQuery= "UPDATE employees SET
 				 ename='$name',
 				 zip='$zip',
 				 hdate='$hdate',
 				 Password='$password',
 				 account_type='$account_type',
-				 Username='$username',
+				 Username='$username'
 				 where eno='$eid'";
+
 	 return $this->query($strQuery);
     }
 	
 	function addEmployee($name,$zip,$hdate,$password,$account_type,$username)
 	{
-	 $strQuery="insert into employees set 
-				ename='$name',
-				zip='$zip',
-				hdate='$hdate',
-				Password='$password',
-				account_type='$account_type',
-				Username='$username'";
+	 $strQuery="insert into employees (ename, zip, hdate, Password, account_type, Username) 
+	            values
+			   ('$name', '$zip', '$hdate', '$password', '$account_type', '$username')";
      $result=$this->query($strQuery);
 	 return $result;
 	}

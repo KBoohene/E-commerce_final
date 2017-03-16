@@ -23,7 +23,7 @@ class item extends adb{
   }
 
   function getItemDetails($itemId){
-    $strQuery = "SELECT * FROM items WHERE ino = $itemId";
+    $strQuery = "SELECT * FROM items WHERE ino = '$itemId''";
     return $this->query($strQuery);
   }
 
