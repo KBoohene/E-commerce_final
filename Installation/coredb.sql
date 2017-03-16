@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2017 at 06:47 PM
+-- Generation Time: Mar 16, 2017 at 12:50 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -19,26 +19,6 @@ USE coredb;
 --
 -- Database: `coredb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `account_type`
---
-
-CREATE TABLE `account_type` (
-  `ID` int(4) NOT NULL,
-  `Type` char(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `account_type`
---
-
-INSERT INTO `account_type` (`ID`, `Type`) VALUES
-(1, 'Customer'),
-(2, 'Employee'),
-(3, 'Administrator');
 
 -- --------------------------------------------------------
 
@@ -91,7 +71,7 @@ CREATE TABLE `customers` (
   `phone` char(12) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(50) NOT NULL,
-  `status` VARCHAR(15) NOT NULL DEFAULT 'enabled',
+  `status` varchar(15) NOT NULL DEFAULT 'enabled',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -99,8 +79,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `created_at`) VALUES
-(10, 'Kwabena', 'hnoome', 52522017, '0265057796', 'kwabena.boohene', 'jumper', '2017-02-28 13:58:08');
+INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `status`, `created_at`) VALUES
+(10, 'Kwabena', 'hnoome', 52522017, '0265057796', 'kwabena.boohene', 'jumper', 'enabled', '2017-02-28 13:58:08'),
+(11, 'Kofi Boamah', 'House Number 7', 52362019, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-14 10:56:43');
 
 -- --------------------------------------------------------
 
@@ -115,7 +96,7 @@ CREATE TABLE `employees` (
   `hdate` date NOT NULL,
   `Password` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `account_type` int(11) NOT NULL,
+  `account_type` set('2','3') NOT NULL DEFAULT '2',
   `Username` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -163,7 +144,7 @@ CREATE TABLE `login_log` (
   `ID` int(11) NOT NULL,
   `PersonID` int(11) NOT NULL,
   `LogInTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `account_type` int(11) NOT NULL
+  `account_type` set('1','2','3') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -190,6 +171,25 @@ CREATE TABLE `orders` (
   `received` date NOT NULL,
   `shipped` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`ono`, `cno`, `received`, `shipped`, `created_at`) VALUES
+(1, 10, '2017-03-15', '2017-03-17', '2017-03-12 19:07:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `visitors_log`
+--
+
+CREATE TABLE `visitors_log` (
+  `IP_address` varchar(32) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -223,12 +223,6 @@ INSERT INTO `zipcodes` (`zip`, `city`) VALUES
 --
 
 --
--- Indexes for table `account_type`
---
-ALTER TABLE `account_type`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
@@ -254,7 +248,6 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`eno`),
-  ADD UNIQUE KEY `account_type` (`account_type`),
   ADD KEY `zip` (`zip`);
 
 --
@@ -269,8 +262,7 @@ ALTER TABLE `items`
 --
 ALTER TABLE `login_log`
   ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `PersonID` (`PersonID`),
-  ADD UNIQUE KEY `account_type` (`account_type`);
+  ADD UNIQUE KEY `PersonID` (`PersonID`);
 
 --
 -- Indexes for table `odetails`
@@ -285,6 +277,12 @@ ALTER TABLE `odetails`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`ono`),
   ADD KEY `cno` (`cno`);
+
+--
+-- Indexes for table `visitors_log`
+--
+ALTER TABLE `visitors_log`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `zipcodes`
@@ -310,12 +308,12 @@ ALTER TABLE `checkout_log`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `eno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `items`
 --
@@ -330,7 +328,12 @@ ALTER TABLE `login_log`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `visitors_log`
+--
+ALTER TABLE `visitors_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
@@ -353,16 +356,14 @@ ALTER TABLE `customers`
 -- Constraints for table `employees`
 --
 ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`),
-  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`account_type`) REFERENCES `account_type` (`ID`);
+  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`zip`) REFERENCES `zipcodes` (`zip`);
 
 --
 -- Constraints for table `login_log`
 --
 ALTER TABLE `login_log`
   ADD CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`PersonID`) REFERENCES `customers` (`cno`),
-  ADD CONSTRAINT `login_log_ibfk_2` FOREIGN KEY (`PersonID`) REFERENCES `employees` (`eno`),
-  ADD CONSTRAINT `login_log_ibfk_3` FOREIGN KEY (`account_type`) REFERENCES `account_type` (`ID`);
+  ADD CONSTRAINT `login_log_ibfk_2` FOREIGN KEY (`PersonID`) REFERENCES `employees` (`eno`);
 
 --
 -- Constraints for table `odetails`
