@@ -29,7 +29,6 @@
 	 {foreach from=$zipData item=zip}
      {if $data.0.zip==$zip.zip}
 	 <option value="{$zip.zip}" selected>{$zip.city}</option>
-
       {else}
         <option value="{$zip.zip}">{$zip.city}</option>
       {/if}

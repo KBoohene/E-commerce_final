@@ -32,8 +32,8 @@ class item extends adb{
     return $this->query($strQuery);
   }
 
-  function editItem($id){
-    $strQuery = "";
+  function editItem($itemId, $iname, $qoh, $price, $olvl, $catno){
+    $strQuery = "UPDATE items SET iname='$iname', qoh='$qoh', price='$price', olevel='$olvl', catno='$catno' where ino='$itemId'";
     return $this->query($strQuery);
   }
 
@@ -46,6 +46,11 @@ class item extends adb{
   {
    $strQuery = "SELECT * FROM items";
    return $this->query($strQuery); 
+  }
+
+  function getCategory(){
+    $strQuery="SELECT * FROM categories";
+    return $this->query($strQuery);
   }
 }
 
