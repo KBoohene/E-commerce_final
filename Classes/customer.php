@@ -21,8 +21,8 @@ class customer extends adb{
     return $this->query($strQuery);
   }
 
-  function editCustomer($customerId, $cname, $street, $zip, $phone, $username, $password){
-    $strQuery = "UPDATE customers SET cname = '$cname', street = '$street', phone = '$phone', Username = '$username', `Password` = '$password' WHERE cno = $customerId";
+  function editCustomer($customerId, $cname, $street, $zip, $phone, $username, $password, $status){
+    $strQuery = "UPDATE customers SET cname = '$cname', street = '$street', zip = '$zip', phone = '$phone', Username = '$username', Password = '$password', status = '$status' WHERE cno = '$customerId'";
     return $this->query($strQuery);
   }
 
@@ -37,7 +37,7 @@ class customer extends adb{
   }
 
   function searchCustomers($cname){
-    $strQuery = "SELECT * FROM customers WHERE cname LIKE '$cname'";
+    $strQuery = "SELECT * FROM customers WHERE cname LIKE '%$cname%'";
     return $this->query($strQuery);
   }
 
