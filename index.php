@@ -3,11 +3,13 @@ require_once('smarty-3.1.30/libs/Smarty.class.php');
 include("Classes/customer.php");
 include("Classes/order.php");
 include("Classes/item.php");
+include("Classes/userInfo.php");
 
 //Created objects of the class
 $customer = new customer();
 $order = new order();
 $item = new item();
+$userInfo = new userInfo();
 
 //Created smarty object
 $smarty= new Smarty();
@@ -18,6 +20,7 @@ $smarty->compile_dir='tmp';
 $smarty->assign('customer',$customer);
 $smarty->assign('order',$order);
 $smarty->assign('item',$item);
+$smarty->assign('userInfo',$userInfo);
 
 if(isset($_REQUEST['cAction'])){
   $value=$_REQUEST['cAction'];

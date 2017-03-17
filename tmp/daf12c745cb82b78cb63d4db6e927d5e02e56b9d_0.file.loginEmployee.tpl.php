@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 19:42:45
+/* Smarty version 3.1.30, created on 2017-03-17 00:12:30
   from "C:\xampp\htdocs\E-commerce_final\views\loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cadca5584ee9_05716453',
+  'unifunc' => 'content_58cb1bde9e0411_99513864',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'daf12c745cb82b78cb63d4db6e927d5e02e56b9d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\loginEmployee.tpl',
-      1 => 1489491493,
+      1 => 1489705365,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cadca5584ee9_05716453 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cb1bde9e0411_99513864 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +57,7 @@ function content_58cadca5584ee9_05716453 (Smarty_Internal_Template $_smarty_tpl)
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <strong>Core Store</strong>
+                    <strong>Employee Core Store</strong>
                 </a>
                 <div class="collapse navbar-collapse" id="navbarNav1">
                     <ul class="navbar-nav mr-auto">

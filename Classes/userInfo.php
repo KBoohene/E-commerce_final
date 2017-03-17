@@ -1,18 +1,18 @@
 <?php
 
-include_once("adb.php");
-class userInfo extends adb
-{
-  function userInfo(){
+class userInfo{
 
+  function userInfo(){
+    session_start();
   }
 
-  function setSession($userId){
+  function setSession($userId,$username){
     $_SESSION['userId']=$userId;
+    $_SESSION['username']=$username;
   }
 
   function checkSession(){
-    if(isset($_SESSION['userId'])){
+    if(isset($_SESSION)){
       return true;
     }
     else{
@@ -24,10 +24,6 @@ class userInfo extends adb
     return $_SESSION;
   }
 
-  function startSession(){
-    session_start();
-  }
-
   function endSession(){
     // remove all session variables
     session_unset();
@@ -35,7 +31,8 @@ class userInfo extends adb
     // destroy the session
     session_destroy();
   }
-
 }
+
+
 
 ?>

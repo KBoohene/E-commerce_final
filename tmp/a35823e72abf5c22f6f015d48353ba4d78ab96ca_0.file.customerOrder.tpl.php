@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-12 20:08:35
+/* Smarty version 3.1.30, created on 2017-03-17 02:39:58
   from "C:\xampp\htdocs\E-commerce_final\views\customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c59cb33fcd14_18068295',
+  'unifunc' => 'content_58cb3e6e687bd6_49678804',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'a35823e72abf5c22f6f015d48353ba4d78ab96ca' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customerOrder.tpl',
-      1 => 1489345675,
+      1 => 1489714767,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c59cb33fcd14_18068295 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cb3e6e687bd6_49678804 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -29,9 +29,20 @@ function content_58c59cb33fcd14_18068295 (Smarty_Internal_Template $_smarty_tpl)
     </title>
   </head>
   <body>
-
-    <?php $_smarty_tpl->_assignInScope('customerId', 10);
+    <?php if (isset($_SESSION['userId'])) {?>
+      <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
+      <?php echo $_smarty_tpl->tpl_vars['customerId']->value;?>
+
+      <?php echo $_SESSION['username'];?>
+
+    <?php } else { ?>
+      <?php $_smarty_tpl->_assignInScope('customerId', 10);
+?>
+      <?php echo "Session not started";?>
+
+    <?php }?>
+
     <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getCustomerOrders($_smarty_tpl->tpl_vars['customerId']->value));
 ?>
     <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
