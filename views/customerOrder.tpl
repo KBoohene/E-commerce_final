@@ -7,8 +7,6 @@
   <body>
     {if isset($smarty.session.userId)}
       {assign var="customerId" value=$smarty.session.userId}
-      {$customerId}
-      {$smarty.session.username}
     {else}
       {assign var="customerId" value=10}
       {"Session not started"}

@@ -101,7 +101,7 @@
                         			{assign var="loginData" value=$customer->fetchDB($loginResult)}
                         			{foreach from=$loginData item=login}
                         				{if ($login.Password) == $password}
-                                            {$userInfo->setSession($login.cno,$login.Username)}
+                                            {$userInfo->setSession($login.cno,$login.Username,$login.cname)}
                         					{"<script>window.location = 'index.php?cAction=5'</script>"}
 
                         				{/if}

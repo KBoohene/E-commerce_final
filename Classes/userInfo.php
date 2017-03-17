@@ -6,9 +6,10 @@ class userInfo{
     session_start();
   }
 
-  function setSession($userId,$username){
+  function setSession($userId,$username,$fullname){
     $_SESSION['userId']=$userId;
     $_SESSION['username']=$username;
+    $_SESSION['fullname']=$fullname;
   }
 
   function checkSession(){

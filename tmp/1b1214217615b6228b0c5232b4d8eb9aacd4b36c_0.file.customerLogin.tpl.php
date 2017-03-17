@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-17 02:17:51
+/* Smarty version 3.1.30, created on 2017-03-17 11:10:10
   from "C:\xampp\htdocs\E-commerce_final\views\customerLogin.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cb393fad05d9_53425109',
+  'unifunc' => 'content_58cbb60207b096_47913624',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '1b1214217615b6228b0c5232b4d8eb9aacd4b36c' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customerLogin.tpl',
-      1 => 1489713445,
+      1 => 1489745265,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cb393fad05d9_53425109 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cbb60207b096_47913624 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +134,7 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
 ?>
                         				<?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
-                                            <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['cno'],$_smarty_tpl->tpl_vars['login']->value['Username']);?>
+                                            <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['cno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['cname']);?>
 
                         					<?php echo "<script>window.location = 'index.php?cAction=5'</script>";?>
 
