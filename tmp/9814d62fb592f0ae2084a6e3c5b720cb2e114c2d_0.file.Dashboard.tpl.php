@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-17 18:44:11
+/* Smarty version 3.1.30, created on 2017-03-17 21:35:53
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cc206b9f80e1_10700004',
+  'unifunc' => 'content_58cc48a9bfb150_78806316',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1489772646,
+      1 => 1489782948,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cc206b9f80e1_10700004 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cc48a9bfb150_78806316 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -124,7 +124,7 @@ function content_58cc206b9f80e1_10700004 (Smarty_Internal_Template $_smarty_tpl)
   <?php $_smarty_tpl->_assignInScope('val7', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SunVal']->value));
 ?>
 
-  <div class="col-md-6">
+  <div class="col-md-9">
 
     <canvas id="myChart2"></canvas>
 
@@ -223,7 +223,38 @@ function content_58cc206b9f80e1_10700004 (Smarty_Internal_Template $_smarty_tpl)
 >
 
 
+    <?php $_smarty_tpl->_assignInScope('answer', $_smarty_tpl->tpl_vars['report']->value->top10Customers());
+?>
+    <?php $_smarty_tpl->_assignInScope('topList', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['answer']->value));
+?>
+    <div class="col-md-6">
+    Top Ten Customers
+    <table>
+      <thead>
+        <tr>
+          <td>Customer Name</td>
+          <td>Number Of Orders</td>
+        </tr>
+      </thead>
+      <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['topList']->value, 'value');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+?>
+        <tr>
+          <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cname'];?>
+</td>
+          <td><?php echo $_smarty_tpl->tpl_vars['value']->value['NumberOfOrders'];?>
+</td>
+        </tr>
+      <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
 
+    </table>
+    </div>
   </body>
 </html>
 <?php }

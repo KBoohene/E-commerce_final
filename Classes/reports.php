@@ -191,7 +191,14 @@ class reports extends adb{
     }
     return $this->query($strQuery);
   }
+
+  function top10Customers(){
+    $strQuery="SELECT customers.cname, COUNT(orders.ono) AS NumberOfOrders FROM orders, customers WHERE orders.cno = customers.cno ORDER BY NumberOfOrders DESC LIMIT 10";
+    return $this->query($strQuery);
+  }
 }
+
+
 
 
 ?>

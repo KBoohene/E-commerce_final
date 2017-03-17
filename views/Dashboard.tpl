@@ -68,7 +68,7 @@
   {assign var="SunVal" value=$report->numItemsGivenDay($Sun)}
   {assign var="val7" value=$report->fetchDB($SunVal)}
 
-  <div class="col-md-6">
+  <div class="col-md-9">
 
     <canvas id="myChart2"></canvas>
 
@@ -149,7 +149,25 @@
 
   </script>
 
-  {**Top ten customers**}
-
+    {**Top ten customers**}
+    {assign var="answer" value=$report->top10Customers()}
+    {assign var="topList" value=$report->fetchDB($answer)}
+    <div class="col-md-6">
+    Top Ten Customers
+    <table>
+      <thead>
+        <tr>
+          <td>Customer Name</td>
+          <td>Number Of Orders</td>
+        </tr>
+      </thead>
+      {foreach from=$topList item=value}
+        <tr>
+          <td>{$value.cname}</td>
+          <td>{$value.NumberOfOrders}</td>
+        </tr>
+      {/foreach}
+    </table>
+    </div>
   </body>
 </html>
