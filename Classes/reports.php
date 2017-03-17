@@ -38,11 +38,11 @@ class reports extends adb{
     * @param {$year} the year
     * @retun : Number of items ordered
   **/
-  function numItemsGivenDay($day=false,$month=false,$year=false){
-    if(!$day==false){
+  function numItemsGivenDay($date=false){
+    if(!$date==false){
       //YYYY-MM-DD
       $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
-    DATE(`created_at`) =".$year.'-'.$month.'-'.$day;
+    DATE(`created_at`) ='$date'";
     }
     else
     {
@@ -71,6 +71,7 @@ class reports extends adb{
       $strQuery="SELECT SUM(num_items) AS Orders_Per_Day FROM checkout_log WHERE
     WEEKOFYEAR(`created_at`) = WEEKOFYEAR(CURDATE())";
     }
+
     return $this->query($strQuery);
   }
 
@@ -175,6 +176,20 @@ class reports extends adb{
     else if($filter==3){}
     else if($filter==4){}
     else if($filter==5){}
+  }
+
+  function getDate($day){
+    return date("Y-m-d",strtotime($day));
+  }
+
+  function getOrderShipped($filter=false){
+    if($filter==1){
+      $strQuery="SELECT count(shipped) AS Num_shipped FROM orders WHERE shipped IS NOT NULL";
+    }
+    else{
+      $strQuery="SELECT count(shipped) AS Not_shipped FROM orders WHERE shipped IS NULL";
+    }
+    return $this->query($strQuery);
   }
 }
 

@@ -1,6 +1,6 @@
 <?php
-
-class userInfo{
+include_once('adb.php');
+class userInfo extends adb{
 
   function userInfo(){
     session_start();
@@ -29,6 +29,11 @@ class userInfo{
   function endSession(){
     // remove all session variables
     session_unset();
+  }
+
+  function addTolog($personId,$acctype){
+    $strQuery="INSERT INTO login_log(PersonID,account_type) VALUES ($personId,$acctype)";
+    return $this->query($strQuery);
   }
 }
 
