@@ -127,8 +127,8 @@
                                         {assign var="loginData" value=$employee->fetchDB($loginResult)}
                                         {foreach from=$loginData item=login}
                                             {if ($login.Password) == $password}
-                                                {"Success"}
-                                                {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
+                                              {$userInfo->setSession($login.eno,$login.Username,$login.ename,$login.account_type)}
+                                              {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
                                             {/if}
                                         {/foreach}
 

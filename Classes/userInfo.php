@@ -6,10 +6,11 @@ class userInfo{
     session_start();
   }
 
-  function setSession($userId,$username,$fullname){
+  function setSession($userId,$username,$fullname,$accountType){
     $_SESSION['userId']=$userId;
     $_SESSION['username']=$username;
     $_SESSION['fullname']=$fullname;
+    $_SESSION['acctype']=$accountType;
   }
 
   function checkSession(){
