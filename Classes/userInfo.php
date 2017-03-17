@@ -28,9 +28,6 @@ class userInfo{
   function endSession(){
     // remove all session variables
     session_unset();
-
-    // destroy the session
-    session_destroy();
   }
 }
 
