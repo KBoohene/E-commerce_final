@@ -1,27 +1,25 @@
+<!--
+  @author Youssouf da Silva, David Okyere & Kwabena Boohene
+  @desc reports class containing related functions
+-->
+
 <?php
-/**
- * @author Kwabena Boohene
- * This class contains all methods related to report generation
- * @date
-**/
 
 require_once('csv.class.php');
 include_once('adb.php');
+
 class reports extends adb{
-  /**
-    * @param: none
-    * @return: none
-    * Constructor for reports class
-  **/
+	
+/**
+* @desc Constructor 
+**/
   function reports(){
   }
 
-  /**
-    * This function returns the number of customers
-    * in the database
-    * @param : None
-    * @retun : Number of customers
-  **/
+/**
+* @desc Returns the number of customers in the database
+* @return : Number of customers
+**/
   function countCustomers(){
 
     $strQuery="Select count(cno) as Num_Customers from customers ";
@@ -30,14 +28,13 @@ class reports extends adb{
     return $count;
   }
 
-  /**
-    * This function returns the number of items that have
-    * been ordered on a specific day the current day
-    * @param {$day} day of the week
-    * @param {$month} the month
-    * @param {$year} the year
-    * @retun : Number of items ordered
-  **/
+/**
+* @desc Returns the number of items that have been ordered on a specific day the current day
+* @param {$day} day of the week
+* @param {$month} the month
+* @param {$year} the year
+* @return : Number of items ordered
+**/
   function numItemsGivenDay($date=false){
     if(!$date==false){
       //YYYY-MM-DD
@@ -52,13 +49,12 @@ class reports extends adb{
   return $this->query($strQuery);
   }
 
-  /**
-    * This function returns the number of items that have
-    * been ordered in a specific week or in a current week
-    * @param {$day} day of the week
-    * @param {$month} the month
-    * @param {$year} the year
-    * @retun : Number of items ordered
+/**
+* @desc Returns the number of items that have been ordered in a specific week or in a current week
+* @param {$day} day of the week
+* @param {$month} the month
+* @param {$year} the year
+* @return : Number of items ordered
   **/
   function numItemsGivenWeek($day=false,$month=false,$year=false){
      if(!$day==false){
@@ -75,13 +71,12 @@ class reports extends adb{
     return $this->query($strQuery);
   }
 
-  /**
-    * This function returns the number of items that have
-    * been ordered on a specific month or current month
-    * @param {$day} day of the week
-    * @param {$month} the month
-    * @param {$year} the year
-    * @retun : Number of items ordered
+/**
+* @desc Returns the number of items that have been ordered on a specific month or current month
+* @param {$day} day of the week
+* @param {$month} the month
+* @param {$year} the year
+* @return : Number of items ordered
   **/
   function numItemsGivenMonth($day=false,$month=false,$year=false){
      if(!$day==false){
@@ -97,11 +92,10 @@ class reports extends adb{
      return $this->query($strQuery);
   }
 
-  /**
-    * This function returns the number of users that have
-    * logged into the website given their account type
-    * @retun : Number of logged in users
-  **/
+/**
+* @desc Returns the number of users that have logged into the website given their account type
+* @return : Number of logged in users
+**/
   function numVisits($filter=""){
     if($filter=="Customer"){
       $strQuery="Select count(PersonID) as Num_Customer_Visits from login_log WHERE
@@ -114,14 +108,13 @@ class reports extends adb{
     return $this->query($strQuery);
   }
 
-  /**
-    * This function returns the number of individuals that have
-    * visited the website on a specific day or current day
-    * @param {$day} day of the week
-    * @param {$month} the month
-    * @param {$year} the year
-    * @retun : Number of site visitors
-  **/
+/**
+* @desc Returns the number of individuals that have visited the website on a specific day or current day
+* @param {$day} day of the week
+* @param {$month} the month
+* @param {$year} the year
+* @return : Number of site visitors
+**/
   function countVisitors($day=false,$month=false,$year=false){
     if(!$day==false){
       $strQuery="SELECT count(DISTINCT IP_address) AS Num_IP_addresses FROM visitors_log WHERE
@@ -135,22 +128,20 @@ class reports extends adb{
     return $this->query($strQuery);
   }
 
-  /**
-    * This function adds an IP address to the visitors_log
-    * table
-    * @param {$address} visitor's IP address
-    * @retun : TRUE or false
-  **/
+/**
+* This function adds an IP address to the visitors_log table
+* @param {$address} visitor's IP address
+* @return : TRUE or false
+**/
   function insertIP($address){
     $strQuery="INSERT INTO visitors_log (IP_address) VALUES ('$address')";
     return $this->query($strQuery);
   }
 
-  /**
-    * This function exports data to a csv format based on
-    * a filter criteria
-    * @param {$filter} Determines what data to export
-  **/
+/**
+* This function exports data to a csv format based on a filter criteria
+* @param {$filter} Determines what data to export
+**/
   function csvExportData($filter=""){
     if($filter==1){
       $csv = new CSV(array('Customer Information'));
