@@ -21,7 +21,26 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
+  {if isset($smarty.post.submitted)}
+    {assign var="username" value=$smarty.post.username}
+    {assign var="password" value=$smarty.post.password}
 
+    {if ($username)=="" or ($password)==""}
+    {"Please enter all information"}
+    {else}
+    {assign var="loginResult" value=$employee->loginEmployee($username, $password)}
+
+        {assign var="loginData" value=$employee->fetchDB($loginResult)}
+        {foreach from=$loginData item=login}
+            {if ($login.Password) == $password}
+              {$userInfo->setSession($login.eno,$login.Username,$login.ename,$login.account_type)}
+              {$userInfo->addToLog($login.eno,$login.account_type)}
+              {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
+            {/if}
+        {/foreach}
+
+    {/if}
+  {/if}
 <body>
 
     <header>
@@ -114,26 +133,6 @@
                                     <input type="text" name="submitted" hidden>
                                     <button class="btn btn-default amber darken-2">Login</button>
                                 </form>
-
-                                {if isset($smarty.post.submitted)}
-                                    {assign var="username" value=$smarty.post.username}
-                                    {assign var="password" value=$smarty.post.password}
-
-                                    {if ($username)=="" or ($password)==""}
-                                  {"Please enter all information"}
-                                {else}
-                                  {assign var="loginResult" value=$employee->loginEmployee($username, $password)}
-
-                                        {assign var="loginData" value=$employee->fetchDB($loginResult)}
-                                        {foreach from=$loginData item=login}
-                                            {if ($login.Password) == $password}
-                                                {"Success"}
-                                                {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
-                                            {/if}
-                                        {/foreach}
-
-                                {/if}
-                              {/if}
                             </div>
                         </div>
                     </div>

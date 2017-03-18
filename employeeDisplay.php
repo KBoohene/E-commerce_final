@@ -5,6 +5,7 @@ include("Classes/employee.php");
 include("Classes/order.php");
 include("Classes/reports.php");
 include("Classes/item.php");
+include("Classes/userInfo.php");
 
 //Created objects of the various classes
 $customer = new customer();
@@ -12,6 +13,7 @@ $employee = new employee();
 $order = new order();
 $report = new reports();
 $item = new item();
+$userInfo = new userInfo();
 
 //Created smarty objects
 $smarty= new Smarty();
@@ -24,6 +26,7 @@ $smarty->assign('employee',$employee);
 $smarty->assign('order',$order);
 $smarty->assign('report',$report);
 $smarty->assign('item',$item);
+$smarty->assign('userInfo',$userInfo);
 
 if(isset($_REQUEST['eAction'])){
   $value=$_REQUEST['eAction'];

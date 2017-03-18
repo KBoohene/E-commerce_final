@@ -5,8 +5,13 @@
     </title>
   </head>
   <body>
-    {**{assign var="customerId" value=$smarty.session.id}**}
-    {assign var="customerId" value=10}
+    {if isset($smarty.session.userId)}
+      {assign var="customerId" value=$smarty.session.userId}
+    {else}
+      {assign var="customerId" value=10}
+      {"Session not started"}
+    {/if}
+
     {assign var="result" value=$order->getCustomerOrders($customerId)}
     {assign var="data" value=$order->fetchDB($result)}
     <table>
