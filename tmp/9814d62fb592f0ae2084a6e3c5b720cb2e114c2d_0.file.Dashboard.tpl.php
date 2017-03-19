@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 03:24:24
+/* Smarty version 3.1.30, created on 2017-03-19 03:35:32
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdebd8edabf8_71057869',
+  'unifunc' => 'content_58cdee741e1280_26176644',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1489889253,
+      1 => 1489890924,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdebd8edabf8_71057869 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -59,10 +59,15 @@ function content_58cdebd8edabf8_71057869 (Smarty_Internal_Template $_smarty_tpl)
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-
-                <a class="navbar-brand" href="#">
+                <?php if (isset($_SESSION['acctype'])) {?>
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
                   <strong>Employee Core Store</strong>
                 </a>
+                <?php } else { ?>
+                  <a class="navbar-brand" href="#">
+                  <strong>Employee Core Store</strong>
+                </a>
+                <?php }?>
 
                 <ul class="nav navbar-nav mr-auto">
                   <li class="nav-item dropdown">

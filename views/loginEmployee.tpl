@@ -48,10 +48,15 @@
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-
-                <a class="navbar-brand" href="#">
+                {if isset($smarty.session.acctype)}
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
                   <strong>Employee Core Store</strong>
                 </a>
+                {else}
+                  <a class="navbar-brand" href="#">
+                  <strong>Employee Core Store</strong>
+                </a>
+                {/if}
 
                 <ul class="nav navbar-nav mr-auto">
                   <li class="nav-item dropdown">
