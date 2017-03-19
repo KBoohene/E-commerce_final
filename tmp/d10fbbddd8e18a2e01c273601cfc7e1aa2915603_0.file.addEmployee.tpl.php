@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 12:10:33
+/* Smarty version 3.1.30, created on 2017-03-19 01:29:59
   from "C:\xampp\htdocs\Final\E-commerce_final\views\addEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7cfa9e1aa29_71391067',
+  'unifunc' => 'content_58cdd1072dbdd3_88590603',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd10fbbddd8e18a2e01c273601cfc7e1aa2915603' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Final\\E-commerce_final\\views\\addEmployee.tpl',
-      1 => 1489489829,
+      1 => 1489871937,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c7cfa9e1aa29_71391067 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdd1072dbdd3_88590603 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -36,8 +36,8 @@ function content_58c7cfa9e1aa29_71391067 (Smarty_Internal_Template $_smarty_tpl)
  <head>
  <title> Add Employee </title>
  </head>
- 
- <body>	
+
+ <body>
   <form action="employeeDisplay.php?eAction=5" method="POST">
    <div> Employee Name <input type="text" name="ename"/><br></div>
    <div> Zip <select name="zip">
@@ -61,10 +61,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 	</select>
-   <br></div>	
+   <br></div>
    <div> Hire Date <input type="date" name="hdate"/><br></div>
    <div> Password <input type="text" name="pword"/><br></div>
-   <div> Account Type <input type="number" name="acctype"/><br></div>
+   <div> Account Type <input type="number" name="acctype" min="2" max="3"/><br></div>
    <div> Username <input type="text" name="usrname"/><br></div>
    <input type="submit" value="Add">
   </form>
@@ -91,9 +91,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
  <?php } else { ?>
   <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->addEmployee($_smarty_tpl->tpl_vars['ename']->value,$_smarty_tpl->tpl_vars['zip']->value,$_smarty_tpl->tpl_vars['hdate']->value,$_smarty_tpl->tpl_vars['pword']->value,$_smarty_tpl->tpl_vars['acctype']->value,$_smarty_tpl->tpl_vars['usrname']->value));
 ?>
+  <?php echo "<script>window.location = 'employeeDisplay.php?eAction=3'</script>";?>
+
  <?php }?>
  <?php }?>
 
 </body>
-</html><?php }
+</html>
+<?php }
 }

@@ -71,6 +71,12 @@ if(isset($_REQUEST['eAction'])){
     case 13:
       $smarty->display('searchItemsV2.tpl');
       break;
+    case 14:
+      $smarty->display('searchOrder.tpl');
+      break;
+    case 15:
+      $smarty->display('editOrder.tpl');
+      break; 	  
     default:
       $smarty->display('loginEmployee.tpl');
   }

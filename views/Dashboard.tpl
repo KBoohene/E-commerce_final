@@ -99,7 +99,7 @@
     {/if}
 
   <a href="employeeDisplay.php?eAction=6">Customers</a>
-  <a href="employeeDisplay.php?eAction=2">Orders</a>
+  <a href="employeeDisplay.php?eAction=14">Orders</a>
   <a href="employeeDisplay.php?eAction=13">Items</a>
 
   {**Number of orders placed per day over the week (Bar graph)**}

@@ -129,6 +129,60 @@ class order extends adb{
     $strQuery="UPDATE orders SET shipped='$shippingDate', received='$deliverDate' WHERE ono ='$orderId'";
     return $this->query($strQuery);
   }
-}
+  
+/**
+* @desc Searches for an order based on specified requirements
+* @param {$ono} ID number of order 
+* @return : Array if successful, False if not
+**/
+  function searchOrders($ono){
+    $strQuery = "SELECT * FROM orders WHERE ono LIKE '%$ono%'";
+    return $this->query($strQuery);
+  }
 
+/**
+* @desc Gets all orders
+* @return : Array if successful, False if not
+**/
+  function getOrders()
+  {
+    $strQuery = "SELECT * FROM orders";
+    return $this->query($strQuery);
+  } 
+
+/**
+* @desc Gets specified order's data
+* @param {$ono} ID number of order
+* @return : Array if successful, False if not
+**/
+function getOrderData($ono)
+	{
+	 $strQuery="select * from orders where ono ='$ono'";
+	 return $this->query($strQuery);
+	}  
+
+/**
+* @desc Allows for editing order details
+* @param {$ono} ID number of order
+* @param {$cno} ID number of customer 
+* @param {$checked_out} Check out status of order
+* @param {$received} Receive date
+* @param {$shipped} Shipping date
+* @return : True if successful, False if not 
+**/
+  function editOrder($ono, $cno, $checked_out, $received, $shipped){
+    $strQuery = "UPDATE orders SET cno = '$cno', checked_out = '$checked_out', received = '$received', shipped = '$shipped' WHERE ono = '$ono'";
+    echo $strQuery;
+	return $this->query($strQuery);
+  }
+
+/**
+* @desc Gets order status
+* @return : Array if successful, False if not
+**/  
+  function getCheckedStatus(){
+    $strQuery = "SELECT `checked_out` FROM `orders`";
+    return $this->query($strQuery);
+  }
+}
 ?>

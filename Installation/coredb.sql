@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2017 at 01:10 AM
+-- Generation Time: Mar 19, 2017 at 03:32 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -80,8 +80,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `status`, `created_at`) VALUES
-(10, 'Kwabena', 'hnoome', 52522017, '0265057763', 'kwabena.boohene', 'jumper', 'enabled', '2017-03-16 15:13:40'),
-(11, 'Kofi Boamah', 'House Number 7', 52362019, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-14 10:56:43'),
+(10, 'Kwabena', 'hnoome', 66242018, '0265057763', 'kwabena.boohene', 'jumper', 'enabled', '2017-03-19 02:05:41'),
+(11, 'Kofi Boamah', 'House', 52522017, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-19 02:05:21'),
 (12, 'Yaw Koom', '5679099', 52362019, '026509987', 'yaw.koom', 'yawkoom', 'enabled', '2017-03-16 20:51:43');
 
 -- --------------------------------------------------------
@@ -178,7 +178,7 @@ CREATE TABLE `odetails` (
 CREATE TABLE `orders` (
   `ono` bigint(5) NOT NULL,
   `cno` int(11) NOT NULL,
-  `checked_out` set('Yes','No','','') NOT NULL DEFAULT 'No',
+  `checked_out` varchar(3) NOT NULL,
   `received` date NOT NULL,
   `shipped` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -189,8 +189,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`ono`, `cno`, `checked_out`, `received`, `shipped`, `created_at`) VALUES
-(1, 10, 'No', '2017-03-15', '2017-03-17', '2017-03-12 19:07:22'),
-(2, 11, 'Yes', '0000-00-00', '0000-00-00', '2017-03-18 22:31:09');
+(1, 10, 'No', '2017-03-05', '0000-00-00', '2017-03-19 02:31:36'),
+(2, 11, 'No', '2017-03-01', '0000-00-00', '2017-03-19 02:22:08');
 
 -- --------------------------------------------------------
 
@@ -335,7 +335,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `orders`
 --
