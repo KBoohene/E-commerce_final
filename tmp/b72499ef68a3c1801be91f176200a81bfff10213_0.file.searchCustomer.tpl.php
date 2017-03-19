@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 18:15:13
+/* Smarty version 3.1.30, created on 2017-03-19 19:24:34
   from "C:\xampp\htdocs\E-commerce_final\views\searchCustomer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cebca10e0a49_74039565',
+  'unifunc' => 'content_58cecce278d718_21467467',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b72499ef68a3c1801be91f176200a81bfff10213' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchCustomer.tpl',
-      1 => 1489943708,
+      1 => 1489947864,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cebca10e0a49_74039565 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cecce278d718_21467467 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -68,7 +68,7 @@ function content_58cebca10e0a49_74039565 (Smarty_Internal_Template $_smarty_tpl)
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -112,7 +112,7 @@ function content_58cebca10e0a49_74039565 (Smarty_Internal_Template $_smarty_tpl)
 	    <!--/.Navbar-->
     </header>
     <form action="employeeDisplay.php?eAction=6" method="POST">
-      <input class="search-bar" id="search" type="text" name="searchCustomer">
+			<div>Customer name <input type="text" name="searchCustomer"><br></div>
       <button type="submit" class="button">Search</button>
     </form>
     <?php if (isset($_REQUEST['searchCustomer'])) {?>

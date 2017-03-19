@@ -79,10 +79,13 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
+		<div>
     <form action="employeeDisplay.php?eAction=14" method="POST">
+		<label>Date:</label>
       <input  id="search" type="date" name="searchOrder">
       <button type="submit" class="button">Search</button>
     </form>
+		</div>
 
     {if isset($smarty.request.searchOrder)}
       {if ($smarty.request.searchOrder)!=""}

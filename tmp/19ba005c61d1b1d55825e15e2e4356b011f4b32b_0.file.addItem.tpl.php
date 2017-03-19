@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 18:15:58
+/* Smarty version 3.1.30, created on 2017-03-19 19:35:01
   from "C:\xampp\htdocs\E-commerce_final\views\addItem.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cebcce4de2a2_14578685',
+  'unifunc' => 'content_58cecf552e28a9_02182194',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '19ba005c61d1b1d55825e15e2e4356b011f4b32b' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\addItem.tpl',
-      1 => 1489943753,
+      1 => 1489948496,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cebcce4de2a2_14578685 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cecf552e28a9_02182194 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,7 +69,7 @@ function content_58cebcce4de2a2_14578685 (Smarty_Internal_Template $_smarty_tpl)
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>

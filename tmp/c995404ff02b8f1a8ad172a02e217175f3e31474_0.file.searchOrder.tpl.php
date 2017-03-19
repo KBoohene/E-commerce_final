@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 19:12:12
+/* Smarty version 3.1.30, created on 2017-03-19 19:17:13
   from "C:\xampp\htdocs\E-commerce_final\views\searchOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cec9fc778bc3_19451141',
+  'unifunc' => 'content_58cecb2927b4d5_16476853',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'c995404ff02b8f1a8ad172a02e217175f3e31474' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchOrder.tpl',
-      1 => 1489947125,
+      1 => 1489947428,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cec9fc778bc3_19451141 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cecb2927b4d5_16476853 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -111,10 +111,13 @@ function content_58cec9fc778bc3_19451141 (Smarty_Internal_Template $_smarty_tpl)
         </nav>
 	    <!--/.Navbar-->
     </header>
+		<div>
     <form action="employeeDisplay.php?eAction=14" method="POST">
+		<label>Date:</label>
       <input  id="search" type="date" name="searchOrder">
       <button type="submit" class="button">Search</button>
     </form>
+		</div>
 
     <?php if (isset($_REQUEST['searchOrder'])) {?>
       <?php if (($_REQUEST['searchOrder']) != '') {?>

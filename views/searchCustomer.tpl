@@ -36,7 +36,7 @@
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -63,24 +63,29 @@
                 <input class="form-control" type="text" placeholder="Search">
               </form>
 
-              <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                     </div>
-                 </li>
-              </ul>
-
+             <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                  <li class="nav-item dropdown">
+									{if isset($smarty.session.username)}
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {$smarty.session.username}</a>
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" href="#">Profile</a>
+												</div>
+										{else}
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+												<a class="dropdown-item" href="#">Login</a>
+											</div>
+									{/if}
+                  </li>
+               </ul>
 
             </div>
         </nav>
 	    <!--/.Navbar-->
     </header>
     <form action="employeeDisplay.php?eAction=6" method="POST">
-      <input class="search-bar" id="search" type="text" name="searchCustomer">
+			<div>Customer name <input type="text" name="searchCustomer"><br></div>
       <button type="submit" class="button">Search</button>
     </form>
     {if isset($smarty.request.searchCustomer)}
