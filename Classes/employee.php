@@ -16,8 +16,9 @@ class employee extends adb
 
 /**
 * @desc Allows registered employee to log into their account and previous sessions
-* @param string $username
-* @param string $password
+* @param {$username} Employee username
+* @param {$password} Employee password
+* @return : Array if successful, False if not
 **/
 	function loginEmployee($username,$password)
 	{
@@ -28,7 +29,8 @@ class employee extends adb
 
 /**
 * @desc Allows for the deletion of a particular employee entry
-* @param int $id
+* @param {$eid} ID number of employee
+* @return : True if successful, False if not
 **/
     function fireEmployee($eid)
     {
@@ -38,6 +40,7 @@ class employee extends adb
 
 /**
 * @desc Counts number of customers
+* @return : Number if successful, False if not
 **/
     function getNumberOfEmployees()
     {
@@ -47,7 +50,8 @@ class employee extends adb
 
 /**
 * @desc Gets a specified employee type
-* @param int $id
+* @param {$eid} ID number of employee
+* @return : Array if successful, False if not
 **/
     function getEmployeeType($eid)
     {
@@ -57,6 +61,7 @@ class employee extends adb
 
 /**
 * @desc Gets all employees
+* @return : Array if successful, False if not
 **/
     function getEmployees()
     {
@@ -66,7 +71,8 @@ class employee extends adb
 
 /**
 * @desc Searches for an employee based on specified requirements
-* @param string $name
+* @param {$name} Employee name
+* @return : Array if successful, False if not
 **/
     function searchEmployees($name)
     {
@@ -76,7 +82,8 @@ class employee extends adb
 
 /**
 * @desc Gets specified employee's data
-* @param int $id
+* @param {$eid} ID number of employee
+* @return : Array if successful, False if not
 **/
     function getEmployeeData($eid)
 	{
@@ -86,13 +93,14 @@ class employee extends adb
 
  /**
  * @desc Allows for editing employee details
- * @param int $id
- * @param string $name
- * @param string $zip
- * @param date $hiredate
- * @param string $password
- * @param string $account_type
- * @param string $username
+ * @param {$eid} ID number of employee
+ * @param {$name} Employee name
+ * @param {$zip} Zip address of employee
+ * @param {$hdate} Hire date of employee
+ * @param {$password} Employee password
+ * @param {$account_type} Account type of employee
+ * @param {$username} Employee username
+ * @return : True if successful, False if not
  **/
     function editEmployee($eid,$name,$zip,$hdate,$password,$account_type,$username)
     {
@@ -110,12 +118,13 @@ class employee extends adb
 
 /**
  * @desc Adds employee details
- * @param string $name
- * @param string $zip
- * @param date $hiredate
- * @param string $password
- * @param number $account_type
- * @param string $username
+* @param {$name} Employee name
+ * @param {$zip} Zip address of employee
+ * @param {$hdate} Hire date of employee
+ * @param {$password} Employee password
+ * @param {$account_type} Account type of employee
+ * @param {$username} Employee username
+ * @return : True if successful, False if not
  **/
 	function addEmployee($name,$zip,$hdate,$password,$account_type,$username)
 	{
@@ -128,6 +137,7 @@ class employee extends adb
 
  /**
  * @desc Gets all customers
+ * @return : Array if successful, False if not
  **/
 	function getZips()
 	{
