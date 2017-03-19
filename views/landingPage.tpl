@@ -152,6 +152,7 @@
 
                     <div>
 
+                    {assign var="user" value=$userInfo->getSession()}
                     {assign var="itemsResult" value=$item->getRecentItems()}
                     {assign var="itemsData" value=$item->fetchDB($itemsResult)}
                     {foreach from=$itemsData item=item}
@@ -182,7 +183,7 @@
                                 <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
                                 <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
                             <br>
-                                <a href="#"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a onclick="addToCart({$user['userId']},{$item.ino},1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
@@ -195,6 +196,14 @@
                         <!--/.Second row-->
                     {/if}
                     {/foreach}
+
+
+                        <script type="text/javascript">
+                            function addToCart(customerId, itemId, qty){
+                                alert("Adding item "+itemId+" to cart by user " + customerId);
+                                {**assign="orderRes" value=$order->test()**}
+                            }
+                        </script>
 
 
                     </div>

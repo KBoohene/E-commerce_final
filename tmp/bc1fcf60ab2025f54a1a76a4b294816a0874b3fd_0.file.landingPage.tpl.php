@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 01:53:24
+/* Smarty version 3.1.30, created on 2017-03-19 03:32:38
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde494a67d75_68598739',
+  'unifunc' => 'content_58cdfbd67dcaa1_45717619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1489888065,
+      1 => 1489894357,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde494a67d75_68598739 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdfbd67dcaa1_45717619 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,6 +182,8 @@ function content_58cde494a67d75_68598739 (Smarty_Internal_Template $_smarty_tpl)
 
                     <div>
 
+                    <?php $_smarty_tpl->_assignInScope('user', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
                     <?php $_smarty_tpl->_assignInScope('itemsResult', $_smarty_tpl->tpl_vars['item']->value->getRecentItems());
 ?>
                     <?php $_smarty_tpl->_assignInScope('itemsData', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['itemsResult']->value));
@@ -223,7 +225,9 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                                 <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
                                 <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
                             <br>
-                                <a href="#"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
+,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
@@ -242,6 +246,20 @@ $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
+
+
+                        <?php echo '<script'; ?>
+ type="text/javascript">
+                            function addToCart(customerId, itemId, qty){
+                                alert("Adding item "+itemId+" to cart by user " + customerId);
+                                 -->
+                                //<?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
+
+                                //alert("Result " + <?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
+);
+                            }
+                        <?php echo '</script'; ?>
+>
 
 
                     </div>

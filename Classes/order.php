@@ -16,16 +16,31 @@ class order extends adb{
 
   }
 
+  function test(){
+    echo "<script type='text/javascript'> alert('Youpii'); </script>";
+    return true;
+  }
+
 /**
 * @desc Adds items to an individual's cart
+* @param {$customerId} ID number of customer
 * @param {$itemId} ID number of item
-* @param {$orderNo} Cart identtification number
 * @param {$quanity} Number of items to be added
 * @return : True if successful, False if not
 **/
-  function addToCart($itemId,$orderNo,$quantity){
-    $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
-    return $this->query($strQuery);
+  function addToCart($customerId,$itemId,$quantity){
+
+    $result = checkOrder($customerId);
+    $resultData = $result->fetch_assoc();
+    if ($resultData == false){
+      echo "<script>alert('No cart available. Creating one!')</script>";
+      //create order
+    } else {
+      echo "<script>alert('Data: ".print_r($resultData)."')</script>";
+    }
+
+    // $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
+    // return $this->query($strQuery);
   }
 
 /**
@@ -75,7 +90,7 @@ class order extends adb{
 **/
   function checkout($orderId){
     $strQuery="UPDATE `orders` SET `checked_out` = 'Yes' WHERE `orders`.`ono` = '$orderid'";
-	return $this->query($strQuery);
+	  return $this->query($strQuery);
   }
 
 /**
@@ -104,7 +119,7 @@ class order extends adb{
 * @return : Array if successful, False if not
 **/
   function checkOrder($customerId){
-    $strQuery="SELECT * FROM order WHERE cno = '$customerId'& checked_out='No'";
+    $strQuery="SELECT * FROM orders WHERE cno = '$customerId' AND checked_out='No'";
     return $this->query($strQuery);
   }
 
@@ -129,60 +144,6 @@ class order extends adb{
     $strQuery="UPDATE orders SET shipped='$shippingDate', received='$deliverDate' WHERE ono ='$orderId'";
     return $this->query($strQuery);
   }
-  
-/**
-* @desc Searches for an order based on specified requirements
-* @param {$ono} ID number of order 
-* @return : Array if successful, False if not
-**/
-  function searchOrders($ono){
-    $strQuery = "SELECT * FROM orders WHERE ono LIKE '%$ono%'";
-    return $this->query($strQuery);
-  }
-
-/**
-* @desc Gets all orders
-* @return : Array if successful, False if not
-**/
-  function getOrders()
-  {
-    $strQuery = "SELECT * FROM orders";
-    return $this->query($strQuery);
-  } 
-
-/**
-* @desc Gets specified order's data
-* @param {$ono} ID number of order
-* @return : Array if successful, False if not
-**/
-function getOrderData($ono)
-	{
-	 $strQuery="select * from orders where ono ='$ono'";
-	 return $this->query($strQuery);
-	}  
-
-/**
-* @desc Allows for editing order details
-* @param {$ono} ID number of order
-* @param {$cno} ID number of customer 
-* @param {$checked_out} Check out status of order
-* @param {$received} Receive date
-* @param {$shipped} Shipping date
-* @return : True if successful, False if not 
-**/
-  function editOrder($ono, $cno, $checked_out, $received, $shipped){
-    $strQuery = "UPDATE orders SET cno = '$cno', checked_out = '$checked_out', received = '$received', shipped = '$shipped' WHERE ono = '$ono'";
-    echo $strQuery;
-	return $this->query($strQuery);
-  }
-
-/**
-* @desc Gets order status
-* @return : Array if successful, False if not
-**/  
-  function getCheckedStatus(){
-    $strQuery = "SELECT `checked_out` FROM `orders`";
-    return $this->query($strQuery);
-  }
 }
+
 ?>

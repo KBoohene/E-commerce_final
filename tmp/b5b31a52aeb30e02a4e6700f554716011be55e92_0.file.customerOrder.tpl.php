@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 02:04:31
+/* Smarty version 3.1.30, created on 2017-03-19 03:39:51
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde72f819584_20473601',
+  'unifunc' => 'content_58cdfd8752b355_62657411',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1489889067,
+      1 => 1489889157,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde72f819584_20473601 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdfd8752b355_62657411 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,7 +117,6 @@ function content_58cde72f819584_20473601 (Smarty_Internal_Template $_smarty_tpl)
             <?php echo "Session not started";?>
 
           <?php }?>
-
 
           <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getCustomerOrders($_smarty_tpl->tpl_vars['customerId']->value));
 ?>
