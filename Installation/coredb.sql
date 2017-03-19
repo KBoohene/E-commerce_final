@@ -1,12 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.7
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2017 at 02:16 PM
--- Server version: 5.6.31
--- PHP Version: 5.6.25
-
+-- Generation Time: Mar 19, 2017 at 01:10 AM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,10 +26,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
-CREATE TABLE IF NOT EXISTS `categories` (
+CREATE TABLE `categories` (
   `catno` int(11) NOT NULL,
   `catname` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
@@ -50,7 +49,7 @@ INSERT INTO `categories` (`catno`, `catname`) VALUES
 -- Table structure for table `checkout_log`
 --
 
-CREATE TABLE IF NOT EXISTS `checkout_log` (
+CREATE TABLE `checkout_log` (
   `ID` int(11) NOT NULL,
   `order_no` bigint(5) NOT NULL,
   `person_id` int(11) NOT NULL,
@@ -64,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `checkout_log` (
 -- Table structure for table `customers`
 --
 
-CREATE TABLE IF NOT EXISTS `customers` (
+CREATE TABLE `customers` (
   `cno` int(11) NOT NULL,
   `cname` varchar(30) NOT NULL,
   `street` varchar(30) NOT NULL,
@@ -74,17 +73,16 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `Password` varchar(50) NOT NULL,
   `status` varchar(15) NOT NULL DEFAULT 'enabled',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customers`
 --
 
 INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `Password`, `status`, `created_at`) VALUES
-(10, 'Kwabena', 'hnoome', 52522017, '0265057796', 'kwabena.boohene', 'jumper', 'enabled', '2017-02-28 13:58:08'),
+(10, 'Kwabena', 'hnoome', 52522017, '0265057763', 'kwabena.boohene', 'jumper', 'enabled', '2017-03-16 15:13:40'),
 (11, 'Kofi Boamah', 'House Number 7', 52362019, '0265057762', 'kofi.boamah', 'Tsuchikage14', 'enabled', '2017-03-14 10:56:43'),
-(12, 'Joel da Silva', '12345', 52362019, '1234567890', 'joel', 'joel', 'enabled', '2017-03-16 12:47:39');
-
+(12, 'Yaw Koom', '5679099', 52362019, '026509987', 'yaw.koom', 'yawkoom', 'enabled', '2017-03-16 20:51:43');
 
 -- --------------------------------------------------------
 
@@ -92,7 +90,7 @@ INSERT INTO `customers` (`cno`, `cname`, `street`, `zip`, `phone`, `Username`, `
 -- Table structure for table `employees`
 --
 
-CREATE TABLE IF NOT EXISTS `employees` (
+CREATE TABLE `employees` (
   `eno` int(11) NOT NULL,
   `ename` varchar(30) NOT NULL,
   `zip` bigint(5) NOT NULL,
@@ -101,16 +99,16 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `account_type` set('2','3') NOT NULL DEFAULT '2',
   `Username` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`eno`, `ename`, `zip`, `hdate`, `Password`, `created_at`, `account_type`, `Username`) VALUES
-(5, 'qwerty', 52522017, '2017-03-01', 'qwerty', '2017-03-16 11:09:19', 2, 'qwerty'),
-(6, 'qazxsw', 52522017, '2017-03-02', 'qazxsw', '2017-03-16 11:19:19', 2, 'qazxsw'),
-(7, 'qwerty', 47852018, '2017-03-08', 'qwerrt', '2017-03-16 11:28:07', 3, 'qwerty');
+(4, 'David Okyere', 52362019, '2017-03-08', 'david', '2017-03-16 12:00:06', '2', 'david.okyere'),
+(5, 'Kwabena Boohene', 47852018, '0000-00-00', 'kwabena', '2017-03-16 12:00:51', '2', 'k.boohene'),
+(6, 'youssouf silva', 52732017, '2017-03-03', 'youssouf', '2017-03-16 12:01:24', '3', 'k.boohene');
 
 -- --------------------------------------------------------
 
@@ -118,34 +116,33 @@ INSERT INTO `employees` (`eno`, `ename`, `zip`, `hdate`, `Password`, `created_at
 -- Table structure for table `items`
 --
 
-CREATE TABLE IF NOT EXISTS `items` (
+CREATE TABLE `items` (
   `ino` bigint(5) NOT NULL,
   `iname` varchar(30) NOT NULL,
-  `idesc` text NOT NULL,
   `qoh` int(11) NOT NULL,
   `price` decimal(6,2) NOT NULL,
   `olevel` int(11) NOT NULL,
   `catno` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`ino`, `iname`, `idesc`, `qoh`, `price`, `olevel`, `catno`) VALUES
-(1, 'Nike Flanel pants', 'No description currently available for Nikes', 50, 50.00, 10, 1),
-(2, 'Spalding Long Racket', 'No description currently available for Spalding', 50, 25.00, 10, 5),
-(3, 'Adidas NMD', 'No description currently available for Adidas', 20, 230.00, 5, 3),
-(4, 'Nike Air Jordans', 'No description currently available for Nike Air', 30, 200.00, 5, 3),
-(5, 'Spalding 360 Gloves', 'No description currently available for Spalding 360 Gloves', 40, 25.00, 10, 6),
-(6, 'Gildan Plain White Tees', 'No description currently available for Gildan', 30, 40.00, 10, 2),
-(7, 'Adidas slim fit Joggers', 'No description currently available for Adidas ', 50, 20.00, 10, 4),
-(8, 'Spalding grey Sweats', 'No description currently available for Spalding', 40, 15.00, 12, 4),
-(9, 'Nike Roshes Blue', 'No description currently available for Nikes Roshes', 60, 20.00, 10, 3),
-(10, 'Adidas Barricade', 'No description currently available for Adidas', 40, 250.00, 10, 5),
-(11, 'Nike Roshes v2', 'No description currently available for Nike Roshes', 50, 20.00, 20, 1),
-(18, 'Adidas NMDs V2', 'No description currently available for Adidas NMDs', 50, 20.00, 10, 3),
-(19, 'Plim Soles', 'No description currently available for Plim Soles', 40, 20.00, 10, 3);
+INSERT INTO `items` (`ino`, `iname`, `qoh`, `price`, `olevel`, `catno`) VALUES
+(1, 'Nike Flanel pants', 50, '50.00', 10, 1),
+(2, 'Spalding Long Racket', 50, '25.00', 10, 5),
+(3, 'Addidas NMD', 20, '230.00', 5, 3),
+(4, 'Nike Air Jordans', 30, '200.00', 5, 3),
+(5, 'Spalding 360 Gloves', 40, '25.00', 10, 6),
+(6, 'Gildan Plain White Tees', 30, '40.00', 10, 2),
+(7, 'Addidas slim fit Joggers', 50, '20.00', 10, 4),
+(8, 'Spalding grey sweats', 40, '15.00', 12, 4),
+(9, 'Nike Roshes Blue', 60, '20.00', 10, 3),
+(10, 'Adidas Barricade', 40, '250.00', 10, 5),
+(11, 'Nike Roshes v2', 50, '20.00', 20, 1),
+(18, 'Adidas NMDs V2', 50, '20.00', 10, 3),
+(19, 'Plim Soles', 40, '20.00', 10, 3);
 
 -- --------------------------------------------------------
 
@@ -153,7 +150,7 @@ INSERT INTO `items` (`ino`, `iname`, `idesc`, `qoh`, `price`, `olevel`, `catno`)
 -- Table structure for table `login_log`
 --
 
-CREATE TABLE IF NOT EXISTS `login_log` (
+CREATE TABLE `login_log` (
   `ID` int(11) NOT NULL,
   `PersonID` int(11) NOT NULL,
   `LogInTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -166,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `login_log` (
 -- Table structure for table `odetails`
 --
 
-CREATE TABLE IF NOT EXISTS `odetails` (
+CREATE TABLE `odetails` (
   `ono` bigint(5) NOT NULL,
   `ino` bigint(5) NOT NULL,
   `qty` int(11) DEFAULT NULL
@@ -178,20 +175,22 @@ CREATE TABLE IF NOT EXISTS `odetails` (
 -- Table structure for table `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
+CREATE TABLE `orders` (
   `ono` bigint(5) NOT NULL,
   `cno` int(11) NOT NULL,
+  `checked_out` set('Yes','No','','') NOT NULL DEFAULT 'No',
   `received` date NOT NULL,
   `shipped` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`ono`, `cno`, `received`, `shipped`, `created_at`) VALUES
-(1, 10, '2017-03-15', '2017-03-17', '2017-03-12 19:07:22');
+INSERT INTO `orders` (`ono`, `cno`, `checked_out`, `received`, `shipped`, `created_at`) VALUES
+(1, 10, 'No', '2017-03-15', '2017-03-17', '2017-03-12 19:07:22'),
+(2, 11, 'Yes', '0000-00-00', '0000-00-00', '2017-03-18 22:31:09');
 
 -- --------------------------------------------------------
 
@@ -211,7 +210,7 @@ CREATE TABLE `visitors_log` (
 -- Table structure for table `zipcodes`
 --
 
-CREATE TABLE IF NOT EXISTS `zipcodes` (
+CREATE TABLE `zipcodes` (
   `zip` bigint(5) NOT NULL,
   `city` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -311,7 +310,7 @@ ALTER TABLE `zipcodes`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `catno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `checkout_log`
 --
@@ -321,19 +320,17 @@ ALTER TABLE `checkout_log`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `cno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
-
+  MODIFY `cno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `eno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
-
+  MODIFY `eno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `ino` bigint(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `ino` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `login_log`
 --
@@ -343,7 +340,7 @@ ALTER TABLE `login_log`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `visitors_log`
 --

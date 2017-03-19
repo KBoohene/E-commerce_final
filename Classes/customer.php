@@ -16,13 +16,14 @@ class customer extends adb{
 
 /**
 * @desc Adds customer details
-* @param string $name 
-* @param string $street
-* @param string $zip
-* @param string $phone
-* @param string $username
-* @param string $password
-* @param string $status 
+* @param {$cname} Customer name 
+* @param {$street} Street address of customer
+* @param {$zip} Zip address of customer
+* @param {$phone} Phone number of customer
+* @param {$username} Customer username
+* @param {$password} Customer password
+* @param {$status} Status of customer
+* @return : True if successful, False if not
 **/
   function addCustomer($cname, $street, $zip, $phone, $username, $password, $status){
     $strQuery = "INSERT INTO customers (cno, cname, street, zip, phone, Username, Password, status, created_at) VALUES (NULL, '$cname', '$street', '$zip', '$phone', '$username', '$password', 'enabled', CURRENT_TIMESTAMP);";
@@ -31,8 +32,9 @@ class customer extends adb{
 
 /**
 * @desc Allows registered customer to log into their account and previous sessions
-* @param string $username
-* @param string $password
+* @param {$cname} Customer name 
+* @param {$password} Customer password
+* @return : Array if successful, False if not
 **/
   function loginCustomer($username, $password){
     $strQuery = "SELECT * FROM customers WHERE Username LIKE '$username'";
@@ -41,14 +43,15 @@ class customer extends adb{
 
 /**
 * @desc Allows for editing customer details
-* @param int $id
-* @param string $name 
-* @param string $street 
-* @param string $zip
-* @param string $phone
-* @param string $username 
-* @param string $password
-* @param string $status 
+* @param {$customerId} ID number of customer
+* @param {$cname} Customer name 
+* @param {$street} Street address of customer
+* @param {$zip} Zip address of customer
+* @param {$phone} Phone number of customer
+* @param {$username} Customer username
+* @param {$password} Customer password
+* @param {$status} Status of customer
+* @return : True if successful, False if not 
 **/
   function editCustomer($customerId, $cname, $street, $zip, $phone, $username, $password, $status){
     $strQuery = "UPDATE customers SET cname = '$cname', street = '$street', zip = '$zip', phone = '$phone', Username = '$username', Password = '$password', status = '$status' WHERE cno = '$customerId'";
@@ -57,7 +60,8 @@ class customer extends adb{
 
 /**
 * @desc Gets specified customer's data
-* @param int $id
+* @param {$customerId} ID number of customer
+* @return : Array if successful, False if not
 **/
   function getCustomerData($customerId){
     $strQuery = "SELECT * FROM customers WHERE cno = '$customerId'";
@@ -66,6 +70,7 @@ class customer extends adb{
 
 /**
 * @desc Counts number of customers
+* @return : Number if successful, False if not
 **/
   function getNumberOfCustomers(){
     $strQuery = "SELECT COUNT(*) FROM customers";
@@ -74,7 +79,8 @@ class customer extends adb{
 
 /**
 * @desc Searches for a customer based on specified requirements
-* @param string $name
+* @param {$cname} Customer name
+* @return : Array if successful, False if not
 **/
   function searchCustomers($cname){
     $strQuery = "SELECT * FROM customers WHERE cname LIKE '%$cname%'";
@@ -83,7 +89,8 @@ class customer extends adb{
 
 /**
 * @desc Change customer status to 'enabled'
-* @param int id
+* @param {$customerId} ID number of customer
+* @return : True if successful, False if not
 **/
   function enableCustomer($customerId){
      $strQuery = "UPDATE customers SET status = 'enabled' WHERE cno = $customerId";
@@ -92,7 +99,8 @@ class customer extends adb{
 
 /**
 * @desc Change customer status to 'disabled'
-* @param int id
+* @param {$customerId} ID number of customer
+* @return : True if successful, False if not
 **/
   function disableCustomer($customerId){
     $strQuery = "UPDATE customers SET status = 'disabled' WHERE cno = $customerId";
@@ -101,6 +109,7 @@ class customer extends adb{
 
 /**
 * @desc Gets customer assigned zip codes
+* @return : Array if successful, False if not
 **/
   function getZips(){
     $strQuery = "SELECT * FROM `zipcodes`";
@@ -109,6 +118,7 @@ class customer extends adb{
 
 /**
 * @desc Gets all customers
+* @return : Array if successful, False if not
 **/
   function getCustomers()
   {
