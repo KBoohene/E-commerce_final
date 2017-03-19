@@ -10,7 +10,7 @@
    {assign var="cno" value=$smarty.post.cno}
    {assign var="checked_out" value=$smarty.post.checked_out}
    {assign var="received" value=$smarty.post.received}
-   {assign var="shippedd" value=$smarty.post.shipped}
+   {assign var="shipped" value=$smarty.post.shipped}
    
    
    {$ono}
