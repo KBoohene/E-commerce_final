@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 03:31:25
+/* Smarty version 3.1.30, created on 2017-03-19 03:34:58
   from "C:\xampp\htdocs\Final\E-commerce_final\views\editOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cded7dc9be97_48051226',
+  'unifunc' => 'content_58cdee526099b1_15711817',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'badd0c921e149d1d5e64e828b093f625bde1bd5a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Final\\E-commerce_final\\views\\editOrder.tpl',
-      1 => 1489890680,
+      1 => 1489890891,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cded7dc9be97_48051226 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdee526099b1_15711817 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@ function content_58cded7dc9be97_48051226 (Smarty_Internal_Template $_smarty_tpl)
 ?>
    <?php $_smarty_tpl->_assignInScope('received', $_POST['received']);
 ?>
-   <?php $_smarty_tpl->_assignInScope('shippedd', $_POST['shipped']);
+   <?php $_smarty_tpl->_assignInScope('shipped', $_POST['shipped']);
 ?>
    
    
