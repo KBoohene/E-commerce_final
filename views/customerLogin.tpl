@@ -59,8 +59,8 @@
                               {if !isset($smarty.session.userId)}
                                   {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
                               {/if}
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               {if isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
                                   {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
                               {/if}
                           </div>

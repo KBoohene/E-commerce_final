@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 00:52:07
+/* Smarty version 3.1.30, created on 2017-03-19 02:04:31
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdd637a8a159_04693113',
+  'unifunc' => 'content_58cde72f819584_20473601',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1489884558,
+      1 => 1489889067,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdd637a8a159_04693113 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde72f819584_20473601 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,8 +87,9 @@ function content_58cdd637a8a159_04693113 (Smarty_Internal_Template $_smarty_tpl)
                                   <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                               <?php }?>
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               <?php if (isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
                                   <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
                               <?php }?>
@@ -104,10 +105,6 @@ function content_58cdd637a8a159_04693113 (Smarty_Internal_Template $_smarty_tpl)
 
         <!--Main layout-->
         <div class="container">
-            <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
-?> <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
-
-
           <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
@@ -120,8 +117,6 @@ function content_58cdd637a8a159_04693113 (Smarty_Internal_Template $_smarty_tpl)
             <?php echo "Session not started";?>
 
           <?php }?>
-
-          <?php echo print_r($_smarty_tpl->tpl_vars['userInfo']->value->getSession());?>
 
 
           <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getCustomerOrders($_smarty_tpl->tpl_vars['customerId']->value));

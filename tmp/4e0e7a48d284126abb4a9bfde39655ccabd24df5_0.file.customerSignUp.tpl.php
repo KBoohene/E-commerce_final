@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 00:52:03
+/* Smarty version 3.1.30, created on 2017-03-19 01:53:19
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdd6337dd441_01337479',
+  'unifunc' => 'content_58cde48f8c4578_23055237',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e0e7a48d284126abb4a9bfde39655ccabd24df5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl',
-      1 => 1489884710,
+      1 => 1489888198,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdd6337dd441_01337479 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde48f8c4578_23055237 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,15 +83,16 @@ function content_58cdd6337dd441_01337479 (Smarty_Internal_Template $_smarty_tpl)
                                              <?php }?>
                                        </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <?php if (!isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+                            <?php if (!isset($_SESSION['userId'])) {?>
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-                              <?php }?>
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
-                              <?php if (isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+                            <?php }?>
+                            <?php if (isset($_SESSION['userId'])) {?>
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
-                              <?php }?>
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                            <?php }?>
                           </div>
                       </li>
                   </ul>

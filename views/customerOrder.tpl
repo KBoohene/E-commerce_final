@@ -59,8 +59,8 @@
                               {if !isset($smarty.session.userId)}
                                   {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
                               {/if}
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               {if isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
                                   {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
                               {/if}
                           </div>
@@ -75,8 +75,6 @@
 
         <!--Main layout-->
         <div class="container">
-            {assign var="session" value=$userInfo->getSession()} {$session['fullname']}
-
           {if isset($smarty.session.userId)}
             {assign var="customerId" value=$smarty.session.userId}
             {"User id: "} {$customerId}
@@ -84,8 +82,6 @@
             {assign var="customerId" value=10}
             {"Session not started"}
           {/if}
-
-          {$userInfo->getSession()|print_r}
 
           {assign var="result" value=$order->getCustomerOrders($customerId)}
           {assign var="data" value=$order->fetchDB($result)}

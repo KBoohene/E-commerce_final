@@ -7,7 +7,7 @@
 <?php
 
 include_once('adb.php');
-class order extends adb
+class order extends adb{
 
 /**
 * @desc Constructor
@@ -97,7 +97,7 @@ class order extends adb
   function getNumOrdersPerWeek(){
 
   }
-  
+
 /**
 * @desc Checks order status
 * @param {$customerId} ID number of customer

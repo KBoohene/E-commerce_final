@@ -59,8 +59,8 @@
                                 {if !isset($smarty.session.userId)}
                                     {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
                                 {/if}
-                                <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                                 {if isset($smarty.session.userId)}
+                                    {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
                                     {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
                                 {/if}
                             </div>
@@ -101,7 +101,7 @@
                                 <div class="carousel-inner" role="listbox">
                                     <!--First slide-->
                                     <div class="carousel-item active">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(107).jpg" alt="First slide">
+                                        <img src="img/landing/Untitled-1.png" alt="First slide">
                                         <div class="carousel-caption">
                                             <h4>New collection</h4>
                                             <br>
@@ -110,7 +110,7 @@
                                     <!--/First slide-->
                                     <!--Second slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(109).jpg" alt="Second slide">
+                                        <img src="img/landing/Untitled-2.png" alt="Second slide">
                                         <div class="carousel-caption">
                                             <h4>Get discount!</h4>
                                             <br>
@@ -119,7 +119,7 @@
                                     <!--/Second slide-->
                                     <!--Third slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(36).jpg" alt="Third slide">
+                                        <img src="img/landing/Untitled-3.png" alt="Third slide">
                                         <div class="carousel-caption">
                                             <h4>Only now for 10$</h4>
                                             <br>
@@ -145,6 +145,10 @@
                     <!--/.First row-->
                     <br>
                     <hr class="extra-margins">
+
+                    <div class="divider-new">
+                        <h2 class="h2-responsive">Recent Items</h2>
+                    </div>
 
                     <div>
 

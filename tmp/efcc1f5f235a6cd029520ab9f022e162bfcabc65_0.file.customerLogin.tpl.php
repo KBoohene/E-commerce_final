@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 00:52:02
+/* Smarty version 3.1.30, created on 2017-03-19 01:53:22
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdd6321ede15_35046077',
+  'unifunc' => 'content_58cde492489966_12247922',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efcc1f5f235a6cd029520ab9f022e162bfcabc65' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl',
-      1 => 1489884575,
+      1 => 1489888093,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdd6321ede15_35046077 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde492489966_12247922 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,8 +87,9 @@ function content_58cdd6321ede15_35046077 (Smarty_Internal_Template $_smarty_tpl)
                                   <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                               <?php }?>
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                               <?php if (isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
                                   <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
                               <?php }?>

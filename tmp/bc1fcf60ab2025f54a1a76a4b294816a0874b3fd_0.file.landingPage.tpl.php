@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 00:51:59
+/* Smarty version 3.1.30, created on 2017-03-19 01:53:24
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdd62fdf54b2_07783497',
+  'unifunc' => 'content_58cde494a67d75_68598739',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1489884686,
+      1 => 1489888065,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde494a67d75_68598739 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,8 +87,9 @@ function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl)
                                     <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                                 <?php }?>
-                                <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
                                 <?php if (isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
                                     <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
                                 <?php }?>
@@ -130,7 +131,7 @@ function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl)
                                 <div class="carousel-inner" role="listbox">
                                     <!--First slide-->
                                     <div class="carousel-item active">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(107).jpg" alt="First slide">
+                                        <img src="img/landing/Untitled-1.png" alt="First slide">
                                         <div class="carousel-caption">
                                             <h4>New collection</h4>
                                             <br>
@@ -139,7 +140,7 @@ function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl)
                                     <!--/First slide-->
                                     <!--Second slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(109).jpg" alt="Second slide">
+                                        <img src="img/landing/Untitled-2.png" alt="Second slide">
                                         <div class="carousel-caption">
                                             <h4>Get discount!</h4>
                                             <br>
@@ -148,7 +149,7 @@ function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl)
                                     <!--/Second slide-->
                                     <!--Third slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(36).jpg" alt="Third slide">
+                                        <img src="img/landing/Untitled-3.png" alt="Third slide">
                                         <div class="carousel-caption">
                                             <h4>Only now for 10$</h4>
                                             <br>
@@ -174,6 +175,10 @@ function content_58cdd62fdf54b2_07783497 (Smarty_Internal_Template $_smarty_tpl)
                     <!--/.First row-->
                     <br>
                     <hr class="extra-margins">
+
+                    <div class="divider-new">
+                        <h2 class="h2-responsive">Recent Items</h2>
+                    </div>
 
                     <div>
 
