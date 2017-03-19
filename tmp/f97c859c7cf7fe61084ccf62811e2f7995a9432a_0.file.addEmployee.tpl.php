@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 20:14:58
+/* Smarty version 3.1.30, created on 2017-03-19 02:52:34
   from "C:\xampp\htdocs\E-commerce_final\views\addEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cae432111264_43817514',
+  'unifunc' => 'content_58cde462e348a7_08199725',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'f97c859c7cf7fe61084ccf62811e2f7995a9432a' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\addEmployee.tpl',
-      1 => 1489687567,
+      1 => 1489705364,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cae432111264_43817514 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde462e348a7_08199725 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -64,7 +64,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
    <br></div>
    <div> Hire Date <input type="date" name="hdate"/><br></div>
    <div> Password <input type="text" name="pword"/><br></div>
-   <div> Account Type <input type="number" name="acctype"/><br></div>
+   <div> Account Type <input type="number" name="acctype" min="2" max="3"/><br></div>
    <div> Username <input type="text" name="usrname"/><br></div>
    <input type="submit" value="Add">
   </form>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-17 21:35:53
+/* Smarty version 3.1.30, created on 2017-03-19 02:54:20
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cc48a9bfb150_78806316',
+  'unifunc' => 'content_58cde4cc8121c7_53301460',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1489782948,
+      1 => 1489888456,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cc48a9bfb150_78806316 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cde4cc8121c7_53301460 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
     <title>
-      Customer Orders
+      Dashboard
     </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -54,19 +54,83 @@ function content_58cc48a9bfb150_78806316 (Smarty_Internal_Template $_smarty_tpl)
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
+    <header>
+
+        <!--Navbar-->
+        <nav class="navbar navbar-toggleable-md navbar-dark">
+            <div class="container">
+
+                <a class="navbar-brand" href="#">
+                  <strong>Employee Core Store</strong>
+                </a>
+
+                <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
+                       </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
+                       </div>
+                  </li>
+                  <?php if (($_SESSION['acctype'] == 3)) {?>
+                     <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Employees</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu5">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=5">Add Employee</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=3">View Employee</a>
+                       </div>
+                  </li>
+                    <?php } else { ?>
+                  <?php }?>
+                </ul>
+
+                <form class="form-inline waves-effect waves-light">
+                  <input class="form-control" type="text" placeholder="Search">
+                </form>
+
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                   <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                           <a class="dropdown-item" href="#">Login</a>
+                           <a class="dropdown-item" href="#">Profile</a>
+                           <a class="dropdown-item" href="#">Logout</a>
+                       </div>
+                   </li>
+
+               </ul>
+
+
+            </div>
+        </nav>
+	    <!--/.Navbar-->
+
+    </header>
+
     <?php if (isset($_SESSION['userId'])) {?>
       <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
-
-    <?php } else { ?>
-      <?php $_smarty_tpl->_assignInScope('customerId', 10);
-?>
-      <?php echo "Session not started";?>
-
-    <?php }?>
-    <?php if (($_SESSION['acctype'] == 3)) {?>
-       <a href="employeeDisplay.php?eAction=3">Employees</a>
       <?php } else { ?>
+        <?php $_smarty_tpl->_assignInScope('customerId', 10);
+?>
+        <?php echo "Session not started";?>
+
+
+      <?php if (($_SESSION['acctype'] == 3)) {?>
+         <a href="employeeDisplay.php?eAction=3">Employees</a>
+        <?php } else { ?>
+      <?php }?>
+
     <?php }?>
 
   <a href="employeeDisplay.php?eAction=6">Customers</a>
@@ -228,32 +292,32 @@ function content_58cc48a9bfb150_78806316 (Smarty_Internal_Template $_smarty_tpl)
     <?php $_smarty_tpl->_assignInScope('topList', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['answer']->value));
 ?>
     <div class="col-md-6">
-    Top Ten Customers
-    <table>
-      <thead>
-        <tr>
-          <td>Customer Name</td>
-          <td>Number Of Orders</td>
-        </tr>
-      </thead>
-      <?php
+      Top Ten Customers
+      <table>
+        <thead>
+          <tr>
+            <td>Customer Name</td>
+            <td>Number Of Orders</td>
+          </tr>
+        </thead>
+        <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['topList']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-        <tr>
-          <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cname'];?>
+          <tr>
+            <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cname'];?>
 </td>
-          <td><?php echo $_smarty_tpl->tpl_vars['value']->value['NumberOfOrders'];?>
+            <td><?php echo $_smarty_tpl->tpl_vars['value']->value['NumberOfOrders'];?>
 </td>
-        </tr>
-      <?php
+          </tr>
+        <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-    </table>
+      </table>
     </div>
   </body>
 </html>
