@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-19 01:30:03
+  from "C:\xampp\htdocs\Final\E-commerce_final\views\loginEmployee.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58cdd10b8ac075_75578058',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ab1c1253ef0ae34e00933bbe8d653daefa493013' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\Final\\E-commerce_final\\views\\loginEmployee.tpl',
+      1 => 1489871937,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_58cdd10b8ac075_75578058 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,26 +45,43 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
-  {if isset($smarty.post.submitted)}
-    {assign var="username" value=$smarty.post.username}
-    {assign var="password" value=$smarty.post.password}
+  <?php if (isset($_POST['submitted'])) {?>
+    <?php $_smarty_tpl->_assignInScope('username', $_POST['username']);
+?>
+    <?php $_smarty_tpl->_assignInScope('password', $_POST['password']);
+?>
 
-    {if ($username)=="" or ($password)==""}
-    {"Please enter all information"}
-    {else}
-    {assign var="loginResult" value=$employee->loginEmployee($username, $password)}
+    <?php if (($_smarty_tpl->tpl_vars['username']->value) == '' || ($_smarty_tpl->tpl_vars['password']->value) == '') {?>
+    <?php echo "Please enter all information";?>
 
-        {assign var="loginData" value=$employee->fetchDB($loginResult)}
-        {foreach from=$loginData item=login}
-            {if ($login.Password) == $password}
-              {$userInfo->setSession($login.eno,$login.Username,$login.ename,$login.account_type)}
-              {$userInfo->addToLog($login.eno,$login.account_type)}
-              {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
-            {/if}
-        {/foreach}
+    <?php } else { ?>
+    <?php $_smarty_tpl->_assignInScope('loginResult', $_smarty_tpl->tpl_vars['employee']->value->loginEmployee($_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
+?>
 
-    {/if}
-  {/if}
+        <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
+?>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['loginData']->value, 'login');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
+?>
+            <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['ename'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToLog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+
+              <?php echo "<script>window.location = 'employeeDisplay.php?eAction=2'</script>";?>
+
+            <?php }?>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+
+    <?php }?>
+  <?php }?>
 <body>
 
     <header>
@@ -48,37 +89,43 @@
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <a class="navbar-brand" href="#">
-                  <strong>Employee Core Store</strong>
+                    <strong>Employee Core Store</strong>
                 </a>
-
-                <ul class="nav navbar-nav mr-auto">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
-                       </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
-
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
-                       </div>
-                  </li>
-                </ul>
-
-                <form class="form-inline waves-effect waves-light">
-                  <input class="form-control" type="text" placeholder="Search">
-                </form>
-
+                <div class="collapse navbar-collapse" id="navbarNav1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Pricing</a>
+                        </li>
+                        <li class="nav-item dropdown btn-group">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                                <a class="dropdown-item">Action</a>
+                                <a class="dropdown-item">Another action</a>
+                                <a class="dropdown-item">Something else here</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline waves-effect waves-light">
+                        <input class="form-control" type="text" placeholder="Search">
+                    </form>
+                </div>
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                   <li class="nav-item ">
+                       <a class="nav-link" href="#" data-toggle="modal" data-target="#cart-modal-ex"><span class="badge red">4</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-sm-down">Cart</span></a>
+                   </li>
+                   <li class="nav-item">
+                       <a class="nav-link"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                   </li>
                    <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
@@ -87,9 +134,7 @@
                            <a class="dropdown-item" href="#">Logout</a>
                        </div>
                    </li>
-
                </ul>
-
 
             </div>
         </nav>
@@ -222,18 +267,28 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery-2.2.3.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/tether.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/mdb.min.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 
 </html>
+<?php }
+}
