@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 18:07:46
+/* Smarty version 3.1.30, created on 2017-03-19 00:52:03
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cad4726f9e74_27937944',
+  'unifunc' => 'content_58cdd6337dd441_01337479',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e0e7a48d284126abb4a9bfde39655ccabd24df5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl',
-      1 => 1489669867,
+      1 => 1489884710,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cad4726f9e74_27937944 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdd6337dd441_01337479 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +70,28 @@ function content_58cad4726f9e74_27937944 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
                       </li>
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           <i class="fa fa-user"></i>
+                                             <?php if (isset($_SESSION['userId'])) {?>
+                                                 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+                                                 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+                                             <?php } else { ?>
+                                                 <?php echo "Guest";?>
+
+                                             <?php }?>
+                                       </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <a class="dropdown-item" href="index.php?cAction=4">Login</a>
+                              <?php if (!isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+                              <?php }?>
                               <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
-                              <a class="dropdown-item" href="#">Logout</a>
+                              <?php if (isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                              <?php }?>
                           </div>
                       </li>
                   </ul>

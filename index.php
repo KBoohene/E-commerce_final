@@ -44,6 +44,9 @@ if(isset($_REQUEST['cAction'])){
     case 6:
       $smarty->display('checkout.tpl');
       break;
+    case 7:
+      $smarty->display('customerLogout.tpl');
+      break;
     default:
       $smarty->display('landingPage.tpl');
   }
