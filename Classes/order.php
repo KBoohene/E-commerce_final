@@ -8,7 +8,6 @@
 
 include_once('adb.php');
 class order extends adb{
-
 /**
 * @desc Constructor
 **/
@@ -16,10 +15,6 @@ class order extends adb{
 
   }
 
-  function test(){
-    echo "<script type='text/javascript'> alert('Youpii'); </script>";
-    return true;
-  }
 
 /**
 * @desc Adds items to an individual's cart
@@ -144,6 +139,25 @@ class order extends adb{
     $strQuery="UPDATE orders SET shipped='$shippingDate', received='$deliverDate' WHERE ono ='$orderId'";
     return $this->query($strQuery);
   }
-}
 
+	function getOrders(){
+		$strQuery="SELECT * FROM orders";
+		return $this->query($strQuery);
+	}
+
+	function getOrderData($itemId){
+		$strQuery="SELECT * FROM orders WHERE ono = '$itemId'";
+		return $this->query($strQuery);
+	}
+
+	function editOrder($ono,$cno,$checked_out,$received,$shipped){
+		$strQuery="UPDATE orders SET shipped='$shipped', received='$received', checked_out='$checked_out', cno='$cno' WHERE ono ='$ono'";
+		return $this->query($strQuery);
+	}
+
+	function searchOrders($shipped){
+		$strQuery = "SELECT * FROM orders WHERE shipped LIKE '%$shipped%' OR received LIKE'%$shipped%'";
+		return $this->query($strQuery);
+	}
+}
 ?>

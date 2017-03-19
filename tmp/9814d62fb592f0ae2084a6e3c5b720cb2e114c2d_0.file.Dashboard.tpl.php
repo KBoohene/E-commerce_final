@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 03:35:32
+/* Smarty version 3.1.30, created on 2017-03-19 19:02:43
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdee741e1280_26176644',
+  'unifunc' => 'content_58cec7c395c9b3_86094981',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1489890924,
+      1 => 1489946553,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cec7c395c9b3_86094981 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -63,10 +63,10 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
                 <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
                   <strong>Employee Core Store</strong>
                 </a>
-                <?php } else { ?>
-                  <a class="navbar-brand" href="#">
-                  <strong>Employee Core Store</strong>
-                </a>
+                  <?php } else { ?>
+                    <a class="navbar-brand" href="#">
+                      <strong>Employee Core Store</strong>
+                    </a>
                 <?php }?>
 
                 <ul class="nav navbar-nav mr-auto">
@@ -78,7 +78,7 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
                        </div>
                   </li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                    <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -87,16 +87,18 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
                            <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
                        </div>
                   </li>
-                  <?php if (($_SESSION['acctype'] == 3)) {?>
-                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Employees</a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu5">
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=5">Add Employee</a>
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=3">View Employee</a>
-                       </div>
-                  </li>
-                    <?php } else { ?>
-                  <?php }?>
+                  <?php if (isset($_SESSION['acctype'])) {?>
+										<?php if (($_SESSION['acctype'] == 3)) {?>
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Employees</a>
+											<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu5">
+												<a class="dropdown-item" href="employeeDisplay.php?eAction=5">Add Employee</a>
+												<a class="dropdown-item" href="employeeDisplay.php?eAction=3">View Employees</a>
+											</div>
+										</li>
+										<?php } else { ?>
+									<?php }?>
+								<?php }?>
                 </ul>
 
                 <form class="form-inline waves-effect waves-light">
@@ -104,15 +106,14 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
                 </form>
 
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                           <a class="dropdown-item" href="#">Login</a>
-                           <a class="dropdown-item" href="#">Profile</a>
-                           <a class="dropdown-item" href="#">Logout</a>
-                       </div>
-                   </li>
-
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                      <a class="dropdown-item" href="#">Login</a>
+                      <a class="dropdown-item" href="#">Profile</a>
+                      <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                  </li>
                </ul>
 
 
@@ -121,163 +122,146 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
 	    <!--/.Navbar-->
 
     </header>
-
-    <?php if (isset($_SESSION['userId'])) {?>
-      <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
+		<?php if (isset($_SESSION)) {?>
+			<?php if (isset($_SESSION['userId'])) {?>
+				<?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
-      <?php } else { ?>
-        <?php $_smarty_tpl->_assignInScope('customerId', 10);
-?>
-        <?php echo "Session not started";?>
+				<?php if (($_SESSION['acctype'] == 3)) {?>
+					 <a href="employeeDisplay.php?eAction=3">Employees</a>
+					<?php } else { ?>
+				<?php }?>
+			<?php } else { ?>
+				<?php echo "Session not started";?>
 
+			<?php }?>
+		<?php }?>
 
-      <?php if (($_SESSION['acctype'] == 3)) {?>
-         <a href="employeeDisplay.php?eAction=3">Employees</a>
-        <?php } else { ?>
-      <?php }?>
-
-    <?php }?>
-
-  <a href="employeeDisplay.php?eAction=6">Customers</a>
-  <a href="employeeDisplay.php?eAction=2">Orders</a>
-  <a href="employeeDisplay.php?eAction=13">Items</a>
+    <a href="employeeDisplay.php?eAction=6">Customers</a>
+    <a href="employeeDisplay.php?eAction=14">Orders</a>
+    <a href="employeeDisplay.php?eAction=13">Items</a>
 
 
-  <?php $_smarty_tpl->_assignInScope('Mon', $_smarty_tpl->tpl_vars['report']->value->getDate("monday this week"));
+    <?php $_smarty_tpl->_assignInScope('Mon', $_smarty_tpl->tpl_vars['report']->value->getDate("monday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Tues', $_smarty_tpl->tpl_vars['report']->value->getDate("tuesday this week"));
+    <?php $_smarty_tpl->_assignInScope('Tues', $_smarty_tpl->tpl_vars['report']->value->getDate("tuesday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Wed', $_smarty_tpl->tpl_vars['report']->value->getDate("wednesday this week"));
+    <?php $_smarty_tpl->_assignInScope('Wed', $_smarty_tpl->tpl_vars['report']->value->getDate("wednesday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Thur', $_smarty_tpl->tpl_vars['report']->value->getDate("thursday this week"));
+    <?php $_smarty_tpl->_assignInScope('Thur', $_smarty_tpl->tpl_vars['report']->value->getDate("thursday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Fri', $_smarty_tpl->tpl_vars['report']->value->getDate("friday this week"));
+    <?php $_smarty_tpl->_assignInScope('Fri', $_smarty_tpl->tpl_vars['report']->value->getDate("friday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Sat', $_smarty_tpl->tpl_vars['report']->value->getDate("saturday this week"));
+    <?php $_smarty_tpl->_assignInScope('Sat', $_smarty_tpl->tpl_vars['report']->value->getDate("saturday this week"));
 ?>
-  <?php $_smarty_tpl->_assignInScope('Sun', $_smarty_tpl->tpl_vars['report']->value->getDate("sunday this week"));
-?>
-
-  <?php $_smarty_tpl->_assignInScope('MonVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Mon']->value));
-?>
-  <?php $_smarty_tpl->_assignInScope('val1', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['MonVal']->value));
+    <?php $_smarty_tpl->_assignInScope('Sun', $_smarty_tpl->tpl_vars['report']->value->getDate("sunday this week"));
 ?>
 
-  <?php $_smarty_tpl->_assignInScope('TuesVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Tues']->value));
+    <?php $_smarty_tpl->_assignInScope('MonVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Mon']->value));
 ?>
-  <?php $_smarty_tpl->_assignInScope('val2', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['TuesVal']->value));
-?>
-
-  <?php $_smarty_tpl->_assignInScope('WedVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Wed']->value));
-?>
-  <?php $_smarty_tpl->_assignInScope('val3', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['WedVal']->value));
+    <?php $_smarty_tpl->_assignInScope('val1', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['MonVal']->value));
 ?>
 
-  <?php $_smarty_tpl->_assignInScope('ThurVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Thur']->value));
+    <?php $_smarty_tpl->_assignInScope('TuesVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Tues']->value));
 ?>
-  <?php $_smarty_tpl->_assignInScope('val4', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ThurVal']->value));
-?>
-
-  <?php $_smarty_tpl->_assignInScope('FriVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Fri']->value));
-?>
-  <?php $_smarty_tpl->_assignInScope('val5', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['FriVal']->value));
+    <?php $_smarty_tpl->_assignInScope('val2', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['TuesVal']->value));
 ?>
 
-  <?php $_smarty_tpl->_assignInScope('SatVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Sat']->value));
+    <?php $_smarty_tpl->_assignInScope('WedVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Wed']->value));
 ?>
-  <?php $_smarty_tpl->_assignInScope('val6', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SatVal']->value));
-?>
-
-  <?php $_smarty_tpl->_assignInScope('SunVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Sun']->value));
-?>
-  <?php $_smarty_tpl->_assignInScope('val7', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SunVal']->value));
+    <?php $_smarty_tpl->_assignInScope('val3', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['WedVal']->value));
 ?>
 
-  <div class="col-md-9">
+    <?php $_smarty_tpl->_assignInScope('ThurVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Thur']->value));
+?>
+    <?php $_smarty_tpl->_assignInScope('val4', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ThurVal']->value));
+?>
 
-    <canvas id="myChart2"></canvas>
+    <?php $_smarty_tpl->_assignInScope('FriVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Fri']->value));
+?>
+    <?php $_smarty_tpl->_assignInScope('val5', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['FriVal']->value));
+?>
 
-  </div>
+    <?php $_smarty_tpl->_assignInScope('SatVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Sat']->value));
+?>
+    <?php $_smarty_tpl->_assignInScope('val6', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SatVal']->value));
+?>
 
-  <?php echo '<script'; ?>
+    <?php $_smarty_tpl->_assignInScope('SunVal', $_smarty_tpl->tpl_vars['report']->value->numItemsGivenDay($_smarty_tpl->tpl_vars['Sun']->value));
+?>
+    <?php $_smarty_tpl->_assignInScope('val7', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SunVal']->value));
+?>
+
+    <div class="col-md-9">
+      <canvas id="myChart2"></canvas>
+    </div>
+    <?php echo '<script'; ?>
 >
-
-    $(function () {
-
-
+      $(function () {
         var data = {
             labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             datasets: [
                 {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [<?php echo $_smarty_tpl->tpl_vars['val1']->value[0]['Orders_Per_Day'];?>
+                  label: "My First dataset",
+                  fillColor: "rgba(220,220,220,0.5)",
+                  strokeColor: "rgba(220,220,220,0.8)",
+                  highlightFill: "rgba(220,220,220,0.75)",
+                  highlightStroke: "rgba(220,220,220,1)",
+                  data: [<?php echo $_smarty_tpl->tpl_vars['val1']->value[0]['Orders_Per_Day'];?>
 , <?php echo $_smarty_tpl->tpl_vars['val2']->value[0]['Orders_Per_Day'];?>
 ,<?php echo $_smarty_tpl->tpl_vars['val3']->value[0]['Orders_Per_Day'];?>
 ,
-                    <?php echo $_smarty_tpl->tpl_vars['val4']->value[0]['Orders_Per_Day'];?>
+                  <?php echo $_smarty_tpl->tpl_vars['val4']->value[0]['Orders_Per_Day'];?>
 , <?php echo $_smarty_tpl->tpl_vars['val5']->value[0]['Orders_Per_Day'];?>
 , <?php echo $_smarty_tpl->tpl_vars['val6']->value[0]['Orders_Per_Day'];?>
 , <?php echo $_smarty_tpl->tpl_vars['val7']->value[0]['Orders_Per_Day'];?>
 ]
                 }
-            ]
-        };
+              ]
+            };
 
         var option = {
         responsive: true,
         };
-
-
         var ctx = document.getElementById("myChart2").getContext('2d');
         var myBarChart = new Chart(ctx).Bar(data, option);
-
-    });
-
-  <?php echo '</script'; ?>
+      });
+    <?php echo '</script'; ?>
 >
 
 
 
-
-
-  <?php $_smarty_tpl->_assignInScope('ans1', $_smarty_tpl->tpl_vars['report']->value->getOrderShipped(1));
+    <?php $_smarty_tpl->_assignInScope('ans1', $_smarty_tpl->tpl_vars['report']->value->getOrderShipped(1));
 ?>
-  <?php $_smarty_tpl->_assignInScope('shipped', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ans1']->value));
+    <?php $_smarty_tpl->_assignInScope('shipped', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ans1']->value));
 ?>
-  <?php $_smarty_tpl->_assignInScope('ans2', $_smarty_tpl->tpl_vars['report']->value->getOrderShipped(2));
+    <?php $_smarty_tpl->_assignInScope('ans2', $_smarty_tpl->tpl_vars['report']->value->getOrderShipped(2));
 ?>
-  <?php $_smarty_tpl->_assignInScope('notShipped', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ans2']->value));
+    <?php $_smarty_tpl->_assignInScope('notShipped', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ans2']->value));
 ?>
-<div class="col-md-6">
-
-    <canvas id="myChart1"></canvas>
-
-  </div>
-<?php echo '<script'; ?>
+    <div class="col-md-6">
+      <canvas id="myChart1"></canvas>
+    </div>
+    <?php echo '<script'; ?>
 >
 
-    $(function () {
+      $(function () {
 
-    var data = [
-        {
+      var data = [
+          {
             value: <?php echo $_smarty_tpl->tpl_vars['shipped']->value[0]['Num_shipped'];?>
 ,
             color:"#F7464A",
             highlight: "#FF5A5E",
             label: "Items shipped"
-        },
-        {
+          },
+          {
             value: <?php echo $_smarty_tpl->tpl_vars['notShipped']->value[0]['Not_shipped'];?>
 ,
             color: "#46BFBD",
             highlight: "#5AD3D1",
             label: "Not Shipped"
-        }
-    ]
+          }
+        ]
         var option = {
         responsive: true,
         };
@@ -285,10 +269,9 @@ function content_58cdee741e1280_26176644 (Smarty_Internal_Template $_smarty_tpl)
 
         var ctx = document.getElementById("myChart1").getContext('2d');
         var myDoughnutChart = new Chart(ctx).Doughnut(data,option);
+      });
 
-    });
-
-  <?php echo '</script'; ?>
+    <?php echo '</script'; ?>
 >
 
 

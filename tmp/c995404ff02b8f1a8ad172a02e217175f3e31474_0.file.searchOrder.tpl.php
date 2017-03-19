@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 18:16:37
-  from "C:\xampp\htdocs\E-commerce_final\views\searchItemsV2.tpl" */
+/* Smarty version 3.1.30, created on 2017-03-19 19:12:12
+  from "C:\xampp\htdocs\E-commerce_final\views\searchOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cebcf57822d8_82598720',
+  'unifunc' => 'content_58cec9fc778bc3_19451141',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
-    'ba30c1e7454571796707db4db613ba73a320f296' =>
+    'c995404ff02b8f1a8ad172a02e217175f3e31474' =>
     array (
-      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchItemsV2.tpl',
-      1 => 1489943792,
+      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchOrder.tpl',
+      1 => 1489947125,
       2 => 'file',
     ),
   ),
@@ -20,21 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cebcf57822d8_82598720 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cec9fc778bc3_19451141 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
-
-<!--CHANGELOG
-    Changed column names to reflect changes made in database - 12/3/2017
-	Formatted code - 12/3/2017
--->
-<!--
-  @author David Okyere
-  @desc - This page displays items based on user search input.
--->
-
   <head>
-    <title>View Items</title>
+    <title>View Orders</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <?php echo '<script'; ?>
@@ -121,83 +111,87 @@ function content_58cebcf57822d8_82598720 (Smarty_Internal_Template $_smarty_tpl)
         </nav>
 	    <!--/.Navbar-->
     </header>
-
-    <form action="index.php?cAction=1" method="POST">
-      <input class="search-bar" id="search" type="text" name="searchName">
+    <form action="employeeDisplay.php?eAction=14" method="POST">
+      <input  id="search" type="date" name="searchOrder">
       <button type="submit" class="button">Search</button>
     </form>
 
-    <?php if (isset($_REQUEST['searchName'])) {?>
-      <?php if (($_REQUEST['searchName']) != '') {?>
-        <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
+    <?php if (isset($_REQUEST['searchOrder'])) {?>
+      <?php if (($_REQUEST['searchOrder']) != '') {?>
+        <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchOrder']);
 ?>
-        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->searchItems($_smarty_tpl->tpl_vars['txt']->value));
+        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->searchOrders($_smarty_tpl->tpl_vars['txt']->value));
 ?>
-        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
       <?php } elseif (($_REQUEST['searchName']) == '') {?>
-        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
+        <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getOrders());
 ?>
-        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+        <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
       <?php }?>
     <?php } else { ?>
-      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
+      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getOrders());
 ?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
     <?php }?>
 
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <td>Product ID</td>
-            <td>Product Name</td>
-            <td>Quantity on Hand</td>
-            <td>Price</td>
-            <td>Reorder Level</td>
-          </tr>
-        </thead>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<td>Order ID</td>
+						<td>Customer ID</td>
+						<td>Checked Out</td>
+						<td>Received</td>
+						<td>Shipped</td>
+						<td>Created At</td>
+					</tr>
+				</thead>
 
-        <?php
+				<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-          <tr>
-            <?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
-              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
+					<tr>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
 </td>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['value']->value['iname']) {?>
-              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['iname'];?>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['cno']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
 </td>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['value']->value['qoh']) {?>
-              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['qoh'];?>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['checked_out']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['checked_out'];?>
 </td>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
-              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
 </td>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['value']->value['olevel']) {?>
-              <td><?php echo $_smarty_tpl->tpl_vars['value']->value['olevel'];?>
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
 </td>
-            <?php }?>
-              <td><a href="employeeDisplay.php?eAction=11&searchItem=<?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
-">Edit Item</a>
-          </tr>
-        <?php
+						<?php }?>
+						<?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
+							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
+</td>
+						<?php }?>
+						<td><a href="employeeDisplay.php?eAction=15&searchName=<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+">Edit Order</a>
+					</tr>
+				<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-      </table>
-    </div>
-  </body>
+			</table>
+ 		</div>
+	</body>
 </html>
 <?php }
 }
