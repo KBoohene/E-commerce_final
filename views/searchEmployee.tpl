@@ -36,7 +36,7 @@
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
 
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
                   <strong>Employee Core Store</strong>
                 </a>
 

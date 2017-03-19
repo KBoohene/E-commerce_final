@@ -7,7 +7,7 @@
 <?php
 
 include_once('adb.php');
-class order extends adb
+class order extends adb{
 
 /**
 * @desc Constructor
