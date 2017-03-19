@@ -46,11 +46,23 @@
                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
                       </li>
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-user"></i>
+                                {if isset($smarty.session.userId)}
+                                    {assign var="session" value=$userInfo->getSession()}
+                                    {$session['fullname']}
+                                {else}
+                                    {"Guest"}
+                                {/if}
+                          </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <a class="dropdown-item" href="index.php?cAction=4">Login</a>
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
-                              <a class="dropdown-item" href="#">Logout</a>
+                              {if !isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+                              {/if}
+                              {if isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+                                  {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+                              {/if}
                           </div>
                       </li>
                   </ul>
@@ -94,19 +106,28 @@
                             		{assign var="password" value=$smarty.post.password}
 
                             		{if ($username)=="" or ($password)==""}
-                                  {"Please enter all information"}
-                                {else}
-                                  {assign var="loginResult" value=$customer->loginCustomer($username, $password)}
+                                        {"Please enter all information"}
+                                    {else}
+                                        {assign var="loginResult" value=$customer->loginCustomer($username, $password)}
+                            		    {assign var="loginData" value=$customer->fetchDB($loginResult)}
+                                        {if  $loginData|@count gt 0}
+                                            <!-- {"if  $loginData|@count gt 0"} -->
+                                            <!-- {$loginData|print_r} -->
 
-                        			{assign var="loginData" value=$customer->fetchDB($loginResult)}
-                        			{foreach from=$loginData item=login}
-                        				{if ($login.Password) == $password}
-                                            {$userInfo->setSession($login.cno,$login.Username,$login.cname,$login.account_type)}
-                        					{"<script>window.location = 'index.php?cAction=5'</script>"}
+                                            {foreach from=$loginData item=login}
+                                                {if ($login.Password) == $password}
+                                                    {$userInfo->setSession($login.cno,$login.Username,$login.cname,$login.account_type)}
+                                                    {"<script>window.location = 'index.php?cAction=5'</script>"}
+                                                {else}
+                                                    {"Wrong Password"}
+                                                {/if}
+                                            {/foreach}
+                                        {else}
+                                            <!-- {$loginData|print_r} -->
 
-                        				{/if}
-                        			{/foreach}
-                                {/if}
+                                            {"User Not Found"}
+                                        {/if}
+                                  {/if}
                               {/if}
 
                             </div>

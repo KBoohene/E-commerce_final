@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 20:08:43
+/* Smarty version 3.1.30, created on 2017-03-19 03:32:38
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58caf0cbe34753_44802687',
+  'unifunc' => 'content_58cdfbd67dcaa1_45717619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1489694547,
+      1 => 1489894357,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58cdfbd67dcaa1_45717619 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +70,29 @@ function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl)
                             <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           <i class="fa fa-user"></i>
+                                             <?php if (isset($_SESSION['userId'])) {?>
+                                                 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+                                                 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+                                             <?php } else { ?>
+                                                 <?php echo "Guest";?>
+
+                                             <?php }?>
+                                       </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item" href="index.php?cAction=4">Login</a>
-                                <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <?php if (!isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+                                <?php }?>
+                                <?php if (isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                                <?php }?>
                             </div>
                         </li>
                     </ul>
@@ -113,7 +131,7 @@ function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl)
                                 <div class="carousel-inner" role="listbox">
                                     <!--First slide-->
                                     <div class="carousel-item active">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(107).jpg" alt="First slide">
+                                        <img src="img/landing/Untitled-1.png" alt="First slide">
                                         <div class="carousel-caption">
                                             <h4>New collection</h4>
                                             <br>
@@ -122,7 +140,7 @@ function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl)
                                     <!--/First slide-->
                                     <!--Second slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(109).jpg" alt="Second slide">
+                                        <img src="img/landing/Untitled-2.png" alt="Second slide">
                                         <div class="carousel-caption">
                                             <h4>Get discount!</h4>
                                             <br>
@@ -131,7 +149,7 @@ function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl)
                                     <!--/Second slide-->
                                     <!--Third slide-->
                                     <div class="carousel-item">
-                                        <img src="http://mdbootstrap.com/img//Photos/Slides/img%20(36).jpg" alt="Third slide">
+                                        <img src="img/landing/Untitled-3.png" alt="Third slide">
                                         <div class="carousel-caption">
                                             <h4>Only now for 10$</h4>
                                             <br>
@@ -158,8 +176,14 @@ function content_58caf0cbe34753_44802687 (Smarty_Internal_Template $_smarty_tpl)
                     <br>
                     <hr class="extra-margins">
 
+                    <div class="divider-new">
+                        <h2 class="h2-responsive">Recent Items</h2>
+                    </div>
+
                     <div>
 
+                    <?php $_smarty_tpl->_assignInScope('user', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
                     <?php $_smarty_tpl->_assignInScope('itemsResult', $_smarty_tpl->tpl_vars['item']->value->getRecentItems());
 ?>
                     <?php $_smarty_tpl->_assignInScope('itemsData', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['itemsResult']->value));
@@ -201,7 +225,9 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                                 <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
                                 <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
                             <br>
-                                <a href="#"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
+,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
@@ -220,6 +246,20 @@ $_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
+
+
+                        <?php echo '<script'; ?>
+ type="text/javascript">
+                            function addToCart(customerId, itemId, qty){
+                                alert("Adding item "+itemId+" to cart by user " + customerId);
+                                 -->
+                                //<?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
+
+                                //alert("Result " + <?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
+);
+                            }
+                        <?php echo '</script'; ?>
+>
 
 
                     </div>
