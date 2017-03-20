@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 03:32:38
+/* Smarty version 3.1.30, created on 2017-03-19 12:50:07
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdfbd67dcaa1_45717619',
+  'unifunc' => 'content_58ce7e7f099043_63595279',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1489894357,
+      1 => 1489895708,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdfbd67dcaa1_45717619 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ce7e7f099043_63595279 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,11 +252,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
  type="text/javascript">
                             function addToCart(customerId, itemId, qty){
                                 alert("Adding item "+itemId+" to cart by user " + customerId);
-                                 -->
-                                //<?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
-
-                                //alert("Result " + <?php echo $_smarty_tpl->tpl_vars['orderRes']->value;?>
-);
+                                
                             }
                         <?php echo '</script'; ?>
 >
