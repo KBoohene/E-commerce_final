@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 01:53:19
+/* Smarty version 3.1.30, created on 2017-03-20 17:32:23
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde48f8c4578_23055237',
+  'unifunc' => 'content_58d012279274f5_92348778',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4e0e7a48d284126abb4a9bfde39655ccabd24df5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerSignUp.tpl',
-      1 => 1489888198,
+      1 => 1490031142,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde48f8c4578_23055237 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d012279274f5_92348778 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,8 +144,9 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['zip']->value) {
 ?>
                                 				<option value="<?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
-"><?php echo $_smarty_tpl->tpl_vars['zip']->value['city'];?>
-</option>
+"><?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
+ (<?php echo $_smarty_tpl->tpl_vars['zip']->value['city'];?>
+)</option>
                                 			<?php
 }
 }

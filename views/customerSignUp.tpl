@@ -107,7 +107,7 @@
                                 			{assign var="zipResult" value=$customer->getZips()}
                                 			{assign var="zipData" value=$customer->fetchDB($zipResult)}
                                 			{foreach from=$zipData item=zip}
-                                				<option value="{$zip.zip}">{$zip.city}</option>
+                                				<option value="{$zip.zip}">{$zip.zip} ({$zip.city})</option>
                                 			{/foreach}
                                         </select>
                                     </div>
