@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 17:40:07
+/* Smarty version 3.1.30, created on 2017-03-20 19:11:55
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d005e7d3bdf9_74876460',
+  'unifunc' => 'content_58d01b6be24bb8_44244457',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1490028001,
+      1 => 1490033502,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d005e7d3bdf9_74876460 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d01b6be24bb8_44244457 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,22 +66,26 @@ function content_58d005e7d3bdf9_74876460 (Smarty_Internal_Template $_smarty_tpl)
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                        </li>
+												 <?php if (isset($_SESSION['acctype'])) {?>
+												  <?php } else { ?>
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 <?php }?>
+
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                            <i class="fa fa-user"></i>
-                                             <?php if (isset($_SESSION['userId'])) {?>
-																						 		 <?php if (($_SESSION['userId'] == 1)) {?>
+                                             <?php if (isset($_SESSION['acctype'])) {?>
+																						 		 <?php if (($_SESSION['acctype'] == 1)) {?>
 																									 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
 																									 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-																									 <?php } else { ?>
-																										 <?php echo "Guest";?>
-
 																								 <?php }?>
+																								<?php } else { ?>
+																									<?php echo "Guest";?>
+
                                              <?php }?>
                                        </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
@@ -91,7 +95,7 @@ function content_58d005e7d3bdf9_74876460 (Smarty_Internal_Template $_smarty_tpl)
                                 <?php }?>
 
                                 <?php if (isset($_SESSION['userId'])) {?>
-																	<?php if (($_SESSION['userId'] == 1)) {?>
+																	<?php if (($_SESSION['acctype'] == 1)) {?>
 																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
 																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
