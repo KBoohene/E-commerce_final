@@ -48,22 +48,29 @@
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
-                                {if isset($smarty.session.userId)}
-                                    {assign var="session" value=$userInfo->getSession()}
-                                    {$session['fullname']}
-                                {else}
-                                    {"Guest"}
-                                {/if}
-                          </a>
+                                             {if isset($smarty.session.userId)}
+																						 		 {if ($smarty.session.userId==1)}
+																									 {assign var="session" value=$userInfo->getSession()}
+																									 {$session['fullname']}
+																									 {else}
+																										 {"Guest"}
+																								 {/if}
+                                             {/if}
+                                       </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              {if !isset($smarty.session.userId)}
-                                  {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                              {/if}
-                              {if isset($smarty.session.userId)}
-                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-                                  {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-                              {/if}
-                          </div>
+                                {if !isset($smarty.session.userId)}
+                                    {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+                                {/if}
+
+                                {if isset($smarty.session.userId)}
+																	{if ($smarty.session.userId==1)}
+																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+																		{else}
+																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+																	{/if}
+                                {/if}
+                            </div>
                       </li>
                   </ul>
               </div>
@@ -116,7 +123,7 @@
 
                                             {foreach from=$loginData item=login}
                                                 {if ($login.Password) == $password}
-                                                    {$userInfo->setSession($login.cno,$login.Username,$login.cname,$login.account_type)}
+                                                    {$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
                                                     {"<script>window.location = 'index.php?cAction=5'</script>"}
                                                 {else}
                                                     {"Wrong Password"}

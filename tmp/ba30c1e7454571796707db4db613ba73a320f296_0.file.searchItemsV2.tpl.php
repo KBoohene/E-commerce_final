@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 18:16:37
+/* Smarty version 3.1.30, created on 2017-03-20 18:01:16
   from "C:\xampp\htdocs\E-commerce_final\views\searchItemsV2.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cebcf57822d8_82598720',
+  'unifunc' => 'content_58d00adc093bb0_22963877',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'ba30c1e7454571796707db4db613ba73a320f296' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchItemsV2.tpl',
-      1 => 1489943792,
+      1 => 1490029219,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cebcf57822d8_82598720 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d00adc093bb0_22963877 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 
@@ -106,15 +106,22 @@ function content_58cebcf57822d8_82598720 (Smarty_Internal_Template $_smarty_tpl)
               </form>
 
               <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                     </div>
-                 </li>
-              </ul>
+                  <li class="nav-item dropdown">
+									<?php if (isset($_SESSION['username'])) {?>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
+</a>
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" href="#">Profile</a>
+												</div>
+										<?php } else { ?>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+												<a class="dropdown-item" href="#">Login</a>
+											</div>
+									<?php }?>
+                  </li>
+               </ul>
 
 
             </div>

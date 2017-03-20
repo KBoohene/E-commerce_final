@@ -64,10 +64,9 @@
 
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Guest</a>
                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                            <a class="dropdown-item" href="#">Login</a>
-                           <a class="dropdown-item" href="#">Profile</a>
                        </div>
                    </li>
 
