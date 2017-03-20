@@ -67,12 +67,12 @@
                                 {/if}
 
                                 {if isset($smarty.session.userId)}
-																	{if ($smarty.session.acctype==1)}
-																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-																		{else}
-																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-																	{/if}
+    								{if ($smarty.session.acctype==1)}
+    										{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+    										{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+    									{else}
+    										{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+    								{/if}
                                 {/if}
                             </div>
                         </li>
@@ -167,9 +167,9 @@
                     {assign var="itemsResult" value=$item->getRecentItems()}
                     {assign var="itemsData" value=$item->fetchDB($itemsResult)}
                     {foreach from=$itemsData item=item}
-                    {if $item@iteration % 4 == 0}
-                    <!--Second row-->
-                    <div class="row">
+                        {if $item@iteration % 4 == 0}
+                        <!--Second row-->
+                        <div class="row">
                     {/if}
                     <!--Columnn-->
                     <div class="col-lg-3">
@@ -208,13 +208,49 @@
                     {/if}
                     {/foreach}
 
-
+{literal}
                         <script type="text/javascript">
-                            function addToCart(customerId, itemId, qty){
-                                alert("Adding item "+itemId+" to cart by user " + customerId);
-                                {**assign="orderRes" value=$order->test()**}
+                            function addToCartComplete(xhr, status){
+                                //alert("ADDED to Cart");
+                                console.log(xhr);
+
+                                var obj=$.parseJSON(xhr.responseText);
+                				if(obj.result==0){
+                					console.log(obj.message);
+                				}else{
+
+                					console.log("added to cart");
+
+                				}
+
+
                             }
+
+                            function addToCart(customerId, itemId, qty){
+                                //alert("Adding item "+itemId+" to cart by user " + customerId);
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+                                alert(theUrl);
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:addToCartComplete}
+                			    );
+                            }
+
+                            function saveNameComplete(xhr,status){
+                				divStatus.innerHTML=xhr.responseText;
+                			}
+
+                			function saveName(id){
+                				currentObject.innerHTML=$("#txtName").val();
+                				var username=currentObject.innerHTML;
+                				var theUrl="usersajax.php?cmd=5&uc="+id+"&name="+username;
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:saveNameComplete}
+                			    );
+                			}
                         </script>
+{/literal}
 
 
                     </div>

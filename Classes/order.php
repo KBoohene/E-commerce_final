@@ -1,10 +1,8 @@
-<!--
-  @author Youssouf da Silva, David Okyere & Kwabena Boohene
-  @desc order class containing related functions
--->
-
-
 <?php
+/**
+*  @author Youssouf da Silva, David Okyere & Kwabena Boohene
+*  @desc order class containing related functions
+*/
 
 include_once('adb.php');
 class order extends adb{
@@ -23,28 +21,29 @@ class order extends adb{
 * @param {$quanity} Number of items to be added
 * @return : True if successful, False if not
 **/
-  function addToCart($customerId,$itemId,$quantity){
+  function addToCart($orderNo,$itemId,$quantity){
 
-    $result = checkOrder($customerId);
-    $resultData = $result->fetch_assoc();
-    if ($resultData == false){
-      echo "<script>alert('No cart available. Creating one!')</script>";
-      //create order
-    } else {
-      echo "<script>alert('Data: ".print_r($resultData)."')</script>";
-    }
+    // $result = $this->checkOrder($customerId);
+    // $resultData = $result->fetch_assoc();
+    // if ($resultData == false){
+    //   //echo "<script>alert('No cart available. Creating one!')</script>";
+    //   //create order
+    // } else {
+    //   //echo "<script>alert('Data: ".print_r($resultData)."')</script>";
+    // }
 
-    // $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
-    // return $this->query($strQuery);
+    $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
+    return $this->query($strQuery);
   }
 
 /**
 * @desc Removes items from an individual's cart
 * @param {$itemId} ID number of item
+* @param {$orderNo} Cart ID number
 * @return : True if successful, False if not
 **/
-  function removeFromCart($itemId){
-    $strQuery="DELETE FROM odetails WHERE ino='$itemId'";
+  function removeFromCart($orderNo, $itemId){
+    $strQuery="DELETE FROM odetails WHERE ono='$orderNo' AND ino='$itemId'";
     return $this->query($strQuery);
   }
 
@@ -124,7 +123,7 @@ class order extends adb{
 * @return : True if successful, False if not
 **/
   function createOrder($customerId){
-    $strQuery="INSERT INTO order(cno, checked_out) VALUES ('$customerId','No')";
+    $strQuery="INSERT INTO orders (cno, checked_out) VALUES ('$customerId','No')";
     return $this->query($strQuery);
   }
 

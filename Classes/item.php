@@ -1,9 +1,9 @@
-<!--
-  @author Youssouf da Silva, David Okyere & Kwabena Boohene
-  @desc item class containing related functions
--->
 
 <?php
+/**
+*  @author Youssouf da Silva, David Okyere & Kwabena Boohene
+*  @desc item class containing related functions
+*/
 
 include_once('adb.php');
 class item extends adb{

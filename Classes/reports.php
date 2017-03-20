@@ -1,17 +1,17 @@
-<!--
-  @author Youssouf da Silva, David Okyere & Kwabena Boohene
-  @desc reports class containing related functions
--->
 
 <?php
+/**
+*  @author Youssouf da Silva, David Okyere & Kwabena Boohene
+*  @desc reports class containing related functions
+*/
 
 require_once('csv.class.php');
 include_once('adb.php');
 
 class reports extends adb{
-	
+
 /**
-* @desc Constructor 
+* @desc Constructor
 **/
   function reports(){
   }
