@@ -48,31 +48,15 @@
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-
-                <a class="navbar-brand" href="#">
+                {if isset($smarty.session.acctype)}
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
                   <strong>Employee Core Store</strong>
                 </a>
-
-                <ul class="nav navbar-nav mr-auto">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
-                       </div>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
-
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
-                           <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
-                       </div>
-                  </li>
-                </ul>
+                {else}
+                  <a class="navbar-brand" href="#">
+                  <strong>Employee Core Store</strong>
+                </a>
+                {/if}
 
                 <form class="form-inline waves-effect waves-light">
                   <input class="form-control" type="text" placeholder="Search">
@@ -84,7 +68,6 @@
                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                            <a class="dropdown-item" href="#">Login</a>
                            <a class="dropdown-item" href="#">Profile</a>
-                           <a class="dropdown-item" href="#">Logout</a>
                        </div>
                    </li>
 
