@@ -1,9 +1,10 @@
-<!--
-  @author Youssouf da Silva, David Okyere & Kwabena Boohene
-  @desc userInfo class containing related functions
--->
 
 <?php
+/**
+*  @author Youssouf da Silva, David Okyere & Kwabena Boohene
+*  @desc userInfo class containing related functions
+*/
+
 include_once('adb.php');
 class userInfo extends adb{
 
@@ -31,7 +32,7 @@ class userInfo extends adb{
 /**
 *@desc Checks user session
 *@return: True or False
-**/  
+**/
   function checkSession(){
     if(isset($_SESSION)){
       return true;
@@ -44,14 +45,14 @@ class userInfo extends adb{
 /**
 *@desc Gets user session
 *@return: True or False
-**/   
+**/
   function getSession(){
     return $_SESSION;
   }
 
 /**
 *@desc Terminates user session
-**/   
+**/
   function endSession(){
     session_unset();
   }
@@ -61,7 +62,7 @@ class userInfo extends adb{
 *@param {$personId} ID number of user
 *@param {acctype} Account type
 *@return: Success or Fail
-**/   
+**/
   function addTolog($personId,$acctype){
     $strQuery="INSERT INTO login_log(PersonID,account_type) VALUES ($personId,$acctype)";
     return $this->query($strQuery);

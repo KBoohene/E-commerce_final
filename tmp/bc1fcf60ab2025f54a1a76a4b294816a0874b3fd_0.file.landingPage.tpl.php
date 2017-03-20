@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 18:00:00
+/* Smarty version 3.1.30, created on 2017-03-20 19:37:30
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d018a036f3f8_66802611',
+  'unifunc' => 'content_58d02f7a45f740_70709628',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1490032783,
+      1 => 1490038644,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d018a036f3f8_66802611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d02f7a45f740_70709628 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,15 +91,15 @@ function content_58d018a036f3f8_66802611 (Smarty_Internal_Template $_smarty_tpl)
                                 <?php }?>
 
                                 <?php if (isset($_SESSION['userId'])) {?>
-																	<?php if (($_SESSION['acctype'] == 1)) {?>
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+    								<?php if (($_SESSION['acctype'] == 1)) {?>
+    										<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+    										<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
-																		<?php } else { ?>
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+    									<?php } else { ?>
+    										<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-																	<?php }?>
+    								<?php }?>
                                 <?php }?>
                             </div>
                         </li>
@@ -204,9 +204,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->iteration++;
 $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
-                    <!--Second row-->
-                    <div class="row">
+                        <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
+                        <!--Second row-->
+                        <div class="row">
                     <?php }?>
                     <!--Columnn-->
                     <div class="col-lg-3">
@@ -258,12 +258,48 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                         <?php echo '<script'; ?>
  type="text/javascript">
-                            function addToCart(customerId, itemId, qty){
-                                alert("Adding item "+itemId+" to cart by user " + customerId);
-                                
+                            function addToCartComplete(xhr, status){
+                                //alert("ADDED to Cart");
+                                console.log(xhr);
+
+                                var obj=$.parseJSON(xhr.responseText);
+                				if(obj.result==0){
+                					console.log(obj.message);
+                				}else{
+
+                					console.log("added to cart");
+
+                				}
+
+
                             }
+
+                            function addToCart(customerId, itemId, qty){
+                                //alert("Adding item "+itemId+" to cart by user " + customerId);
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+                                alert(theUrl);
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:addToCartComplete}
+                			    );
+                            }
+
+                            function saveNameComplete(xhr,status){
+                				divStatus.innerHTML=xhr.responseText;
+                			}
+
+                			function saveName(id){
+                				currentObject.innerHTML=$("#txtName").val();
+                				var username=currentObject.innerHTML;
+                				var theUrl="usersajax.php?cmd=5&uc="+id+"&name="+username;
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:saveNameComplete}
+                			    );
+                			}
                         <?php echo '</script'; ?>
 >
+
 
 
                     </div>
