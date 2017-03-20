@@ -16,7 +16,7 @@ class customer extends adb{
 
 /**
 * @desc Adds customer details
-* @param {$cname} Customer name 
+* @param {$cname} Customer name
 * @param {$street} Street address of customer
 * @param {$zip} Zip address of customer
 * @param {$phone} Phone number of customer
@@ -25,14 +25,14 @@ class customer extends adb{
 * @param {$status} Status of customer
 * @return : True if successful, False if not
 **/
-  function addCustomer($cname, $street, $zip, $phone, $username, $password, $status){
-    $strQuery = "INSERT INTO customers (cno, cname, street, zip, phone, Username, Password, status, created_at) VALUES (NULL, '$cname', '$street', '$zip', '$phone', '$username', '$password', 'enabled', CURRENT_TIMESTAMP);";
+  function addCustomer($cname, $street, $zip, $phone, $username, $password){
+    $strQuery = "INSERT INTO customers (cno, cname, street, zip, phone, Username, Password, status, created_at) VALUES (NULL, '$cname', '$street', '$zip', '$phone', '$username', '$password', 'enabled', CURRENT_TIMESTAMP)";
     return $this->query($strQuery);
   }
 
 /**
 * @desc Allows registered customer to log into their account and previous sessions
-* @param {$cname} Customer name 
+* @param {$cname} Customer name
 * @param {$password} Customer password
 * @return : Array if successful, False if not
 **/
@@ -44,14 +44,14 @@ class customer extends adb{
 /**
 * @desc Allows for editing customer details
 * @param {$customerId} ID number of customer
-* @param {$cname} Customer name 
+* @param {$cname} Customer name
 * @param {$street} Street address of customer
 * @param {$zip} Zip address of customer
 * @param {$phone} Phone number of customer
 * @param {$username} Customer username
 * @param {$password} Customer password
 * @param {$status} Status of customer
-* @return : True if successful, False if not 
+* @return : True if successful, False if not
 **/
   function editCustomer($customerId, $cname, $street, $zip, $phone, $username, $password, $status){
     $strQuery = "UPDATE customers SET cname = '$cname', street = '$street', zip = '$zip', phone = '$phone', Username = '$username', Password = '$password', status = '$status' WHERE cno = '$customerId'";

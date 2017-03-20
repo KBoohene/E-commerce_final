@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 01:53:22
+/* Smarty version 3.1.30, created on 2017-03-20 17:53:48
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde492489966_12247922',
+  'unifunc' => 'content_58d0172c6ef3d4_88999704',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'efcc1f5f235a6cd029520ab9f022e162bfcabc65' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerLogin.tpl',
-      1 => 1489888093,
+      1 => 1490031905,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde492489966_12247922 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d0172c6ef3d4_88999704 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,28 +72,36 @@ function content_58cde492489966_12247922 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
-                                <?php if (isset($_SESSION['userId'])) {?>
-                                    <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+                                             <?php if (isset($_SESSION['userId'])) {?>
+																						 		 <?php if (($_SESSION['userId'] == 1)) {?>
+																									 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
-                                    <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+																									 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-                                <?php } else { ?>
-                                    <?php echo "Guest";?>
+																									 <?php } else { ?>
+																										 <?php echo "Guest";?>
+
+																								 <?php }?>
+                                             <?php }?>
+                                       </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <?php if (!isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                                 <?php }?>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <?php if (!isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-                              <?php }?>
-                              <?php if (isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+                                <?php if (isset($_SESSION['userId'])) {?>
+																	<?php if (($_SESSION['userId'] == 1)) {?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
-                              <?php }?>
-                          </div>
+																		<?php } else { ?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+																	<?php }?>
+                                <?php }?>
+                            </div>
                       </li>
                   </ul>
               </div>
@@ -143,21 +151,16 @@ function content_58cde492489966_12247922 (Smarty_Internal_Template $_smarty_tpl)
                                     <?php } else { ?>
                                         <?php $_smarty_tpl->_assignInScope('loginResult', $_smarty_tpl->tpl_vars['customer']->value->loginCustomer($_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
 ?>
-                            		    <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
+                            		        <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
 ?>
                                         <?php if (count($_smarty_tpl->tpl_vars['loginData']->value) > 0) {?>
-                                            <!-- <?php echo "if  ".((string)$_smarty_tpl->tpl_vars['loginData']->value)."|@count gt 0";?>
- -->
-                                            <!-- <?php echo print_r($_smarty_tpl->tpl_vars['loginData']->value);?>
- -->
-
                                             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['loginData']->value, 'login');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
 ?>
                                                 <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
-                                                    <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['cno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['cname'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+                                                    <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['cno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['cname'],1);?>
 
                                                     <?php echo "<script>window.location = 'index.php?cAction=5'</script>";?>
 
@@ -178,8 +181,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                             <?php echo "User Not Found";?>
 
                                         <?php }?>
-                                  <?php }?>
-                              <?php }?>
+                                    <?php }?>
+                                <?php }?>
 
                             </div>
                         </div>

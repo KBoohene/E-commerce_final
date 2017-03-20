@@ -63,12 +63,12 @@
                                 {/if}
 
                                 {if isset($smarty.session.userId)}
-																	{if ($smarty.session.userId==1)}
-																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-																		{else}
-																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-																	{/if}
+    								{if ($smarty.session.userId==1)}
+    										{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+    										{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+    									{else}
+    										{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+    								{/if}
                                 {/if}
                             </div>
                       </li>
@@ -116,11 +116,8 @@
                                         {"Please enter all information"}
                                     {else}
                                         {assign var="loginResult" value=$customer->loginCustomer($username, $password)}
-                            		    {assign var="loginData" value=$customer->fetchDB($loginResult)}
+                            		        {assign var="loginData" value=$customer->fetchDB($loginResult)}
                                         {if  $loginData|@count gt 0}
-                                            <!-- {"if  $loginData|@count gt 0"} -->
-                                            <!-- {$loginData|print_r} -->
-
                                             {foreach from=$loginData item=login}
                                                 {if ($login.Password) == $password}
                                                     {$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
@@ -134,8 +131,8 @@
 
                                             {"User Not Found"}
                                         {/if}
-                                  {/if}
-                              {/if}
+                                    {/if}
+                                {/if}
 
                             </div>
                         </div>
