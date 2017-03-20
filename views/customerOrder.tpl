@@ -42,9 +42,13 @@
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                      </li>
+                        {if isset($smarty.session.acctype)}
+												  {else}
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 {/if}
+
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
@@ -77,7 +81,6 @@
         <div class="container">
           {if isset($smarty.session.userId)}
             {assign var="customerId" value=$smarty.session.userId}
-            {"User id: "} {$customerId}
           {else}
             {assign var="customerId" value=10}
             {"Session not started"}
@@ -85,38 +88,42 @@
 
           {assign var="result" value=$order->getCustomerOrders($customerId)}
           {assign var="data" value=$order->fetchDB($result)}
-          <table>
-            <thead>
-              <tr>
-                <td>Order Number</td>
-                <td>Customer Number</td>
-                <td>Recieved </td>
-                <td>Shipped date</td>
-                <td>Created At</td>
-              </tr>
-            </thead>
 
-                  {foreach from=$data item=value}
-                    <tr>
-                      {if $value.ono}
-                        <td>{$value.ono}</td>
-                      {/if}
-                      {if $value.cno}
-                        <td>{$value.cno}</td>
-                      {/if}
-                      {if $value.received}
-                        <td>{$value.received}</td>
-                      {/if}
-                      {if $value.shipped}
-                        <td>{$value.shipped}</td>
-                      {/if}
-                      {if $value.created_at}
-                        <td>{$value.created_at}</td>
-                      {/if}
-                    </tr>
-                  {/foreach}
+					{if ($data!=null)}
+						<table>
+							<thead>
+								<tr>
+									<td>Order Number</td>
+									<td>Customer Number</td>
+									<td>Recieved </td>
+									<td>Shipped date</td>
+									<td>Created At</td>
+								</tr>
+							</thead>
 
-              </table>
+										{foreach from=$data item=value}
+											<tr>
+												{if $value.ono}
+													<td>{$value.ono}</td>
+												{/if}
+												{if $value.cno}
+													<td>{$value.cno}</td>
+												{/if}
+												{if $value.received}
+													<td>{$value.received}</td>
+												{/if}
+												{if $value.shipped}
+													<td>{$value.shipped}</td>
+												{/if}
+												{if $value.created_at}
+													<td>{$value.created_at}</td>
+												{/if}
+											</tr>
+										{/foreach}
+								</table>
+						{else}
+							{"No Orders"}
+					{/if}
 
         </div>
         <!--/.Main layout-->

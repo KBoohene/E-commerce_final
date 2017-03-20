@@ -79,6 +79,31 @@
       <!--/.Navbar-->
     </header>
     <main>
+		{if isset($smarty.post.submitted)}
+			{assign var="username" value=$smarty.post.username}
+			{assign var="password" value=$smarty.post.password}
+
+			{if ($username)=="" or ($password)==""}
+							{"Please enter all information"}
+					{else}
+							{assign var="loginResult" value=$customer->loginCustomer($username, $password)}
+							{assign var="loginData" value=$customer->fetchDB($loginResult)}
+							{if  $loginData|@count gt 0}
+									{foreach from=$loginData item=login}
+											{if ($login.Password) == $password}
+													{$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
+													{"<script>window.location = 'index.php?cAction=5'</script>"}
+											{else}
+													{"Wrong Password"}
+											{/if}
+									{/foreach}
+							{else}
+									<!-- {$loginData|print_r} -->
+
+									{"User Not Found"}
+							{/if}
+					{/if}
+        {/if}
 
         <!--Main layout-->
         <div class="container">
@@ -107,33 +132,6 @@
                                     <input type="text" name="submitted" hidden>
                                     <button class="btn amber darken-2">Login</button>
                                 </form>
-
-                                {if isset($smarty.post.submitted)}
-                            		{assign var="username" value=$smarty.post.username}
-                            		{assign var="password" value=$smarty.post.password}
-
-                            		{if ($username)=="" or ($password)==""}
-                                        {"Please enter all information"}
-                                    {else}
-                                        {assign var="loginResult" value=$customer->loginCustomer($username, $password)}
-                            		        {assign var="loginData" value=$customer->fetchDB($loginResult)}
-                                        {if  $loginData|@count gt 0}
-                                            {foreach from=$loginData item=login}
-                                                {if ($login.Password) == $password}
-                                                    {$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
-                                                    {"<script>window.location = 'index.php?cAction=5'</script>"}
-                                                {else}
-                                                    {"Wrong Password"}
-                                                {/if}
-                                            {/foreach}
-                                        {else}
-                                            <!-- {$loginData|print_r} -->
-
-                                            {"User Not Found"}
-                                        {/if}
-                                    {/if}
-                                {/if}
-
                             </div>
                         </div>
                     </div>
