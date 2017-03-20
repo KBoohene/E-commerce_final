@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 16:23:01
+/* Smarty version 3.1.30, created on 2017-03-20 17:47:12
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cff3d53ba121_14484421',
+  'unifunc' => 'content_58d00790b68c70_44875267',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1489949101,
+      1 => 1490028427,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cff3d53ba121_14484421 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d00790b68c70_44875267 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -108,7 +108,7 @@ function content_58cff3d53ba121_14484421 (Smarty_Internal_Template $_smarty_tpl)
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                   <li class="nav-item dropdown">
 									<?php if (isset($_SESSION['username'])) {?>
-											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['username'];?>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
 </a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
 													<a class="dropdown-item" href="#">Logout</a>

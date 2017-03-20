@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 19:24:34
+/* Smarty version 3.1.30, created on 2017-03-20 18:01:24
   from "C:\xampp\htdocs\E-commerce_final\views\searchCustomer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cecce278d718_21467467',
+  'unifunc' => 'content_58d00ae4919255_69382762',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b72499ef68a3c1801be91f176200a81bfff10213' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchCustomer.tpl',
-      1 => 1489947864,
+      1 => 1490029264,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cecce278d718_21467467 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d00ae4919255_69382762 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -95,17 +95,23 @@ function content_58cecce278d718_21467467 (Smarty_Internal_Template $_smarty_tpl)
                 <input class="form-control" type="text" placeholder="Search">
               </form>
 
-              <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                     </div>
-                 </li>
-              </ul>
-
+             <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                  <li class="nav-item dropdown">
+									<?php if (isset($_SESSION['username'])) {?>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
+</a>
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" href="#">Profile</a>
+												</div>
+										<?php } else { ?>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+												<a class="dropdown-item" href="#">Login</a>
+											</div>
+									<?php }?>
+                  </li>
+               </ul>
 
             </div>
         </nav>

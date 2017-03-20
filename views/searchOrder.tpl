@@ -64,15 +64,22 @@
               </form>
 
               <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
-                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Profile</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                     </div>
-                 </li>
-              </ul>
+                  <li class="nav-item dropdown">
+									{if isset($smarty.session.username)}
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {$smarty.session.fullname}</a>
+												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" href="#">Profile</a>
+												</div>
+										{else}
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+											<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+												<a class="dropdown-item" href="#">Login</a>
+											</div>
+									{/if}
+                  </li>
+               </ul>
+
 
 
             </div>

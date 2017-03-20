@@ -76,7 +76,7 @@
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
                   <li class="nav-item dropdown">
 									{if isset($smarty.session.username)}
-											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {$smarty.session.username}</a>
+											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {$smarty.session.fullname}</a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
 													<a class="dropdown-item" href="#">Logout</a>
 													<a class="dropdown-item" href="#">Profile</a>
