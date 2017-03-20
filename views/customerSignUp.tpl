@@ -102,7 +102,7 @@
                                     <div class="md-form">
                                         <i class="fa fa-location-arrow prefix"></i>
 
-                                        <select id="my-registration-select">
+                                        <select name="zip" id="my-registration-select">
                                             <option value="-1" disabled selected>Select Zip</option>
                                 			{assign var="zipResult" value=$customer->getZips()}
                                 			{assign var="zipData" value=$customer->fetchDB($zipResult)}
@@ -144,8 +144,13 @@
                                       {"Please enter all information"}
                                     {else}
                                         {assign var="result" value=$customer->addCustomer($name, $street, $zip, $phone, $username, $password)}
-                                        {"Success"}
-                                        {"<script>window.location = 'index.php?cAction=5'</script>"}
+
+                                        {assign var="loginResult" value=$customer->loginCustomer($username, $password)}
+                            		    {assign var="loginData" value=$customer->fetchDB($loginResult)}
+                                        {foreach from=$loginData item=login}
+                                            {$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
+                                            {"<script>window.location = 'index.php?cAction=5'</script>"}
+                                        {/foreach}
                                     {/if}
                                 {/if}
 

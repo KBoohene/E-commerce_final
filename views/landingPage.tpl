@@ -48,8 +48,8 @@
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                            <i class="fa fa-user"></i>
-                                             {if isset($smarty.session.userId)}
-																						 		 {if ($smarty.session.userId==1)}
+                                             {if isset($smarty.session.acctype)}
+																						 		 {if ($smarty.session.acctype == 1)}
 																									 {assign var="session" value=$userInfo->getSession()}
 																									 {$session['fullname']}
 																									 {else}
@@ -63,7 +63,7 @@
                                 {/if}
 
                                 {if isset($smarty.session.userId)}
-																	{if ($smarty.session.userId==1)}
+																	{if ($smarty.session.acctype==1)}
 																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
 																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
 																		{else}
