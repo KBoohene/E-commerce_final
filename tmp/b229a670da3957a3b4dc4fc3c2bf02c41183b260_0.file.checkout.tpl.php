@@ -1,26 +1,26 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 14:11:49
-  from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
+/* Smarty version 3.1.30, created on 2017-03-21 15:05:17
+  from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d134a51085b7_13348393',
+  'unifunc' => 'content_58d1331dd9c016_60852893',
   'has_nocache_code' => false,
-  'file_dependency' => 
+  'file_dependency' =>
   array (
-    '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
+    'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
-      0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490105506,
+      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
+      1 => 1490105110,
       2 => 'file',
     ),
   ),
-  'includes' => 
+  'includes' =>
   array (
   ),
 ),false)) {
-function content_58d134a51085b7_13348393 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d1331dd9c016_60852893 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,13 +66,12 @@ function content_58d134a51085b7_13348393 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-
-                      <?php if (isset($_SESSION['acctype'])) {?>
-                       <?php } else { ?>
-                         <li class="nav-item">
-                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                         </li>
-                      <?php }?>
+                        <?php if (isset($_SESSION['acctype'])) {?>
+												  <?php } else { ?>
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 <?php }?>
 
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -181,11 +180,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					 </div>
         </div>
         <!--/.Main layout-->
-				
+
 				<?php echo '<script'; ?>
 >
 					var val = document.getElementById("qty");
 					var quantity = parseFloat(val.innerHTML);
+					console.log(quantity);
 					function increaseQty(){
 						quantity++;
 						console.log(quantity);
@@ -195,7 +195,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					}
 				<?php echo '</script'; ?>
 >
-				
+
 
     </main>
 

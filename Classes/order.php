@@ -144,6 +144,10 @@ class order extends adb{
 		return $this->query($strQuery);
 	}
 
+	function getODV2($ono, $cno, $checked_out){
+		$strQuery= "SELECT odetails.ono, odetails.ino, odetails.qty, items.iname, items.price FROM odetails, orders, items WHERE odetails.ono = orders.ono AND orders.cno ='$cno' AND orders.ono ='$ono' AND orders.checked_out= '$checked_out' AND odetails.ino = items.ino";
+		return $this->query($strQuery);
+	}
 	function getOrders(){
 		$strQuery="SELECT * FROM orders";
 		return $this->query($strQuery);

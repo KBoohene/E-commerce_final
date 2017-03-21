@@ -38,16 +38,18 @@
                   </form>
               </div>
               <div>
-                  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                   <ul class="nav navbar-nav nav-flex-icons ml-auto">
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
+
                       {if isset($smarty.session.acctype)}
                        {else}
                          <li class="nav-item">
                            <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
                          </li>
                       {/if}
+
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
@@ -74,15 +76,76 @@
         </nav>
       <!--/.Navbar-->
     </header>
+
     <main>
 
         <!--Main layout-->
         <div class="container">
+					{if isset($smarty.session.userId)}
+            {assign var="customerId" value=$smarty.session.userId}
+          {else}
+            {"Session not started"}
+          {/if}
 
-          checkout works!
+          {assign var="result" value=$order->getCheckout($customerId)}
+          {assign var="data" value=$order->fetchDB($result)}
 
+
+				<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+								 <td>Product Name</td>
+								 <td>Quantity</td>
+								 <td>Price</td>
+								 <td>Amount</td>
+								</tr>
+						</thead>
+
+					 {foreach from=$data item=value}
+						<tr>
+						 {if $value.iname}
+								<td>{$value.iname}</td>
+						 {/if}
+						 {if $value.qty}
+								<td id="qty">
+										{$value.qty}
+									<div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-sm btn-primary btn-rounded" id="minus">
+                            <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
+                        </label>
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus">
+                            <input type="radio" name="options" id="option2" onclick="increaseQty();"/>+
+                        </label>
+                    </div>
+								</td>
+						 {/if}
+						 {if $value.price}
+								<td>{$value.price}</td>
+						 {/if}
+						 		{assign var="amt" value= $value.price*$value.qty}
+								<td id="amount">
+									{$amt}
+								</td>
+						 </tr>
+						 {/foreach}
+						</table>
+					 </div>
         </div>
         <!--/.Main layout-->
+				{literal}
+				<script>
+					var val = document.getElementById("qty");
+					var quantity = parseFloat(val.innerHTML);
+					function increaseQty(){
+						quantity++;
+						console.log(quantity);
+					}
+					function decreaseQty(){
+
+					}
+				</script>
+				{/literal}
 
     </main>
 

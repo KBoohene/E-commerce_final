@@ -126,18 +126,72 @@
 													<td>{$value.created_at}</td>
 												{/if}
 											</tr>
-                                            <tr class="hiddenRow">
-                                                <td colspan="7">
-                                                    <div class="accordian-body collapse" id="{$value.ono}"> Order {$value.ono} Created At {$value.created_at} For Customer {$value.cno} </div>
-                                                </td>
-                                            </tr>
+                                            <div class="hiddenRow">
+                                                {assign var="checked_out" value="Yes"}
+                                                {assign var="result2" value=$order->getODV2($value.ono, $customerId, $checked_out)}
+                                                {assign var="data2" value=$order->fetchDB($result2)}
+
+                                                <!-- <thead>
+                                                  <tr>
+                                                    <th>Item #</th>
+                                                    <th>Item Name</th>
+                                                    <th>Item Price</th>
+                                                    <th>Quantity</th>
+                                                  </tr>
+                                                </thead>
+                                                    {foreach from=$data2 item=value2}
+                                                    <tr>
+                                                        <td>{$value2.ino}</td>
+                                                        <td>{$value2.iname}</td>
+                                                        <td>{$value2.price}</td>
+                                                        <td>{$value2.qty}</td>
+                                                    </tr>
+                                                    {/foreach} -->
+
+                                                <tr>
+                                                    <!-- odetails.ono, odetails.ino, odetails.qty, items.iname, items.price -->
+
+                                                    <!-- <td colspan="7">
+                                                        <div class="accordian-body collapse" id="{$value.ono}">
+                                                            <strong>Item #     |  Item Name     |     Item Price     |     Quantity </strong>
+                                                            <br>
+                                                            {$value2.ino} {$value2.iname} {$value2.price} {$value2.qty}
+                                                         </div>
+                                                    </td> -->
+                                                    <td colspan="7">
+                                                        <div class="accordian-body collapse" id="{$value.ono}">
+                                                            <div class="row col-md-9">
+                                                                <table class="table">
+                                                                    <thead class="thead-default">
+                                                                        <th>Item #</th>
+                                                                        <th>Item Name</th>
+                                                                        <th>Item Price</th>
+                                                                        <th>Quantity</th>
+                                                                    </thead>
+                                                                    {foreach from=$data2 item=value2}
+                                                                        <tr>
+                                                                            <td>{$value2.ino}</td>
+                                                                            <td>{$value2.iname}</td>
+                                                                            <td>{$value2.price}</td>
+                                                                            <td>{$value2.qty}</td>
+                                                                        </tr>
+                                                                    {/foreach}
+                                                                </table>
+                                                            </div>
+                                                            <div class="row col-md-3"></div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </div>
+
+
 										{/foreach}
                                 </tbody>
 						</table>
 						{else}
 							{"No Orders"}
 					{/if}
-
 
         </div>
         <!--/.Main layout-->
