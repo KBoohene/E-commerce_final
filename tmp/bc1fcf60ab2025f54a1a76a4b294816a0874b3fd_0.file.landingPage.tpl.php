@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 19:37:30
+/* Smarty version 3.1.30, created on 2017-03-20 21:04:56
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d02f7a45f740_70709628',
+  'unifunc' => 'content_58d043f8d96e61_62541833',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1490038644,
+      1 => 1490040802,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d02f7a45f740_70709628 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d043f8d96e61_62541833 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,13 @@ function content_58d02f7a45f740_70709628 (Smarty_Internal_Template $_smarty_tpl)
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                        </li>
+												 <?php if (isset($_SESSION['acctype'])) {?>
+												  <?php } else { ?>
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 <?php }?>
+
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                            <i class="fa fa-user"></i>
@@ -78,10 +82,10 @@ function content_58d02f7a45f740_70709628 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 																									 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-																									 <?php } else { ?>
-																										 <?php echo "Guest";?>
-
 																								 <?php }?>
+																								<?php } else { ?>
+																									<?php echo "Guest";?>
+
                                              <?php }?>
                                        </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
