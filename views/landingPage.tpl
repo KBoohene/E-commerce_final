@@ -51,28 +51,28 @@
 
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <i class="fa fa-user"></i>
-                                             {if isset($smarty.session.acctype)}
-																						 		 {if ($smarty.session.acctype == 1)}
-																									 {assign var="session" value=$userInfo->getSession()}
-																									 {$session['fullname']}
-																								 {/if}
-																								{else}
-																									{"Guest"}
-                                             {/if}
-                                       </a>
+													 <i class="fa fa-user"></i>
+														 {if isset($smarty.session.acctype)}
+																 {if ($smarty.session.acctype == 1)}
+																	 {assign var="session" value=$userInfo->getSession()}
+																	 {$session['fullname']}
+																 {/if}
+																{else}
+																	{"Guest"}
+														 {/if}
+														 </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 {if !isset($smarty.session.userId)}
                                     {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
                                 {/if}
 
                                 {if isset($smarty.session.userId)}
-    								{if ($smarty.session.acctype==1)}
-    										{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-    										{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-    									{else}
-    										{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-    								{/if}
+																	{if ($smarty.session.acctype==1)}
+																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+																		{else}
+																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+																	{/if}
                                 {/if}
                             </div>
                         </li>
@@ -208,7 +208,7 @@
                     {/if}
                     {/foreach}
 
-{literal}
+											{literal}
                         <script type="text/javascript">
                             function addToCartComplete(xhr, status){
                                 //alert("ADDED to Cart");
@@ -250,7 +250,7 @@
                 			    );
                 			}
                         </script>
-{/literal}
+										{/literal}
 
 
                     </div>

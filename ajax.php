@@ -32,16 +32,29 @@
 
 		if ($checkResult->num_rows != 0){
 			$checkData = $checkResult->fetch_assoc();
-			// print_r($checkData);
+
 			$orderNo = $checkData["ono"];
-			//Add to the cart
-			if($obj->addToCart($orderNo, $itemId, $qty)){
-				// echo "Item Added to Cart";
-				echo '{"result":0,"message":"Item Added to Cart"}';
+
+			$qtyResult = $obj->checkQty($orderNo,$itemId);
+			$qtyData = $qtyResult->fetch_assoc();
+			$qty = $qtyData['qty'];
+
+			if($qty>0){
+				$qty++;
+				$obj->updateCart($orderNo,$itemId,$qty);
+
 			}else{
-				// echo "Item was not added to Cart.";
-				echo '{"result":1,"message":"Item was not added to Cart"}';
+				//Add to the cart
+				if($obj->addToCart($orderNo, $itemId, $qty)){
+					// echo "Item Added to Cart";
+					echo '{"result":0,"message":"Item Added to Cart"}';
+				}else{
+					// echo "Item was not added to Cart.";
+					echo '{"result":1,"message":"Item was not added to Cart"}';
+				}
 			}
+
+
 		} else {
 			// Creating a cart
 			if($obj->createOrder($customerId)){
