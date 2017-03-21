@@ -49,12 +49,12 @@
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
                                              {if isset($smarty.session.userId)}
-																						 		 {if ($smarty.session.userId==1)}
-																									 {assign var="session" value=$userInfo->getSession()}
-																									 {$session['fullname']}
-																									 {else}
-																										 {"Guest"}
-																								 {/if}
+										 		 {if ($smarty.session.acctype==1)}
+													 {assign var="session" value=$userInfo->getSession()}
+													 {$session['fullname']}
+												 {/if}
+                                             {else}
+                                                 {"Guest"}
                                              {/if}
                                        </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">

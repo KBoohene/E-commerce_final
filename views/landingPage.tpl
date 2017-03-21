@@ -211,7 +211,7 @@
 											{literal}
                         <script type="text/javascript">
                             function addToCartComplete(xhr, status){
-                                //alert("ADDED to Cart");
+                                alert("Item Added to Cart");
                                 console.log(xhr);
 
                                 var obj=$.parseJSON(xhr.responseText);

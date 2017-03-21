@@ -53,7 +53,7 @@ class order extends adb{
 * @retun : Array if successful, False if not
 **/
   function getCustomerOrders($customerId){
-    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId'";
+    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId' and checked_out='Yes'";
     return $this->query($strQuery);
   }
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 12:04:04
+/* Smarty version 3.1.30, created on 2017-03-21 14:02:46
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d116b415e831_60810608',
+  'unifunc' => 'content_58d1328682b619_07517340',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1490097838,
+      1 => 1490104964,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d116b415e831_60810608 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d1328682b619_07517340 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +109,9 @@ function content_58d116b415e831_60810608 (Smarty_Internal_Template $_smarty_tpl)
 
         <!--Main layout-->
         <div class="container">
+
+            <h1 class="display-3">Customer Orders</h1>
+
           <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
@@ -124,24 +127,25 @@ function content_58d116b415e831_60810608 (Smarty_Internal_Template $_smarty_tpl)
           <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
-					<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
-						<table>
+                    <?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
+                    <table class="table">
 							<thead>
 								<tr>
-									<td>Order Number</td>
-									<td>Customer Number</td>
-									<td>Recieved </td>
-									<td>Shipped date</td>
-									<td>Created At</td>
+									<th>Order #</th>
+									<th>Customer Number</th>
+									<th>Recieved </th>
+									<th>Shipped date</th>
+									<th>Created At</th>
 								</tr>
 							</thead>
-
+                            <tbody>
 										<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-											<tr>
+											<tr data-toggle="collapse" data-target="#<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+" class="accordion-toggle table-active">
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
 </td>
@@ -153,9 +157,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
 </td>
+													<?php } else { ?>
+													<td><?php echo "Null";?>
+</td>
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
+</td>
+													<?php } else { ?>
+													<td><?php echo "Null";?>
 </td>
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
@@ -163,50 +173,27 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 												<?php }?>
 											</tr>
+                                            <tr class="hiddenRow">
+                                                <td colspan="7">
+                                                    <div class="accordian-body collapse" id="<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+"> Order <?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+ Created At <?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
+ For Customer <?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
+ </div>
+                                                </td>
+                                            </tr>
 										<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-								</table>
+                                </tbody>
+						</table>
 						<?php } else { ?>
 							<?php echo "No Orders";?>
 
 					<?php }?>
-
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
 
 
         </div>
