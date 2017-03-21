@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 19:11:55
+/* Smarty version 3.1.30, created on 2017-03-21 12:43:34
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d01b6be24bb8_44244457',
+  'unifunc' => 'content_58d111e6a2fa54_37771995',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1490033502,
+      1 => 1490096608,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d01b6be24bb8_44244457 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d111e6a2fa54_37771995 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,19 +75,19 @@ function content_58d01b6be24bb8_44244457 (Smarty_Internal_Template $_smarty_tpl)
 
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                           <i class="fa fa-user"></i>
-                                             <?php if (isset($_SESSION['acctype'])) {?>
-																						 		 <?php if (($_SESSION['acctype'] == 1)) {?>
-																									 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+													 <i class="fa fa-user"></i>
+														 <?php if (isset($_SESSION['acctype'])) {?>
+																 <?php if (($_SESSION['acctype'] == 1)) {?>
+																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
-																									 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-																								 <?php }?>
-																								<?php } else { ?>
-																									<?php echo "Guest";?>
+																 <?php }?>
+																<?php } else { ?>
+																	<?php echo "Guest";?>
 
-                                             <?php }?>
-                                       </a>
+														 <?php }?>
+														 </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 <?php if (!isset($_SESSION['userId'])) {?>
                                     <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
@@ -208,9 +208,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
 $_smarty_tpl->tpl_vars['item']->iteration++;
 $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
 ?>
-                    <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
-                    <!--Second row-->
-                    <div class="row">
+                        <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
+                        <!--Second row-->
+                        <div class="row">
                     <?php }?>
                     <!--Columnn-->
                     <div class="col-lg-3">
@@ -262,12 +262,48 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                         <?php echo '<script'; ?>
  type="text/javascript">
-                            function addToCart(customerId, itemId, qty){
-                                alert("Adding item "+itemId+" to cart by user " + customerId);
+                            function addToCartComplete(xhr, status){
+                                //alert("ADDED to Cart");
+                                console.log(xhr);
+
+                                var obj=$.parseJSON(xhr.responseText);
+                				if(obj.result==0){
+                					console.log(obj.message);
+                				}else{
+
+                					console.log("added to cart");
+
+                				}
+
 
                             }
+
+                            function addToCart(customerId, itemId, qty){
+                                //alert("Adding item "+itemId+" to cart by user " + customerId);
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+                                alert(theUrl);
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:addToCartComplete}
+                			    );
+                            }
+
+                            function saveNameComplete(xhr,status){
+                				divStatus.innerHTML=xhr.responseText;
+                			}
+
+                			function saveName(id){
+                				currentObject.innerHTML=$("#txtName").val();
+                				var username=currentObject.innerHTML;
+                				var theUrl="usersajax.php?cmd=5&uc="+id+"&name="+username;
+                				$.ajax(theUrl,
+                				    {async:true,
+                				     complete:saveNameComplete}
+                			    );
+                			}
                         <?php echo '</script'; ?>
 >
+
 
 
                     </div>

@@ -111,9 +111,13 @@
 												{/if}
 												{if $value.received}
 													<td>{$value.received}</td>
+													{else}
+													<td>{"Null"}</td>
 												{/if}
 												{if $value.shipped}
 													<td>{$value.shipped}</td>
+													{else}
+													<td>{"Null"}</td>
 												{/if}
 												{if $value.created_at}
 													<td>{$value.created_at}</td>

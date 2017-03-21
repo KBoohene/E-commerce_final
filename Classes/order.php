@@ -139,8 +139,18 @@ class order extends adb{
     return $this->query($strQuery);
   }
 
+	function updateCart($ono,$ino,$qty){
+		$strQuery="UPDATE odetails SET qty ='$qty' WHERE ono='$ono' AND ino ='$ino'";
+		return $this->query($strQuery);
+	}
+
 	function getOrders(){
 		$strQuery="SELECT * FROM orders";
+		return $this->query($strQuery);
+	}
+
+	function checkQty($ono,$ino){
+		$strQuery="SELECT qty FROM odetails WHERE ono='$ono' AND ino='$ino'";
 		return $this->query($strQuery);
 	}
 

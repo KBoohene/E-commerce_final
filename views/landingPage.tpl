@@ -60,7 +60,7 @@
 																{else}
 																	{"Guest"}
 														 {/if}
-													 </a>
+														 </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 {if !isset($smarty.session.userId)}
                                     {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
@@ -208,7 +208,7 @@
                     {/if}
                     {/foreach}
 
-{literal}
+											{literal}
                         <script type="text/javascript">
                             function addToCartComplete(xhr, status){
                                 //alert("ADDED to Cart");
@@ -250,7 +250,7 @@
                 			    );
                 			}
                         </script>
-{/literal}
+										{/literal}
 
 
                     </div>
