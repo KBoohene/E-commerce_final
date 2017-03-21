@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 20:49:50
+/* Smarty version 3.1.30, created on 2017-03-20 21:26:25
   from "/Applications/AMPPS/www/github/E-commerce_final/views/loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cafa6e6b1526_47134284',
+  'unifunc' => 'content_58d04901b9ca00_25829414',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '554010a569e0ff53223bd5843a221b6a2b82f492' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/loginEmployee.tpl',
-      1 => 1489697389,
+      1 => 1490031407,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cafa6e6b1526_47134284 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d04901b9ca00_25829414 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,43 @@ function content_58cafa6e6b1526_47134284 (Smarty_Internal_Template $_smarty_tpl)
     <link href="css/style.css" rel="stylesheet">
 
 </head>
+  <?php if (isset($_POST['submitted'])) {?>
+    <?php $_smarty_tpl->_assignInScope('username', $_POST['username']);
+?>
+    <?php $_smarty_tpl->_assignInScope('password', $_POST['password']);
+?>
 
+    <?php if (($_smarty_tpl->tpl_vars['username']->value) == '' || ($_smarty_tpl->tpl_vars['password']->value) == '') {?>
+    <?php echo "Please enter all information";?>
+
+    <?php } else { ?>
+    <?php $_smarty_tpl->_assignInScope('loginResult', $_smarty_tpl->tpl_vars['employee']->value->loginEmployee($_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
+?>
+
+        <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
+?>
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['loginData']->value, 'login');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
+?>
+            <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['ename'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToLog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+
+              <?php echo "<script>window.location = 'employeeDisplay.php?eAction=2'</script>";?>
+
+            <?php }?>
+        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+
+    <?php }?>
+  <?php }?>
 <body>
 
     <header>
@@ -53,52 +89,30 @@ function content_58cafa6e6b1526_47134284 (Smarty_Internal_Template $_smarty_tpl)
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <strong>Employee Core Store</strong>
+                <?php if (isset($_SESSION['acctype'])) {?>
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
+                  <strong>Employee Core Store</strong>
                 </a>
-                <div class="collapse navbar-collapse" id="navbarNav1">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item dropdown btn-group">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
-                                <a class="dropdown-item">Action</a>
-                                <a class="dropdown-item">Another action</a>
-                                <a class="dropdown-item">Something else here</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <form class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
-                </div>
+                <?php } else { ?>
+                  <a class="navbar-brand" href="#">
+                  <strong>Employee Core Store</strong>
+                </a>
+                <?php }?>
+
+                <form class="form-inline waves-effect waves-light">
+                  <input class="form-control" type="text" placeholder="Search">
+                </form>
+
                 <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                   <li class="nav-item ">
-                       <a class="nav-link" href="#" data-toggle="modal" data-target="#cart-modal-ex"><span class="badge red">4</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="hidden-sm-down">Cart</span></a>
-                   </li>
-                   <li class="nav-item">
-                       <a class="nav-link"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                   </li>
                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                      <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Guest</a>
                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                            <a class="dropdown-item" href="#">Login</a>
-                           <a class="dropdown-item" href="#">Profile</a>
-                           <a class="dropdown-item" href="#">Logout</a>
                        </div>
                    </li>
+
                </ul>
+
 
             </div>
         </nav>
@@ -138,42 +152,6 @@ function content_58cafa6e6b1526_47134284 (Smarty_Internal_Template $_smarty_tpl)
                                     <input type="text" name="submitted" hidden>
                                     <button class="btn btn-default amber darken-2">Login</button>
                                 </form>
-
-                                <?php if (isset($_POST['submitted'])) {?>
-                                    <?php $_smarty_tpl->_assignInScope('username', $_POST['username']);
-?>
-                                    <?php $_smarty_tpl->_assignInScope('password', $_POST['password']);
-?>
-
-                                    <?php if (($_smarty_tpl->tpl_vars['username']->value) == '' || ($_smarty_tpl->tpl_vars['password']->value) == '') {?>
-                                  <?php echo "Please enter all information";?>
-
-                                <?php } else { ?>
-                                  <?php $_smarty_tpl->_assignInScope('loginResult', $_smarty_tpl->tpl_vars['employee']->value->loginEmployee($_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
-?>
-
-                                        <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
-?>
-                                        <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['loginData']->value, 'login');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
-?>
-                                            <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
-                                                <?php echo "Success";?>
-
-                                                <?php echo "<script>window.location = 'employeeDisplay.php?eAction=2'</script>";?>
-
-                                            <?php }?>
-                                        <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
-
-
-                                <?php }?>
-                              <?php }?>
                             </div>
                         </div>
                     </div>
