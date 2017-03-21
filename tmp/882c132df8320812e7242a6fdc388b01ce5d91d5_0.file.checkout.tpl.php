@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 01:53:17
+/* Smarty version 3.1.30, created on 2017-03-21 11:34:07
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde48dd0b5c4_90293442',
+  'unifunc' => 'content_58d10fafeb3f62_48953913',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1489888114,
+      1 => 1490096045,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde48dd0b5c4_90293442 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d10fafeb3f62_48953913 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,12 @@ function content_58cde48dd0b5c4_90293442 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                      </li>
+                      <?php if (isset($_SESSION['acctype'])) {?>
+                       <?php } else { ?>
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      <?php }?>
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
