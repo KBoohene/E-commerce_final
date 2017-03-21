@@ -53,7 +53,7 @@ class order extends adb{
 * @retun : Array if successful, False if not
 **/
   function getCustomerOrders($customerId){
-    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId'";
+    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId' and checked_out='Yes'";
     return $this->query($strQuery);
   }
 
@@ -144,8 +144,8 @@ class order extends adb{
 		return $this->query($strQuery);
 	}
 
-	function getCheckout($cno){
-		$strQuery= "SELECT odetails.ono, odetails.ino, odetails.qty, items.iname, items.price FROM odetails, orders, items WHERE odetails.ono = orders.ono AND orders.cno ='$cno' AND orders.checked_out= 'No' AND odetails.ino = items.ino";
+	function getODV2($ono, $cno, $checked_out){
+		$strQuery= "SELECT odetails.ono, odetails.ino, odetails.qty, items.iname, items.price FROM odetails, orders, items WHERE odetails.ono = orders.ono AND orders.cno ='$cno' AND orders.ono ='$ono' AND orders.checked_out= '$checked_out' AND odetails.ino = items.ino";
 		return $this->query($strQuery);
 	}
 	function getOrders(){

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 21:05:02
+/* Smarty version 3.1.30, created on 2017-03-21 15:38:55
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d043fec434d7_06291020',
+  'unifunc' => 'content_58d1490fa864b1_12032771',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1490040802,
+      1 => 1490110730,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d043fec434d7_06291020 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d1490fa864b1_12032771 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@ function content_58d043fec434d7_06291020 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Customer Login</title>
+    <title>Customer Orders</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -109,6 +109,9 @@ function content_58d043fec434d7_06291020 (Smarty_Internal_Template $_smarty_tpl)
 
         <!--Main layout-->
         <div class="container">
+
+            <h1 class="display-3">Customer Orders</h1>
+
           <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
@@ -124,24 +127,25 @@ function content_58d043fec434d7_06291020 (Smarty_Internal_Template $_smarty_tpl)
           <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
-					<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
-						<table>
+                    <?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
+                    <table class="table">
 							<thead>
 								<tr>
-									<td>Order Number</td>
-									<td>Customer Number</td>
-									<td>Recieved </td>
-									<td>Shipped date</td>
-									<td>Created At</td>
+									<th>Order #</th>
+									<th>Customer Number</th>
+									<th>Recieved </th>
+									<th>Shipped date</th>
+									<th>Created At</th>
 								</tr>
 							</thead>
-
+                            <tbody>
 										<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-											<tr>
+											<tr data-toggle="collapse" data-target="#<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+" class="accordion-toggle table-active">
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
 </td>
@@ -153,9 +157,15 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
 </td>
+													<?php } else { ?>
+													<td><?php echo "Null";?>
+</td>
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
+</td>
+													<?php } else { ?>
+													<td><?php echo "Null";?>
 </td>
 												<?php }?>
 												<?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
@@ -163,13 +173,109 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 												<?php }?>
 											</tr>
+                                            <div class="hiddenRow">
+                                                <?php $_smarty_tpl->_assignInScope('checked_out', "Yes");
+?>
+                                                <?php $_smarty_tpl->_assignInScope('result2', $_smarty_tpl->tpl_vars['order']->value->getODV2($_smarty_tpl->tpl_vars['value']->value['ono'],$_smarty_tpl->tpl_vars['customerId']->value,$_smarty_tpl->tpl_vars['checked_out']->value));
+?>
+                                                <?php $_smarty_tpl->_assignInScope('data2', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result2']->value));
+?>
+
+                                                <!-- <thead>
+                                                  <tr>
+                                                    <th>Item #</th>
+                                                    <th>Item Name</th>
+                                                    <th>Item Price</th>
+                                                    <th>Quantity</th>
+                                                  </tr>
+                                                </thead>
+                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data2']->value, 'value2');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value2']->value) {
+?>
+                                                    <tr>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['ino'];?>
+</td>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['iname'];?>
+</td>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['price'];?>
+</td>
+                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['qty'];?>
+</td>
+                                                    </tr>
+                                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+ -->
+
+                                                <tr>
+                                                    <!-- odetails.ono, odetails.ino, odetails.qty, items.iname, items.price -->
+
+                                                    <!-- <td colspan="7">
+                                                        <div class="accordian-body collapse" id="<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+">
+                                                            <strong>Item #     |  Item Name     |     Item Price     |     Quantity </strong>
+                                                            <br>
+                                                            <?php echo $_smarty_tpl->tpl_vars['value2']->value['ino'];?>
+ <?php echo $_smarty_tpl->tpl_vars['value2']->value['iname'];?>
+ <?php echo $_smarty_tpl->tpl_vars['value2']->value['price'];?>
+ <?php echo $_smarty_tpl->tpl_vars['value2']->value['qty'];?>
+
+                                                         </div>
+                                                    </td> -->
+                                                    <td colspan="7">
+                                                        <div class="accordian-body collapse" id="<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+">
+                                                            <div class="row col-md-9">
+                                                                <table class="table">
+                                                                    <thead class="thead-default">
+                                                                        <th>Item #</th>
+                                                                        <th>Item Name</th>
+                                                                        <th>Item Price</th>
+                                                                        <th>Quantity</th>
+                                                                    </thead>
+                                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data2']->value, 'value2');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value2']->value) {
+?>
+                                                                        <tr>
+                                                                            <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['ino'];?>
+</td>
+                                                                            <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['iname'];?>
+</td>
+                                                                            <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['price'];?>
+</td>
+                                                                            <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['qty'];?>
+</td>
+                                                                        </tr>
+                                                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                                                                </table>
+                                                            </div>
+                                                            <div class="row col-md-3"></div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </div>
+
+
 										<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-								</table>
+                                </tbody>
+						</table>
 						<?php } else { ?>
 							<?php echo "No Orders";?>
 

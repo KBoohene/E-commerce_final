@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 01:53:17
+/* Smarty version 3.1.30, created on 2017-03-21 14:11:49
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cde48dd0b5c4_90293442',
+  'unifunc' => 'content_58d134a51085b7_13348393',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1489888114,
+      1 => 1490105506,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cde48dd0b5c4_90293442 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d134a51085b7_13348393 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,13 +62,18 @@ function content_58cde48dd0b5c4_90293442 (Smarty_Internal_Template $_smarty_tpl)
                   </form>
               </div>
               <div>
-                  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                   <ul class="nav navbar-nav nav-flex-icons ml-auto">
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                      </li>
+
+                      <?php if (isset($_SESSION['acctype'])) {?>
+                       <?php } else { ?>
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      <?php }?>
+
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
@@ -101,15 +106,96 @@ function content_58cde48dd0b5c4_90293442 (Smarty_Internal_Template $_smarty_tpl)
         </nav>
       <!--/.Navbar-->
     </header>
+
     <main>
 
         <!--Main layout-->
         <div class="container">
+					<?php if (isset($_SESSION['userId'])) {?>
+            <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
+?>
+          <?php } else { ?>
+            <?php echo "Session not started";?>
 
-          checkout works!
+          <?php }?>
 
+          <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getCheckout($_smarty_tpl->tpl_vars['customerId']->value));
+?>
+          <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
+
+
+				<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+								 <td>Product Name</td>
+								 <td>Quantity</td>
+								 <td>Price</td>
+								 <td>Amount</td>
+								</tr>
+						</thead>
+
+					 <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+?>
+						<tr>
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['iname']) {?>
+								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['iname'];?>
+</td>
+						 <?php }?>
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
+								<td id="qty">
+										<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+
+									<div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-sm btn-primary btn-rounded" id="minus">
+                            <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
+                        </label>
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus">
+                            <input type="radio" name="options" id="option2" onclick="increaseQty();"/>+
+                        </label>
+                    </div>
+								</td>
+						 <?php }?>
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
+								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+</td>
+						 <?php }?>
+						 		<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
+?>
+								<td id="amount">
+									<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
+
+								</td>
+						 </tr>
+						 <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+						</table>
+					 </div>
         </div>
         <!--/.Main layout-->
+				
+				<?php echo '<script'; ?>
+>
+					var val = document.getElementById("qty");
+					var quantity = parseFloat(val.innerHTML);
+					function increaseQty(){
+						quantity++;
+						console.log(quantity);
+					}
+					function decreaseQty(){
+
+					}
+				<?php echo '</script'; ?>
+>
+				
 
     </main>
 

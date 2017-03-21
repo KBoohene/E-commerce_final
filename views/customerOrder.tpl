@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Customer Login</title>
+    <title>Customer Orders</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -79,6 +79,9 @@
 
         <!--Main layout-->
         <div class="container">
+
+            <h1 class="display-3">Customer Orders</h1>
+
           {if isset($smarty.session.userId)}
             {assign var="customerId" value=$smarty.session.userId}
           {else}
@@ -89,20 +92,20 @@
           {assign var="result" value=$order->getCustomerOrders($customerId)}
           {assign var="data" value=$order->fetchDB($result)}
 
-					{if ($data!=null)}
-						<table>
+                    {if ($data!=null)}
+                    <table class="table">
 							<thead>
 								<tr>
-									<td>Order Number</td>
-									<td>Customer Number</td>
-									<td>Recieved </td>
-									<td>Shipped date</td>
-									<td>Created At</td>
+									<th>Order #</th>
+									<th>Customer Number</th>
+									<th>Recieved </th>
+									<th>Shipped date</th>
+									<th>Created At</th>
 								</tr>
 							</thead>
-
+                            <tbody>
 										{foreach from=$data item=value}
-											<tr>
+											<tr data-toggle="collapse" data-target="#{$value.ono}" class="accordion-toggle table-active">
 												{if $value.ono}
 													<td>{$value.ono}</td>
 												{/if}
@@ -123,8 +126,69 @@
 													<td>{$value.created_at}</td>
 												{/if}
 											</tr>
+                                            <div class="hiddenRow">
+                                                {assign var="checked_out" value="Yes"}
+                                                {assign var="result2" value=$order->getODV2($value.ono, $customerId, $checked_out)}
+                                                {assign var="data2" value=$order->fetchDB($result2)}
+
+                                                <!-- <thead>
+                                                  <tr>
+                                                    <th>Item #</th>
+                                                    <th>Item Name</th>
+                                                    <th>Item Price</th>
+                                                    <th>Quantity</th>
+                                                  </tr>
+                                                </thead>
+                                                    {foreach from=$data2 item=value2}
+                                                    <tr>
+                                                        <td>{$value2.ino}</td>
+                                                        <td>{$value2.iname}</td>
+                                                        <td>{$value2.price}</td>
+                                                        <td>{$value2.qty}</td>
+                                                    </tr>
+                                                    {/foreach} -->
+
+                                                <tr>
+                                                    <!-- odetails.ono, odetails.ino, odetails.qty, items.iname, items.price -->
+
+                                                    <!-- <td colspan="7">
+                                                        <div class="accordian-body collapse" id="{$value.ono}">
+                                                            <strong>Item #     |  Item Name     |     Item Price     |     Quantity </strong>
+                                                            <br>
+                                                            {$value2.ino} {$value2.iname} {$value2.price} {$value2.qty}
+                                                         </div>
+                                                    </td> -->
+                                                    <td colspan="7">
+                                                        <div class="accordian-body collapse" id="{$value.ono}">
+                                                            <div class="row col-md-9">
+                                                                <table class="table">
+                                                                    <thead class="thead-default">
+                                                                        <th>Item #</th>
+                                                                        <th>Item Name</th>
+                                                                        <th>Item Price</th>
+                                                                        <th>Quantity</th>
+                                                                    </thead>
+                                                                    {foreach from=$data2 item=value2}
+                                                                        <tr>
+                                                                            <td>{$value2.ino}</td>
+                                                                            <td>{$value2.iname}</td>
+                                                                            <td>{$value2.price}</td>
+                                                                            <td>{$value2.qty}</td>
+                                                                        </tr>
+                                                                    {/foreach}
+                                                                </table>
+                                                            </div>
+                                                            <div class="row col-md-3"></div>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </div>
+
+
 										{/foreach}
-								</table>
+                                </tbody>
+						</table>
 						{else}
 							{"No Orders"}
 					{/if}
