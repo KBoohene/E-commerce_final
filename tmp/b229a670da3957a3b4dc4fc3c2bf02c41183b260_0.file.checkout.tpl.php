@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 15:05:17
+/* Smarty version 3.1.30, created on 2017-03-21 15:59:39
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d1331dd9c016_60852893',
+  'unifunc' => 'content_58d13fdb004af3_11058802',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490105110,
+      1 => 1490108374,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d1331dd9c016_60852893 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d13fdb004af3_11058802 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,28 +146,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
-								<td id="qty">
-										<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+								<td>
+										<span id="qty">
+											<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 
+										</span>
 									<div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-sm btn-primary btn-rounded" id="minus">
-                            <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
+                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty()" >
+                            <input type="radio" name="options" id="option1" />&mdash;
                         </label>
-                        <label class="btn btn-sm btn-primary btn-rounded" id="plus">
-                            <input type="radio" name="options" id="option2" onclick="increaseQty();"/>+
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty()">
+                            <input type="radio" name="options" id="option2" />+
                         </label>
                     </div>
 								</td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
-								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+								<td id="price"><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
 </td>
 						 <?php }?>
-						 		<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
+								<td>
+								<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
 ?>
-								<td id="amount">
-									<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
+									<span id="amt">
+										<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
 
+									</span>
 								</td>
 						 </tr>
 						 <?php
@@ -181,19 +185,44 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
         <!--/.Main layout-->
 
-				<?php echo '<script'; ?>
+					<?php echo '<script'; ?>
 >
-					var val = document.getElementById("qty");
-					var quantity = parseFloat(val.innerHTML);
-					console.log(quantity);
-					function increaseQty(){
-						quantity++;
-						console.log(quantity);
-					}
-					function decreaseQty(){
+						var val, val2, val3, amount, quantity, price ;
 
-					}
-				<?php echo '</script'; ?>
+						function increaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity++;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+
+						function decreaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity--;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+					<?php echo '</script'; ?>
 >
 
 

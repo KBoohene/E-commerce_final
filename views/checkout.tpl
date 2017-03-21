@@ -107,24 +107,28 @@
 								<td>{$value.iname}</td>
 						 {/if}
 						 {if $value.qty}
-								<td id="qty">
-										{$value.qty}
+								<td>
+										<span id="qty">
+											{$value.qty}
+										</span>
 									<div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-sm btn-primary btn-rounded" id="minus">
-                            <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
+                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty()" >
+                            <input type="radio" name="options" id="option1" />&mdash;
                         </label>
-                        <label class="btn btn-sm btn-primary btn-rounded" id="plus">
-                            <input type="radio" name="options" id="option2" onclick="increaseQty();"/>+
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty()">
+                            <input type="radio" name="options" id="option2" />+
                         </label>
                     </div>
 								</td>
 						 {/if}
 						 {if $value.price}
-								<td>{$value.price}</td>
+								<td id="price">{$value.price}</td>
 						 {/if}
-						 		{assign var="amt" value= $value.price*$value.qty}
-								<td id="amount">
-									{$amt}
+								<td>
+								{assign var="amt" value= $value.price*$value.qty}
+									<span id="amt">
+										{$amt}
+									</span>
 								</td>
 						 </tr>
 						 {/foreach}
@@ -133,18 +137,44 @@
         </div>
         <!--/.Main layout-->
 				{literal}
-				<script>
-					var val = document.getElementById("qty");
-					var quantity = parseFloat(val.innerHTML);
-					function increaseQty(){
-						quantity++;
-						console.log(quantity);
-					}
-					function decreaseQty(){
+					<script>
+						var val, val2, val3, amount, quantity, price ;
 
-					}
-				</script>
-				{/literal}
+						function increaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity++;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+
+						function decreaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity--;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+					</script>
+					{/literal}
 
     </main>
 
