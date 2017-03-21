@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-19 03:39:51
+/* Smarty version 3.1.30, created on 2017-03-20 21:05:02
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cdfd8752b355_62657411',
+  'unifunc' => 'content_58d043fec434d7_06291020',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1489889157,
+      1 => 1490040802,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cdfd8752b355_62657411 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d043fec434d7_06291020 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,9 +66,13 @@ function content_58cdfd8752b355_62657411 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                      </li>
+                        <?php if (isset($_SESSION['acctype'])) {?>
+												  <?php } else { ?>
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 <?php }?>
+
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
@@ -108,9 +112,6 @@ function content_58cdfd8752b355_62657411 (Smarty_Internal_Template $_smarty_tpl)
           <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
-            <?php echo "User id: ";?>
- <?php echo $_smarty_tpl->tpl_vars['customerId']->value;?>
-
           <?php } else { ?>
             <?php $_smarty_tpl->_assignInScope('customerId', 10);
 ?>
@@ -122,52 +123,57 @@ function content_58cdfd8752b355_62657411 (Smarty_Internal_Template $_smarty_tpl)
 ?>
           <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
-          <table>
-            <thead>
-              <tr>
-                <td>Order Number</td>
-                <td>Customer Number</td>
-                <td>Recieved </td>
-                <td>Shipped date</td>
-                <td>Created At</td>
-              </tr>
-            </thead>
 
-                  <?php
+					<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
+						<table>
+							<thead>
+								<tr>
+									<td>Order Number</td>
+									<td>Customer Number</td>
+									<td>Recieved </td>
+									<td>Shipped date</td>
+									<td>Created At</td>
+								</tr>
+							</thead>
+
+										<?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-                    <tr>
-                      <?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
-                        <td><?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+											<tr>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
 </td>
-                      <?php }?>
-                      <?php if ($_smarty_tpl->tpl_vars['value']->value['cno']) {?>
-                        <td><?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
+												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['cno']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['cno'];?>
 </td>
-                      <?php }?>
-                      <?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
-                        <td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
+												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
 </td>
-                      <?php }?>
-                      <?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
-                        <td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
+												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
 </td>
-                      <?php }?>
-                      <?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
-                        <td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
+												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
 </td>
-                      <?php }?>
-                    </tr>
-                  <?php
+												<?php }?>
+											</tr>
+										<?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
+								</table>
+						<?php } else { ?>
+							<?php echo "No Orders";?>
 
-              </table>
+					<?php }?>
 
         </div>
         <!--/.Main layout-->
