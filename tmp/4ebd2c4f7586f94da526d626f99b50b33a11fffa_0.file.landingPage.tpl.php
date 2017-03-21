@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 16:08:32
+/* Smarty version 3.1.30, created on 2017-03-21 16:44:58
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d141f0e3af32_23674093',
+  'unifunc' => 'content_58d14a7a259447_22306846',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1490097128,
+      1 => 1490111075,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d141f0e3af32_23674093 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d14a7a259447_22306846 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -263,7 +263,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                         <?php echo '<script'; ?>
  type="text/javascript">
                             function addToCartComplete(xhr, status){
-                                //alert("ADDED to Cart");
+                                alert("Item Added to Cart");
                                 console.log(xhr);
 
                                 var obj=$.parseJSON(xhr.responseText);
@@ -281,7 +281,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                             function addToCart(customerId, itemId, qty){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
                                 var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                alert(theUrl);
+                                //alert(theUrl);
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}

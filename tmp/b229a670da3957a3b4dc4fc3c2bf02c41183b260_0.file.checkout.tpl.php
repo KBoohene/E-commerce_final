@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 16:05:49
+/* Smarty version 3.1.30, created on 2017-03-21 16:45:22
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d1414dd43993_46658375',
+  'unifunc' => 'content_58d14a929b6428_51071043',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490108447,
+      1 => 1490111075,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d1414dd43993_46658375 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d14a929b6428_51071043 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,12 +66,13 @@ function content_58d1414dd43993_46658375 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                        <?php if (isset($_SESSION['acctype'])) {?>
-												  <?php } else { ?>
-														<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-												 <?php }?>
+
+                      <?php if (isset($_SESSION['acctype'])) {?>
+                       <?php } else { ?>
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      <?php }?>
 
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
