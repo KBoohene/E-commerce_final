@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-21 15:05:17
+  from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58d1331dd9c016_60852893',
+  'has_nocache_code' => false,
+  'file_dependency' =>
+  array (
+    'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
+    array (
+      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
+      1 => 1490105110,
+      2 => 'file',
+    ),
+  ),
+  'includes' =>
+  array (
+  ),
+),false)) {
+function content_58d1331dd9c016_60852893 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,31 +66,37 @@
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                        {if isset($smarty.session.acctype)}
-												  {else}
+                        <?php if (isset($_SESSION['acctype'])) {?>
+												  <?php } else { ?>
 														<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
 														</li>
-												 {/if}
+												 <?php }?>
 
                       <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
-                                {if isset($smarty.session.userId)}
-                                    {assign var="session" value=$userInfo->getSession()}
-                                    {$session['fullname']}
-                                {else}
-                                    {"Guest"}
-                                {/if}
+                                <?php if (isset($_SESSION['userId'])) {?>
+                                    <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+                                    <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+                                <?php } else { ?>
+                                    <?php echo "Guest";?>
+
+                                <?php }?>
                           </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              {if !isset($smarty.session.userId)}
-                                  {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                              {/if}
-                              {if isset($smarty.session.userId)}
-                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-                                  {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-                              {/if}
+                              <?php if (!isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+                              <?php }?>
+                              <?php if (isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                              <?php }?>
                           </div>
                       </li>
                   </ul>
@@ -80,14 +110,18 @@
 
         <!--Main layout-->
         <div class="container">
-					{if isset($smarty.session.userId)}
-            {assign var="customerId" value=$smarty.session.userId}
-          {else}
-            {"Session not started"}
-          {/if}
+					<?php if (isset($_SESSION['userId'])) {?>
+            <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
+?>
+          <?php } else { ?>
+            <?php echo "Session not started";?>
 
-          {assign var="result" value=$order->getCheckout($customerId)}
-          {assign var="data" value=$order->fetchDB($result)}
+          <?php }?>
+
+          <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['order']->value->getCheckout($_smarty_tpl->tpl_vars['customerId']->value));
+?>
+          <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
 
 
 				<div class="table-responsive">
@@ -101,14 +135,20 @@
 								</tr>
 						</thead>
 
-					 {foreach from=$data item=value}
+					 <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+?>
 						<tr>
-						 {if $value.iname}
-								<td>{$value.iname}</td>
-						 {/if}
-						 {if $value.qty}
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['iname']) {?>
+								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['iname'];?>
+</td>
+						 <?php }?>
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
 								<td id="qty">
-										{$value.qty}
+										<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+
 									<div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-sm btn-primary btn-rounded" id="minus">
                             <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
@@ -118,24 +158,34 @@
                         </label>
                     </div>
 								</td>
-						 {/if}
-						 {if $value.price}
-								<td>{$value.price}</td>
-						 {/if}
-						 		{assign var="amt" value= $value.price*$value.qty}
+						 <?php }?>
+						 <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
+								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+</td>
+						 <?php }?>
+						 		<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
+?>
 								<td id="amount">
-									{$amt}
+									<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
+
 								</td>
 						 </tr>
-						 {/foreach}
+						 <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
 						</table>
 					 </div>
         </div>
         <!--/.Main layout-->
-				{literal}
-				<script>
+
+				<?php echo '<script'; ?>
+>
 					var val = document.getElementById("qty");
 					var quantity = parseFloat(val.innerHTML);
+					console.log(quantity);
 					function increaseQty(){
 						quantity++;
 						console.log(quantity);
@@ -143,8 +193,9 @@
 					function decreaseQty(){
 
 					}
-				</script>
-				{/literal}
+				<?php echo '</script'; ?>
+>
+
 
     </main>
 
@@ -226,18 +277,28 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery-2.2.3.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/tether.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/mdb.min.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 
 </html>
+<?php }
+}
