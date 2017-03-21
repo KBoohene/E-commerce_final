@@ -94,6 +94,14 @@
   color: #ffb300; /* ffb300 amber darken-2*/
   text-shadow: 0px 0px 1px #ffb300;
 }
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.hiddenRowColor{
+  background-color: red !important;
+}
 /* ************************************************************************* */
 
 
