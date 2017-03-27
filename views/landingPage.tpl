@@ -34,7 +34,7 @@
                 </a>
                 <div id="navbarNav1">
                     <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
+                        <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
                     </form>
                 </div>
                 <div>
@@ -195,7 +195,7 @@
                                 <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
                             <br>
                                 <a onclick="addToCart({$user['userId']},{$item.ino},1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
+                                <a href="index.php?cAction=2&pno={$item.ino}"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
                         </div>

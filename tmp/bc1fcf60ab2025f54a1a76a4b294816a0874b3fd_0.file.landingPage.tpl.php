@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 12:32:39
+/* Smarty version 3.1.30, created on 2017-03-26 21:54:09
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d11d671aafd7_77224031',
+  'unifunc' => 'content_58d838810458e9_05657606',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1490099554,
+      1 => 1490565247,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d11d671aafd7_77224031 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d838810458e9_05657606 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +58,7 @@ function content_58d11d671aafd7_77224031 (Smarty_Internal_Template $_smarty_tpl)
                 </a>
                 <div id="navbarNav1">
                     <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
+                        <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
                     </form>
                 </div>
                 <div>
@@ -240,7 +240,8 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                                 <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
 ,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
 ,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
+                                <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
                         </div>

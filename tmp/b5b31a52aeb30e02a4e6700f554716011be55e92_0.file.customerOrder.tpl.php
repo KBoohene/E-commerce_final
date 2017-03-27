@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 15:38:55
+/* Smarty version 3.1.30, created on 2017-03-26 20:59:45
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d1490fa864b1_12032771',
+  'unifunc' => 'content_58d82bc10b8022_66803102',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1490110730,
+      1 => 1490561983,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d1490fa864b1_12032771 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d82bc10b8022_66803102 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,9 +57,9 @@ function content_58d1490fa864b1_12032771 (Smarty_Internal_Template $_smarty_tpl)
                 <strong>Core Store</strong>
               </a>
               <div id="navbarNav1">
-                  <form class="form-inline waves-effect waves-light">
-                      <input class="form-control" type="text" placeholder="Search">
-                  </form>
+                <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
+                              <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
+                          </form>
               </div>
               <div>
                   <ul class="nav navbar-nav nav-flex-icons ml-auto">
