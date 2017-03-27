@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 19:11:13
+/* Smarty version 3.1.30, created on 2017-03-27 21:31:03
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d947b113ff54_23206446',
+  'unifunc' => 'content_58d968774c2fd6_90638131',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490634669,
+      1 => 1490643051,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d947b113ff54_23206446 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d968774c2fd6_90638131 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -219,8 +219,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					 </div>
         </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
-				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+				<div class="row>
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+					</div>
+				</div>
+
 
 					<?php echo '<script'; ?>
 >
@@ -252,6 +259,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
+							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -276,6 +284,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
+
+							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -297,7 +307,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
-								val3 = document.getElementById("ono"+i);
+								val3 = document.getElementById("ono");
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);

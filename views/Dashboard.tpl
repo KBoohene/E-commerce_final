@@ -99,18 +99,12 @@
 		{if isset($smarty.session)}
 			{if isset($smarty.session.userId)}
 				{assign var="customerId" value=$smarty.session.userId}
-				{if ($smarty.session.acctype==3)}
-					 <a href="employeeDisplay.php?eAction=3">Employees</a>
-					{else}
-				{/if}
+
 			{else}
 				{"Session not started"}
 			{/if}
 		{/if}
 
-    <a href="employeeDisplay.php?eAction=6">Customers</a>
-    <a href="employeeDisplay.php?eAction=14">Orders</a>
-    <a href="employeeDisplay.php?eAction=13">Items</a>
 
     {**Number of orders placed per day over the week (Bar graph)**}
     {assign var="Mon" value=$report->getDate("monday this week")}

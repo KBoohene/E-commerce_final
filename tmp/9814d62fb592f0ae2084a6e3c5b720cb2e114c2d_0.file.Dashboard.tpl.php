@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 18:07:24
+/* Smarty version 3.1.30, created on 2017-03-27 21:35:14
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d00c4ca41619_72372050',
+  'unifunc' => 'content_58d96972f0bad0_69918956',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1490029631,
+      1 => 1490643311,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d00c4ca41619_72372050 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d96972f0bad0_69918956 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -133,19 +133,13 @@ function content_58d00c4ca41619_72372050 (Smarty_Internal_Template $_smarty_tpl)
 			<?php if (isset($_SESSION['userId'])) {?>
 				<?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
-				<?php if (($_SESSION['acctype'] == 3)) {?>
-					 <a href="employeeDisplay.php?eAction=3">Employees</a>
-					<?php } else { ?>
-				<?php }?>
+
 			<?php } else { ?>
 				<?php echo "Session not started";?>
 
 			<?php }?>
 		<?php }?>
 
-    <a href="employeeDisplay.php?eAction=6">Customers</a>
-    <a href="employeeDisplay.php?eAction=14">Orders</a>
-    <a href="employeeDisplay.php?eAction=13">Items</a>
 
 
     <?php $_smarty_tpl->_assignInScope('Mon', $_smarty_tpl->tpl_vars['report']->value->getDate("monday this week"));

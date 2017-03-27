@@ -159,8 +159,15 @@
 					 </div>
         </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
-				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+				<div class="row>
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+					</div>
+				</div>
+
 					{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;
@@ -190,6 +197,7 @@
 							}
 
 							$("#amt"+count).html(amount);
+							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -214,6 +222,8 @@
 							}
 
 							$("#amt"+count).html(amount);
+
+							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -234,7 +244,7 @@
 
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
-								val3 = document.getElementById("ono"+i);
+								val3 = document.getElementById("ono");
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
