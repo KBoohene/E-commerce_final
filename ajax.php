@@ -12,6 +12,10 @@
 			break;
 		case 2:
 			saveUpdate();
+			break;
+		case 3:
+			checkout();
+			break;
 		default:
 			echo "wrong cmd";	//change to json message
 			break;
@@ -91,9 +95,15 @@ function saveUpdate(){
 	$obj->updateCart($ono,$ino,$qty);
 
 	echo '{"result":0,"message":"Cart updated"}';
-
-	echo '{"result":1,"message":"Cart not updated"}';
 }
 
+function checkout(){
+	include("Classes/order.php");
+	$obj = new order();
+	$ono = $_REQUEST['ono'];
+
+	$obj->checkout($ono);
+	echo '{"result":0,"message":"Order checked out"}';
+}
 
 ?>

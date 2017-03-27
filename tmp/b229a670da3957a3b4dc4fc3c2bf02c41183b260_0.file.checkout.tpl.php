@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 18:39:38
+/* Smarty version 3.1.30, created on 2017-03-27 19:03:57
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9404ac6de58_12805173',
+  'unifunc' => 'content_58d945fdabd558_31567329',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490632775,
+      1 => 1490634221,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9404ac6de58_12805173 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d945fdabd558_31567329 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,7 +146,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 						<tr>
 							<td hidden>
 								<?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
-									<span id="ino"+"<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+									<span id="ino<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ">
 										<?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
 
@@ -155,8 +155,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 							</td>
 							<td hidden>
 								<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
-									<span id="ono"+"<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
-">
+									<span id="ono">
 										<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
 
 									</span>
@@ -287,11 +286,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							if(obj.result==0){
 								console.log(obj.message);
 							}else{
-								console.log("Cart Updated");
+								console.log("Cart not updated");
 								}
 						}
 
-						function save(){
+						function saveChanges(){
 							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ;
 
@@ -315,21 +314,23 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 
 						function checkoutComplete(xhr, status){
-							alert("Item Added to Cart");
+
               console.log(xhr);
 
               var obj=$.parseJSON(xhr.responseText);
 							if(obj.result==0){
 								console.log(obj.message);
+								window.location='index.php?cAction=5';
 							}else{
-								console.log("added to cart");
+								console.log("order not checked out");
 								}
 						}
 
 						function checkout(){
+						val = document.getElementById("ono");
+						val = parseFloat(val.innerHTML);
 
-						//alert("Adding item "+itemId+" to cart by user " + customerId);
-              var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+              var theUrl="ajax.php?cmd=3&ono="+val;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}

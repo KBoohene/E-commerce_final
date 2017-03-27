@@ -107,14 +107,14 @@
 						<tr>
 							<td hidden>
 								{if $value.ino}
-									<span id="ino"+"{$count}">
+									<span id="ino{$count}">
 										{$value.ino}
 									</span>
 								{/if}
 							</td>
 							<td hidden>
 								{if $value.ono}
-									<span id="ono"+"{$count}">
+									<span id="ono">
 										{$value.ono}
 									</span>
 								{/if}
@@ -224,11 +224,11 @@
 							if(obj.result==0){
 								console.log(obj.message);
 							}else{
-								console.log("Cart Updated");
+								console.log("Cart not updated");
 								}
 						}
 
-						function save(){
+						function saveChanges(){
 							counter={/literal}{$count}{literal};
 
 							for(var i=0;i<counter;i++){
@@ -251,21 +251,23 @@
 
 
 						function checkoutComplete(xhr, status){
-							alert("Item Added to Cart");
+
               console.log(xhr);
 
               var obj=$.parseJSON(xhr.responseText);
 							if(obj.result==0){
 								console.log(obj.message);
+								window.location='index.php?cAction=5';
 							}else{
-								console.log("added to cart");
+								console.log("order not checked out");
 								}
 						}
 
 						function checkout(){
+						val = document.getElementById("ono");
+						val = parseFloat(val.innerHTML);
 
-						//alert("Adding item "+itemId+" to cart by user " + customerId);
-              var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+              var theUrl="ajax.php?cmd=3&ono="+val;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}

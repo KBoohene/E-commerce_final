@@ -83,7 +83,7 @@ class order extends adb{
 * @return : True if successful, False if not
 **/
   function checkout($orderId){
-    $strQuery="UPDATE `orders` SET `checked_out` = 'Yes' WHERE `orders`.`ono` = '$orderid'";
+    $strQuery="UPDATE `orders` SET `checked_out` = 'Yes' WHERE `orders`.`ono` = '$orderId'";
 	  return $this->query($strQuery);
   }
 
