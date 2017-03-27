@@ -252,6 +252,7 @@
 							}else{
 								console.log("Cart not updated");
 								}
+							document.getElementById("Save").style.visibility ="hidden";
 						}
 
 						function saveChanges(){
