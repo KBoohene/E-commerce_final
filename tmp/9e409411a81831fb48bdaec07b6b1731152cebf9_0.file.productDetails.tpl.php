@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-27 22:59:10
+  from "C:\xampp\htdocs\E-commerce_final\views\productDetails.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58d97d1eda2279_37723907',
+  'has_nocache_code' => false,
+  'file_dependency' =>
+  array (
+    '9e409411a81831fb48bdaec07b6b1731152cebf9' =>
+    array (
+      0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\productDetails.tpl',
+      1 => 1490647059,
+      2 => 'file',
+    ),
+  ),
+  'includes' =>
+  array (
+  ),
+),false)) {
+function content_58d97d1eda2279_37723907 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,45 +66,53 @@
                           <li class="nav-item">
                               <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                           </li>
-  												  {if isset($smarty.session.acctype)}
-												 		{if ($smarty.session.acctype!=1)}
+  												  <?php if (isset($_SESSION['acctype'])) {?>
+												 		<?php if (($_SESSION['acctype'] != 1)) {?>
 															<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
 														</li>
-														{/if}
-												  {else}
+														<?php }?>
+												  <?php } else { ?>
 														<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
 														</li>
-												 {/if}
+												 <?php }?>
 
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													 <i class="fa fa-user"></i>
-														 {if isset($smarty.session.acctype)}
-																 {if ($smarty.session.acctype == 1)}
-																	 {assign var="session" value=$userInfo->getSession()}
-																	 {$session['fullname']}
-																	 {else}
-																	 		{"Guest"}
-																 {/if}
-																{else}
-																	{"Guest"}
-														 {/if}
+														 <?php if (isset($_SESSION['acctype'])) {?>
+																 <?php if (($_SESSION['acctype'] == 1)) {?>
+																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+																	 <?php } else { ?>
+																	 		<?php echo "Guest";?>
+
+																 <?php }?>
+																<?php } else { ?>
+																	<?php echo "Guest";?>
+
+														 <?php }?>
 														 </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                {if !isset($smarty.session.userId)}
-                                    {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                                {/if}
+                                <?php if (!isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-                                {if isset($smarty.session.userId)}
-																	{if ($smarty.session.acctype==1)}
-																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-																		{else}
-																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-																	{/if}
-                                {/if}
+                                <?php }?>
+
+                                <?php if (isset($_SESSION['userId'])) {?>
+																	<?php if (($_SESSION['acctype'] == 1)) {?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+																		<?php } else { ?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+																	<?php }?>
+                                <?php }?>
                             </div>
                         </li>
                     </ul>
@@ -102,22 +134,36 @@
                     <div class="widget-wrapper">
 
 
-                        {assign var="itemsResult" value=$item->getRecentItems()}
-                        {assign var="itemsData" value=$item->fetchDB($itemsResult)}
+                        <?php $_smarty_tpl->_assignInScope('itemsResult', $_smarty_tpl->tpl_vars['item']->value->getRecentItems());
+?>
+                        <?php $_smarty_tpl->_assignInScope('itemsData', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['itemsResult']->value));
+?>
 
 
                         <h4>Recent Items</h4>
                         <br>
                         <div class="list-group">
-                            {foreach from=$itemsData item=item}
-                            <a href="index.php?cAction=2&pno={$item.ino}" class="list-group-item
-                                {if isset($smarty.request.pno)}
-                                    {if ($smarty.request.pno)==$item.ino}
-                                        {'active'}
-                                    {/if}
-                                {/if}
-                            ">{$item.iname}</a>
-                            {/foreach}
+                            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['itemsData']->value, 'item');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
+?>
+                            <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+" class="list-group-item
+                                <?php if (isset($_REQUEST['pno'])) {?>
+                                    <?php if (($_REQUEST['pno']) == $_smarty_tpl->tpl_vars['item']->value['ino']) {?>
+                                        <?php echo 'active';?>
+
+                                    <?php }?>
+                                <?php }?>
+                            "><?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
+</a>
+                            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
                         </div>
                     </div>
 
@@ -131,23 +177,36 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            {if isset($smarty.request.pno)}
-                              {if ($smarty.request.pno)!=""}
-                                {assign var="txt" value=$smarty.request.pno}
-                                {assign var="result" value=$item->getItemDetails($txt)}
-                                {assign var="data" value=$item->fetchDB($result)}
+                            <?php if (isset($_REQUEST['pno'])) {?>
+                              <?php if (($_REQUEST['pno']) != '') {?>
+                                <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['pno']);
+?>
+                                <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItemDetails($_smarty_tpl->tpl_vars['txt']->value));
+?>
+                                <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
 
-                                 {foreach from=$data item=value}
-                                   {assign var="product" value=$value}
-                                 {/foreach}
-                              {elseif ($smarty.request.searchName)==""}
-                                {**assign var="result" value=$item->getItems()**}
-                                {**assign var="data" value=$item->fetchDB($result)**}
-                              {/if}
-                            {else}
-                              {**assign var="result" value=$item->getItems()**}
-                              {**assign var="data" value=$item->fetchDB($result)**}
-                            {/if}
+                                 <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+?>
+                                   <?php $_smarty_tpl->_assignInScope('product', $_smarty_tpl->tpl_vars['value']->value);
+?>
+                                 <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
+                              <?php } elseif (($_REQUEST['searchName']) == '') {?>
+
+
+                              <?php }?>
+                            <?php } else { ?>
+
+
+                            <?php }?>
 
                             <!--Product-->
                             <div class="product-wrapper">
@@ -162,22 +221,28 @@
                                 <!--/.Featured image-->
 
                                 <br>
-                                {**$product|print_r**}
+
                                 <!--Product data-->
-                                <h2 class="h2-responsive">{$product.iname}</h2>
-                                <a onclick="addToCart({$user['userId']},{$product.ino},1)"><i class="fa fa-cart-plus core-primary core-big-icon" aria-hidden="true"></i></a>
-                                <span class="core-price-detail"><strong>$ {$product.price}</strong></span>
+                                <h2 class="h2-responsive"><?php echo $_smarty_tpl->tpl_vars['product']->value['iname'];?>
+</h2>
+                                <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
+,<?php echo $_smarty_tpl->tpl_vars['product']->value['ino'];?>
+,1)"><i class="fa fa-cart-plus core-primary core-big-icon" aria-hidden="true"></i></a>
+                                <span class="core-price-detail"><strong>$ <?php echo $_smarty_tpl->tpl_vars['product']->value['price'];?>
+</strong></span>
                                 <br>
 
                                 <hr>
-                                <p>{$product.idesc}</p>
+                                <p><?php echo $_smarty_tpl->tpl_vars['product']->value['idesc'];?>
+</p>
 
 
                                 <hr>
 
 
-                                {literal}
-                                <script type="text/javascript">
+
+                                <?php echo '<script'; ?>
+ type="text/javascript">
                                     function addToCartComplete(xhr, status){
                                         alert("Item Added to Cart");
                                         console.log(xhr);
@@ -214,8 +279,9 @@
                                             complete:saveNameComplete}
                                         );
                                     }
-                                </script>
-                                {/literal}
+                                <?php echo '</script'; ?>
+>
+
 
 
                             </div>
@@ -326,18 +392,28 @@
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/jquery-2.2.3.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/tether.min.js"><?php echo '</script'; ?>
+>
 
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="js/mdb.min.js"><?php echo '</script'; ?>
+>
 
 
 </body>
 
 </html>
+<?php }
+}

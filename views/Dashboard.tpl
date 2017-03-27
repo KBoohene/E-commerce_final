@@ -78,7 +78,7 @@
 									{if isset($smarty.session.username)}
 											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {$smarty.session.fullname}</a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" onclick="logout()">Logout</a>
 													<a class="dropdown-item" href="#">Profile</a>
 												</div>
 										{else}
@@ -94,7 +94,32 @@
             </div>
         </nav>
 	    <!--/.Navbar-->
+			{literal}
+				<script>
+						function logoutComplete(xhr, status){
 
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+								window.location='employeeDisplay.php?eAction=1';
+							}else{
+								console.log("Employee not logged out");
+								}
+						}
+
+						function logout(){
+
+              var theUrl="ajax.php?cmd=4";
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:logoutComplete}
+                );
+
+						}
+				</script>
+			{/literal}
     </header>
 		{if isset($smarty.session)}
 			{if isset($smarty.session.userId)}

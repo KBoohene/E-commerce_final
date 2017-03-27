@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:31:03
+/* Smarty version 3.1.30, created on 2017-03-27 22:57:08
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d968774c2fd6_90638131',
+  'unifunc' => 'content_58d97ca4844c70_23525771',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490643051,
+      1 => 1490648225,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d968774c2fd6_90638131 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d97ca4844c70_23525771 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,9 +57,9 @@ function content_58d968774c2fd6_90638131 (Smarty_Internal_Template $_smarty_tpl)
                 <strong>Core Store</strong>
               </a>
               <div id="navbarNav1">
-                  <form class="form-inline waves-effect waves-light">
-                      <input class="form-control" type="text" placeholder="Search">
-                  </form>
+                <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
+                  <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
+              </form>
               </div>
               <div>
                    <ul class="nav navbar-nav nav-flex-icons ml-auto">
@@ -67,43 +67,59 @@ function content_58d968774c2fd6_90638131 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
 
-                      <?php if (isset($_SESSION['acctype'])) {?>
-                       <?php } else { ?>
-                         <li class="nav-item">
-                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-                         </li>
-                      <?php }?>
+                       <?php if (isset($_SESSION['acctype'])) {?>
+												 		<?php if (($_SESSION['acctype'] != 1)) {?>
+															<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+														<?php }?>
+												  <?php } else { ?>
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 <?php }?>
 
-                      <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-user"></i>
-                                <?php if (isset($_SESSION['userId'])) {?>
-                                    <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+													 <i class="fa fa-user"></i>
+														 <?php if (isset($_SESSION['acctype'])) {?>
+																 <?php if (($_SESSION['acctype'] == 1)) {?>
+																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
-                                    <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-                                <?php } else { ?>
-                                    <?php echo "Guest";?>
+																	 <?php } else { ?>
+																	 		<?php echo "Guest";?>
+
+																 <?php }?>
+																<?php } else { ?>
+																	<?php echo "Guest";?>
+
+														 <?php }?>
+														 </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <?php if (!isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                                 <?php }?>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <?php if (!isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-                              <?php }?>
-                              <?php if (isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+                                <?php if (isset($_SESSION['userId'])) {?>
+																	<?php if (($_SESSION['acctype'] == 1)) {?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
-                              <?php }?>
-                          </div>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-        </nav>
+																		<?php } else { ?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+																	<?php }?>
+                                <?php }?>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
       <!--/.Navbar-->
     </header>
 
@@ -136,6 +152,7 @@ function content_58d968774c2fd6_90638131 (Smarty_Internal_Template $_smarty_tpl)
 								 <td>Quantity</td>
 								 <td>Price</td>
 								 <td>Amount</td>
+								 <td>Remove</td>
 								</tr>
 						</thead>
 
@@ -168,7 +185,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
-								<td>
+									<td>
 										<span id="qty<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ">
 											<?php if ($_smarty_tpl->tpl_vars['value']->value['qty'] < 10) {?>
@@ -205,6 +222,8 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 										<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
 
 									</span>
+								</td>
+								<td>
 								</td>
 						 </tr>
 						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
