@@ -33,9 +33,9 @@
                 <strong>Core Store</strong>
               </a>
               <div id="navbarNav1">
-                  <form class="form-inline waves-effect waves-light">
-                      <input class="form-control" type="text" placeholder="Search">
-                  </form>
+                <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
+                              <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
+                          </form>
               </div>
               <div>
                   <ul class="nav navbar-nav nav-flex-icons ml-auto">

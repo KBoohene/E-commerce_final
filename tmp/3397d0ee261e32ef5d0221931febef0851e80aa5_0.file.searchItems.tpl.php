@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 21:48:40
+/* Smarty version 3.1.30, created on 2017-03-26 21:44:54
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cb0838c6ce26_43155777',
+  'unifunc' => 'content_58d836561deb94_72062462',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3397d0ee261e32ef5d0221931febef0851e80aa5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl',
-      1 => 1489697102,
+      1 => 1490564690,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cb0838c6ce26_43155777 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d836561deb94_72062462 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 
@@ -36,7 +36,7 @@ function content_58cb0838c6ce26_43155777 (Smarty_Internal_Template $_smarty_tpl)
 <head>
 <title>Search Items</title>
 </head>
- 
+
 <body>
  <div>
   <form action="index.php?cAction=1" method="POST">
@@ -46,28 +46,30 @@ function content_58cb0838c6ce26_43155777 (Smarty_Internal_Template $_smarty_tpl)
    <button type="submit" class="button">Search</button>
   </div>
  </form>
- 
- <?php if (isset($_REQUEST['searchName'])) {?>
-    <?php if (($_REQUEST['searchName']) != '') {?>
-      <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
+
+<?php if (isset($_REQUEST['searchName'])) {?>
+  <?php if (($_REQUEST['searchName']) != '') {?>
+    <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->searchItems($_smarty_tpl->tpl_vars['txt']->value));
+    <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->searchItems($_smarty_tpl->tpl_vars['txt']->value));
 ?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
-    <?php } elseif (($_REQUEST['searchName']) == '') {?>
-      <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
-?>
-      <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
-?>
- <?php }?>
- <?php } else { ?>
+  <?php } elseif (($_REQUEST['searchName']) == '') {?>
     <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
 ?>
     <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
- <?php }?>	  
-	 	  
+  <?php }
+} else { ?>
+  <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
+?>
+  <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+}?>
+
+<h2>Results for <ins><?php echo $_REQUEST['searchName'];?>
+</ins></h2>
+
  <div>
   <table>
     <thead>
@@ -79,7 +81,7 @@ function content_58cb0838c6ce26_43155777 (Smarty_Internal_Template $_smarty_tpl)
        <td>Reorder Level</td>
       </tr>
   </thead>
-	
+
  <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
