@@ -90,7 +90,7 @@
           {assign var="result" value=$order->getCheckout($customerId)}
           {assign var="data" value=$order->fetchDB($result)}
 
-
+			{assign var="count" value=0}
 				<div class="table-responsive">
 						<table class="table">
 							<thead>
@@ -102,49 +102,77 @@
 								</tr>
 						</thead>
 
+
 					 {foreach from=$data item=value}
 						<tr>
+							<td hidden>
+								{if $value.ino}
+									<span id="ino"+"{$count}">
+										{$value.ino}
+									</span>
+								{/if}
+							</td>
+							<td hidden>
+								{if $value.ono}
+									<span id="ono"+"{$count}">
+										{$value.ono}
+									</span>
+								{/if}
+							</td>
 						 {if $value.iname}
 								<td>{$value.iname}</td>
 						 {/if}
 						 {if $value.qty}
 								<td>
-										<span id="qty">
-											{$value.qty}
+										<span id="qty{$count}">
+											{if $value.qty<10}
+													{0}{$value.qty}
+												{else}
+													{$value.qty}
+											{/if}
 										</span>
 									<div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty()" >
+                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty({$count})" >
                             <input type="radio" name="options" id="option1" />&mdash;
                         </label>
-                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty()">
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty({$count})">
                             <input type="radio" name="options" id="option2" />+
                         </label>
                     </div>
 								</td>
 						 {/if}
 						 {if $value.price}
-								<td id="price">{$value.price}</td>
+								<td id="price{$count}">{$value.price}</td>
 						 {/if}
 								<td>
 								{assign var="amt" value= $value.price*$value.qty}
-									<span id="amt">
+									<span id="amt{$count}">
 										{$amt}
 									</span>
 								</td>
 						 </tr>
+						 {assign var="count" value=$count+1}
 						 {/foreach}
 						</table>
 					 </div>
         </div>
+
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
+				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+
+				</div>
         <!--/.Main layout-->
 				{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;
+						var counter; {/literal}{$count}{literal}
 
-						function increaseQty(){
-							val = document.getElementById("qty");
-							val2 = document.getElementById("price");
-							val3 = document.getElementById("amt");
+
+						function increaseQty(count){
+							val = document.getElementById("qty"+count);
+							val2 = document.getElementById("price"+count);
+							val3 = document.getElementById("amt"+count);
+
 
 							amount =parseFloat(val3.innerHTML);
 							quantity = parseFloat(val.innerHTML);
@@ -154,14 +182,21 @@
 							quantity++;
 							amount = price*quantity;
 
-							$("#qty").html(quantity);
-							$("#amt").html(amount);
+							if(quantity<10)
+							{
+							  $("#qty"+count).html("0"+quantity);
+							}
+							else{
+								$("#qty"+count).html(quantity);
+							}
+
+							$("#amt"+count).html(amount);
 						}
 
-						function decreaseQty(){
-							val = document.getElementById("qty");
-							val2 = document.getElementById("price");
-							val3 = document.getElementById("amt");
+						function decreaseQty(count){
+							val = document.getElementById("qty"+count);
+							val2 = document.getElementById("price"+count);
+							val3 = document.getElementById("amt"+count);
 
 							amount =parseFloat(val3.innerHTML);
 							quantity = parseFloat(val.innerHTML);
@@ -171,9 +206,73 @@
 							quantity--;
 							amount = price*quantity;
 
-							$("#qty").html(quantity);
-							$("#amt").html(amount);
+							if(quantity<10)
+							{
+							  $("#qty"+count).html("0"+quantity);
+							}
+							else{
+								$("#qty"+count).html(quantity);
+							}
+
+							$("#amt"+count).html(amount);
 						}
+
+						function saveComplete(xhr,status){
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+							}else{
+								console.log("Cart Updated");
+								}
+						}
+
+						function save(){
+							counter={/literal}{$count}{literal};
+
+							for(var i=0;i<counter;i++){
+
+								val = document.getElementById("qty"+i);
+								val2 = document.getElementById("ino"+i);
+								val3 = document.getElementById("ono"+i);
+
+								val = parseFloat(val.innerHTML);
+								val2 = parseFloat(val2.innerHTML);
+								val3 = parseFloat(val3.innerHTML);
+
+								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:saveComplete}
+                );
+							}
+						}
+
+
+						function checkoutComplete(xhr, status){
+							alert("Item Added to Cart");
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+							}else{
+								console.log("added to cart");
+								}
+						}
+
+						function checkout(){
+
+						//alert("Adding item "+itemId+" to cart by user " + customerId);
+              var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:checkoutComplete}
+                );
+
+						}
+
 					</script>
 					{/literal}
 

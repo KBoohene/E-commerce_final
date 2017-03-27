@@ -10,6 +10,8 @@
 		case 1:
 			addToCart();		//if cmd=1 the call delete
 			break;
+		case 2:
+			saveUpdate();
 		default:
 			echo "wrong cmd";	//change to json message
 			break;
@@ -77,6 +79,21 @@
 			}
 		}
 	}
+
+function saveUpdate(){
+	include("Classes/order.php");
+	$obj = new order();
+
+	$ono = $_REQUEST['ono'];
+	$ino = $_REQUEST['ino'];
+	$qty = $_REQUEST['qty'];
+
+	$obj->updateCart($ono,$ino,$qty);
+
+	echo '{"result":0,"message":"Cart updated"}';
+
+	echo '{"result":1,"message":"Cart not updated"}';
+}
 
 
 ?>

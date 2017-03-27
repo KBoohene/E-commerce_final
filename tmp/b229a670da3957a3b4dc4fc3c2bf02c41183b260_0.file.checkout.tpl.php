@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 16:45:22
+/* Smarty version 3.1.30, created on 2017-03-27 18:39:38
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d14a929b6428_51071043',
+  'unifunc' => 'content_58d9404ac6de58_12805173',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490111075,
+      1 => 1490632775,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d14a929b6428_51071043 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9404ac6de58_12805173 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,7 +124,8 @@ function content_58d14a929b6428_51071043 (Smarty_Internal_Template $_smarty_tpl)
           <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
-
+			<?php $_smarty_tpl->_assignInScope('count', 0);
+?>
 				<div class="table-responsive">
 						<table class="table">
 							<thead>
@@ -136,45 +137,77 @@ function content_58d14a929b6428_51071043 (Smarty_Internal_Template $_smarty_tpl)
 								</tr>
 						</thead>
 
+
 					 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
 						<tr>
+							<td hidden>
+								<?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
+									<span id="ino"+"<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
+										<?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
+
+									</span>
+								<?php }?>
+							</td>
+							<td hidden>
+								<?php if ($_smarty_tpl->tpl_vars['value']->value['ono']) {?>
+									<span id="ono"+"<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
+										<?php echo $_smarty_tpl->tpl_vars['value']->value['ono'];?>
+
+									</span>
+								<?php }?>
+							</td>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['iname']) {?>
 								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['iname'];?>
 </td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
 								<td>
-										<span id="qty">
-											<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+										<span id="qty<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
+											<?php if ($_smarty_tpl->tpl_vars['value']->value['qty'] < 10) {?>
+													<?php echo 0;
+echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 
+												<?php } else { ?>
+													<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+
+											<?php }?>
 										</span>
 									<div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty()" >
+                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty(<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+)" >
                             <input type="radio" name="options" id="option1" />&mdash;
                         </label>
-                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty()">
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty(<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+)">
                             <input type="radio" name="options" id="option2" />+
                         </label>
                     </div>
 								</td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
-								<td id="price"><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+								<td id="price<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
 </td>
 						 <?php }?>
 								<td>
 								<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
 ?>
-									<span id="amt">
+									<span id="amt<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
 										<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
 
 									</span>
 								</td>
 						 </tr>
+						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
+?>
 						 <?php
 }
 }
@@ -184,16 +217,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						</table>
 					 </div>
         </div>
+
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
+				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+
+				</div>
         <!--/.Main layout-->
 
 					<?php echo '<script'; ?>
 >
 						var val, val2, val3, amount, quantity, price ;
+						var counter; <?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 
-						function increaseQty(){
-							val = document.getElementById("qty");
-							val2 = document.getElementById("price");
-							val3 = document.getElementById("amt");
+
+
+						function increaseQty(count){
+							val = document.getElementById("qty"+count);
+							val2 = document.getElementById("price"+count);
+							val3 = document.getElementById("amt"+count);
+
 
 							amount =parseFloat(val3.innerHTML);
 							quantity = parseFloat(val.innerHTML);
@@ -203,14 +245,21 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							quantity++;
 							amount = price*quantity;
 
-							$("#qty").html(quantity);
-							$("#amt").html(amount);
+							if(quantity<10)
+							{
+							  $("#qty"+count).html("0"+quantity);
+							}
+							else{
+								$("#qty"+count).html(quantity);
+							}
+
+							$("#amt"+count).html(amount);
 						}
 
-						function decreaseQty(){
-							val = document.getElementById("qty");
-							val2 = document.getElementById("price");
-							val3 = document.getElementById("amt");
+						function decreaseQty(count){
+							val = document.getElementById("qty"+count);
+							val2 = document.getElementById("price"+count);
+							val3 = document.getElementById("amt"+count);
 
 							amount =parseFloat(val3.innerHTML);
 							quantity = parseFloat(val.innerHTML);
@@ -220,9 +269,74 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							quantity--;
 							amount = price*quantity;
 
-							$("#qty").html(quantity);
-							$("#amt").html(amount);
+							if(quantity<10)
+							{
+							  $("#qty"+count).html("0"+quantity);
+							}
+							else{
+								$("#qty"+count).html(quantity);
+							}
+
+							$("#amt"+count).html(amount);
 						}
+
+						function saveComplete(xhr,status){
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+							}else{
+								console.log("Cart Updated");
+								}
+						}
+
+						function save(){
+							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+;
+
+							for(var i=0;i<counter;i++){
+
+								val = document.getElementById("qty"+i);
+								val2 = document.getElementById("ino"+i);
+								val3 = document.getElementById("ono"+i);
+
+								val = parseFloat(val.innerHTML);
+								val2 = parseFloat(val2.innerHTML);
+								val3 = parseFloat(val3.innerHTML);
+
+								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:saveComplete}
+                );
+							}
+						}
+
+
+						function checkoutComplete(xhr, status){
+							alert("Item Added to Cart");
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+							}else{
+								console.log("added to cart");
+								}
+						}
+
+						function checkout(){
+
+						//alert("Adding item "+itemId+" to cart by user " + customerId);
+              var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:checkoutComplete}
+                );
+
+						}
+
 					<?php echo '</script'; ?>
 >
 
