@@ -1,26 +1,26 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 22:57:08
+/* Smarty version 3.1.30, created on 2017-03-27 23:23:42
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d97ca4844c70_23525771',
+  'unifunc' => 'content_58d982de7b7719_36706779',
   'has_nocache_code' => false,
-  'file_dependency' =>
+  'file_dependency' => 
   array (
-    'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
+    'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490648225,
+      1 => 1490649814,
       2 => 'file',
     ),
   ),
-  'includes' =>
+  'includes' => 
   array (
   ),
 ),false)) {
-function content_58d97ca4844c70_23525771 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d982de7b7719_36706779 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +247,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					</div>
 				</div>
 
-
+					
 					<?php echo '<script'; ?>
 >
 						var val, val2, val3, amount, quantity, price ;
@@ -316,6 +316,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}else{
 								console.log("Cart not updated");
 								}
+							document.getElementById("Save").style.visibility ="hidden";
 						}
 
 						function saveChanges(){
@@ -368,7 +369,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 					<?php echo '</script'; ?>
 >
-
+					
 
 				<?php } else { ?>
 						<h1><?php echo "Cart Empty";?>
