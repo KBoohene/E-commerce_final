@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 12:32:15
+/* Smarty version 3.1.30, created on 2017-03-27 00:22:32
   from "C:\xampp\htdocs\E-commerce_final\views\customerLogin.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d10f3fbdb681_64706255',
+  'unifunc' => 'content_58d83f28346ca8_45447562',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '1b1214217615b6228b0c5232b4d8eb9aacd4b36c' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customerLogin.tpl',
-      1 => 1490034681,
+      1 => 1490111075,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d10f3fbdb681_64706255 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d83f28346ca8_45447562 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,15 +73,15 @@ function content_58d10f3fbdb681_64706255 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-user"></i>
                                              <?php if (isset($_SESSION['userId'])) {?>
-																						 		 <?php if (($_SESSION['userId'] == 1)) {?>
-																									 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+										 		 <?php if (($_SESSION['acctype'] == 1)) {?>
+													 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
-																									 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+													 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-																									 <?php } else { ?>
-																										 <?php echo "Guest";?>
+												 <?php }?>
+                                             <?php } else { ?>
+                                                 <?php echo "Guest";?>
 
-																								 <?php }?>
                                              <?php }?>
                                        </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
