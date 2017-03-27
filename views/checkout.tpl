@@ -81,7 +81,7 @@
 
         <!--Main layout-->
         <div class="container">
-					{if isset($smarty.session.userId)}
+		  {if isset($smarty.session.userId)}
             {assign var="customerId" value=$smarty.session.userId}
           {else}
             {"Session not started"}
@@ -91,6 +91,7 @@
           {assign var="data" value=$order->fetchDB($result)}
 
 			{if ($data!=null)}
+            <h1>{"Cart Content"}</h1>
 			{assign var="count" value=0}
 
 				<div class="table-responsive">
@@ -152,6 +153,7 @@
 										{$amt}
 									</span>
 								</td>
+
 						 </tr>
 						 {assign var="count" value=$count+1}
 						 {/foreach}
@@ -159,7 +161,7 @@
 					 </div>
         </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
 				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					{literal}
 					<script>
@@ -190,6 +192,7 @@
 							}
 
 							$("#amt"+count).html(amount);
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -214,6 +217,7 @@
 							}
 
 							$("#amt"+count).html(amount);
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -235,7 +239,7 @@
 
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
-								val3 = document.getElementById("ono"+i);
+								val3 = document.getElementById("ono");
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:30:49
+/* Smarty version 3.1.30, created on 2017-03-27 23:35:51
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d98489815be6_07512136',
+  'unifunc' => 'content_58d9a1d75baf83_63701916',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3397d0ee261e32ef5d0221931febef0851e80aa5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl',
-      1 => 1490650246,
+      1 => 1490657747,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d98489815be6_07512136 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9a1d75baf83_63701916 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,85 +130,197 @@ function content_58d98489815be6_07512136 (Smarty_Internal_Template $_smarty_tpl)
 
     </header>
 
- <div>
-  <form action="index.php?cAction=1" method="POST">
-   <input class="search-bar" id="search" type="text" name="searchName">
-  </div>
-  <div>
-   <button type="submit" class="button">Search</button>
-  </div>
- </form>
+    <main>
 
-<?php if (isset($_REQUEST['searchName'])) {?>
-  <?php if (($_REQUEST['searchName']) != '') {?>
-    <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
-?>
-    <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->searchItems($_smarty_tpl->tpl_vars['txt']->value));
-?>
-    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
-?>
-  <?php } elseif (($_REQUEST['searchName']) == '') {?>
-    <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
-?>
-    <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
-?>
-  <?php }
-} else { ?>
-  <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
-?>
-  <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
-}?>
+        <!--Main layout-->
+        <div class="container">
 
-<h2>Results for <ins><?php echo $_REQUEST['searchName'];?>
-</ins></h2>
+            <div class="row">
 
- <div>
-  <table>
-    <thead>
-      <tr>
-       <td>Product ID</td>
-       <td>Product Name</td>
-       <td>Quantity on Hand</td>
-       <td>Price</td>
-       <td>Reorder Level</td>
-      </tr>
-  </thead>
+              <div class="row">
+               <form action="index.php?cAction=1" method="POST">
+                 <?php $_smarty_tpl->_assignInScope('search', "Search");
+?>
+                 <div class="col-md-11">
+                   <input class="form-control" id="search" type="text" name="searchName" placeholder="Search" value=
+                    <?php if (isset($_REQUEST['searchName'])) {?>
+                      <?php $_smarty_tpl->_assignInScope('trimmed', trim($_REQUEST['searchName']));
+?>
+                      <?php if (($_smarty_tpl->tpl_vars['trimmed']->value) == '') {?>
+                        <?php $_smarty_tpl->_assignInScope('search', (("'").($_smarty_tpl->tpl_vars['search']->value)).("'"));
+?>
+                      <?php } else { ?>
+                        <?php $_smarty_tpl->_assignInScope('value', (("'").($_REQUEST['searchName'])).("'"));
+?>
+                        <?php echo $_smarty_tpl->tpl_vars['value']->value;?>
 
- <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'value');
+                      <?php }?>
+                    <?php } else { ?>
+                      <?php echo preg_replace('!\s+!u', ' ',$_smarty_tpl->tpl_vars['search']->value);?>
+
+                    <?php }?>
+                   >
+                 </div>
+                 <div class="col-md-1">
+                   <input type="submit" value="Search" class="form-control">
+                 </div>
+               </div>
+
+              </form>
+
+             <?php if (isset($_REQUEST['searchName'])) {?>
+               <?php $_smarty_tpl->_assignInScope('trimmed', trim($_REQUEST['searchName']));
+?>
+               <?php if (($_smarty_tpl->tpl_vars['trimmed']->value) != '') {?>
+                 <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
+?>
+                 <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->searchItems($_smarty_tpl->tpl_vars['txt']->value));
+?>
+                 <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
+               <?php } elseif (($_smarty_tpl->tpl_vars['trimmed']->value) == '') {?>
+                 <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
+?>
+                 <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
+                 <?php echo "<h2>Showing all items</h2>";?>
+
+               <?php }?>
+             <?php } else { ?>
+               <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['item']->value->getItems());
+?>
+               <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['item']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
+?>
+             <?php }?>
+
+              <?php $_smarty_tpl->_assignInScope('user', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+
+
+<?php if (count($_smarty_tpl->tpl_vars['data']->value) == 0) {?>
+  <?php echo "<h2>No Result</h2>";?>
+
+<?php }?>
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data']->value, 'item');
+$_smarty_tpl->tpl_vars['item']->iteration = 0;
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['item']->iteration++;
+$__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
 ?>
-  <tr>
-   <?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
-      <td><?php echo $_smarty_tpl->tpl_vars['value']->value['ino'];?>
-</td>
-   <?php }?>
-   <?php if ($_smarty_tpl->tpl_vars['value']->value['iname']) {?>
-      <td><?php echo $_smarty_tpl->tpl_vars['value']->value['iname'];?>
-</td>
-   <?php }?>
-   <?php if ($_smarty_tpl->tpl_vars['value']->value['qoh']) {?>
-      <td><?php echo $_smarty_tpl->tpl_vars['value']->value['qoh'];?>
-</td>
-   <?php }?>
-   <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
-      <td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
-</td>
-   <?php }?>
-   <?php if ($_smarty_tpl->tpl_vars['value']->value['olevel']) {?>
-      <td><?php echo $_smarty_tpl->tpl_vars['value']->value['olevel'];?>
-</td>
-   <?php }?>
-   </tr>
-   <?php
+
+
+                            <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
+                            <!--Second row-->
+                            <div class="row">
+                        <?php }?>
+                        <!--Columnn-->
+                        <div class="col-lg-3">
+                            <!--Card-->
+                            <div class="card">
+                                <!--Card image-->
+                                <div class="view overlay hm-white-slight">
+                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
+                                    <a href="#">
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                                <!--/.Card image-->
+
+                                <!--Card content-->
+                                <div class="card-block">
+                                    <!--Title-->
+                                    <h4 class="card-title" id="my-home-cards"><?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
+</h4>
+                                    <!--Text-->
+                                    <strong><p class="card-text">$ <?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+</p></strong>
+
+                                    <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
+                                    <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
+                                <br>
+                                    <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
+,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                    <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
+                                </div>
+                                <!--/.Card content-->
+                            </div>
+                            <!--/.Card-->
+                        </div>
+                        <!--/.Columnn-->
+                        <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
+                            </div>
+                            <!--/.Second row-->
+                        <?php }?>
+                        <?php
+$_smarty_tpl->tpl_vars['item'] = $__foreach_item_0_saved;
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-  </table>
- </div>
+
+                          
+                            <?php echo '<script'; ?>
+ type="text/javascript">
+                                function addToCartComplete(xhr, status){
+                                    alert("Item Added to Cart");
+                                    console.log(xhr);
+
+                                    var obj=$.parseJSON(xhr.responseText);
+                            if(obj.result==0){
+                              console.log(obj.message);
+                            }else{
+
+                              console.log("added to cart");
+
+                            }
+
+
+                                }
+
+                                function addToCart(customerId, itemId, qty){
+                                    //alert("Adding item "+itemId+" to cart by user " + customerId);
+                                    var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
+                                    //alert(theUrl);
+                            $.ajax(theUrl,
+                                {async:true,
+                                 complete:addToCartComplete}
+                              );
+                                }
+
+                                function saveNameComplete(xhr,status){
+                            divStatus.innerHTML=xhr.responseText;
+                          }
+
+                          function saveName(id){
+                            currentObject.innerHTML=$("#txtName").val();
+                            var username=currentObject.innerHTML;
+                            var theUrl="usersajax.php?cmd=5&uc="+id+"&name="+username;
+                            $.ajax(theUrl,
+                                {async:true,
+                                 complete:saveNameComplete}
+                              );
+                          }
+                            <?php echo '</script'; ?>
+>
+                        
+
+
+            </div>
+
+<br>
+
+        </div>
+        <!--/.Main layout-->
+
+    </main>
+
+
+
  <!--Footer-->
    <footer class="page-footer center-on-small-only">
 

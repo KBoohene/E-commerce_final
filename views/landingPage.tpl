@@ -260,7 +260,7 @@
 										{/literal}
 
 
-                    </div>
+                  </div> <!-- eeee-->
 
             </div>
         </div>

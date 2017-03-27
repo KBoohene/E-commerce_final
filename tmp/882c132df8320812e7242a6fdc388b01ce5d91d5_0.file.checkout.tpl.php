@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:33:09
+/* Smarty version 3.1.30, created on 2017-03-27 21:53:48
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d985153d6076_65006739',
+  'unifunc' => 'content_58d989ec551e87_08220612',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490650387,
+      1 => 1490651625,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d985153d6076_65006739 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d989ec551e87_08220612 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +111,7 @@ function content_58d985153d6076_65006739 (Smarty_Internal_Template $_smarty_tpl)
 
         <!--Main layout-->
         <div class="container">
-					<?php if (isset($_SESSION['userId'])) {?>
+		  <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
           <?php } else { ?>
@@ -125,6 +125,8 @@ function content_58d985153d6076_65006739 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
 			<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
+            <h1><?php echo "Cart Content";?>
+</h1>
 			<?php $_smarty_tpl->_assignInScope('count', 0);
 ?>
 
@@ -206,6 +208,7 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 
 									</span>
 								</td>
+
 						 </tr>
 						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
 ?>
@@ -219,7 +222,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					 </div>
         </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
 				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					
 					<?php echo '<script'; ?>
@@ -252,6 +255,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -276,6 +280,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -287,6 +292,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}else{
 								console.log("Cart not updated");
 								}
+							document.getElementById("Save").style.visibility ="hidden";
 						}
 
 						function saveChanges(){
@@ -297,7 +303,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
-								val3 = document.getElementById("ono"+i);
+								val3 = document.getElementById("ono");
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
