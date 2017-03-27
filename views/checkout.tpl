@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body id="core-wrapper">
 
     <header>
 
@@ -43,51 +43,37 @@
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
 
-                       {if isset($smarty.session.acctype)}
-												 		{if ($smarty.session.acctype!=1)}
-															<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-														{/if}
-												  {else}
-														<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-												 {/if}
+                      {if isset($smarty.session.acctype)}
+                       {else}
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      {/if}
 
-                        <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													 <i class="fa fa-user"></i>
-														 {if isset($smarty.session.acctype)}
-																 {if ($smarty.session.acctype == 1)}
-																	 {assign var="session" value=$userInfo->getSession()}
-																	 {$session['fullname']}
-																	 {else}
-																	 		{"Guest"}
-																 {/if}
-																{else}
-																	{"Guest"}
-														 {/if}
-														 </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                {if !isset($smarty.session.userId)}
-                                    {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                                {/if}
-
+                              <i class="fa fa-user"></i>
                                 {if isset($smarty.session.userId)}
-																	{if ($smarty.session.acctype==1)}
-																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-																		{else}
-																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-																	{/if}
+                                    {assign var="session" value=$userInfo->getSession()}
+                                    {$session['fullname']}
+                                {else}
+                                    {"Guest"}
                                 {/if}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-          </nav>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                              {if !isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+                              {/if}
+                              {if isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+                                  {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+                              {/if}
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
       <!--/.Navbar-->
     </header>
 
@@ -95,7 +81,7 @@
 
         <!--Main layout-->
         <div class="container">
-					{if isset($smarty.session.userId)}
+		  {if isset($smarty.session.userId)}
             {assign var="customerId" value=$smarty.session.userId}
           {else}
             {"Session not started"}
@@ -105,6 +91,7 @@
           {assign var="data" value=$order->fetchDB($result)}
 
 			{if ($data!=null)}
+            <h1>{"Cart Content"}</h1>
 			{assign var="count" value=0}
 
 				<div class="table-responsive">
@@ -115,7 +102,6 @@
 								 <td>Quantity</td>
 								 <td>Price</td>
 								 <td>Amount</td>
-								 <td>Remove</td>
 								</tr>
 						</thead>
 
@@ -140,7 +126,7 @@
 								<td>{$value.iname}</td>
 						 {/if}
 						 {if $value.qty}
-									<td>
+								<td>
 										<span id="qty{$count}">
 											{if $value.qty<10}
 													{0}{$value.qty}
@@ -167,12 +153,7 @@
 										{$amt}
 									</span>
 								</td>
-								<td>
-									<div class="chip">
-											Tag 1
-											<i class="close fa fa-times"></i>
-									</div>
-								</td>
+
 						 </tr>
 						 {assign var="count" value=$count+1}
 						 {/foreach}
@@ -180,15 +161,8 @@
 					 </div>
         </div>
 
-				<div class="row>
-					<div class="col-md-6">
-					</div>
-					<div class="col-md-6">
-						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-					</div>
-				</div>
-
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;
@@ -218,7 +192,7 @@
 							}
 
 							$("#amt"+count).html(amount);
-							document.getElementById("Save").style.visibility ="visible";
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -243,8 +217,7 @@
 							}
 
 							$("#amt"+count).html(amount);
-
-							document.getElementById("Save").style.visibility ="visible";
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -317,78 +290,19 @@
     </main>
 
     <!--Footer-->
-    <footer class="page-footer center-on-small-only">
+      <footer id="" class="page-footer center-on-small-only">
 
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
+          <!--Copyright-->
+          <div class="footer-copyright">
+              <div class="container-fluid">
+                  © 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
 
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
+              </div>
+          </div>
+          <!--/.Copyright-->
 
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                © 2015 Copyright: <a href="http://index.php?cAction=9"> CoreStore.com </a>
-
-            </div>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
+      </footer>
+      <!--/.Footer-->
 
 
     <!-- SCRIPTS -->
