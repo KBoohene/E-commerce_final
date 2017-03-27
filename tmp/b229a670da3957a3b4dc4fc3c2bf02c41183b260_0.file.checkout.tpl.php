@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 23:23:42
+/* Smarty version 3.1.30, created on 2017-03-28 00:36:52
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d982de7b7719_36706779',
+  'unifunc' => 'content_58d9940413e607_38785310',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490649814,
+      1 => 1490654206,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d982de7b7719_36706779 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9940413e607_38785310 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +145,7 @@ function content_58d982de7b7719_36706779 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
 				<div class="table-responsive">
-						<table class="table">
+						<table class="table" id="checkTable">
 							<thead>
 								<tr>
 								 <td>Product Name</td>
@@ -162,7 +162,8 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-						<tr>
+						<tr id="row<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
 							<td hidden>
 								<?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
 									<span id="ino<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
@@ -224,6 +225,12 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 									</span>
 								</td>
 								<td>
+									<div class="btn-group" data-toggle="buttons">
+									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem(<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+)">
+                      <input type="radio" name="options" id="Del"/>X
+                    </label>
+									</div>
 								</td>
 						 </tr>
 						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
@@ -363,6 +370,31 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
+                );
+						}
+
+						function removeComplete(xhr, status){
+							console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								$("#row"+obj.rowNum).remove();
+							}else{
+								console.log("order not checked out");
+								}
+						}
+
+						function removeItem(counter){
+						val2 = document.getElementById("ino"+counter);
+						val3 = document.getElementById("ono");
+
+						val2 = parseFloat(val2.innerHTML);
+						val3 = parseFloat(val3.innerHTML);
+
+						var theUrl="ajax.php?cmd=5&ono="+val3+"&ino="+val2+"&row="+counter;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:removeComplete}
                 );
 
 						}

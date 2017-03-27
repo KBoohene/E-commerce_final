@@ -19,6 +19,9 @@
 		case 4:
 			logout();
 			break;
+		case 5:
+			removeItem();
+			break;
 		default:
 			echo "wrong cmd";	//change to json message
 			break;
@@ -116,6 +119,19 @@ function logout(){
 
 	$obj->endSession();
 	echo '{"result":0,"message":"Employee logged out"}';
+}
+
+function removeItem(){
+	include("Classes/order.php");
+	$obj = new order();
+	$ono = $_REQUEST['ono'];
+	$ino = $_REQUEST['ino'];
+	$rowNum=$_REQUEST['row'];
+
+	$obj->removeFromCart($ono,$ino);
+
+	echo '{"result":0,"message":"Item removed from cart","rowNum":'.$rowNum.'}';
+
 }
 
 ?>

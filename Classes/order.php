@@ -43,7 +43,7 @@ class order extends adb{
 * @return : True if successful, False if not
 **/
   function removeFromCart($orderNo, $itemId){
-    $strQuery="DELETE FROM odetails WHERE ono='$orderNo' AND ino='$itemId'";
+    $strQuery="DELETE FROM odetails WHERE ono='$orderNo'AND ino='$itemId'";
     return $this->query($strQuery);
   }
 

@@ -108,7 +108,7 @@
 			{assign var="count" value=0}
 
 				<div class="table-responsive">
-						<table class="table">
+						<table class="table" id="checkTable">
 							<thead>
 								<tr>
 								 <td>Product Name</td>
@@ -121,7 +121,7 @@
 
 
 					 {foreach from=$data item=value}
-						<tr>
+						<tr id="row{$count}">
 							<td hidden>
 								{if $value.ino}
 									<span id="ino{$count}">
@@ -168,9 +168,10 @@
 									</span>
 								</td>
 								<td>
-									<div class="chip">
-											Tag 1
-											<i class="close fa fa-times"></i>
+									<div class="btn-group" data-toggle="buttons">
+									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem({$count})">
+                      <input type="radio" name="options" id="Del"/>X
+                    </label>
 									</div>
 								</td>
 						 </tr>
@@ -302,6 +303,31 @@
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
+                );
+						}
+
+						function removeComplete(xhr, status){
+							console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								$("#row"+obj.rowNum).remove();
+							}else{
+								console.log("order not checked out");
+								}
+						}
+
+						function removeItem(counter){
+						val2 = document.getElementById("ino"+counter);
+						val3 = document.getElementById("ono");
+
+						val2 = parseFloat(val2.innerHTML);
+						val3 = parseFloat(val3.innerHTML);
+
+						var theUrl="ajax.php?cmd=5&ono="+val3+"&ino="+val2+"&row="+counter;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:removeComplete}
                 );
 
 						}
