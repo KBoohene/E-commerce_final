@@ -16,6 +16,9 @@
 		case 3:
 			checkout();
 			break;
+		case 4:
+			logout();
+			break;
 		default:
 			echo "wrong cmd";	//change to json message
 			break;
@@ -45,13 +48,14 @@
 			$qtyData = $qtyResult->fetch_assoc();
 			$qty = $qtyData['qty'];
 
+
 			if($qty>0){
 				$qty++;
 				$obj->updateCart($orderNo,$itemId,$qty);
 
 			}else{
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, $qty)){
+				if($obj->addToCart($orderNo, $itemId, 1)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -70,7 +74,7 @@
 				$orderNo = $checkData["ono"];
 
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, $qty)){
+				if($obj->addToCart($orderNo, $itemId, 1)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -104,6 +108,14 @@ function checkout(){
 
 	$obj->checkout($ono);
 	echo '{"result":0,"message":"Order checked out"}';
+}
+
+function logout(){
+	include("Classes/userInfo.php");
+	$obj = new userInfo();
+
+	$obj->endSession();
+	echo '{"result":0,"message":"Employee logged out"}';
 }
 
 ?>

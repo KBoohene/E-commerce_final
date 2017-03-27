@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 16:44:58
+/* Smarty version 3.1.30, created on 2017-03-27 23:15:23
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d14a7a259447_22306846',
+  'unifunc' => 'content_58d980eb1877b1_67839747',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1490111075,
+      1 => 1490649314,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d14a7a259447_22306846 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d980eb1877b1_67839747 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +58,7 @@ function content_58d14a7a259447_22306846 (Smarty_Internal_Template $_smarty_tpl)
                 </a>
                 <div id="navbarNav1">
                     <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
-                        <input class="form-control" type="text" placeholder="Search">
+                        <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
                     </form>
                 </div>
                 <div>
@@ -67,6 +67,11 @@ function content_58d14a7a259447_22306846 (Smarty_Internal_Template $_smarty_tpl)
                             <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                         </li>
 												 <?php if (isset($_SESSION['acctype'])) {?>
+												 		<?php if (($_SESSION['acctype'] != 1)) {?>
+															<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+														<?php }?>
 												  <?php } else { ?>
 														<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
@@ -81,6 +86,9 @@ function content_58d14a7a259447_22306846 (Smarty_Internal_Template $_smarty_tpl)
 																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
 																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+																	 <?php } else { ?>
+																	 		<?php echo "Guest";?>
 
 																 <?php }?>
 																<?php } else { ?>
@@ -240,7 +248,8 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                                 <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
 ,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
 ,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
+                                <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
+"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
                         </div>
@@ -281,7 +290,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                             function addToCart(customerId, itemId, qty){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
                                 var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                //alert(theUrl);
+                                alert(theUrl);
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}

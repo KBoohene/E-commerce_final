@@ -42,45 +42,51 @@
                           <li class="nav-item">
                               <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                           </li>
-  												 {if isset($smarty.session.acctype)}
-  												  {else}
-  														<li class="nav-item">
-  															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-  														</li>
-  												 {/if}
+  												  {if isset($smarty.session.acctype)}
+												 		{if ($smarty.session.acctype!=1)}
+															<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+														{/if}
+												  {else}
+														<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+												 {/if}
 
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  													 <i class="fa fa-user"></i>
-  														 {if isset($smarty.session.acctype)}
-  																 {if ($smarty.session.acctype == 1)}
-  																	 {assign var="session" value=$userInfo->getSession()}
-  																	 {$session['fullname']}
-  																 {/if}
-  																{else}
-  																	{"Guest"}
-  														 {/if}
-  														 </a>
-                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                  {if !isset($smarty.session.userId)}
-                                      {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                                  {/if}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													 <i class="fa fa-user"></i>
+														 {if isset($smarty.session.acctype)}
+																 {if ($smarty.session.acctype == 1)}
+																	 {assign var="session" value=$userInfo->getSession()}
+																	 {$session['fullname']}
+																	 {else}
+																	 		{"Guest"}
+																 {/if}
+																{else}
+																	{"Guest"}
+														 {/if}
+														 </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                {if !isset($smarty.session.userId)}
+                                    {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+                                {/if}
 
-                                  {if isset($smarty.session.userId)}
-    									{if ($smarty.session.acctype==1)}
-    											{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-    											{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-    										{else}
-    											{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-    									{/if}
-                                  {/if}
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-            </nav>
-          <!--/.Navbar-->
+                                {if isset($smarty.session.userId)}
+																	{if ($smarty.session.acctype==1)}
+																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+																		{else}
+																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+																	{/if}
+                                {/if}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
 
     </header>
 

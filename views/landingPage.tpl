@@ -43,6 +43,11 @@
                             <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                         </li>
 												 {if isset($smarty.session.acctype)}
+												 		{if ($smarty.session.acctype!=1)}
+															<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+														{/if}
 												  {else}
 														<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
@@ -56,6 +61,8 @@
 																 {if ($smarty.session.acctype == 1)}
 																	 {assign var="session" value=$userInfo->getSession()}
 																	 {$session['fullname']}
+																	 {else}
+																	 		{"Guest"}
 																 {/if}
 																{else}
 																	{"Guest"}
@@ -229,7 +236,7 @@
                             function addToCart(customerId, itemId, qty){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
                                 var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                //alert(theUrl);
+                                alert(theUrl);
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}
