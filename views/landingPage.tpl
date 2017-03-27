@@ -236,7 +236,7 @@
                             function addToCart(customerId, itemId, qty){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
                                 var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                alert(theUrl);
+                                //alert(theUrl);
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}

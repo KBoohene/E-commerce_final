@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 20:14:51
+/* Smarty version 3.1.30, created on 2017-03-27 21:22:24
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d972bb182104_57531190',
+  'unifunc' => 'content_58d98290733e66_87091005',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1490645311,
+      1 => 1490649714,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d972bb182104_57531190 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d98290733e66_87091005 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,43 +66,59 @@ function content_58d972bb182104_57531190 (Smarty_Internal_Template $_smarty_tpl)
                       <li class="nav-item">
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
-                        <?php if (isset($_SESSION['acctype'])) {?>
+                         <?php if (isset($_SESSION['acctype'])) {?>
+												 		<?php if (($_SESSION['acctype'] != 1)) {?>
+															<li class="nav-item">
+															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+														</li>
+														<?php }?>
 												  <?php } else { ?>
 														<li class="nav-item">
 															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
 														</li>
 												 <?php }?>
 
-                      <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-user"></i>
-                                <?php if (isset($_SESSION['userId'])) {?>
-                                    <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+													 <i class="fa fa-user"></i>
+														 <?php if (isset($_SESSION['acctype'])) {?>
+																 <?php if (($_SESSION['acctype'] == 1)) {?>
+																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
 ?>
-                                    <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-                                <?php } else { ?>
-                                    <?php echo "Guest";?>
+																	 <?php } else { ?>
+																	 		<?php echo "Guest";?>
+
+																 <?php }?>
+																<?php } else { ?>
+																	<?php echo "Guest";?>
+
+														 <?php }?>
+														 </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <?php if (!isset($_SESSION['userId'])) {?>
+                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
                                 <?php }?>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <?php if (!isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
 
-                              <?php }?>
-                              <?php if (isset($_SESSION['userId'])) {?>
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+                                <?php if (isset($_SESSION['userId'])) {?>
+																	<?php if (($_SESSION['acctype'] == 1)) {?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
 
-                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
 
-                              <?php }?>
-                          </div>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-        </nav>
+																		<?php } else { ?>
+																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+																	<?php }?>
+                                <?php }?>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
       <!--/.Navbar-->
     </header>
     <main>

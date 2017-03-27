@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 20:56:32
+/* Smarty version 3.1.30, created on 2017-03-27 21:33:09
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d97c8020f439_43487980',
+  'unifunc' => 'content_58d985153d6076_65006739',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490648189,
+      1 => 1490650387,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d97c8020f439_43487980 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d985153d6076_65006739 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +46,8 @@ function content_58d97c8020f439_43487980 (Smarty_Internal_Template $_smarty_tpl)
 
 </head>
 
+<body id="core-wrapper">
 
-<body id="core-body">
-<div id="core-wrapper">
     <header>
 
         <!--Navbar-->
@@ -351,7 +350,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </main>
 
     <!--Footer-->
-      <footer class="page-footer center-on-small-only">
+      <footer id="" class="page-footer center-on-small-only">
 
           <!--Copyright-->
           <div class="footer-copyright">
@@ -365,7 +364,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
       </footer>
       <!--/.Footer-->
 
-</div> <!-- /.core-wrapper ENDS -->
+
     <!-- SCRIPTS -->
 
     <!-- JQuery -->

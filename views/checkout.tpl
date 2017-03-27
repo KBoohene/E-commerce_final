@@ -22,9 +22,8 @@
 
 </head>
 
+<body id="core-wrapper">
 
-<body id="core-body">
-<div id="core-wrapper">
     <header>
 
         <!--Navbar-->
@@ -44,51 +43,37 @@
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
 
-                       {if isset($smarty.session.acctype)}
-												 		{if ($smarty.session.acctype!=1)}
-															<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-														{/if}
-												  {else}
-														<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-												 {/if}
+                      {if isset($smarty.session.acctype)}
+                       {else}
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      {/if}
 
-                        <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													 <i class="fa fa-user"></i>
-														 {if isset($smarty.session.acctype)}
-																 {if ($smarty.session.acctype == 1)}
-																	 {assign var="session" value=$userInfo->getSession()}
-																	 {$session['fullname']}
-																	 {else}
-																	 		{"Guest"}
-																 {/if}
-																{else}
-																	{"Guest"}
-														 {/if}
-														 </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                {if !isset($smarty.session.userId)}
-                                    {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-                                {/if}
-
+                              <i class="fa fa-user"></i>
                                 {if isset($smarty.session.userId)}
-																	{if ($smarty.session.acctype==1)}
-																			{'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
-																			{'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
-																		{else}
-																			{'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
-																	{/if}
+                                    {assign var="session" value=$userInfo->getSession()}
+                                    {$session['fullname']}
+                                {else}
+                                    {"Guest"}
                                 {/if}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-          </nav>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                              {if !isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=4">Login</a>'}
+                              {/if}
+                              {if isset($smarty.session.userId)}
+                                  {'<a class="dropdown-item" href="index.php?cAction=5">Orders</a>'}
+                                  {'<a class="dropdown-item" href="index.php?cAction=7">Logout</a>'}
+                              {/if}
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
       <!--/.Navbar-->
     </header>
 
@@ -116,7 +101,6 @@
 								 <td>Quantity</td>
 								 <td>Price</td>
 								 <td>Amount</td>
-								 <td>Remove</td>
 								</tr>
 						</thead>
 
@@ -141,7 +125,7 @@
 								<td>{$value.iname}</td>
 						 {/if}
 						 {if $value.qty}
-									<td>
+								<td>
 										<span id="qty{$count}">
 											{if $value.qty<10}
 													{0}{$value.qty}
@@ -168,8 +152,6 @@
 										{$amt}
 									</span>
 								</td>
-								<td>
-								</td>
 						 </tr>
 						 {assign var="count" value=$count+1}
 						 {/foreach}
@@ -177,15 +159,8 @@
 					 </div>
         </div>
 
-				<div class="row>
-					<div class="col-md-6">
-					</div>
-					<div class="col-md-6">
-						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-					</div>
-				</div>
-
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
+				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;
@@ -215,7 +190,6 @@
 							}
 
 							$("#amt"+count).html(amount);
-							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -240,8 +214,6 @@
 							}
 
 							$("#amt"+count).html(amount);
-
-							document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -262,7 +234,7 @@
 
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
-								val3 = document.getElementById("ono");
+								val3 = document.getElementById("ono"+i);
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
@@ -313,7 +285,7 @@
     </main>
 
     <!--Footer-->
-      <footer class="page-footer center-on-small-only">
+      <footer id="" class="page-footer center-on-small-only">
 
           <!--Copyright-->
           <div class="footer-copyright">
@@ -327,7 +299,7 @@
       </footer>
       <!--/.Footer-->
 
-</div> <!-- /.core-wrapper ENDS -->
+
     <!-- SCRIPTS -->
 
     <!-- JQuery -->
