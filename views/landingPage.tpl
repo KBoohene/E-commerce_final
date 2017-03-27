@@ -201,7 +201,7 @@
                                 <!-- <a href="#" class="btn amber btn-core-primary"><i class="fa fa-money" aria-hidden="true"></i></a> -->
                                 <!-- <a href="#" class="btn red darken-2 btn-core-primary"><i class="fa fa-expand" aria-hidden="true"></i></a> -->
                             <br>
-                                <a onclick="addToCart({$user['userId']},{$item.ino},1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+                                <a onclick="addToCart({$user['userId']},{$item.ino},1,{$item.price})"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="index.php?cAction=2&pno={$item.ino}"><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
                             <!--/.Card content-->
@@ -218,7 +218,7 @@
 											{literal}
                         <script type="text/javascript">
                             function addToCartComplete(xhr, status){
-                                alert("Item Added to Cart");
+                               alert("Item added");
                                 console.log(xhr);
 
                                 var obj=$.parseJSON(xhr.responseText);
@@ -233,10 +233,10 @@
 
                             }
 
-                            function addToCart(customerId, itemId, qty){
+                            function addToCart(customerId, itemId, qty,price){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
-                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                alert(theUrl);
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty+"&price="+price;
+
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}

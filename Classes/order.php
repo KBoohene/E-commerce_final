@@ -21,7 +21,7 @@ class order extends adb{
 * @param {$quanity} Number of items to be added
 * @return : True if successful, False if not
 **/
-  function addToCart($orderNo,$itemId,$quantity){
+  function addToCart($orderNo,$itemId,$quantity,$amt){
 
     // $result = $this->checkOrder($customerId);
     // $resultData = $result->fetch_assoc();
@@ -32,7 +32,7 @@ class order extends adb{
     //   //echo "<script>alert('Data: ".print_r($resultData)."')</script>";
     // }
 
-    $strQuery="INSERT INTO odetails(ono, ino, qty) VALUES ('$orderNo','$itemId','$quantity')";
+    $strQuery="INSERT INTO odetails(ono, ino, qty, amt) VALUES ('$orderNo','$itemId','$quantity','$amt')";
     return $this->query($strQuery);
   }
 
@@ -139,8 +139,8 @@ class order extends adb{
     return $this->query($strQuery);
   }
 
-	function updateCart($ono,$ino,$qty){
-		$strQuery="UPDATE odetails SET qty ='$qty' WHERE ono='$ono' AND ino ='$ino'";
+	function updateCart($ono,$ino,$qty,$amt){
+		$strQuery="UPDATE odetails SET qty ='$qty', amt='$amt' WHERE ono='$ono' AND ino ='$ino'";
 		return $this->query($strQuery);
 	}
 

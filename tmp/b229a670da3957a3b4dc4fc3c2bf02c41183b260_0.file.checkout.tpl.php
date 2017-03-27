@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 00:36:52
+/* Smarty version 3.1.30, created on 2017-03-28 01:53:47
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9940413e607_38785310',
+  'unifunc' => 'content_58d9a60b552bc0_39856850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490654206,
+      1 => 1490658821,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9940413e607_38785310 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9a60b552bc0_39856850 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,6 +252,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
 						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					</div>
+
+					<div id="Total" style="visibility:hidden">
+						Total Amount:
+						<span id="tAmt"></span>
+					</div>
+
 				</div>
 
 					
@@ -323,7 +329,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}else{
 								console.log("Cart not updated");
 								}
+
+								var value= sumAmounts();
+								$("#tAmt").html(value);
+							document.getElementById("Total").style.visibility ="visible";
 							document.getElementById("Save").style.visibility ="hidden";
+						}
+
+						function sumAmounts(){
+							amount=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("amt"+i);
+									val = parseFloat(val.innerHTML);
+									amount=amount+val;
+								}
+
+							return amount;
 						}
 
 						function saveChanges(){
@@ -335,12 +356,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
 								val3 = document.getElementById("ono");
+								amount = document.getElementById("amt"+i);
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
 								val3 = parseFloat(val3.innerHTML);
+								amount = parseFloat(amount.innerHTML);
 
-								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val;
+								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:saveComplete}

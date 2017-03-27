@@ -36,6 +36,7 @@
 		$customerId = $_REQUEST['cId'];
 		$itemId = $_REQUEST['iId'];
 		$qty = $_REQUEST['qty'];
+		$price=$_REQUEST['price'];
 
 		include("Classes/order.php");
 		$obj = new order();
@@ -54,11 +55,12 @@
 
 			if($qty>0){
 				$qty++;
-				$obj->updateCart($orderNo,$itemId,$qty);
+				$amount=$qty*$price;
+				$obj->updateCart($orderNo,$itemId,$qty,$amount);
 
 			}else{
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, 1)){
+				if($obj->addToCart($orderNo, $itemId, 1, $price)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -77,7 +79,7 @@
 				$orderNo = $checkData["ono"];
 
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, 1)){
+				if($obj->addToCart($orderNo, $itemId, 1, $price)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -98,8 +100,9 @@ function saveUpdate(){
 	$ono = $_REQUEST['ono'];
 	$ino = $_REQUEST['ino'];
 	$qty = $_REQUEST['qty'];
+	$amt = $_REQUEST['amt'];
 
-	$obj->updateCart($ono,$ino,$qty);
+	$obj->updateCart($ono,$ino,$qty,$amt);
 
 	echo '{"result":0,"message":"Cart updated"}';
 }
