@@ -168,6 +168,10 @@
 									</span>
 								</td>
 								<td>
+									<div class="chip">
+											Tag 1
+											<i class="close fa fa-times"></i>
+									</div>
 								</td>
 						 </tr>
 						 {assign var="count" value=$count+1}
