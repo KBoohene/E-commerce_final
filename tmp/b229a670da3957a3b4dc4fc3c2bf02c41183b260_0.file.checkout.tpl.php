@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 19:03:57
+/* Smarty version 3.1.30, created on 2017-03-27 19:11:13
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d945fdabd558_31567329',
+  'unifunc' => 'content_58d947b113ff54_23206446',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490634221,
+      1 => 1490634669,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d945fdabd558_31567329 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d947b113ff54_23206446 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,8 +124,10 @@ function content_58d945fdabd558_31567329 (Smarty_Internal_Template $_smarty_tpl)
           <?php $_smarty_tpl->_assignInScope('data', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result']->value));
 ?>
 
+			<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
 			<?php $_smarty_tpl->_assignInScope('count', 0);
 ?>
+
 				<div class="table-responsive">
 						<table class="table">
 							<thead>
@@ -219,9 +221,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
 				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-
-				</div>
-        <!--/.Main layout-->
 
 					<?php echo '<script'; ?>
 >
@@ -342,6 +341,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 >
 
 
+				<?php } else { ?>
+						<h1><?php echo "Cart Empty";?>
+</h1>
+					<?php }?>
+				</div>
+        <!--/.Main layout-->
     </main>
 
     <!--Footer-->

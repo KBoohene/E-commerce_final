@@ -90,7 +90,9 @@
           {assign var="result" value=$order->getCheckout($customerId)}
           {assign var="data" value=$order->fetchDB($result)}
 
+			{if ($data!=null)}
 			{assign var="count" value=0}
+
 				<div class="table-responsive">
 						<table class="table">
 							<thead>
@@ -159,10 +161,7 @@
 
 				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save">Save</button>
 				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-
-				</div>
-        <!--/.Main layout-->
-				{literal}
+					{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;
 						var counter; {/literal}{$count}{literal}
@@ -278,6 +277,11 @@
 					</script>
 					{/literal}
 
+				{else}
+						<h1>{"Cart Empty"}</h1>
+					{/if}
+				</div>
+        <!--/.Main layout-->
     </main>
 
     <!--Footer-->
