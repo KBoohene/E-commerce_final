@@ -1,5 +1,5 @@
 <?php
-?
+
   /**
    *@desc:This class installs a mysql database on a running server
    *@Source: http://stackoverflow.com/questions/26506820/run-sql-script-via-php

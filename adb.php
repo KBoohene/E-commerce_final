@@ -61,7 +61,7 @@ class adb{
     $arrayData = array();
     $length = $dbObject->num_rows;
 
-    $count=0;
+    $count = 0;
     while($count<$length){
        $arrayData[$count]=$dbObject->fetch_assoc();
         $count++;
