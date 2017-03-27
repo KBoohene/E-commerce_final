@@ -95,6 +95,11 @@
   text-shadow: 0px 0px 1px #ffb300;
 }
 
+.core-price-detail{
+  float: right;
+  text-align: right;
+}
+
 .hiddenRow {
     padding: 0 !important;
 }
@@ -102,6 +107,11 @@
 .hiddenRowColor{
   background-color: red !important;
 }
+
+.core-big-icon{
+  font: 900em;
+}
+
 /* ************************************************************************* */
 
 

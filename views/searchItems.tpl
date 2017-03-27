@@ -12,7 +12,7 @@
 <head>
 <title>Search Items</title>
 </head>
- 
+
 <body>
  <div>
   <form action="index.php?cAction=1" method="POST">
@@ -22,21 +22,23 @@
    <button type="submit" class="button">Search</button>
   </div>
  </form>
- 
- {if isset($smarty.request.searchName)}
-    {if ($smarty.request.searchName)!=""}
-      {assign var="txt" value=$smarty.request.searchName}
-      {assign var="result" value=$item->searchItems($txt)}
-      {assign var="data" value=$item->fetchDB($result)}
-    {elseif ($smarty.request.searchName)==""}
-      {assign var="result" value=$item->getItems()}
-      {assign var="data" value=$item->fetchDB($result)}
- {/if}
- {else}
+
+{if isset($smarty.request.searchName)}
+  {if ($smarty.request.searchName)!=""}
+    {assign var="txt" value=$smarty.request.searchName}
+    {assign var="result" value=$item->searchItems($txt)}
+    {assign var="data" value=$item->fetchDB($result)}
+  {elseif ($smarty.request.searchName)==""}
     {assign var="result" value=$item->getItems()}
     {assign var="data" value=$item->fetchDB($result)}
- {/if}	  
-	 	  
+  {/if}
+{else}
+  {assign var="result" value=$item->getItems()}
+  {assign var="data" value=$item->fetchDB($result)}
+{/if}
+
+<h2>Results for <ins>{$smarty.request.searchName}</ins></h2>
+
  <div>
   <table>
     <thead>
@@ -48,7 +50,7 @@
        <td>Reorder Level</td>
       </tr>
   </thead>
-	
+
  {foreach from=$data item=value}
   <tr>
    {if $value.ino}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-21 14:11:49
+/* Smarty version 3.1.30, created on 2017-03-26 20:58:51
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d134a51085b7_13348393',
+  'unifunc' => 'content_58d82b8b90f1f4_47250904',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490105506,
+      1 => 1490561928,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d134a51085b7_13348393 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d82b8b90f1f4_47250904 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,9 +57,9 @@ function content_58d134a51085b7_13348393 (Smarty_Internal_Template $_smarty_tpl)
                 <strong>Core Store</strong>
               </a>
               <div id="navbarNav1">
-                  <form class="form-inline waves-effect waves-light">
-                      <input class="form-control" type="text" placeholder="Search">
-                  </form>
+                <form action="index.php?cAction=1" method="POST" class="form-inline waves-effect waves-light">
+                  <input class="form-control" id="search" type="text" placeholder="Search" name="searchName">
+              </form>
               </div>
               <div>
                    <ul class="nav navbar-nav nav-flex-icons ml-auto">
@@ -147,28 +147,32 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
-								<td id="qty">
-										<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
+								<td>
+										<span id="qty">
+											<?php echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 
+										</span>
 									<div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-sm btn-primary btn-rounded" id="minus">
-                            <input type="radio" name="options" id="option1" onclick="decreaseQty();"/>&mdash;
+                        <label class="btn btn-sm btn-primary btn-rounded" onclick="decreaseQty()" >
+                            <input type="radio" name="options" id="option1" />&mdash;
                         </label>
-                        <label class="btn btn-sm btn-primary btn-rounded" id="plus">
-                            <input type="radio" name="options" id="option2" onclick="increaseQty();"/>+
+                        <label class="btn btn-sm btn-primary btn-rounded" id="plus" onclick="increaseQty()">
+                            <input type="radio" name="options" id="option2" />+
                         </label>
                     </div>
 								</td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['price']) {?>
-								<td><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
+								<td id="price"><?php echo $_smarty_tpl->tpl_vars['value']->value['price'];?>
 </td>
 						 <?php }?>
-						 		<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
+								<td>
+								<?php $_smarty_tpl->_assignInScope('amt', $_smarty_tpl->tpl_vars['value']->value['price']*$_smarty_tpl->tpl_vars['value']->value['qty']);
 ?>
-								<td id="amount">
-									<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
+									<span id="amt">
+										<?php echo $_smarty_tpl->tpl_vars['amt']->value;?>
 
+									</span>
 								</td>
 						 </tr>
 						 <?php
@@ -182,20 +186,46 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
         <!--/.Main layout-->
 				
-				<?php echo '<script'; ?>
+					<?php echo '<script'; ?>
 >
-					var val = document.getElementById("qty");
-					var quantity = parseFloat(val.innerHTML);
-					function increaseQty(){
-						quantity++;
-						console.log(quantity);
-					}
-					function decreaseQty(){
+						var val, val2, val3, amount, quantity, price ;
 
-					}
-				<?php echo '</script'; ?>
+						function increaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity++;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+
+						function decreaseQty(){
+							val = document.getElementById("qty");
+							val2 = document.getElementById("price");
+							val3 = document.getElementById("amt");
+
+							amount =parseFloat(val3.innerHTML);
+							quantity = parseFloat(val.innerHTML);
+
+							price = parseFloat(val2.innerHTML);
+
+							quantity--;
+							amount = price*quantity;
+
+							$("#qty").html(quantity);
+							$("#amt").html(amount);
+						}
+					<?php echo '</script'; ?>
 >
-				
+					
 
     </main>
 
