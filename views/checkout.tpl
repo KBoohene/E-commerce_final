@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Customer Login</title>
+    <title>Checkout</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -95,7 +95,7 @@
 			{assign var="count" value=0}
 
 				<div class="table-responsive">
-						<table class="table">
+						<table class="table" id="checkTable">
 							<thead>
 								<tr>
 								 <td>Product Name</td>
@@ -107,7 +107,7 @@
 
 
 					 {foreach from=$data item=value}
-						<tr>
+						<tr id="row{$count}">
 							<td hidden>
 								{if $value.ino}
 									<span id="ino{$count}">
@@ -154,6 +154,14 @@
 									</span>
 								</td>
 
+								<td>
+									<div class="btn-group" data-toggle="buttons">
+									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem({$count})">
+                      <input type="radio" name="options" id="Del"/>X
+                    </label>
+									</div>
+								</td>
+
 						 </tr>
 						 {assign var="count" value=$count+1}
 						 {/foreach}
@@ -168,6 +176,22 @@
           </div>
           <div class="col-md-2"></div>
         </div>
+
+
+				<div class="row">
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+						<button type="button" class="btn btn-primary" onclick="checkout({$smarty.session.userId})" id="Checkout">Checkout</button>
+					</div>
+
+					<div id="Total" style="visibility:hidden">
+						Total Amount:
+						<span id="tAmt"></span>
+					</div>
+
+				</div>
 
 					{literal}
 					<script>
@@ -235,8 +259,35 @@
 							}else{
 								console.log("Cart not updated");
 								}
+
+								var value= sumAmounts();
+								$("#tAmt").html(value);
+							document.getElementById("Total").style.visibility ="visible";
 							document.getElementById("Save").style.visibility ="hidden";
 						}
+
+						function sumAmounts(){
+							amount=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("amt"+i);
+									val = parseFloat(val.innerHTML);
+									amount=amount+val;
+								}
+
+							return amount;
+						}
+
+						function sumQty(){
+							quantity=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("qty"+i);
+									val = parseFloat(val.innerHTML);
+									quantity=quantity+val;
+								}
+
+							return quantity;
+						}
+
 
 						function saveChanges(){
 							counter={/literal}{$count}{literal};
@@ -246,12 +297,14 @@
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
 								val3 = document.getElementById("ono");
+								amount = document.getElementById("amt"+i);
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
 								val3 = parseFloat(val3.innerHTML);
+								amount = parseFloat(amount.innerHTML);
 
-								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val;
+								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:saveComplete}
@@ -273,14 +326,45 @@
 								}
 						}
 
-						function checkout(){
+						function checkout(cno){
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
+						var orderNo=val;
 
-              var theUrl="ajax.php?cmd=3&ono="+val;
+						var qty = sumQty();
+
+						amount = document.getElementById("tAmt");
+						amount = parseFloat(amount.innerHTML);
+
+              var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
+                );
+						}
+
+						function removeComplete(xhr, status){
+							console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								$("#row"+obj.rowNum).remove();
+							}else{
+								console.log("order not checked out");
+								}
+						}
+
+						function removeItem(counter){
+						val2 = document.getElementById("ino"+counter);
+						val3 = document.getElementById("ono");
+
+						val2 = parseFloat(val2.innerHTML);
+						val3 = parseFloat(val3.innerHTML);
+
+						var theUrl="ajax.php?cmd=5&ono="+val3+"&ino="+val2+"&row="+counter;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:removeComplete}
                 );
 
 						}

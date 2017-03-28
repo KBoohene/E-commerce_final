@@ -230,7 +230,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
           <div class="col-md-2"></div>
         </div>
 
+<<<<<<< HEAD
 					
+=======
+				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+
+>>>>>>> 899c1a6d046b800ed59f3ee991203b80d32df111
 					<?php echo '<script'; ?>
 >
 						var val, val2, val3, amount, quantity, price ;

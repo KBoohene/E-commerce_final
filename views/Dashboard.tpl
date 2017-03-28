@@ -161,9 +161,12 @@
     {assign var="SunVal" value=$report->numItemsGivenDay($Sun)}
     {assign var="val7" value=$report->fetchDB($SunVal)}
 
-    <div class="col-md-9">
+<div class="row">
+    <div class="col-md-9 offset-md-2" style="margin-top:50px">
+		<h2 align="center">Items ordered per day</h2>
       <canvas id="myChart2"></canvas>
     </div>
+		
     <script>
       $(function () {
         var data = {
@@ -195,7 +198,10 @@
     {assign var="shipped" value=$report->fetchDB($ans1)}
     {assign var="ans2" value=$report->getOrderShipped(2)}
     {assign var="notShipped" value=$report->fetchDB($ans2)}
-    <div class="col-md-6">
+		
+		
+    <div class="col-md-6" style="margin-top:100px">
+			<h2 align="center">Shipped Vs Not Shipped</h2>
       <canvas id="myChart1"></canvas>
     </div>
     <script>
@@ -204,13 +210,13 @@
 
       var data = [
           {
-            value: {$shipped.0.Num_shipped},
+            value: {$shipped.0.Not_shipped},
             color:"#F7464A",
             highlight: "#FF5A5E",
             label: "Items shipped"
           },
           {
-            value: {$notShipped.0.Not_shipped},
+            value: {$notShipped.0.Num_shipped},
             color: "#46BFBD",
             highlight: "#5AD3D1",
             label: "Not Shipped"
@@ -230,9 +236,9 @@
     {**Top ten customers**}
     {assign var="answer" value=$report->top10Customers()}
     {assign var="topList" value=$report->fetchDB($answer)}
-    <div class="col-md-6">
-      Top Ten Customers
-      <table>
+    <div class="col-md-6" style="margin-top:100px">
+      <h2 align="center">Top Ten Customers</h2>
+      <table class="table table-striped">
         <thead>
           <tr>
             <td>Customer Name</td>

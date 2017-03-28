@@ -1,26 +1,26 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 23:15:23
+/* Smarty version 3.1.30, created on 2017-03-28 02:45:54
   from "C:\xampp\htdocs\E-commerce_final\views\landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d980eb1877b1_67839747',
+  'unifunc' => 'content_58d9b242e6ba32_45650958',
   'has_nocache_code' => false,
-  'file_dependency' =>
+  'file_dependency' => 
   array (
-    '4ebd2c4f7586f94da526d626f99b50b33a11fffa' =>
+    '4ebd2c4f7586f94da526d626f99b50b33a11fffa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\landingPage.tpl',
-      1 => 1490649314,
+      1 => 1490661032,
       2 => 'file',
     ),
   ),
-  'includes' =>
+  'includes' => 
   array (
   ),
 ),false)) {
-function content_58d980eb1877b1_67839747 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9b242e6ba32_45650958 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,7 +247,8 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                             <br>
                                 <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
 ,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
-,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+,1,<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
 "><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
@@ -268,11 +269,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 
-
+											
                         <?php echo '<script'; ?>
  type="text/javascript">
                             function addToCartComplete(xhr, status){
-                                alert("Item Added to Cart");
+                               alert("Item added");
                                 console.log(xhr);
 
                                 var obj=$.parseJSON(xhr.responseText);
@@ -287,10 +288,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                             }
 
-                            function addToCart(customerId, itemId, qty){
+                            function addToCart(customerId, itemId, qty,price){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
-                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                alert(theUrl);
+
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty+"&price="+price;
+
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}
@@ -312,10 +314,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                 			}
                         <?php echo '</script'; ?>
 >
+										
 
 
-
-                    </div>
+                  </div> <!-- eeee-->
 
             </div>
         </div>
@@ -325,79 +327,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     <!--Footer-->
     <footer class="page-footer center-on-small-only">
-
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
-
-        <hr>
-
-        <!--Call to action-->
-        <div class="call-to-action">
-            <h4>Material Design for Bootstrap</h4>
-            <ul>
-                <li>
-                    <h5>Get our UI KIT for free</h5></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/getting-started/" class="btn btn-info">Sign up!</a></li>
-                <li><a target="_blank" href="http://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-primary">Learn more</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
 
         <!--Copyright-->
         <div class="footer-copyright">
@@ -410,7 +339,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     </footer>
     <!--/.Footer-->
-
 
     <!-- SCRIPTS -->
 
@@ -438,29 +366,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 </body>
 
 </html>
-
-
-<!-- <html>
-  <head>
-    <title>Home Page</title>
-  </head>
-  <body>
-
-    <a href="index.php?cAction=4">Login</a>
-    <a href="index.php?cAction=3">Sign Up</a>
-
-    <div>
-      <form action="index.php?cAction=1" method="POST">
-      <div>
-        <input class="search-bar" id="search" type="text" name="searchName">
-      </div>
-      <div>
-        <button type="submit" class="button">Search</button>
-      </div>
-      </form>
-    </div>
-
-  </body>
-</html> -->
 <?php }
 }

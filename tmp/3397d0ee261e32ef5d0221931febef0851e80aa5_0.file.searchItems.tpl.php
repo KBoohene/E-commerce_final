@@ -262,7 +262,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 
-                          
+
                             <?php echo '<script'; ?>
  type="text/javascript">
                                 function addToCartComplete(xhr, status){
@@ -306,7 +306,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                           }
                             <?php echo '</script'; ?>
 >
-                        
+
 
 
             </div>

@@ -34,7 +34,7 @@
         {foreach from=$loginData item=login}
             {if ($login.Password) == $password}
               {$userInfo->setSession($login.eno,$login.Username,$login.ename,$login.account_type)}
-              {$userInfo->addToLog($login.eno,$login.account_type)}
+              {$userInfo->addToELog($login.eno,$login.account_type)}
               {"<script>window.location = 'employeeDisplay.php?eAction=2'</script>"}
             {/if}
         {/foreach}

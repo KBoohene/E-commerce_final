@@ -92,6 +92,7 @@
 									{foreach from=$loginData item=login}
 											{if ($login.Password) == $password}
 													{$userInfo->setSession($login.cno,$login.Username,$login.cname,1)}
+													{$userInfo->addToClog($login.cno,1)}
 													{"<script>window.location = 'index.php?cAction=5'</script>"}
 											{else}
 													{"Wrong Password"}

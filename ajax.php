@@ -19,6 +19,9 @@
 		case 4:
 			logout();
 			break;
+		case 5:
+			removeItem();
+			break;
 		default:
 			echo "wrong cmd";	//change to json message
 			break;
@@ -33,6 +36,7 @@
 		$customerId = $_REQUEST['cId'];
 		$itemId = $_REQUEST['iId'];
 		$qty = $_REQUEST['qty'];
+		$price=$_REQUEST['price'];
 
 		include("Classes/order.php");
 		$obj = new order();
@@ -51,11 +55,12 @@
 
 			if($qty>0){
 				$qty++;
-				$obj->updateCart($orderNo,$itemId,$qty);
+				$amount=$qty*$price;
+				$obj->updateCart($orderNo,$itemId,$qty,$amount);
 
 			}else{
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, 1)){
+				if($obj->addToCart($orderNo, $itemId, 1, $price)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -74,7 +79,7 @@
 				$orderNo = $checkData["ono"];
 
 				//Add to the cart
-				if($obj->addToCart($orderNo, $itemId, 1)){
+				if($obj->addToCart($orderNo, $itemId, 1, $price)){
 					// echo "Item Added to Cart";
 					echo '{"result":0,"message":"Item Added to Cart"}';
 				}else{
@@ -95,8 +100,9 @@ function saveUpdate(){
 	$ono = $_REQUEST['ono'];
 	$ino = $_REQUEST['ino'];
 	$qty = $_REQUEST['qty'];
+	$amt = $_REQUEST['amt'];
 
-	$obj->updateCart($ono,$ino,$qty);
+	$obj->updateCart($ono,$ino,$qty,$amt);
 
 	echo '{"result":0,"message":"Cart updated"}';
 }
@@ -105,9 +111,15 @@ function checkout(){
 	include("Classes/order.php");
 	$obj = new order();
 	$ono = $_REQUEST['ono'];
+	$amt = $_REQUEST['amt'];
+	$cno = $_REQUEST['cno'];
+	$numItems=$_REQUEST['qty'];
 
-	$obj->checkout($ono);
-	echo '{"result":0,"message":"Order checked out"}';
+	$obj->checkout($ono,$amt);
+	
+	$obj->insertLog($ono,$cno,$numItems);
+	
+	echo '{"result":0,"message":"Order checked out","$cno":'.$cno.',"numItems":'.$numItems.'}';
 }
 
 function logout(){
@@ -116,6 +128,19 @@ function logout(){
 
 	$obj->endSession();
 	echo '{"result":0,"message":"Employee logged out"}';
+}
+
+function removeItem(){
+	include("Classes/order.php");
+	$obj = new order();
+	$ono = $_REQUEST['ono'];
+	$ino = $_REQUEST['ino'];
+	$rowNum=$_REQUEST['row'];
+
+	$obj->removeFromCart($ono,$ino);
+
+	echo '{"result":0,"message":"Item removed from cart","rowNum":'.$rowNum.'}';
+
 }
 
 ?>
