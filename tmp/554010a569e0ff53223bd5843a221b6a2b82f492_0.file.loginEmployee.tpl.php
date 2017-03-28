@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 21:26:25
+/* Smarty version 3.1.30, created on 2017-03-28 03:49:38
   from "/Applications/AMPPS/www/github/E-commerce_final/views/loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d04901b9ca00_25829414',
+  'unifunc' => 'content_58d9dd52aaf475_95546095',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '554010a569e0ff53223bd5843a221b6a2b82f492' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/loginEmployee.tpl',
-      1 => 1490031407,
+      1 => 1490672140,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d04901b9ca00_25829414 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9dd52aaf475_95546095 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +68,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
             <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
               <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['ename'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
 
-              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToLog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToELog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
 
               <?php echo "<script>window.location = 'employeeDisplay.php?eAction=2'</script>";?>
 

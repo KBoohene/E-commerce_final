@@ -86,41 +86,56 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
-    {if isset($smarty.post.submit)}
-      {assign var="iname" value=$smarty.post.iname}
-      {assign var="qoh" value=$smarty.post.qoh}
-      {assign var="price" value=$smarty.post.price}
-      {assign var="olvl" value=$smarty.post.olevel}
-      {assign var="catno" value=$smarty.post.catno}
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            {if isset($smarty.post.submit)}
+              {assign var="iname" value=$smarty.post.iname}
+              {assign var="qoh" value=$smarty.post.qoh}
+              {assign var="price" value=$smarty.post.price}
+              {assign var="olvl" value=$smarty.post.olevel}
+              {assign var="catno" value=$smarty.post.catno}
 
-      {if ($catno)=="-1"}
-        {"Please select a zip"}
-        {elseif ($olvl)=="" or ($iname)=="" or ($qoh)=="" or ($price)==""}
-          {"Please enter all information"}
-        {else}
-          {assign var="result" value=$item->addItem($iname, $qoh, $price, $olvl, $catno)}
-          {"<script>window.location = 'index.php?cAction=1'</script>"}
-      {/if}
-    {/if}
+              {if ($catno)=="-1"}
+                {"Please select a zip"}
+                {elseif ($olvl)=="" or ($iname)=="" or ($qoh)=="" or ($price)==""}
+                  {"Please enter all information"}
+                {else}
+                  {assign var="result" value=$item->addItem($iname, $qoh, $price, $olvl, $catno)}
+                  {"<script>window.location = 'index.php?cAction=1'</script>"}
+              {/if}
+            {/if}
 
-    <form action="employeeDisplay.php?eAction=12" method="POST">
-      <div>Item Name <input type="text" name="iname"><br></div>
-        {assign var="categoryId" value=$item->getCategory()}
-        {assign var="categoryVar" value=$item->fetchDB($categoryId)}
+            <form action="employeeDisplay.php?eAction=12" method="POST">
+              <input type="file">
+              <div>Item Name <input type="text" name="iname"><br></div>
+                {assign var="categoryId" value=$item->getCategory()}
+                {assign var="categoryVar" value=$item->fetchDB($categoryId)}
 
-      <div>Category
-        <select name="catno">
-          <option value="-1">Select category</option>
-            {foreach from=$categoryVar  item=category}
-              <option value={$category.catno}>{$category.catname}</option>
-            {/foreach}
-        </select>
-        <br>
+              <div>Category
+                <select name="catno">
+                  <option value="-1">Select category</option>
+                    {foreach from=$categoryVar  item=category}
+                      <option value={$category.catno}>{$category.catname}</option>
+                    {/foreach}
+                </select>
+                <br>
+              </div>
+              <div> Quantity On Hand <input type="number" min="0" name="qoh" ><br></div>
+              <div> Price <input type="text" name="price" ><br></div>
+              <div> order level <input type="number" min="0" name="olevel"><br></div>
+              <div class="row col-md-5"></div>
+              <div class="row col-md-4">
+                <input type="submit" class="form-control amber darken-3 white-text" name="submit" value="Add">
+              </div>
+              <div class="row col-md-3"></div>
+            </form>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
       </div>
-      <div> Quantity On Hand <input type="number" min="0" name="qoh" ><br></div>
-      <div> Price <input type="text" name="price" ><br></div>
-      <div> order level <input type="number" min="0" name="olevel"><br></div>
-      <input type="submit" name="submit" value="Add">
-    </form>
+    </main>
   </body>
 </html>

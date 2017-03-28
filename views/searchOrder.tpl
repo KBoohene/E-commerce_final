@@ -36,7 +36,7 @@
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link active" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -86,11 +86,21 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
+    <main>
+      <div class="container">
+
+
 		<div>
     <form action="employeeDisplay.php?eAction=14" method="POST">
-		<label>Date:</label>
-      <input  id="search" type="date" name="searchOrder">
-      <button type="submit" class="button">Search</button>
+      <div class="row col-md-10">
+        <label>Date:</label>
+          <input id="search" type="date" name="searchOrder">
+      </div>
+      <div class="row col-md-2">
+        <button type="submit" class="form-control amber darken-3 white-text">Search</button>
+      </div>
+
+
     </form>
 		</div>
 
@@ -109,7 +119,7 @@
     {/if}
 
 		<div>
-			<table>
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<td>Order ID</td>
@@ -132,12 +142,11 @@
 						{if $value.checked_out}
 							<td>{$value.checked_out}</td>
 						{/if}
-						{if $value.received}
+
 							<td>{$value.received}</td>
-						{/if}
-						{if $value.shipped}
+
 							<td>{$value.shipped}</td>
-						{/if}
+
 						{if $value.created_at}
 							<td>{$value.created_at}</td>
 						{/if}
@@ -146,5 +155,7 @@
 				{/foreach}
 			</table>
  		</div>
+  </div>
+</main>
 	</body>
 </html>

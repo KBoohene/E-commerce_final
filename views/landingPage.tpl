@@ -184,8 +184,8 @@
                         <div class="card">
                             <!--Card image-->
                             <div class="view overlay hm-white-slight">
-                                <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
-                                <a href="#">
+                                <img src="img/products/{$item.iname}.png" class="img-fluid" alt="">
+                                <a>
                                     <div class="mask"></div>
                                 </a>
                             </div>
