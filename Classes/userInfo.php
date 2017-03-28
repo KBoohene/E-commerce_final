@@ -63,10 +63,16 @@ class userInfo extends adb{
 *@param {acctype} Account type
 *@return: Success or Fail
 **/
-  function addTolog($personId,$acctype){
-    $strQuery="INSERT INTO login_log(PersonID,account_type) VALUES ($personId,$acctype)";
+  function addToClog($personId,$acctype){
+    $strQuery="INSERT INTO clogin_log(personId,account_type) VALUES ($personId,$acctype)";
     return $this->query($strQuery);
   }
+	
+	function addToElog($personId,$acctype){
+		$strQuery="INSERT INTO elogin_log(personId,account_type) VALUES ($personId,$acctype)";
+		return $this->query($strQuery);
+	}
+	
 }
 
 

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 02:22:55
+/* Smarty version 3.1.30, created on 2017-03-28 04:01:48
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9acdf7300f8_43575638',
+  'unifunc' => 'content_58d9c40c3a79a6_85319128',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490660551,
+      1 => 1490666494,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9c40c3a79a6_85319128 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@ function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl)
 
 </head>
 
-<body>
+<body id="core-wrapper">
 
     <header>
 
@@ -67,59 +67,43 @@ function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link" href="index.php?cAction=6"><i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Cart</span></a>
                       </li>
 
-                       <?php if (isset($_SESSION['acctype'])) {?>
-												 		<?php if (($_SESSION['acctype'] != 1)) {?>
-															<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-														<?php }?>
-												  <?php } else { ?>
-														<li class="nav-item">
-															<a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
-														</li>
-												 <?php }?>
+                      <?php if (isset($_SESSION['acctype'])) {?>
+                       <?php } else { ?>
+                         <li class="nav-item">
+                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
+                         </li>
+                      <?php }?>
 
-                        <li class="nav-item dropdown">
+                      <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													 <i class="fa fa-user"></i>
-														 <?php if (isset($_SESSION['acctype'])) {?>
-																 <?php if (($_SESSION['acctype'] == 1)) {?>
-																	 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
-?>
-																	 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
-
-																	 <?php } else { ?>
-																	 		<?php echo "Guest";?>
-
-																 <?php }?>
-																<?php } else { ?>
-																	<?php echo "Guest";?>
-
-														 <?php }?>
-														 </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                <?php if (!isset($_SESSION['userId'])) {?>
-                                    <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
-
-                                <?php }?>
-
+                              <i class="fa fa-user"></i>
                                 <?php if (isset($_SESSION['userId'])) {?>
-																	<?php if (($_SESSION['acctype'] == 1)) {?>
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+                                    <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+                                    <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
 
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+                                <?php } else { ?>
+                                    <?php echo "Guest";?>
 
-																		<?php } else { ?>
-																			<?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
-
-																	<?php }?>
                                 <?php }?>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-          </nav>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                              <?php if (!isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+                              <?php }?>
+                              <?php if (isset($_SESSION['userId'])) {?>
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
+                                  <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                              <?php }?>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
       <!--/.Navbar-->
     </header>
 
@@ -127,7 +111,7 @@ function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl)
 
         <!--Main layout-->
         <div class="container">
-					<?php if (isset($_SESSION['userId'])) {?>
+		  <?php if (isset($_SESSION['userId'])) {?>
             <?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
           <?php } else { ?>
@@ -141,6 +125,8 @@ function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
 			<?php if (($_smarty_tpl->tpl_vars['data']->value != null)) {?>
+            <h1><?php echo "Cart Content";?>
+</h1>
 			<?php $_smarty_tpl->_assignInScope('count', 0);
 ?>
 
@@ -152,7 +138,6 @@ function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl)
 								 <td>Quantity</td>
 								 <td>Price</td>
 								 <td>Amount</td>
-								 <td>Remove</td>
 								</tr>
 						</thead>
 
@@ -186,7 +171,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 </td>
 						 <?php }?>
 						 <?php if ($_smarty_tpl->tpl_vars['value']->value['qty']) {?>
-									<td>
+								<td>
 										<span id="qty<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ">
 											<?php if ($_smarty_tpl->tpl_vars['value']->value['qty'] < 10) {?>
@@ -224,6 +209,7 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 
 									</span>
 								</td>
+
 								<td>
 									<div class="btn-group" data-toggle="buttons">
 									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem(<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
@@ -232,6 +218,7 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
                     </label>
 									</div>
 								</td>
+
 						 </tr>
 						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
 ?>
@@ -250,7 +237,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					</div>
 					<div class="col-md-6">
 						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+						<button type="button" class="btn btn-primary" onclick="checkout(<?php echo $_SESSION['userId'];?>
+)" id="Checkout">Checkout</button>
 					</div>
 
 					<div id="Total" style="visibility:hidden">
@@ -291,7 +279,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
-							document.getElementById("Save").style.visibility ="visible";
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function decreaseQty(count){
@@ -316,8 +304,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}
 
 							$("#amt"+count).html(amount);
-
-							document.getElementById("Save").style.visibility ="visible";
+                            document.getElementById("Save").style.visibility ="visible";
 						}
 
 						function saveComplete(xhr,status){
@@ -346,7 +333,19 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 							return amount;
 						}
+						
+						function sumQty(){
+							quantity=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("qty"+i);
+									val = parseFloat(val.innerHTML);
+									quantity=quantity+val;
+								}
 
+							return quantity;
+						}
+
+						
 						function saveChanges(){
 							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ;
@@ -385,14 +384,17 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 								}
 						}
 
-						function checkout(){
+						function checkout(cno){
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
-
+						var orderNo=val;
+						
+						var qty = sumQty();
+						
 						amount = document.getElementById("tAmt");
 						amount = parseFloat(amount.innerHTML);
 
-              var theUrl="ajax.php?cmd=3&ono="+val+"&amt="+amount;
+              var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
@@ -438,78 +440,19 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
     </main>
 
     <!--Footer-->
-    <footer class="page-footer center-on-small-only">
+      <footer id="" class="page-footer center-on-small-only">
 
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
+          <!--Copyright-->
+          <div class="footer-copyright">
+              <div class="container-fluid">
+                  © 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
 
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
+              </div>
+          </div>
+          <!--/.Copyright-->
 
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
-
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                © 2015 Copyright: <a href="http://index.php?cAction=9"> CoreStore.com </a>
-
-            </div>
-        </div>
-        <!--/.Copyright-->
-
-    </footer>
-    <!--/.Footer-->
+      </footer>
+      <!--/.Footer-->
 
 
     <!-- SCRIPTS -->

@@ -175,10 +175,10 @@ class reports extends adb{
 
   function getOrderShipped($filter=false){
     if($filter==1){
-      $strQuery="SELECT count(shipped) AS Num_shipped FROM orders WHERE shipped IS NOT NULL";
+			$strQuery="SELECT COUNT(*) AS Not_shipped FROM orders WHERE shipped IS NOT NULL";
     }
     else{
-      $strQuery="SELECT count(shipped) AS Not_shipped FROM orders WHERE shipped IS NULL";
+			$strQuery="SELECT COUNT(*) AS Num_shipped FROM orders WHERE shipped IS NULL";
     }
     return $this->query($strQuery);
   }
@@ -187,6 +187,8 @@ class reports extends adb{
     $strQuery="SELECT customers.cname, COUNT(orders.ono) AS NumberOfOrders FROM orders, customers WHERE orders.cno = customers.cno ORDER BY NumberOfOrders DESC LIMIT 10";
     return $this->query($strQuery);
   }
+	
+	
 }
 
 

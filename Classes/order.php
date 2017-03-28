@@ -178,5 +178,12 @@ class order extends adb{
 		$strQuery = "SELECT * FROM orders WHERE shipped LIKE '%$shipped%' OR received LIKE'%$shipped%'";
 		return $this->query($strQuery);
 	}
+	
+	function insertLog($ono, $cno,$numItems){
+		$strQuery="INSERT INTO checkout_log (order_no, person_id, num_items) VALUES ('$ono','$cno','$numItems')";
+		return $this->query($strQuery);
+	}
+	
+	
 }
 ?>

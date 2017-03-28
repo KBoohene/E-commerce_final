@@ -153,7 +153,7 @@
 										{$amt}
 									</span>
 								</td>
-<<<<<<< HEAD
+
 								<td>
 									<div class="btn-group" data-toggle="buttons">
 									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem({$count})">
@@ -161,9 +161,7 @@
                     </label>
 									</div>
 								</td>
-=======
 
->>>>>>> origin/version_2
 						 </tr>
 						 {assign var="count" value=$count+1}
 						 {/foreach}
@@ -176,7 +174,7 @@
 					</div>
 					<div class="col-md-6">
 						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-						<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+						<button type="button" class="btn btn-primary" onclick="checkout({$smarty.session.userId})" id="Checkout">Checkout</button>
 					</div>
 
 					<div id="Total" style="visibility:hidden">
@@ -269,7 +267,19 @@
 
 							return amount;
 						}
+						
+						function sumQty(){
+							quantity=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("qty"+i);
+									val = parseFloat(val.innerHTML);
+									quantity=quantity+val;
+								}
 
+							return quantity;
+						}
+
+						
 						function saveChanges(){
 							counter={/literal}{$count}{literal};
 
@@ -307,14 +317,17 @@
 								}
 						}
 
-						function checkout(){
+						function checkout(cno){
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
-
+						var orderNo=val;
+						
+						var qty = sumQty();
+						
 						amount = document.getElementById("tAmt");
 						amount = parseFloat(amount.innerHTML);
 
-              var theUrl="ajax.php?cmd=3&ono="+val+"&amt="+amount;
+              var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}

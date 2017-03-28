@@ -1,26 +1,26 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:32:22
+/* Smarty version 3.1.30, created on 2017-03-28 04:46:18
   from "C:\xampp\htdocs\E-commerce_final\views\loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d968c6585630_33590508',
+  'unifunc' => 'content_58d9ce7a264430_47832703',
   'has_nocache_code' => false,
-  'file_dependency' =>
+  'file_dependency' => 
   array (
-    'daf12c745cb82b78cb63d4db6e927d5e02e56b9d' =>
+    'daf12c745cb82b78cb63d4db6e927d5e02e56b9d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\loginEmployee.tpl',
-      1 => 1490029639,
+      1 => 1490668393,
       2 => 'file',
     ),
   ),
-  'includes' =>
+  'includes' => 
   array (
   ),
 ),false)) {
-function content_58d968c6585630_33590508 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9ce7a264430_47832703 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +68,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
             <?php if (($_smarty_tpl->tpl_vars['login']->value['Password']) == $_smarty_tpl->tpl_vars['password']->value) {?>
               <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['ename'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
 
-              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToLog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
+              <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->addToELog($_smarty_tpl->tpl_vars['login']->value['eno'],$_smarty_tpl->tpl_vars['login']->value['account_type']);?>
 
               <?php echo "<script>window.location = 'employeeDisplay.php?eAction=2'</script>";?>
 

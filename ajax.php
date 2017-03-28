@@ -112,9 +112,14 @@ function checkout(){
 	$obj = new order();
 	$ono = $_REQUEST['ono'];
 	$amt = $_REQUEST['amt'];
+	$cno = $_REQUEST['cno'];
+	$numItems=$_REQUEST['qty'];
 
 	$obj->checkout($ono,$amt);
-	echo '{"result":0,"message":"Order checked out"}';
+	
+	$obj->insertLog($ono,$cno,$numItems);
+	
+	echo '{"result":0,"message":"Order checked out","$cno":'.$cno.',"numItems":'.$numItems.'}';
 }
 
 function logout(){

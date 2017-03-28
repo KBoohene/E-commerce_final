@@ -1,26 +1,26 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 22:23:47
+/* Smarty version 3.1.30, created on 2017-03-28 05:30:57
   from "C:\xampp\htdocs\E-commerce_final\views\Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d974d3c95688_29634718',
+  'unifunc' => 'content_58d9d8f1b496b9_71985529',
   'has_nocache_code' => false,
-  'file_dependency' =>
+  'file_dependency' => 
   array (
-    '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' =>
+    '9814d62fb592f0ae2084a6e3c5b720cb2e114c2d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\Dashboard.tpl',
-      1 => 1490646221,
+      1 => 1490671852,
       2 => 'file',
     ),
   ),
-  'includes' =>
+  'includes' => 
   array (
   ),
 ),false)) {
-function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9d8f1b496b9_71985529 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -127,7 +127,7 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </nav>
 	    <!--/.Navbar-->
-
+			
 				<?php echo '<script'; ?>
 >
 						function logoutComplete(xhr, status){
@@ -154,7 +154,7 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
 						}
 				<?php echo '</script'; ?>
 >
-
+			
     </header>
 		<?php if (isset($_SESSION)) {?>
 			<?php if (isset($_SESSION['userId'])) {?>
@@ -168,7 +168,7 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
 		<?php }?>
 
 
-
+    
     <?php $_smarty_tpl->_assignInScope('Mon', $_smarty_tpl->tpl_vars['report']->value->getDate("monday this week"));
 ?>
     <?php $_smarty_tpl->_assignInScope('Tues', $_smarty_tpl->tpl_vars['report']->value->getDate("tuesday this week"));
@@ -219,9 +219,12 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
     <?php $_smarty_tpl->_assignInScope('val7', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['SunVal']->value));
 ?>
 
-    <div class="col-md-9">
+<div class="row">
+    <div class="col-md-9 offset-md-2" style="margin-top:50px">
+		<h2 align="center">Items ordered per day</h2>
       <canvas id="myChart2"></canvas>
     </div>
+		
     <?php echo '<script'; ?>
 >
       $(function () {
@@ -256,7 +259,7 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '</script'; ?>
 >
 
-
+    
 
     <?php $_smarty_tpl->_assignInScope('ans1', $_smarty_tpl->tpl_vars['report']->value->getOrderShipped(1));
 ?>
@@ -266,7 +269,10 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
 ?>
     <?php $_smarty_tpl->_assignInScope('notShipped', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['ans2']->value));
 ?>
-    <div class="col-md-6">
+		
+		
+    <div class="col-md-6" style="margin-top:100px">
+			<h2 align="center">Shipped Vs Not Shipped</h2>
       <canvas id="myChart1"></canvas>
     </div>
     <?php echo '<script'; ?>
@@ -276,14 +282,14 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
 
       var data = [
           {
-            value: <?php echo $_smarty_tpl->tpl_vars['shipped']->value[0]['Num_shipped'];?>
+            value: <?php echo $_smarty_tpl->tpl_vars['shipped']->value[0]['Not_shipped'];?>
 ,
             color:"#F7464A",
             highlight: "#FF5A5E",
             label: "Items shipped"
           },
           {
-            value: <?php echo $_smarty_tpl->tpl_vars['notShipped']->value[0]['Not_shipped'];?>
+            value: <?php echo $_smarty_tpl->tpl_vars['notShipped']->value[0]['Num_shipped'];?>
 ,
             color: "#46BFBD",
             highlight: "#5AD3D1",
@@ -302,14 +308,14 @@ function content_58d974d3c95688_29634718 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '</script'; ?>
 >
 
-
+    
     <?php $_smarty_tpl->_assignInScope('answer', $_smarty_tpl->tpl_vars['report']->value->top10Customers());
 ?>
     <?php $_smarty_tpl->_assignInScope('topList', $_smarty_tpl->tpl_vars['report']->value->fetchDB($_smarty_tpl->tpl_vars['answer']->value));
 ?>
-    <div class="col-md-6">
-      Top Ten Customers
-      <table>
+    <div class="col-md-6" style="margin-top:100px">
+      <h2 align="center">Top Ten Customers</h2>
+      <table class="table table-striped">
         <thead>
           <tr>
             <td>Customer Name</td>
