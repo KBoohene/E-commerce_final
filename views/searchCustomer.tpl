@@ -84,73 +84,93 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
-    <form action="employeeDisplay.php?eAction=6" method="POST">
-			<div>Customer name <input type="text" name="searchCustomer"><br></div>
-      <button type="submit" class="button">Search</button>
-    </form>
-    {if isset($smarty.request.searchCustomer)}
-      {if ($smarty.request.searchCustomer)!=""}
-          {assign var="txt" value=$smarty.request.searchCustomer}
-          {assign var="result" value=$customer->searchCustomers($txt)}
-          {assign var="data" value=$customer->fetchDB($result)}
-        {elseif ($smarty.request.searchName)==""}
-          {assign var="result" value=$customer->getCustomers()}
-          {assign var="data" value=$customer->fetchDB($result)}
-     {/if}
-     {else}
-        {assign var="result" value=$customer->getCustomers()}
-        {assign var="data" value=$customer->fetchDB($result)}
-   {/if}
+    <main>
+      <div class="container">
 
-   <div>
-    <table>
-      <thead>
+        <!-- <form action="employeeDisplay.php?eAction=6" method="POST">
+    			<div>Customer name <input type="text" name="searchCustomer"><br></div>
+          <button type="submit" class="button">Search</button>
+        </form> -->
+
+        <form action="employeeDisplay.php?eAction=6" method="POST">
+          <div class="row">
+            <h2>Customer</h2>
+          <div class="col-md-11">
+            <input class="form-control" type="text" name="searchName">
+          </div>
+          <div class="col-md-1">
+            <input type="submit" value="Search" class="form-control amber darken-3 white-text">
+          </div>
+        </div>
+       </form>
+
+        {if isset($smarty.request.searchCustomer)}
+          {if ($smarty.request.searchCustomer)!=""}
+              {assign var="txt" value=$smarty.request.searchCustomer}
+              {assign var="result" value=$customer->searchCustomers($txt)}
+              {assign var="data" value=$customer->fetchDB($result)}
+            {elseif ($smarty.request.searchName)==""}
+              {assign var="result" value=$customer->getCustomers()}
+              {assign var="data" value=$customer->fetchDB($result)}
+         {/if}
+         {else}
+            {assign var="result" value=$customer->getCustomers()}
+            {assign var="data" value=$customer->fetchDB($result)}
+       {/if}
+
+       <div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+             <th>Customer ID</th>
+             <th>Customer Name</th>
+             <th>Street</th>
+             <th>Zip</th>
+             <th>Phone Number</th>
+             <th>Username</th>
+             <th>Password</th>
+             <th>Status</th>
+             <th>Created At</th>
+           </tr>
+        </thead>
+
+       {foreach from=$data item=value}
         <tr>
-         <td>Customer ID</td>
-         <td>Customer Name</td>
-         <td>Street</td>
-         <td>Zip</td>
-         <td>Phone Number</td>
-         <td>Username</td>
-         <td>Password</td>
-         <td>Status</td>
-         <td>Created At</td>
-        </tr>
-    </thead>
+         {if $value.cno}
+            <td>{$value.cno}</td>
+         {/if}
+         {if $value.cname}
+            <td>{$value.cname}</td>
+         {/if}
+         {if $value.street}
+            <td>{$value.street}</td>
+         {/if}
+         {if $value.zip}
+            <td>{$value.zip}</td>
+         {/if}
+         {if $value.phone}
+            <td>{$value.phone}</td>
+         {/if}
+         {if $value.Username}
+            <td>{$value.Username}</td>
+         {/if}
+         {if $value.Password}
+            <td>{$value.Password}</td>
+         {/if}
+         {if $value.status}
+            <td>{$value.status}</td>
+         {/if}
+         {if $value.created_at}
+            <td>{$value.created_at}</td>
+         {/if}
+            <td><a href="employeeDisplay.php?eAction=8&searchName={$value.cno}">Edit Customer</a>
+         </tr>
+         {/foreach}
+        </table>
+       </div>
 
-   {foreach from=$data item=value}
-    <tr>
-     {if $value.cno}
-        <td>{$value.cno}</td>
-     {/if}
-     {if $value.cname}
-        <td>{$value.cname}</td>
-     {/if}
-     {if $value.street}
-        <td>{$value.street}</td>
-     {/if}
-     {if $value.zip}
-        <td>{$value.zip}</td>
-     {/if}
-     {if $value.phone}
-        <td>{$value.phone}</td>
-     {/if}
-     {if $value.Username}
-        <td>{$value.Username}</td>
-     {/if}
-     {if $value.Password}
-        <td>{$value.Password}</td>
-     {/if}
-     {if $value.status}
-        <td>{$value.status}</td>
-     {/if}
-     {if $value.created_at}
-        <td>{$value.created_at}</td>
-     {/if}
-        <td><a href="employeeDisplay.php?eAction=8&searchName={$value.cno}">Edit Customer</a>
-     </tr>
-     {/foreach}
-    </table>
-   </div>
+      </div>
+    </main>
+
   </body>
 </html>

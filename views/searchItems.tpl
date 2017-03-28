@@ -126,9 +126,8 @@
                  <div class="col-md-1">
                    <input type="submit" value="Search" class="form-control">
                  </div>
-               </div>
-
               </form>
+              </div>
 
              {if isset($smarty.request.searchName)}
                {assign var="trimmed" value = $smarty.request.searchName|trim}
@@ -154,7 +153,6 @@
 {/if}
                         {foreach from=$data item=item}
 
-
                             {if $item@iteration % 4 == 0}
                             <!--Second row-->
                             <div class="row">
@@ -165,7 +163,7 @@
                             <div class="card">
                                 <!--Card image-->
                                 <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
+                                    <img src="img/products/{$item.iname}.png" class="img-fluid" alt="">
                                     <a href="#">
                                         <div class="mask"></div>
                                     </a>

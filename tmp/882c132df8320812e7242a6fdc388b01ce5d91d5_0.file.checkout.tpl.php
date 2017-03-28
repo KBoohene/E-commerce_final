@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:53:48
+/* Smarty version 3.1.30, created on 2017-03-27 23:47:12
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d989ec551e87_08220612',
+  'unifunc' => 'content_58d9a480c60497_64385091',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490651625,
+      1 => 1490658430,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d989ec551e87_08220612 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9a480c60497_64385091 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -221,9 +221,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						</table>
 					 </div>
         </div>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+    		<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					
 					<?php echo '<script'; ?>
 >

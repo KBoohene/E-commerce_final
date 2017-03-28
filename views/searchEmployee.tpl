@@ -95,71 +95,87 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
- 
-    <form action="employeeDisplay.php?eAction=3" method="POST">
-      <input class="search-bar" id="search" type="text" name="searchName">
-      <button type="submit" class="button">Search</button>
-    </form>
+     <main>
+       <div class="container">
+         <!-- <form action="employeeDisplay.php?eAction=3" method="POST">
+           <input class="search-bar" id="search" type="text" name="searchName">
+           <button type="submit" class="button">Search</button>
+         </form> -->
 
-    {if isset($smarty.request.searchName)}
-      {if ($smarty.request.searchName)!=""}
-          {assign var="txt" value=$smarty.request.searchName}
-          {assign var="result" value=$employee->searchEmployees($txt)}
-          {assign var="data" value=$employee->fetchDB($result)}
-        {elseif ($smarty.request.searchName)==""}
-          {assign var="result" value=$employee->getEmployees()}
-          {assign var="data" value=$employee->fetchDB($result)}
-      {/if}
-      {else}
-        {assign var="result" value=$employee->getEmployees()}
-        {assign var="data" value=$employee->fetchDB($result)}
-    {/if}
+         <form action="employeeDisplay.php?eAction=3" method="POST">
+           <div class="row">
+             <h2>Employees</h2>
+           <div class="col-md-11">
+             <input class="form-control" type="text" name="searchName">
+           </div>
+           <div class="col-md-1">
+             <input type="submit" value="Search" class="form-control amber darken-3 white-text">
+           </div>
+         </div>
+        </form>
 
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <td>Employee ID</td>
-            <td>Employee Name</td>
-            <td>Zip</td>
-            <td>Hire Date</td>
-            <td>Password</td>
-            <td>Time Created</td>
-            <td>Account Type</td>
-            <td>Username</td>
-          </tr>
-        </thead>
-	
-        {foreach from=$data item=value}
-          <tr>
-            {if $value.eno}
-              <td>{$value.eno}</td>
-            {/if}
-            {if $value.ename}
-              <td>{$value.ename}</td>
-            {/if}
-            {if $value.zip}
-              <td>{$value.zip}</td>
-            {/if}
-            {if $value.hdate}
-              <td>{$value.hdate}</td>
-            {/if}
-            {if $value.Password}
-              <td>{$value.Password}</td>
-            {/if}
-            {if $value.created_at}
-              <td>{$value.created_at}</td>
-            {/if}
-            {if $value.account_type}
-              <td>{$value.account_type}</td>
-            {/if}
-            {if $value.Username}
-              <td>{$value.Username}</td>
-            {/if}
-            <td><a href="employeeDisplay.php?eAction=4&searchName={$value.eno}">Edit Employee</a>
-          </tr>
-        {/foreach}
-      </table>
-    </div>
+         {if isset($smarty.request.searchName)}
+           {if ($smarty.request.searchName)!=""}
+               {assign var="txt" value=$smarty.request.searchName}
+               {assign var="result" value=$employee->searchEmployees($txt)}
+               {assign var="data" value=$employee->fetchDB($result)}
+             {elseif ($smarty.request.searchName)==""}
+               {assign var="result" value=$employee->getEmployees()}
+               {assign var="data" value=$employee->fetchDB($result)}
+           {/if}
+           {else}
+             {assign var="result" value=$employee->getEmployees()}
+             {assign var="data" value=$employee->fetchDB($result)}
+         {/if}
+
+         <div>
+           <table class="table table-striped">
+             <thead>
+               <tr>
+                 <td>Employee ID</td>
+                 <td>Employee Name</td>
+                 <td>Zip</td>
+                 <td>Hire Date</td>
+                 <td>Password</td>
+                 <td>Time Created</td>
+                 <td>Account Type</td>
+                 <td>Username</td>
+               </tr>
+             </thead>
+
+             {foreach from=$data item=value}
+               <tr>
+                 {if $value.eno}
+                   <td>{$value.eno}</td>
+                 {/if}
+                 {if $value.ename}
+                   <td>{$value.ename}</td>
+                 {/if}
+                 {if $value.zip}
+                   <td>{$value.zip}</td>
+                 {/if}
+                 {if $value.hdate}
+                   <td>{$value.hdate}</td>
+                 {/if}
+                 {if $value.Password}
+                   <td>{$value.Password}</td>
+                 {/if}
+                 {if $value.created_at}
+                   <td>{$value.created_at}</td>
+                 {/if}
+                 {if $value.account_type}
+                   <td>{$value.account_type}</td>
+                 {/if}
+                 {if $value.Username}
+                   <td>{$value.Username}</td>
+                 {/if}
+                 <td><a href="employeeDisplay.php?eAction=4&searchName={$value.eno}">Edit Employee</a>
+               </tr>
+             {/foreach}
+           </table>
+         </div>
+       </div>
+     </main>
+
   </body>
 </html>

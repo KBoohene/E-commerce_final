@@ -160,9 +160,15 @@
 						</table>
 					 </div>
         </div>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+    		<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
 
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
 					{literal}
 					<script>
 						var val, val2, val3, amount, quantity, price ;

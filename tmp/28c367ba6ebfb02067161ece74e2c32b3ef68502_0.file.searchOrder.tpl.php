@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 21:28:04
+/* Smarty version 3.1.30, created on 2017-03-28 02:57:45
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d04964759a37_91579708',
+  'unifunc' => 'content_58d9d129076c67_08041313',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '28c367ba6ebfb02067161ece74e2c32b3ef68502' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchOrder.tpl',
-      1 => 1490031407,
+      1 => 1490669863,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d04964759a37_91579708 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9d129076c67_08041313 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -68,7 +68,7 @@ function content_58d04964759a37_91579708 (Smarty_Internal_Template $_smarty_tpl)
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link active" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -119,11 +119,21 @@ function content_58d04964759a37_91579708 (Smarty_Internal_Template $_smarty_tpl)
         </nav>
 	    <!--/.Navbar-->
     </header>
+    <main>
+      <div class="container">
+
+
 		<div>
     <form action="employeeDisplay.php?eAction=14" method="POST">
-		<label>Date:</label>
-      <input  id="search" type="date" name="searchOrder">
-      <button type="submit" class="button">Search</button>
+      <div class="row col-md-10">
+        <label>Date:</label>
+          <input id="search" type="date" name="searchOrder">
+      </div>
+      <div class="row col-md-2">
+        <button type="submit" class="form-control amber darken-3 white-text">Search</button>
+      </div>
+
+
     </form>
 		</div>
 
@@ -149,7 +159,7 @@ function content_58d04964759a37_91579708 (Smarty_Internal_Template $_smarty_tpl)
     <?php }?>
 
 		<div>
-			<table>
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<td>Order ID</td>
@@ -202,6 +212,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 			</table>
  		</div>
+  </div>
+</main>
 	</body>
 </html>
 <?php }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 23:35:51
+/* Smarty version 3.1.30, created on 2017-03-28 03:26:16
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9a1d75baf83_63701916',
+  'unifunc' => 'content_58d9d7d8892273_92075499',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3397d0ee261e32ef5d0221931febef0851e80aa5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl',
-      1 => 1490657747,
+      1 => 1490667485,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9a1d75baf83_63701916 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9d7d8892273_92075499 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,9 +164,8 @@ function content_58d9a1d75baf83_63701916 (Smarty_Internal_Template $_smarty_tpl)
                  <div class="col-md-1">
                    <input type="submit" value="Search" class="form-control">
                  </div>
-               </div>
-
               </form>
+              </div>
 
              <?php if (isset($_REQUEST['searchName'])) {?>
                <?php $_smarty_tpl->_assignInScope('trimmed', trim($_REQUEST['searchName']));
@@ -210,7 +209,6 @@ $_smarty_tpl->tpl_vars['item']->iteration++;
 $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
 ?>
 
-
                             <?php if ($_smarty_tpl->tpl_vars['item']->iteration%4 == 0) {?>
                             <!--Second row-->
                             <div class="row">
@@ -221,7 +219,8 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                             <div class="card">
                                 <!--Card image-->
                                 <div class="view overlay hm-white-slight">
-                                    <img src="http://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(32).jpg" class="img-fluid" alt="">
+                                    <img src="img/products/<?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
+.png" class="img-fluid" alt="">
                                     <a href="#">
                                         <div class="mask"></div>
                                     </a>

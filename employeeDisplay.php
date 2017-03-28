@@ -76,7 +76,7 @@ if(isset($_REQUEST['eAction'])){
       break;
     case 15:
       $smarty->display('editOrder.tpl');
-      break; 	  
+      break;
     default:
       $smarty->display('loginEmployee.tpl');
   }

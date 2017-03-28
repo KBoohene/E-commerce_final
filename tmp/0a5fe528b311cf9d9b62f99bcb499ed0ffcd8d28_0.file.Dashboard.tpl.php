@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-20 21:27:16
+/* Smarty version 3.1.30, created on 2017-03-28 01:44:50
   from "/Applications/AMPPS/www/github/E-commerce_final/views/Dashboard.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d049344ae175_81711571',
+  'unifunc' => 'content_58d9c012854116_25870686',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0a5fe528b311cf9d9b62f99bcb499ed0ffcd8d28' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/Dashboard.tpl',
-      1 => 1490031407,
+      1 => 1490649714,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d049344ae175_81711571 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9c012854116_25870686 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -111,7 +111,7 @@ function content_58d049344ae175_81711571 (Smarty_Internal_Template $_smarty_tpl)
 											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
 </a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" onclick="logout()">Logout</a>
 													<a class="dropdown-item" href="#">Profile</a>
 												</div>
 										<?php } else { ?>
@@ -127,25 +127,46 @@ function content_58d049344ae175_81711571 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </nav>
 	    <!--/.Navbar-->
+			
+				<?php echo '<script'; ?>
+>
+						function logoutComplete(xhr, status){
 
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+								window.location='employeeDisplay.php?eAction=1';
+							}else{
+								console.log("Employee not logged out");
+								}
+						}
+
+						function logout(){
+
+              var theUrl="ajax.php?cmd=4";
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:logoutComplete}
+                );
+
+						}
+				<?php echo '</script'; ?>
+>
+			
     </header>
 		<?php if (isset($_SESSION)) {?>
 			<?php if (isset($_SESSION['userId'])) {?>
 				<?php $_smarty_tpl->_assignInScope('customerId', $_SESSION['userId']);
 ?>
-				<?php if (($_SESSION['acctype'] == 3)) {?>
-					 <a href="employeeDisplay.php?eAction=3">Employees</a>
-					<?php } else { ?>
-				<?php }?>
+
 			<?php } else { ?>
 				<?php echo "Session not started";?>
 
 			<?php }?>
 		<?php }?>
 
-    <a href="employeeDisplay.php?eAction=6">Customers</a>
-    <a href="employeeDisplay.php?eAction=14">Orders</a>
-    <a href="employeeDisplay.php?eAction=13">Items</a>
 
     
     <?php $_smarty_tpl->_assignInScope('Mon', $_smarty_tpl->tpl_vars['report']->value->getDate("monday this week"));
