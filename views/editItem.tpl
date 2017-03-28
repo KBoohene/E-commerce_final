@@ -85,53 +85,69 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
-    {if isset($smarty.post.ino)}
-      {assign var="itemId" value=$smarty.post.ino}
-      {assign var="iname" value=$smarty.post.iname}
-      {assign var="qoh" value=$smarty.post.qoh}
-      {assign var="price" value=$smarty.post.price}
-      {assign var="olvl" value=$smarty.post.olevel}
-      {assign var="catno" value=$smarty.post.catno}
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            {if isset($smarty.post.ino)}
+              {assign var="itemId" value=$smarty.post.ino}
+              {assign var="iname" value=$smarty.post.iname}
+              {assign var="qoh" value=$smarty.post.qoh}
+              {assign var="price" value=$smarty.post.price}
+              {assign var="olvl" value=$smarty.post.olevel}
+              {assign var="catno" value=$smarty.post.catno}
 
-      {if ($catno)=="-1"}
-        {"Please select a zip"}
-        {elseif ($itemId)=="" or ($iname)=="" or ($qoh)=="" or ($price)==""}
-          {"Please enter all information"}
-        {else}
-          {assign var="result" value=$item->editItem($itemId, $iname, $qoh, $price, $olvl, $catno)}
-          {"<script>window.location ='employeeDisplay.php?eAction=13'</script>"}
-      {/if}
-    {/if}
-
-    {if isset($smarty.request.searchItem)}
-      {if ($smarty.request.searchItem)!=""}
-        {assign var="txt" value=$smarty.request.searchItem}
-        {assign var="result" value=$item->getItemDetails($txt)}
-        {assign var="data" value=$item->fetchDB($result)}
-      {/if}
-    {/if}
-
-	<form action="employeeDisplay.php?eAction=11" method="POST">
-      <input type="text" name="ino" value="{$data.0.ino}" hidden>
-      <div>Item Name <input type="text" name="iname" value="{$data.0.iname}"><br></div>
-      {assign var="categoryId" value=$item->getCategory()}
-      {assign var="categoryVar" value=$item->fetchDB($categoryId)}
-      <div>Category
-        <select name="catno">
-	    <option value="-1">Select category</option>
-	      {foreach from=$categoryVar  item=category}
-            {if $data.0.catno==$category.catno}
-	          <option value={$category.catno} selected>{$category.catname}</option>
-            {else}
-              <option value={$category.catno}>{$category.catname}</option>
+              {if ($catno)=="-1"}
+                {"Please select a zip"}
+                {elseif ($itemId)=="" or ($iname)=="" or ($qoh)=="" or ($price)==""}
+                  {"Please enter all information"}
+                {else}
+                  {assign var="result" value=$item->editItem($itemId, $iname, $qoh, $price, $olvl, $catno)}
+                  {"<script>window.location ='employeeDisplay.php?eAction=13'</script>"}
+              {/if}
             {/if}
-	      {/foreach}
-	    </select>
-      <br></div>
-      <div> Quantity On Hand <input type="text" name="qoh" value="{$data.0.qoh}"><br></div>
-      <div> Price <input type="text" name="price" value="{$data.0.price}"><br></div>
-      <div> order level <input type="number" name="olevel" value="{$data.0.olevel}"><br></div>
-      <input type="submit" value="Edit">
-    </form>
+
+            {if isset($smarty.request.searchItem)}
+              {if ($smarty.request.searchItem)!=""}
+                {assign var="txt" value=$smarty.request.searchItem}
+                {assign var="result" value=$item->getItemDetails($txt)}
+                {assign var="data" value=$item->fetchDB($result)}
+              {/if}
+            {/if}
+
+        	<form action="employeeDisplay.php?eAction=11" method="POST">
+              <input type="text" name="ino" value="{$data.0.ino}" hidden>
+              <div>Item Name <input type="text" name="iname" value="{$data.0.iname}"><br></div>
+              {assign var="categoryId" value=$item->getCategory()}
+              {assign var="categoryVar" value=$item->fetchDB($categoryId)}
+              <div>Category
+                <select name="catno">
+        	    <option value="-1">Select category</option>
+        	      {foreach from=$categoryVar  item=category}
+                    {if $data.0.catno==$category.catno}
+        	          <option value={$category.catno} selected>{$category.catname}</option>
+                    {else}
+                      <option value={$category.catno}>{$category.catname}</option>
+                    {/if}
+        	      {/foreach}
+        	    </select>
+              <br></div>
+              <div> Quantity On Hand <input type="text" name="qoh" value="{$data.0.qoh}"><br></div>
+              <div> Price <input type="text" name="price" value="{$data.0.price}"><br></div>
+              <div> order level <input type="number" name="olevel" value="{$data.0.olevel}"><br></div>
+              <!-- <input class="amber darken-3 white-text" value="Edit"> -->
+              <div class="row col-md-5"></div>
+              <div class="row col-md-4">
+                <input type="submit" class="form-control amber darken-3 white-text" value="Edit">
+              </div>
+              <div class="row col-md-3"></div>
+            </form>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </main>
+
   </body>
 </html>

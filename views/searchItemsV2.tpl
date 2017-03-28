@@ -46,7 +46,7 @@
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=#">Orders</a>
+                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
@@ -95,59 +95,71 @@
         </nav>
 	    <!--/.Navbar-->
     </header>
+    <main>
+      <div class="container">
 
-    <form action="index.php?cAction=1" method="POST">
-      <input class="search-bar" id="search" type="text" name="searchName">
-      <button type="submit" class="button">Search</button>
-    </form>
+        <form action="employeeDisplay.php?eAction=13" method="POST">
+          <div class="row">
+            <h2>Employees</h2>
+          <div class="col-md-11">
+            <input class="form-control search-bar" id="search" type="text" name="searchName">
+          </div>
+          <div class="col-md-1">
+            <input type="submit" value="Search" class="form-control amber darken-3 white-text">
+          </div>
+        </div>
+       </form>
 
-    {if isset($smarty.request.searchName)}
-      {if ($smarty.request.searchName)!=""}
-        {assign var="txt" value=$smarty.request.searchName}
-        {assign var="result" value=$item->searchItems($txt)}
-        {assign var="data" value=$item->fetchDB($result)}
-      {elseif ($smarty.request.searchName)==""}
-        {assign var="result" value=$item->getItems()}
-        {assign var="data" value=$item->fetchDB($result)}
-      {/if}
-    {else}
-      {assign var="result" value=$item->getItems()}
-      {assign var="data" value=$item->fetchDB($result)}
-    {/if}
+        {if isset($smarty.request.searchName)}
+          {if ($smarty.request.searchName)!=""}
+            {assign var="txt" value=$smarty.request.searchName}
+            {assign var="result" value=$item->searchItems($txt)}
+            {assign var="data" value=$item->fetchDB($result)}
+          {elseif ($smarty.request.searchName)==""}
+            {assign var="result" value=$item->getItems()}
+            {assign var="data" value=$item->fetchDB($result)}
+          {/if}
+        {else}
+          {assign var="result" value=$item->getItems()}
+          {assign var="data" value=$item->fetchDB($result)}
+        {/if}
 
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <td>Product ID</td>
-            <td>Product Name</td>
-            <td>Quantity on Hand</td>
-            <td>Price</td>
-            <td>Reorder Level</td>
-          </tr>
-        </thead>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <td>Product ID</td>
+                <td>Product Name</td>
+                <td>Quantity on Hand</td>
+                <td>Price</td>
+                <td>Reorder Level</td>
+              </tr>
+            </thead>
 
-        {foreach from=$data item=value}
-          <tr>
-            {if $value.ino}
-              <td>{$value.ino}</td>
-            {/if}
-            {if $value.iname}
-              <td>{$value.iname}</td>
-            {/if}
-            {if $value.qoh}
-              <td>{$value.qoh}</td>
-            {/if}
-            {if $value.price}
-              <td>{$value.price}</td>
-            {/if}
-            {if $value.olevel}
-              <td>{$value.olevel}</td>
-            {/if}
-              <td><a href="employeeDisplay.php?eAction=11&searchItem={$value.ino}">Edit Item</a>
-          </tr>
-        {/foreach}
-      </table>
-    </div>
+            {foreach from=$data item=value}
+              <tr>
+                {if $value.ino}
+                  <td>{$value.ino}</td>
+                {/if}
+                {if $value.iname}
+                  <td>{$value.iname}</td>
+                {/if}
+                {if $value.qoh}
+                  <td>{$value.qoh}</td>
+                {/if}
+                {if $value.price}
+                  <td>{$value.price}</td>
+                {/if}
+                {if $value.olevel}
+                  <td>{$value.olevel}</td>
+                {/if}
+                  <td><a href="employeeDisplay.php?eAction=11&searchItem={$value.ino}">Edit Item</a>
+              </tr>
+            {/foreach}
+          </table>
+        </div>
+
+      </div>
+    </main>
   </body>
 </html>
