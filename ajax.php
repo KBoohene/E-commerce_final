@@ -111,8 +111,9 @@ function checkout(){
 	include("Classes/order.php");
 	$obj = new order();
 	$ono = $_REQUEST['ono'];
+	$amt = $_REQUEST['amt'];
 
-	$obj->checkout($ono);
+	$obj->checkout($ono,$amt);
 	echo '{"result":0,"message":"Order checked out"}';
 }
 

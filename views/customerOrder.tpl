@@ -115,6 +115,7 @@
 									<th>Recieved </th>
 									<th>Shipped date</th>
 									<th>Created At</th>
+									<th>Total Amount</th>
 								</tr>
 							</thead>
                             <tbody>
@@ -139,28 +140,15 @@
 												{if $value.created_at}
 													<td>{$value.created_at}</td>
 												{/if}
+												{if $value.amt}
+													<td>{$value.amt}</td>
+												{/if}
 											</tr>
                                             <div class="hiddenRow">
                                                 {assign var="checked_out" value="Yes"}
                                                 {assign var="result2" value=$order->getODV2($value.ono, $customerId, $checked_out)}
                                                 {assign var="data2" value=$order->fetchDB($result2)}
 
-                                                <!-- <thead>
-                                                  <tr>
-                                                    <th>Item #</th>
-                                                    <th>Item Name</th>
-                                                    <th>Item Price</th>
-                                                    <th>Quantity</th>
-                                                  </tr>
-                                                </thead>
-                                                    {foreach from=$data2 item=value2}
-                                                    <tr>
-                                                        <td>{$value2.ino}</td>
-                                                        <td>{$value2.iname}</td>
-                                                        <td>{$value2.price}</td>
-                                                        <td>{$value2.qty}</td>
-                                                    </tr>
-                                                    {/foreach} -->
 
                                                 <tr>
                                                     <!-- odetails.ono, odetails.ino, odetails.qty, items.iname, items.price -->
@@ -181,6 +169,7 @@
                                                                         <th>Item Name</th>
                                                                         <th>Item Price</th>
                                                                         <th>Quantity</th>
+																																				<th>Amount</th>
                                                                     </thead>
                                                                     {foreach from=$data2 item=value2}
                                                                         <tr>
@@ -188,6 +177,7 @@
                                                                             <td>{$value2.iname}</td>
                                                                             <td>{$value2.price}</td>
                                                                             <td>{$value2.qty}</td>
+																																						<td>{$value2.amt}</td>
                                                                         </tr>
                                                                     {/foreach}
                                                                 </table>

@@ -53,7 +53,7 @@ class order extends adb{
 * @retun : Array if successful, False if not
 **/
   function getCustomerOrders($customerId){
-    $strQuery="SELECT ono, cno, received, shipped, created_at FROM orders where cno='$customerId' and checked_out='Yes'";
+    $strQuery="SELECT ono, cno, received, shipped, created_at, amt FROM orders where cno='$customerId' and checked_out='Yes'";
     return $this->query($strQuery);
   }
 
@@ -63,7 +63,7 @@ class order extends adb{
 * @return : Array if successful, False if not
 **/
   function getOrderDetails($orderId){
-    $strQuery="SELECT ono, ino, qty FROM odetails WHERE ono='$orderId'";
+    $strQuery="SELECT ono, ino, qty, amt FROM odetails WHERE ono='$orderId'";
     return $this->query($strQuery);
   }
 
@@ -82,8 +82,8 @@ class order extends adb{
 * @param {$orderId} ID number of cart
 * @return : True if successful, False if not
 **/
-  function checkout($orderId){
-    $strQuery="UPDATE `orders` SET `checked_out` = 'Yes' WHERE `orders`.`ono` = '$orderId'";
+  function checkout($orderId,$amt){
+    $strQuery="UPDATE `orders` SET `checked_out` = 'Yes', amt='$amt' WHERE `orders`.`ono` = '$orderId'";
 	  return $this->query($strQuery);
   }
 
@@ -150,7 +150,7 @@ class order extends adb{
 	}
 
 	function getODV2($ono, $cno, $checked_out){
-		$strQuery= "SELECT odetails.ono, odetails.ino, odetails.qty, items.iname, items.price FROM odetails, orders, items WHERE odetails.ono = orders.ono AND orders.cno ='$cno' AND orders.ono ='$ono' AND orders.checked_out= '$checked_out' AND odetails.ino = items.ino";
+		$strQuery= "SELECT odetails.ono, odetails.ino, odetails.qty, odetails.amt, items.iname, items.price FROM odetails, orders, items WHERE odetails.ono = orders.ono AND orders.cno ='$cno' AND orders.ono ='$ono' AND orders.checked_out= '$checked_out' AND odetails.ino = items.ino";
 		return $this->query($strQuery);
 	}
 

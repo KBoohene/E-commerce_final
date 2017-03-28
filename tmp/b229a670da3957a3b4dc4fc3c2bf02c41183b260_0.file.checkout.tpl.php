@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 01:53:47
+/* Smarty version 3.1.30, created on 2017-03-28 02:22:55
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9a60b552bc0_39856850',
+  'unifunc' => 'content_58d9acdf7300f8_43575638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490658821,
+      1 => 1490660551,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9a60b552bc0_39856850 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9acdf7300f8_43575638 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@ function content_58d9a60b552bc0_39856850 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Customer Login</title>
+    <title>Checkout</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -389,7 +389,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
 
-              var theUrl="ajax.php?cmd=3&ono="+val;
+						amount = document.getElementById("tAmt");
+						amount = parseFloat(amount.innerHTML);
+
+              var theUrl="ajax.php?cmd=3&ono="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
