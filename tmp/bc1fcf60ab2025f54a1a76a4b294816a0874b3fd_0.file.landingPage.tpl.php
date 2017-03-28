@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 01:37:42
+/* Smarty version 3.1.30, created on 2017-03-28 03:56:56
   from "/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9be66d4ae89_99458147',
+  'unifunc' => 'content_58d9df08075632_17718457',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bc1fcf60ab2025f54a1a76a4b294816a0874b3fd' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/landingPage.tpl',
-      1 => 1490665049,
+      1 => 1490673414,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9be66d4ae89_99458147 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9df08075632_17718457 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -228,7 +228,7 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                             <div class="view overlay hm-white-slight">
                                 <img src="img/products/<?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
 .png" class="img-fluid" alt="">
-                                <a href="#">
+                                <a>
                                     <div class="mask"></div>
                                 </a>
                             </div>
@@ -248,7 +248,8 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                             <br>
                                 <a onclick="addToCart(<?php echo $_smarty_tpl->tpl_vars['user']->value['userId'];?>
 ,<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
-,1)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
+,1,<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>
+)"><i class="fa fa-cart-plus core-primary" aria-hidden="true"></i></a>
                                 <a href="index.php?cAction=2&pno=<?php echo $_smarty_tpl->tpl_vars['item']->value['ino'];?>
 "><i class="fa fa-expand core-secondary" aria-hidden="true"></i></a>
                             </div>
@@ -273,7 +274,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                         <?php echo '<script'; ?>
  type="text/javascript">
                             function addToCartComplete(xhr, status){
-                                alert("Item Added to Cart");
+                               alert("Item added");
                                 console.log(xhr);
 
                                 var obj=$.parseJSON(xhr.responseText);
@@ -288,10 +289,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                             }
 
-                            function addToCart(customerId, itemId, qty){
+                            function addToCart(customerId, itemId, qty,price){
                                 //alert("Adding item "+itemId+" to cart by user " + customerId);
-                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty;
-                                //alert(theUrl);
+
+                                var theUrl="ajax.php?cmd=1&cId="+customerId+"&iId="+itemId+"&qty="+qty+"&price="+price;
+
                 				$.ajax(theUrl,
                 				    {async:true,
                 				     complete:addToCartComplete}

@@ -58,7 +58,7 @@ class userInfo extends adb{
   }
 
 /**
-*@desc Adds user session to log
+*@desc Adds a customer session to log
 *@param {$personId} ID number of user
 *@param {acctype} Account type
 *@return: Success or Fail
@@ -67,12 +67,18 @@ class userInfo extends adb{
     $strQuery="INSERT INTO clogin_log(personId,account_type) VALUES ($personId,$acctype)";
     return $this->query($strQuery);
   }
-	
+
+  /**
+  *@desc Adds an employee session to log
+  *@param {$personId} ID number of user
+  *@param {acctype} Account type
+  *@return: Success or Fail
+  **/
 	function addToElog($personId,$acctype){
 		$strQuery="INSERT INTO elogin_log(personId,account_type) VALUES ($personId,$acctype)";
 		return $this->query($strQuery);
 	}
-	
+
 }
 
 

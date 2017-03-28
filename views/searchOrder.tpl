@@ -142,12 +142,11 @@
 						{if $value.checked_out}
 							<td>{$value.checked_out}</td>
 						{/if}
-						{if $value.received}
+
 							<td>{$value.received}</td>
-						{/if}
-						{if $value.shipped}
+
 							<td>{$value.shipped}</td>
-						{/if}
+
 						{if $value.created_at}
 							<td>{$value.created_at}</td>
 						{/if}

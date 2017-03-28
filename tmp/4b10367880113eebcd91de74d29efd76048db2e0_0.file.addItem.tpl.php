@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 03:01:13
+/* Smarty version 3.1.30, created on 2017-03-28 03:51:19
   from "/Applications/AMPPS/www/github/E-commerce_final/views/addItem.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9d1f9082816_47891611',
+  'unifunc' => 'content_58d9ddb7a48279_41732846',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4b10367880113eebcd91de74d29efd76048db2e0' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/addItem.tpl',
-      1 => 1490670067,
+      1 => 1490673074,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9d1f9082816_47891611 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9ddb7a48279_41732846 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -151,6 +151,7 @@ function content_58d9d1f9082816_47891611 (Smarty_Internal_Template $_smarty_tpl)
             <?php }?>
 
             <form action="employeeDisplay.php?eAction=12" method="POST">
+              <input type="file">
               <div>Item Name <input type="text" name="iname"><br></div>
                 <?php $_smarty_tpl->_assignInScope('categoryId', $_smarty_tpl->tpl_vars['item']->value->getCategory());
 ?>

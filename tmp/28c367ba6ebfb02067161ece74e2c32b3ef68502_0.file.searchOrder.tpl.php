@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 02:57:45
+/* Smarty version 3.1.30, created on 2017-03-28 04:14:39
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9d129076c67_08041313',
+  'unifunc' => 'content_58d9e32f70fd11_90845902',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '28c367ba6ebfb02067161ece74e2c32b3ef68502' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchOrder.tpl',
-      1 => 1490669863,
+      1 => 1490674476,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9d129076c67_08041313 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9e32f70fd11_90845902 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -189,14 +189,13 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['checked_out'];?>
 </td>
 						<?php }?>
-						<?php if ($_smarty_tpl->tpl_vars['value']->value['received']) {?>
+
 							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['received'];?>
 </td>
-						<?php }?>
-						<?php if ($_smarty_tpl->tpl_vars['value']->value['shipped']) {?>
+
 							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['shipped'];?>
 </td>
-						<?php }?>
+
 						<?php if ($_smarty_tpl->tpl_vars['value']->value['created_at']) {?>
 							<td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
 </td>

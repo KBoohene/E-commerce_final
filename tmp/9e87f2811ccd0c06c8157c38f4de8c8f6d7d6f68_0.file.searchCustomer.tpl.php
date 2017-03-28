@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 02:23:48
+/* Smarty version 3.1.30, created on 2017-03-28 04:09:54
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchCustomer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9c9348358d0_84442031',
+  'unifunc' => 'content_58d9e212057641_63378905',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9e87f2811ccd0c06c8157c38f4de8c8f6d7d6f68' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchCustomer.tpl',
-      1 => 1490667825,
+      1 => 1490671337,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9c9348358d0_84442031 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9e212057641_63378905 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -126,15 +126,13 @@ function content_58d9c9348358d0_84442031 (Smarty_Internal_Template $_smarty_tpl)
         </form> -->
 
         <form action="employeeDisplay.php?eAction=6" method="POST">
-          <?php $_smarty_tpl->_assignInScope('search', "Search");
-?>
           <div class="row">
             <h2>Customer</h2>
           <div class="col-md-11">
             <input class="form-control" type="text" name="searchName">
           </div>
           <div class="col-md-1">
-            <input type="submit" value="Search" class="form-control">
+            <input type="submit" value="Search" class="form-control amber darken-3 white-text">
           </div>
         </div>
        </form>

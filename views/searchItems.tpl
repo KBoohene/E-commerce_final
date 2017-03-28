@@ -164,7 +164,7 @@
                                 <!--Card image-->
                                 <div class="view overlay hm-white-slight">
                                     <img src="img/products/{$item.iname}.png" class="img-fluid" alt="">
-                                    <a href="#">
+                                    <a >
                                         <div class="mask"></div>
                                     </a>
                                 </div>

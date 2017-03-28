@@ -154,7 +154,7 @@
 
                                 <!--Featured image-->
                                 <div class="view overlay hm-white-light z-depth-1-half">
-                                    <img src="http://mdbootstrap.com/img/Photos/Slides/img%20(109).jpg" class="img-fluid " alt="">
+                                    <img src="img/products/{$product.iname}.png" class="img-fluid " alt="">
                                     <div class="mask">
                                     </div>
                                     <!-- <h3 class="price"><span class="badge red darken-2">20 $</span></h3> -->

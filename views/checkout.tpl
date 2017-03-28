@@ -168,15 +168,6 @@
 						</table>
 					 </div>
         </div>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-    		<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-
 
 				<div class="row">
 					<div class="col-md-6">
@@ -186,7 +177,7 @@
 						<button type="button" class="btn btn-primary" onclick="checkout({$smarty.session.userId})" id="Checkout">Checkout</button>
 					</div>
 
-					<div id="Total" style="visibility:hidden">
+					<div id="Total" style="visibility:hidden; margin-left:50px;">
 						Total Amount:
 						<span id="tAmt"></span>
 					</div>

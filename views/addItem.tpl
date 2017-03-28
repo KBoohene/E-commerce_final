@@ -109,6 +109,7 @@
             {/if}
 
             <form action="employeeDisplay.php?eAction=12" method="POST">
+              <input type="file">
               <div>Item Name <input type="text" name="iname"><br></div>
                 {assign var="categoryId" value=$item->getCategory()}
                 {assign var="categoryVar" value=$item->fetchDB($categoryId)}

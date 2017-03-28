@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 03:28:00
+/* Smarty version 3.1.30, created on 2017-03-28 03:39:36
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchItemsV2.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9d840d28f65_38656753',
+  'unifunc' => 'content_58d9daf8973ba3_78950990',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '93cde8a09c4024db0318862b3c4c52e542197c9f' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchItemsV2.tpl',
-      1 => 1490671677,
+      1 => 1490671693,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9d840d28f65_38656753 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9daf8973ba3_78950990 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 
@@ -130,11 +130,6 @@ function content_58d9d840d28f65_38656753 (Smarty_Internal_Template $_smarty_tpl)
     </header>
     <main>
       <div class="container">
-
-        <!-- <form action="index.php?cAction=1" method="POST">
-          <input class="search-bar" id="search" type="text" name="searchName">
-          <button type="submit" class="button">Search</button>
-        </form> -->
 
         <form action="employeeDisplay.php?eAction=13" method="POST">
           <div class="row">

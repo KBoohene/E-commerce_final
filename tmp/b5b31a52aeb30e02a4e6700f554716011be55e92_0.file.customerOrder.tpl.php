@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:22:24
+/* Smarty version 3.1.30, created on 2017-03-28 04:18:36
   from "/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d98290733e66_87091005',
+  'unifunc' => 'content_58d9e41c832349_18931597',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b5b31a52aeb30e02a4e6700f554716011be55e92' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/customerOrder.tpl',
-      1 => 1490649714,
+      1 => 1490674715,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d98290733e66_87091005 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9e41c832349_18931597 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,6 +152,7 @@ function content_58d98290733e66_87091005 (Smarty_Internal_Template $_smarty_tpl)
 									<th>Recieved </th>
 									<th>Shipped date</th>
 									<th>Created At</th>
+									<th>Total Amount</th>
 								</tr>
 							</thead>
                             <tbody>
@@ -188,6 +189,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['created_at'];?>
 </td>
 												<?php }?>
+												<?php if ($_smarty_tpl->tpl_vars['value']->value['amt']) {?>
+													<td><?php echo $_smarty_tpl->tpl_vars['value']->value['amt'];?>
+</td>
+												<?php }?>
 											</tr>
                                             <div class="hiddenRow">
                                                 <?php $_smarty_tpl->_assignInScope('checked_out', "Yes");
@@ -197,35 +202,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
                                                 <?php $_smarty_tpl->_assignInScope('data2', $_smarty_tpl->tpl_vars['order']->value->fetchDB($_smarty_tpl->tpl_vars['result2']->value));
 ?>
 
-                                                <!-- <thead>
-                                                  <tr>
-                                                    <th>Item #</th>
-                                                    <th>Item Name</th>
-                                                    <th>Item Price</th>
-                                                    <th>Quantity</th>
-                                                  </tr>
-                                                </thead>
-                                                    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data2']->value, 'value2');
-if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['value2']->value) {
-?>
-                                                    <tr>
-                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['ino'];?>
-</td>
-                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['iname'];?>
-</td>
-                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['price'];?>
-</td>
-                                                        <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['qty'];?>
-</td>
-                                                    </tr>
-                                                    <?php
-}
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
-?>
- -->
 
                                                 <tr>
                                                     <!-- odetails.ono, odetails.ino, odetails.qty, items.iname, items.price -->
@@ -252,6 +228,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                                                         <th>Item Name</th>
                                                                         <th>Item Price</th>
                                                                         <th>Quantity</th>
+																																				<th>Amount</th>
                                                                     </thead>
                                                                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['data2']->value, 'value2');
@@ -266,6 +243,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['value2']->value) {
                                                                             <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['price'];?>
 </td>
                                                                             <td><?php echo $_smarty_tpl->tpl_vars['value2']->value['qty'];?>
+</td>
+																																						<td><?php echo $_smarty_tpl->tpl_vars['value2']->value['amt'];?>
 </td>
                                                                         </tr>
                                                                     <?php
@@ -304,65 +283,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     <!--Footer-->
     <footer class="page-footer center-on-small-only">
-
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
 
         <!--Copyright-->
         <div class="footer-copyright">

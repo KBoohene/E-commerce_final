@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:25:30
+/* Smarty version 3.1.30, created on 2017-03-28 03:47:44
   from "/Applications/AMPPS/www/github/E-commerce_final/views/productDetails.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9834ac8e244_99988340',
+  'unifunc' => 'content_58d9dce0702707_09358039',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3a47da8c2fd84bd70f0fcd315f1769d5289f5fd2' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/productDetails.tpl',
-      1 => 1490649714,
+      1 => 1490672862,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9834ac8e244_99988340 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9dce0702707_09358039 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -214,7 +214,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                                 <!--Featured image-->
                                 <div class="view overlay hm-white-light z-depth-1-half">
-                                    <img src="http://mdbootstrap.com/img/Photos/Slides/img%20(109).jpg" class="img-fluid " alt="">
+                                    <img src="img/products/<?php echo $_smarty_tpl->tpl_vars['product']->value['iname'];?>
+.png" class="img-fluid " alt="">
                                     <div class="mask">
                                     </div>
                                     <!-- <h3 class="price"><span class="badge red darken-2">20 $</span></h3> -->

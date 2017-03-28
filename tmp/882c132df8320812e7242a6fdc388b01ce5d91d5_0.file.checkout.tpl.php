@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 23:47:12
+/* Smarty version 3.1.30, created on 2017-03-28 04:06:46
   from "/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9a480c60497_64385091',
+  'unifunc' => 'content_58d9e1564e9a74_69946409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '882c132df8320812e7242a6fdc388b01ce5d91d5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/checkout.tpl',
-      1 => 1490658430,
+      1 => 1490674004,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9a480c60497_64385091 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9e1564e9a74_69946409 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +31,7 @@ function content_58d9a480c60497_64385091 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Customer Login</title>
+    <title>Checkout</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
@@ -131,7 +131,7 @@ function content_58d9a480c60497_64385091 (Smarty_Internal_Template $_smarty_tpl)
 ?>
 
 				<div class="table-responsive">
-						<table class="table">
+						<table class="table" id="checkTable">
 							<thead>
 								<tr>
 								 <td>Product Name</td>
@@ -147,7 +147,8 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['value']->value) {
 ?>
-						<tr>
+						<tr id="row<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+">
 							<td hidden>
 								<?php if ($_smarty_tpl->tpl_vars['value']->value['ino']) {?>
 									<span id="ino<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
@@ -209,6 +210,15 @@ echo $_smarty_tpl->tpl_vars['value']->value['qty'];?>
 									</span>
 								</td>
 
+								<td>
+									<div class="btn-group" data-toggle="buttons">
+									  <label class="btn btn-sm btn-primary btn-rounded" id="Del" onclick="removeItem(<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
+)">
+                      <input type="radio" name="options" id="Del"/>X
+                    </label>
+									</div>
+								</td>
+
 						 </tr>
 						 <?php $_smarty_tpl->_assignInScope('count', $_smarty_tpl->tpl_vars['count']->value+1);
 ?>
@@ -221,22 +231,24 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						</table>
 					 </div>
         </div>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-    		<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
 
-<<<<<<< HEAD
+				<div class="row">
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
+						<button type="button" class="btn btn-primary" onclick="checkout(<?php echo $_SESSION['userId'];?>
+)" id="Checkout">Checkout</button>
+					</div>
+
+					<div id="Total" style="visibility:hidden; margin-left:50px;">
+						Total Amount:
+						<span id="tAmt"></span>
+					</div>
+
+				</div>
+
 					
-=======
-				<button type="button" class="btn btn-primary" onclick="saveChanges()" id="Save" style="visibility:hidden">Save</button>
-				<button type="button" class="btn btn-primary" onclick="checkout()" id="Checkout">Checkout</button>
-
->>>>>>> 899c1a6d046b800ed59f3ee991203b80d32df111
 					<?php echo '<script'; ?>
 >
 						var val, val2, val3, amount, quantity, price ;
@@ -304,8 +316,35 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							}else{
 								console.log("Cart not updated");
 								}
+
+								var value= sumAmounts();
+								$("#tAmt").html(value);
+							document.getElementById("Total").style.visibility ="visible";
 							document.getElementById("Save").style.visibility ="hidden";
 						}
+
+						function sumAmounts(){
+							amount=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("amt"+i);
+									val = parseFloat(val.innerHTML);
+									amount=amount+val;
+								}
+
+							return amount;
+						}
+
+						function sumQty(){
+							quantity=0;
+								for(var i=0;i<counter;i++){
+									val = document.getElementById("qty"+i);
+									val = parseFloat(val.innerHTML);
+									quantity=quantity+val;
+								}
+
+							return quantity;
+						}
+
 
 						function saveChanges(){
 							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
@@ -316,12 +355,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 								val = document.getElementById("qty"+i);
 								val2 = document.getElementById("ino"+i);
 								val3 = document.getElementById("ono");
+								amount = document.getElementById("amt"+i);
 
 								val = parseFloat(val.innerHTML);
 								val2 = parseFloat(val2.innerHTML);
 								val3 = parseFloat(val3.innerHTML);
+								amount = parseFloat(amount.innerHTML);
 
-								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val;
+								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:saveComplete}
@@ -343,14 +384,45 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 								}
 						}
 
-						function checkout(){
+						function checkout(cno){
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
+						var orderNo=val;
 
-              var theUrl="ajax.php?cmd=3&ono="+val;
+						var qty = sumQty();
+
+						amount = document.getElementById("tAmt");
+						amount = parseFloat(amount.innerHTML);
+
+              var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:checkoutComplete}
+                );
+						}
+
+						function removeComplete(xhr, status){
+							console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								$("#row"+obj.rowNum).remove();
+							}else{
+								console.log("order not checked out");
+								}
+						}
+
+						function removeItem(counter){
+						val2 = document.getElementById("ino"+counter);
+						val3 = document.getElementById("ono");
+
+						val2 = parseFloat(val2.innerHTML);
+						val3 = parseFloat(val3.innerHTML);
+
+						var theUrl="ajax.php?cmd=5&ono="+val3+"&ino="+val2+"&row="+counter;
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:removeComplete}
                 );
 
 						}

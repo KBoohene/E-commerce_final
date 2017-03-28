@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 03:26:16
+/* Smarty version 3.1.30, created on 2017-03-28 03:57:32
   from "/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9d7d8892273_92075499',
+  'unifunc' => 'content_58d9df2c3e1aa8_32358527',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3397d0ee261e32ef5d0221931febef0851e80aa5' => 
     array (
       0 => '/Applications/AMPPS/www/github/E-commerce_final/views/searchItems.tpl',
-      1 => 1490667485,
+      1 => 1490673449,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9d7d8892273_92075499 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58d9df2c3e1aa8_32358527 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -221,7 +221,7 @@ $__foreach_item_0_saved = $_smarty_tpl->tpl_vars['item'];
                                 <div class="view overlay hm-white-slight">
                                     <img src="img/products/<?php echo $_smarty_tpl->tpl_vars['item']->value['iname'];?>
 .png" class="img-fluid" alt="">
-                                    <a href="#">
+                                    <a >
                                         <div class="mask"></div>
                                     </a>
                                 </div>
@@ -262,7 +262,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
 
-
+                          
                             <?php echo '<script'; ?>
  type="text/javascript">
                                 function addToCartComplete(xhr, status){
@@ -306,7 +306,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                           }
                             <?php echo '</script'; ?>
 >
-
+                        
 
 
             </div>
