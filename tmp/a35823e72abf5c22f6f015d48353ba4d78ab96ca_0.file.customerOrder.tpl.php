@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 02:46:01
+/* Smarty version 3.1.30, created on 2017-04-11 16:15:24
   from "C:\xampp\htdocs\E-commerce_final\views\customerOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9b249cd7752_77079402',
+  'unifunc' => 'content_58ece4fc96b928_10729840',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a35823e72abf5c22f6f015d48353ba4d78ab96ca' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customerOrder.tpl',
-      1 => 1490660651,
+      1 => 1491559443,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9b249cd7752_77079402 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ece4fc96b928_10729840 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -283,65 +283,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     <!--Footer-->
     <footer class="page-footer center-on-small-only">
-
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">First column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Second column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Fourth column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Third column</h5>
-                    <ul>
-                        <li><a href="#!">Link 1</a></li>
-                        <li><a href="#!">Link 2</a></li>
-                        <li><a href="#!">Link 3</a></li>
-                        <li><a href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <!--/.Fourth column-->
-
-            </div>
-        </div>
-        <!--/.Footer Links-->
 
         <!--Copyright-->
         <div class="footer-copyright">

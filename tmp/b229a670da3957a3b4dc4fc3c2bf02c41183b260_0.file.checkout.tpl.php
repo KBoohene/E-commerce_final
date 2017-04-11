@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-28 04:01:48
+/* Smarty version 3.1.30, created on 2017-04-11 16:16:41
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d9c40c3a79a6_85319128',
+  'unifunc' => 'content_58ece54900a001_70923027',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1490666494,
+      1 => 1491559443,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d9c40c3a79a6_85319128 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ece54900a001_70923027 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -232,7 +232,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 					 </div>
         </div>
 
-				<div class="row>
+				<div class="row">
 					<div class="col-md-6">
 					</div>
 					<div class="col-md-6">
@@ -241,7 +241,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 )" id="Checkout">Checkout</button>
 					</div>
 
-					<div id="Total" style="visibility:hidden">
+					<div id="Total" style="visibility:hidden; margin-left:50px;">
 						Total Amount:
 						<span id="tAmt"></span>
 					</div>
@@ -333,7 +333,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
 							return amount;
 						}
-						
+
 						function sumQty(){
 							quantity=0;
 								for(var i=0;i<counter;i++){
@@ -345,7 +345,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 							return quantity;
 						}
 
-						
+
 						function saveChanges(){
 							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ;
@@ -388,9 +388,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
 						var orderNo=val;
-						
+
 						var qty = sumQty();
-						
+
 						amount = document.getElementById("tAmt");
 						amount = parseFloat(amount.innerHTML);
 

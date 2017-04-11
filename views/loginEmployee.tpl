@@ -29,7 +29,6 @@
     {"Please enter all information"}
     {else}
     {assign var="loginResult" value=$employee->loginEmployee($username, $password)}
-
         {assign var="loginData" value=$employee->fetchDB($loginResult)}
         {foreach from=$loginData item=login}
             {if ($login.Password) == $password}

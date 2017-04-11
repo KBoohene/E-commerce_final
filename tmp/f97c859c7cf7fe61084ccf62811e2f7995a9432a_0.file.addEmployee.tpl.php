@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-27 21:42:59
+/* Smarty version 3.1.30, created on 2017-04-11 17:17:23
   from "C:\xampp\htdocs\E-commerce_final\views\addEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58d96b43c0cd67_08474201',
+  'unifunc' => 'content_58ecf383ec4b72_05616878',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'f97c859c7cf7fe61084ccf62811e2f7995a9432a' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\addEmployee.tpl',
-      1 => 1490029633,
+      1 => 1491923835,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58d96b43c0cd67_08474201 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ecf383ec4b72_05616878 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
 <!--CHANGELOG
@@ -62,32 +62,40 @@ function content_58d96b43c0cd67_08474201 (Smarty_Internal_Template $_smarty_tpl)
   </head>
   <body>
     <header>
+
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-              <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
-                <strong>Employee Core Store</strong>
-              </a>
-              <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Items</a>
-                  </div>
-                </li>
                 <?php if (isset($_SESSION['acctype'])) {?>
-									<?php if (($_SESSION['acctype'] == 3)) {?>
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
+                  <strong>Employee Core Store</strong>
+                </a>
+                  <?php } else { ?>
+                    <a class="navbar-brand" href="#">
+                      <strong>Employee Core Store</strong>
+                    </a>
+                <?php }?>
+
+                <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
+                       </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
+                       </div>
+                  </li>
+                  <?php if (isset($_SESSION['acctype'])) {?>
+										<?php if (($_SESSION['acctype'] == 3)) {?>
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Employees</a>
 											<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu5">
@@ -98,19 +106,19 @@ function content_58d96b43c0cd67_08474201 (Smarty_Internal_Template $_smarty_tpl)
 										<?php } else { ?>
 									<?php }?>
 								<?php }?>
-              </ul>
+                </ul>
 
-              <form class="form-inline waves-effect waves-light">
-                <input class="form-control" type="text" placeholder="Search">
-              </form>
+                <form class="form-inline waves-effect waves-light">
+                  <input class="form-control" type="text" placeholder="Search">
+                </form>
 
-              <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
                   <li class="nav-item dropdown">
 									<?php if (isset($_SESSION['username'])) {?>
 											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
 </a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" onclick="logout()">Logout</a>
 													<a class="dropdown-item" href="#">Profile</a>
 												</div>
 										<?php } else { ?>
@@ -126,66 +134,107 @@ function content_58d96b43c0cd67_08474201 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </nav>
 	    <!--/.Navbar-->
+
+				<?php echo '<script'; ?>
+>
+						function logoutComplete(xhr, status){
+
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+								window.location='employeeDisplay.php?eAction=1';
+							}else{
+								console.log("Employee not logged out");
+								}
+						}
+
+						function logout(){
+
+              var theUrl="ajax.php?cmd=4";
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:logoutComplete}
+                );
+
+						}
+				<?php echo '</script'; ?>
+>
+
     </header>
-    <?php if (isset($_POST['ename'])) {?>
-      <?php $_smarty_tpl->_assignInScope('ename', $_POST['ename']);
+    <main>
+      <div class="container">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <?php if (isset($_POST['ename'])) {?>
+            <?php $_smarty_tpl->_assignInScope('ename', $_POST['ename']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('zip', $_POST['zip']);
+            <?php $_smarty_tpl->_assignInScope('zip', $_POST['zip']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('hdate', $_POST['hdate']);
+            <?php $_smarty_tpl->_assignInScope('hdate', $_POST['hdate']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('pword', $_POST['pword']);
+            <?php $_smarty_tpl->_assignInScope('pword', $_POST['pword']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('acctype', $_POST['acctype']);
+            <?php $_smarty_tpl->_assignInScope('acctype', $_POST['acctype']);
 ?>
-      <?php $_smarty_tpl->_assignInScope('usrname', $_POST['usrname']);
+            <?php $_smarty_tpl->_assignInScope('usrname', $_POST['usrname']);
 ?>
-      <?php if (($_smarty_tpl->tpl_vars['zip']->value) == "-1") {?>
-        <?php echo "Please select a zip";?>
+            <?php if (($_smarty_tpl->tpl_vars['zip']->value) == "-1") {?>
+              <?php echo "Please select a zip";?>
 
-        <?php } elseif (($_smarty_tpl->tpl_vars['ename']->value) == '' || ($_smarty_tpl->tpl_vars['pword']->value) == '' || ($_smarty_tpl->tpl_vars['acctype']->value) == '' || ($_smarty_tpl->tpl_vars['usrname']->value) == '') {?>
-          <?php echo "Please enter all information";?>
+              <?php } elseif (($_smarty_tpl->tpl_vars['ename']->value) == '' || ($_smarty_tpl->tpl_vars['pword']->value) == '' || ($_smarty_tpl->tpl_vars['acctype']->value) == '' || ($_smarty_tpl->tpl_vars['usrname']->value) == '') {?>
+                <?php echo "Please enter all information";?>
 
-        <?php } else { ?>
-          <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->addEmployee($_smarty_tpl->tpl_vars['ename']->value,$_smarty_tpl->tpl_vars['zip']->value,$_smarty_tpl->tpl_vars['hdate']->value,$_smarty_tpl->tpl_vars['pword']->value,$_smarty_tpl->tpl_vars['acctype']->value,$_smarty_tpl->tpl_vars['usrname']->value));
+              <?php } else { ?>
+                <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['employee']->value->addEmployee($_smarty_tpl->tpl_vars['ename']->value,$_smarty_tpl->tpl_vars['zip']->value,$_smarty_tpl->tpl_vars['hdate']->value,$_smarty_tpl->tpl_vars['pword']->value,$_smarty_tpl->tpl_vars['acctype']->value,$_smarty_tpl->tpl_vars['usrname']->value));
 ?>
-          <?php echo "<script>window.location = 'employeeDisplay.php?eAction=3'</script>";?>
+                <?php echo "<script>window.location = 'employeeDisplay.php?eAction=3'</script>";?>
 
-      <?php }?>
-   <?php }?>
+            <?php }?>
+         <?php }?>
 
-    <form action="employeeDisplay.php?eAction=5" method="POST">
-      <div> Employee Name <input type="text" name="ename"/><br></div>
-      <div> Zip
-        <select name="zip">
-          <option value="-1">Select Zip</option>
-          <?php $_smarty_tpl->_assignInScope('zipResult', $_smarty_tpl->tpl_vars['employee']->value->getZips());
+          <form action="employeeDisplay.php?eAction=5" method="POST">
+            <div> Employee Name <input type="text" name="ename"/><br></div>
+            <div> Zip
+              <select name="zip">
+                <option value="-1">Select Zip</option>
+                <?php $_smarty_tpl->_assignInScope('zipResult', $_smarty_tpl->tpl_vars['employee']->value->getZips());
 ?>
-          <?php $_smarty_tpl->_assignInScope('zipData', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['zipResult']->value));
+                <?php $_smarty_tpl->_assignInScope('zipData', $_smarty_tpl->tpl_vars['employee']->value->fetchDB($_smarty_tpl->tpl_vars['zipResult']->value));
 ?>
-          <?php
+                <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['zipData']->value, 'zip');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['zip']->value) {
 ?>
-          <option value="<?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
 "><?php echo $_smarty_tpl->tpl_vars['zip']->value['city'];?>
 </option>
-          <?php
+                <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
 
-        </select>
-        <br>
+              </select>
+              <br>
+            </div>
+            <div> Hire Date <input type="date" name="hdate"/><br></div>
+            <div> Password <input type="text" name="pword"/><br></div>
+            <div> Account Type <input type="number" name="acctype" min="2" max="3"/><br></div>
+            <div> Username <input type="text" name="usrname"/><br></div>
+            <div class="row col-md-5"></div>
+            <div class="row col-md-4">
+              <input type="submit" class="form-control amber darken-3 white-text" value="Add">
+            </div>
+            <div class="row col-md-3"></div>
+          </form>
+        </div>
+        <div class="row col-md-3"></div>
       </div>
-      <div> Hire Date <input type="date" name="hdate"/><br></div>
-      <div> Password <input type="text" name="pword"/><br></div>
-      <div> Account Type <input type="number" name="acctype" min="2" max="3"/><br></div>
-      <div> Username <input type="text" name="usrname"/><br></div>
-      <input type="submit" value="Add">
-    </form>
+    </main>
+
   </body>
 </html>
 <?php }
