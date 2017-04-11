@@ -29,9 +29,19 @@ You would have to configure the setting.php file to your required database
 credentials.
 
 Basic Use:
+
+Customer
 Launch index.php to move to the customer view.
 From there you can sign up, add items to cart, 
 checkout and view your past orders.
+Default customer details:
+Username: kwabena.boohene 	Password:jumper
+
+Employee:
+Launch Employee.Display.php to move to login page.
+Default employee details
+Normal Employee- Username:david.okyere  Password:david
+Admin- Username:k.boohene Password:youssouf
 
 
 
