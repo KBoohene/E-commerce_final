@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-11 17:05:06
+/* Smarty version 3.1.30, created on 2017-04-12 20:26:28
   from "C:\xampp\htdocs\E-commerce_final\views\searchCustomer.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ecf0a2414af6_57196444',
+  'unifunc' => 'content_58ee7154d58955_25447156',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'b72499ef68a3c1801be91f176200a81bfff10213' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\searchCustomer.tpl',
-      1 => 1491922960,
+      1 => 1492021582,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ecf0a2414af6_57196444 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ee7154d58955_25447156 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <html>
   <head>
@@ -174,9 +174,9 @@ function content_58ecf0a2414af6_57196444 (Smarty_Internal_Template $_smarty_tpl)
         </div>
        </form>
 
-        <?php if (isset($_REQUEST['searchCustomer'])) {?>
-          <?php if (($_REQUEST['searchCustomer']) != '') {?>
-              <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchCustomer']);
+        <?php if (isset($_REQUEST['searchName'])) {?>
+          <?php if (($_REQUEST['searchName']) != '') {?>
+              <?php $_smarty_tpl->_assignInScope('txt', $_REQUEST['searchName']);
 ?>
               <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['customer']->value->searchCustomers($_smarty_tpl->tpl_vars['txt']->value));
 ?>

@@ -121,6 +121,11 @@
 			{/literal}
     </header>
 
+		<main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
     {if isset($smarty.request.searchName)}
       {if ($smarty.request.searchName)!=""}
         {assign var="txt" value=$smarty.request.searchName}
@@ -171,5 +176,11 @@
       <div> Status <input type="text" name="status" value={$data.0.status}><br></div>
       <input type="submit" value="Edit">
     </form>
+
+		</div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

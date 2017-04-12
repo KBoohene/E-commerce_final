@@ -139,9 +139,9 @@
         </div>
        </form>
 
-        {if isset($smarty.request.searchCustomer)}
-          {if ($smarty.request.searchCustomer)!=""}
-              {assign var="txt" value=$smarty.request.searchCustomer}
+        {if isset($smarty.request.searchName)}
+          {if ($smarty.request.searchName)!=""}
+              {assign var="txt" value=$smarty.request.searchName}
               {assign var="result" value=$customer->searchCustomers($txt)}
               {assign var="data" value=$customer->fetchDB($result)}
             {elseif ($smarty.request.searchName)==""}

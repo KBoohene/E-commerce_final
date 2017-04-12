@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-16 17:12:11
+/* Smarty version 3.1.30, created on 2017-04-12 18:29:24
   from "C:\xampp\htdocs\E-commerce_final\views\customerSignUp.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58cab95b17fdc2_56678612',
+  'unifunc' => 'content_58ee55e4173f00_25898919',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     '3a340d1fe0afa5095d87c82bdff84101d383c058' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\customerSignUp.tpl',
-      1 => 1489676276,
+      1 => 1491559443,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58cab95b17fdc2_56678612 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ee55e4173f00_25898919 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,11 +70,31 @@ function content_58cab95b17fdc2_56678612 (Smarty_Internal_Template $_smarty_tpl)
                           <a class="nav-link" href="index.php?cAction=3"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Register</span></a>
                       </li>
                       <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Account</a>
+                          <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           <i class="fa fa-user"></i>
+                                 <?php if (isset($_SESSION['userId'])) {?>
+          										 		 <?php if (($_SESSION['acctype'] == 1)) {?>
+          													 <?php $_smarty_tpl->_assignInScope('session', $_smarty_tpl->tpl_vars['userInfo']->value->getSession());
+?>
+          													 <?php echo $_smarty_tpl->tpl_vars['session']->value['fullname'];?>
+
+          												 <?php }?>
+                                  <?php } else { ?>
+                                       <?php echo "Guest";?>
+
+                                  <?php }?>
+                           </a>
                           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                              <a class="dropdown-item" href="index.php?cAction=4">Login</a>
-                              <a class="dropdown-item" href="index.php?cAction=5">Orders</a>
-                              <a class="dropdown-item" href="#">Logout</a>
+                            <?php if (!isset($_SESSION['userId'])) {?>
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=4">Login</a>';?>
+
+                            <?php }?>
+                            <?php if (isset($_SESSION['userId'])) {?>
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=5">Orders</a>';?>
+
+                                <?php echo '<a class="dropdown-item" href="index.php?cAction=7">Logout</a>';?>
+
+                            <?php }?>
                           </div>
                       </li>
                   </ul>
@@ -114,7 +134,7 @@ function content_58cab95b17fdc2_56678612 (Smarty_Internal_Template $_smarty_tpl)
                                     <div class="md-form">
                                         <i class="fa fa-location-arrow prefix"></i>
 
-                                        <select id="my-registration-select">
+                                        <select name="zip" id="my-registration-select">
                                             <option value="-1" disabled selected>Select Zip</option>
                                 			<?php $_smarty_tpl->_assignInScope('zipResult', $_smarty_tpl->tpl_vars['customer']->value->getZips());
 ?>
@@ -126,8 +146,9 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['zip']->value) {
 ?>
                                 				<option value="<?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
-"><?php echo $_smarty_tpl->tpl_vars['zip']->value['city'];?>
-</option>
+"><?php echo $_smarty_tpl->tpl_vars['zip']->value['zip'];?>
+ (<?php echo $_smarty_tpl->tpl_vars['zip']->value['city'];?>
+)</option>
                                 			<?php
 }
 }
@@ -178,9 +199,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                     <?php } else { ?>
                                         <?php $_smarty_tpl->_assignInScope('result', $_smarty_tpl->tpl_vars['customer']->value->addCustomer($_smarty_tpl->tpl_vars['name']->value,$_smarty_tpl->tpl_vars['street']->value,$_smarty_tpl->tpl_vars['zip']->value,$_smarty_tpl->tpl_vars['phone']->value,$_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
 ?>
-                                        <?php echo "Success";?>
 
-                                        <?php echo "<script>window.location = 'index.php?cAction=5'</script>";?>
+                                        <?php $_smarty_tpl->_assignInScope('loginResult', $_smarty_tpl->tpl_vars['customer']->value->loginCustomer($_smarty_tpl->tpl_vars['username']->value,$_smarty_tpl->tpl_vars['password']->value));
+?>
+                            		    <?php $_smarty_tpl->_assignInScope('loginData', $_smarty_tpl->tpl_vars['customer']->value->fetchDB($_smarty_tpl->tpl_vars['loginResult']->value));
+?>
+                                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['loginData']->value, 'login');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['login']->value) {
+?>
+                                            <?php echo $_smarty_tpl->tpl_vars['userInfo']->value->setSession($_smarty_tpl->tpl_vars['login']->value['cno'],$_smarty_tpl->tpl_vars['login']->value['Username'],$_smarty_tpl->tpl_vars['login']->value['cname'],1);?>
+
+                                            <?php echo "<script>window.location = 'index.php?cAction=5'</script>";?>
+
+                                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
 
                                     <?php }?>
                                 <?php }?>

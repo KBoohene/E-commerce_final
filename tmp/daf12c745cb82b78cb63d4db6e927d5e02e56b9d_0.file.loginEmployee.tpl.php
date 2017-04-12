@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-11 15:17:15
+/* Smarty version 3.1.30, created on 2017-04-12 18:32:26
   from "C:\xampp\htdocs\E-commerce_final\views\loginEmployee.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ecd75bee9606_60865301',
+  'unifunc' => 'content_58ee569a720702_08978280',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'daf12c745cb82b78cb63d4db6e927d5e02e56b9d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\loginEmployee.tpl',
-      1 => 1491916172,
+      1 => 1491923909,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ecd75bee9606_60865301 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ee569a720702_08978280 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
