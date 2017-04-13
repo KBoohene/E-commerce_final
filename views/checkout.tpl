@@ -282,7 +282,7 @@
 
 						function saveChanges(){
 							counter={/literal}{$count}{literal};
-
+							 var totalvalue = 0;
 							for(var i=0;i<counter;i++){
 
 								val = document.getElementById("qty"+i);
@@ -294,13 +294,14 @@
 								val2 = parseFloat(val2.innerHTML);
 								val3 = parseFloat(val3.innerHTML);
 								amount = parseFloat(amount.innerHTML);
-
+								totalvalue=totalvalue+amount;
 								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:saveComplete}
                 );
 							}
+							return totalvalue;
 						}
 
 
@@ -318,15 +319,16 @@
 						}
 
 						function checkout(cno){
+						amount =saveChanges();
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
 						var orderNo=val;
 
 						var qty = sumQty();
 
-						amount = document.getElementById("tAmt");
-						amount = parseFloat(amount.innerHTML);
-
+						/*amount = document.getElementById("tAmt");
+						amount = parseFloat(amount.innerHTML);*/
+						console.log("amount"+amount);
               var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,

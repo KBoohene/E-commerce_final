@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-11 16:20:02
+/* Smarty version 3.1.30, created on 2017-04-13 13:55:24
   from "C:\xampp\htdocs\E-commerce_final\views\editOrder.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ece612548e60_27179232',
+  'unifunc' => 'content_58ef672c59a254_81029902',
   'has_nocache_code' => false,
   'file_dependency' =>
   array (
     'a49798a837ef49b717346f36c2292b86a1963ddb' =>
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\editOrder.tpl',
-      1 => 1491559443,
+      1 => 1492084502,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ece612548e60_27179232 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ef672c59a254_81029902 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -53,33 +53,41 @@ function content_58ece612548e60_27179232 (Smarty_Internal_Template $_smarty_tpl)
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <header>
+  <header>
+
         <!--Navbar-->
         <nav class="navbar navbar-toggleable-md navbar-dark">
             <div class="container">
-              <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
-                <strong>Employee Core Store</strong>
-              </a>
-              <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
-                  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
-                    <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Items</a>
-                  </div>
-                </li>
                 <?php if (isset($_SESSION['acctype'])) {?>
-									<?php if (($_SESSION['acctype'] == 3)) {?>
+                <a class="navbar-brand" href="employeeDisplay.php?eAction=2">
+                  <strong>Employee Core Store</strong>
+                </a>
+                  <?php } else { ?>
+                    <a class="navbar-brand" href="#">
+                      <strong>Employee Core Store</strong>
+                    </a>
+                <?php }?>
+
+                <ul class="nav navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Customer</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu4">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=7">Add Customer</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=6">View Customers</a>
+                       </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link" href="employeeDisplay.php?eAction=14">Orders</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Items</a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu2">
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=12">Add Item</a>
+                           <a class="dropdown-item" href="employeeDisplay.php?eAction=13">View Item</a>
+                       </div>
+                  </li>
+                  <?php if (isset($_SESSION['acctype'])) {?>
+										<?php if (($_SESSION['acctype'] == 3)) {?>
 										<li class="nav-item dropdown">
 											<a class="nav-link dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Employees</a>
 											<div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu5">
@@ -90,19 +98,19 @@ function content_58ece612548e60_27179232 (Smarty_Internal_Template $_smarty_tpl)
 										<?php } else { ?>
 									<?php }?>
 								<?php }?>
-              </ul>
+                </ul>
 
-              <form class="form-inline waves-effect waves-light">
-                <input class="form-control" type="text" placeholder="Search">
-              </form>
+                <form class="form-inline waves-effect waves-light">
+                  <input class="form-control" type="text" placeholder="Search">
+                </form>
 
-              <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">
                   <li class="nav-item dropdown">
 									<?php if (isset($_SESSION['username'])) {?>
 											<a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <?php echo $_SESSION['fullname'];?>
 </a>
 												<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-													<a class="dropdown-item" href="#">Logout</a>
+													<a class="dropdown-item" onclick="logout()">Logout</a>
 													<a class="dropdown-item" href="#">Profile</a>
 												</div>
 										<?php } else { ?>
@@ -113,9 +121,39 @@ function content_58ece612548e60_27179232 (Smarty_Internal_Template $_smarty_tpl)
 									<?php }?>
                   </li>
                </ul>
+
+
             </div>
         </nav>
 	    <!--/.Navbar-->
+
+				<?php echo '<script'; ?>
+>
+						function logoutComplete(xhr, status){
+
+              console.log(xhr);
+
+              var obj=$.parseJSON(xhr.responseText);
+							if(obj.result==0){
+								console.log(obj.message);
+								window.location='employeeDisplay.php?eAction=1';
+							}else{
+								console.log("Employee not logged out");
+								}
+						}
+
+						function logout(){
+
+              var theUrl="ajax.php?cmd=4";
+               $.ajax(theUrl,
+                	{async:true,
+                		 complete:logoutComplete}
+                );
+
+						}
+				<?php echo '</script'; ?>
+>
+
     </header>
     <main>
       <div class="container">
@@ -146,7 +184,7 @@ function content_58ece612548e60_27179232 (Smarty_Internal_Template $_smarty_tpl)
                           <?php $_smarty_tpl->_assignInScope('shipped', $_POST['shipped']);
 ?>
 
-                          <?php if (($_smarty_tpl->tpl_vars['cno']->value) == '' || ($_smarty_tpl->tpl_vars['checked_out']->value) == '' || ($_smarty_tpl->tpl_vars['received']->value) == '' || ($_smarty_tpl->tpl_vars['received']->value) == '') {?>
+                          <?php if (($_smarty_tpl->tpl_vars['cno']->value) == '' || ($_smarty_tpl->tpl_vars['checked_out']->value) == '') {?>
                             <?php echo "Please enter all information";?>
 
                             <?php } else { ?>

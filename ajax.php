@@ -119,7 +119,7 @@ function checkout(){
 	
 	$obj->insertLog($ono,$cno,$numItems);
 	
-	echo '{"result":0,"message":"Order checked out","$cno":'.$cno.',"numItems":'.$numItems.'}';
+	echo '{"result":0,"message":"Order checked out","$cno":'.$cno.',"amt":'.$amt.'}';
 }
 
 function logout(){

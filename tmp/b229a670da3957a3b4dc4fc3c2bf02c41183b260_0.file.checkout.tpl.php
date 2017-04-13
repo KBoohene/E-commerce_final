@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-11 16:16:41
+/* Smarty version 3.1.30, created on 2017-04-13 14:22:18
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ece54900a001_70923027',
+  'unifunc' => 'content_58ef6d7aabce11_08386411',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1491559443,
+      1 => 1492086128,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ece54900a001_70923027 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ef6d7aabce11_08386411 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -349,7 +349,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 						function saveChanges(){
 							counter=<?php echo $_smarty_tpl->tpl_vars['count']->value;?>
 ;
-
+							 var totalvalue = 0;
 							for(var i=0;i<counter;i++){
 
 								val = document.getElementById("qty"+i);
@@ -361,13 +361,14 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 								val2 = parseFloat(val2.innerHTML);
 								val3 = parseFloat(val3.innerHTML);
 								amount = parseFloat(amount.innerHTML);
-
+								totalvalue=totalvalue+amount;
 								var theUrl="ajax.php?cmd=2&ono="+val3+"&ino="+val2+"&qty="+val+"&amt="+amount;
                $.ajax(theUrl,
                 	{async:true,
                 		 complete:saveComplete}
                 );
 							}
+							return totalvalue;
 						}
 
 
@@ -378,22 +379,23 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
               var obj=$.parseJSON(xhr.responseText);
 							if(obj.result==0){
 								console.log(obj.message);
-								window.location='index.php?cAction=5';
+								//window.location='index.php?cAction=5';
 							}else{
 								console.log("order not checked out");
 								}
 						}
 
 						function checkout(cno){
+						amount =saveChanges();
 						val = document.getElementById("ono");
 						val = parseFloat(val.innerHTML);
 						var orderNo=val;
 
 						var qty = sumQty();
 
-						amount = document.getElementById("tAmt");
-						amount = parseFloat(amount.innerHTML);
-
+						/*amount = document.getElementById("tAmt");
+						amount = parseFloat(amount.innerHTML);*/
+						console.log("amount"+amount);
               var theUrl="ajax.php?cmd=3&ono="+orderNo+"&amt="+amount+"&cno="+cno+"&qty="+qty;
                $.ajax(theUrl,
                 	{async:true,

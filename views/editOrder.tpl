@@ -141,7 +141,7 @@
                           {assign var="received" value=$smarty.post.received}
                           {assign var="shipped" value=$smarty.post.shipped}
 
-                          {if ($cno)=="" or ($checked_out)=="" or ($received)=="" or ($received)==""}
+                          {if ($cno)=="" or ($checked_out)=="" }
                             {"Please enter all information"}
                             {else}
                               {assign var="result" value=$order->editOrder($ono,$cno,$checked_out,$received,$shipped)}
