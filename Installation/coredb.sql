@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2017 at 05:32 AM
+-- Generation Time: Apr 13, 2017 at 02:41 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.5.30
 
@@ -16,7 +16,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-Use coredb;
 --
 -- Database: `coredb`
 --
@@ -58,13 +57,6 @@ CREATE TABLE `checkout_log` (
   `num_items` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `checkout_log`
---
-
-INSERT INTO `checkout_log` (`ID`, `order_no`, `person_id`, `created_at`, `num_items`) VALUES
-(13, 16, 10, '2017-03-28 02:01:59', 8);
-
 -- --------------------------------------------------------
 
 --
@@ -84,7 +76,10 @@ CREATE TABLE `clogin_log` (
 
 INSERT INTO `clogin_log` (`ID`, `LogInTime`, `account_type`, `personId`) VALUES
 (5, '2017-03-28 02:16:18', '2', 11),
-(6, '2017-03-28 02:45:33', '1', 10);
+(6, '2017-03-28 02:45:33', '1', 10),
+(7, '2017-04-11 14:15:23', '1', 10),
+(8, '2017-04-12 16:30:41', '1', 10),
+(9, '2017-04-13 10:53:14', '1', 10);
 
 -- --------------------------------------------------------
 
@@ -201,14 +196,6 @@ CREATE TABLE `odetails` (
   `amt` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `odetails`
---
-
-INSERT INTO `odetails` (`ono`, `ino`, `qty`, `amt`) VALUES
-(16, 6, 3, '120'),
-(16, 8, 5, '75');
-
 -- --------------------------------------------------------
 
 --
@@ -219,18 +206,11 @@ CREATE TABLE `orders` (
   `ono` bigint(5) NOT NULL,
   `cno` int(11) NOT NULL,
   `checked_out` varchar(3) NOT NULL,
-  `received` date DEFAULT NULL,
-  `shipped` date DEFAULT NULL,
+  `received` date NOT NULL DEFAULT '0000-00-00',
+  `shipped` date NOT NULL DEFAULT '0000-00-00',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `amt` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`ono`, `cno`, `checked_out`, `received`, `shipped`, `created_at`, `amt`) VALUES
-(16, 10, 'Yes', NULL, NULL, '2017-03-28 02:54:10', '195');
 
 -- --------------------------------------------------------
 
@@ -286,7 +266,7 @@ ALTER TABLE `categories`
 ALTER TABLE `checkout_log`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `order_no` (`order_no`),
-  ADD UNIQUE KEY `person_id` (`person_id`);
+  ADD KEY `person_id` (`person_id`);
 
 --
 -- Indexes for table `clogin_log`
@@ -362,12 +342,12 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `checkout_log`
 --
 ALTER TABLE `checkout_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `clogin_log`
 --
 ALTER TABLE `clogin_log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `customers`
 --
@@ -392,7 +372,7 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ono` bigint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `visitors_log`
 --

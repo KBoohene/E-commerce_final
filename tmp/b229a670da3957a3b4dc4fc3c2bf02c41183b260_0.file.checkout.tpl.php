@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-13 14:22:18
+/* Smarty version 3.1.30, created on 2017-04-13 15:36:30
   from "C:\xampp\htdocs\E-commerce_final\views\checkout.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58ef6d7aabce11_08386411',
+  'unifunc' => 'content_58ef7ede11c167_75787266',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b229a670da3957a3b4dc4fc3c2bf02c41183b260' => 
     array (
       0 => 'C:\\xampp\\htdocs\\E-commerce_final\\views\\checkout.tpl',
-      1 => 1492086128,
+      1 => 1492086816,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58ef6d7aabce11_08386411 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ef7ede11c167_75787266 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -379,7 +379,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
               var obj=$.parseJSON(xhr.responseText);
 							if(obj.result==0){
 								console.log(obj.message);
-								//window.location='index.php?cAction=5';
+								window.location='index.php?cAction=5';
 							}else{
 								console.log("order not checked out");
 								}

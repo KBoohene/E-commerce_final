@@ -175,10 +175,10 @@ class reports extends adb{
 
   function getOrderShipped($filter=false){
     if($filter==1){
-			$strQuery="SELECT COUNT(*) AS Not_shipped FROM orders WHERE shipped IS NOT NULL";
+			$strQuery="SELECT COUNT(*) AS Not_shipped FROM orders WHERE shipped !='0000-00-00'";
     }
     else{
-			$strQuery="SELECT COUNT(*) AS Num_shipped FROM orders WHERE shipped IS NULL";
+			$strQuery="SELECT COUNT(*) AS Num_shipped FROM orders WHERE shipped='0000-00-00'";
     }
     return $this->query($strQuery);
   }
